@@ -1,6 +1,6 @@
 blockquote{
   font-size: 1em;
-  width:60%;
+  width:50%;
   margin:50px auto;
   font-family:Open Sans;
   font-style:italic;
@@ -10,6 +10,10 @@ blockquote{
   line-height:1.6;
   position: relative;
   background:#EDEDED;
+}
+
+.mark {
+  float:right
 }
 
 blockquote::before{
@@ -38,14 +42,27 @@ blockquote::after{
   content: '';
 }
 
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top:1em;
+}
+
 blockquote a{
   display:block;
   color:#333333;
   font-style: normal;
   font-weight: bold;
-  margin-top:1em;
   text-decoration: none;
+  bottom: 10px;
 }
+
+blockquote span {
+  color: grey;
+  bottom: 10px;
+}
+
+
 
 mark {
   background: #78C0A8

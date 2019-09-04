@@ -21,5 +21,12 @@ router.post('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const createdMark = yield marksDAO.create(mark);
     res.send(createdMark);
 }));
+router.delete('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const marksDAO = req.app.locals.marksDAO;
+    const markId = req.body.id;
+    console.log(`Deleting ${markId}`);
+    yield marksDAO.delete(markId);
+    res.send(200);
+}));
 export default router;
 //# sourceMappingURL=marks.js.map

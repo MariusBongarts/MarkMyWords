@@ -1,6 +1,7 @@
 import { Mark } from './../models/mark';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { MarkerService } from '../services/marker.service';
+import { timeSinceTimestamp } from '../helper/dateHelper';
 
 const componentCSS = require('./app.component.scss');
 
@@ -31,16 +32,24 @@ export class AppRoot extends LitElement {
             ${mark.completeText.split(mark.text)[0]}
             <mark>${mark.text}</mark>
             ${mark.completeText.split(mark.text)[0]}
+            <br>
+            <div class="footer" style="width: 100%">
+            <span>${timeSinceTimestamp(mark.createdAt)} ago</span>
             <a href="${mark.url}" target="_blank">${mark.url}</a>
+            </div>
+            <button style="position: absolute; right: 0px; top: -22px"
+            @click=${async () => await this.deleteMark(mark)}>Delete mark</button>
           </blockquote>`) :
-          html`<h1>No marks made yet</h1>`}
+        html`<h1>No marks made yet</h1>`}
 `;
   }
 
-  getDateString(date: number) {
-    const newDate = new Date(date);
-    return `${newDate.getHours()}:${newDate.getMinutes()} Uhr`;
+
+  async deleteMark(mark: Mark) {
+    this.marks = this.marks.filter(e => e !== mark);
+    await this.markService.deleteMark(mark);
   }
+
 
 
 }

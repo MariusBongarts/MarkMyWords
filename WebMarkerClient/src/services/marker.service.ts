@@ -32,4 +32,12 @@ export class MarkerService {
       return undefined;
     }
   }
+
+  async deleteMark(mark: Mark): Promise<void> {
+    try {
+      await this.httpClient.delete('/marks?id=' + mark.id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

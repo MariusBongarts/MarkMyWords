@@ -21,5 +21,13 @@ router.post('/', async (req, res) => {
   res.send(createdMark);
 });
 
+router.delete('/', async (req, res) => {
+  const marksDAO: MongoGenericDAO<Mark> = req.app.locals.marksDAO;
+  const markId = req.query["id"] as string;
+  console.log(`Deleting ${markId}`);
+  await marksDAO.delete(markId);
+  res.send(200);
+});
+
 
 export default router;
