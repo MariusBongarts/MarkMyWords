@@ -49,6 +49,7 @@ export class WebMarker extends LitElement {
       endOffset: range.endOffset,
       nodeData: range.startContainer.nodeValue,
       nodeHTML: range.startContainer.parentElement.innerHTML,
+      completeText: range.startContainer.parentElement.textContent,
       nodeTagName: range.startContainer.parentElement.tagName.toLowerCase(),
       startContainer: range.startContainer,
       endContainer: range.endContainer,

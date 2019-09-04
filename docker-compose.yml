@@ -41,4 +41,3 @@ services:
     links:
       - server
     command: npm start
-

@@ -1,8 +1,52 @@
-@import "../variables.scss";
+blockquote{
+  font-size: 1em;
+  width:60%;
+  margin:50px auto;
+  font-family:Open Sans;
+  font-style:italic;
+  color: #555555;
+  padding:1.2em 30px 1.2em 75px;
+  border-left:8px solid #78C0A8 ;
+  line-height:1.6;
+  position: relative;
+  background:#EDEDED;
+}
 
-.entry {
-  background: rgba(128, 128, 128, 0.191);
-  margin-top: 20px;
-  width: 80vw;
-  padding: 20px;
+blockquote::before{
+  font-family:Arial;
+  content: "\201C";
+  color:#78C0A8;
+  font-size:4em;
+  position: absolute;
+  left: 10px;
+  top:-10px;
+}
+
+blockquote:nth-of-type(even) {
+  text-align: right;
+  border-right: 8px solid #78C0A8;
+  border-left: none;
+  padding: 1.2em 75px 1.2em 30px;
+}
+
+blockquote:nth-of-type(even)::before {
+  right: 25px;
+  top:-10px;
+}
+
+blockquote::after{
+  content: '';
+}
+
+blockquote a{
+  display:block;
+  color:#333333;
+  font-style: normal;
+  font-weight: bold;
+  margin-top:1em;
+  text-decoration: none;
+}
+
+mark {
+  background: #78C0A8
 }

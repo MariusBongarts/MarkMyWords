@@ -17,20 +17,23 @@ export class AppRoot extends LitElement {
   @property() marks!: Mark[];
 
   @property()
-  title: string = 'LitElement Starter';
+  title: string = 'MarkMyWords';
 
   async firstUpdated() {
     this.marks = await this.markService.getMarks();
+    console.log(this.marks);
   }
 
   render() {
     return html`
-    <h1>${this.title}</h1>
           ${this.marks && this.marks.length ? this.marks.map(mark => html`
-          <div class="entry">
-          <h5>${mark.origin}</h5><br><span>${this.getDateString(mark.createdAt)}: ${mark.text}</span>`) : html`<h1>No marks made yet</h1>
-          </div>
-          `}
+          <blockquote>
+            ${mark.completeText.split(mark.text)[0]}
+            <mark>${mark.text}</mark>
+            ${mark.completeText.split(mark.text)[0]}
+            <a href="${mark.url}" target="_blank">${mark.url}</a>
+          </blockquote>`) :
+          html`<h1>No marks made yet</h1>`}
 `;
   }
 

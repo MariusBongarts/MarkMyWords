@@ -13,5 +13,6 @@ export interface Mark {
   startContainer: Node,
   endContainer: Node,
   startContainerText: string,
-  endContainerText: string
+  endContainerText: string,
+  completeText: string
 }

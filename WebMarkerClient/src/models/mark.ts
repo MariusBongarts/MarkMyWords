@@ -4,5 +4,15 @@ export interface Mark {
   text: string
   anchorNodeText: string,
   anchorOffset: number,
-  createdAt: number
+  createdAt: number,
+  nodeTagName: string,
+  nodeHTML: string,
+  startOffset: number,
+  endOffset: number,
+  nodeData: string,
+  startContainer: Node,
+  endContainer: Node,
+  startContainerText: string,
+  endContainerText: string,
+  completeText: string
 }
