@@ -31,11 +31,11 @@ export class AppRoot extends LitElement {
           <blockquote>
             ${mark.completeText.split(mark.text)[0]}
             <mark>${mark.text}</mark>
-            ${mark.completeText.split(mark.text)[0]}
+            ${mark.completeText.split(mark.text)[1]}
             <br>
             <div class="footer" style="width: 100%">
             <span>${timeSinceTimestamp(mark.createdAt)} ago</span>
-            <a href="${mark.url}" target="_blank">${mark.url}</a>
+            <a href="${mark.url}" target="_blank">${mark.url.substring(0, 50)}</a>
             </div>
             <button style="position: absolute; right: 0px; top: -22px"
             @click=${async () => await this.deleteMark(mark)}>Delete mark</button>
@@ -49,7 +49,5 @@ export class AppRoot extends LitElement {
     this.marks = this.marks.filter(e => e !== mark);
     await this.markService.deleteMark(mark);
   }
-
-
 
 }

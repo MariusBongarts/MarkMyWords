@@ -14,23 +14,6 @@ describe('bronco-button', () => {
 
   afterEach(() => { element.remove(); });
 
-  it('should render bronco-button', async () => {
-    document.body.appendChild(element);
-    await element.updateComplete;
-    expect(element.textContent).toBe('');
-  });
-
-  it('should emit click event', async () => {
-    document.body.appendChild(element);
-    await element.updateComplete;
-    element.emit();
-    let bool = false;
-    element.addEventListener('click', () => {
-      bool = true;
-    });
-    element.click();
-    expect(bool).toBe(true);
-  });
 
 
 });

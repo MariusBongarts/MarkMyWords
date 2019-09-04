@@ -23,7 +23,7 @@ router.post('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
 }));
 router.delete('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const marksDAO = req.app.locals.marksDAO;
-    const markId = req.body.id;
+    const markId = req.query["id"];
     console.log(`Deleting ${markId}`);
     yield marksDAO.delete(markId);
     res.send(200);

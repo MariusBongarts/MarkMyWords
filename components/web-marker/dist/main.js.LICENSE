@@ -48,29 +48,7 @@
 
 /* 1 */
 
-/* 2 */
-
-/* 3 */
-
-/* 4 */
-
-/* 5 */
-
-/* 6 */
-
-/* 7 */
-
 /***/
-
-// extracted by mini-css-extract-plugin
-
-/* 8 */
-
-/* 9 */
-
-// Module
-
-/* 10 */
 
 /*
   MIT License http://www.opensource.org/licenses/mit-license.php
@@ -93,7 +71,33 @@
 
 // I hope this will never occur (Hey this way we have smaller bundles)
 
+/* 2 */
+
+/* 3 */
+
+/* 4 */
+
+/* 5 */
+
+/* 6 */
+
+/* 7 */
+
+/* 8 */
+
+// extracted by mini-css-extract-plugin
+
+/* 9 */
+
+/* 10 */
+
+// Module
+
 /* 11 */
+
+/* 12 */
+
+/* 13 */
 
 // EXTERNAL MODULE: ./src/index.scss
 
@@ -979,6 +983,8 @@
 
 // CONCATENATED MODULE: ./node_modules/lit-element/lib/decorators.js
 
+// This callback is called once the class is otherwise fully defined
+
 // When decorating an accessor, pass it through and add property metadata.
 
 // Note, the `hasOwnProperty` check in `createProperty` ensures we don't
@@ -1191,4 +1197,24 @@
 
 // for dynamic changes.
 
-// This callback is called once the class is otherwise fully defined
+// CONCATENATED MODULE: ./src/components/icons/svg-icon.component.ts
+
+/**
+ * This custom element is used to create svg icons.
+ * Icons can be added e.g. from https://feathericons.com/
+ *
+ * @author Marius Bongarts
+ * @class FeatherIcon
+ * @extends {LitElement}
+ */
+
+// tslint:disable: max-line-length
+
+/**
+     * This custom element is used to create svg icons.
+     * Icons can be added e.g. from https://feathericons.com/
+     *
+     * @author Marius Bongarts
+     * @class FeatherIcon
+     * @extends {LitElement}
+     */

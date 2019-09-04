@@ -1,14 +1,13 @@
 // Add to document to load data
 const marker = document.createElement("web-marker");
 document.body.appendChild(marker);
-window.addEventListener("contextmenu", (e) => {
-    hideMarkerTool();
-    if (window.getSelection().toString().length)
-        showMarkerTool(e.clientX, e.clientY);
-});
-window.addEventListener("click", (e) => {
-    hideMarkerTool();
-});
+// window.addEventListener("contextmenu", (e) => {
+//   hideMarkerTool();
+//   if (window.getSelection().toString().length) showMarkerTool(e.clientX, e.clientY);
+// });
+// window.addEventListener("click", (e) => {
+//   hideMarkerTool();
+// });
 const style = document.createElement("style");
 style.innerHTML = `
 mark {

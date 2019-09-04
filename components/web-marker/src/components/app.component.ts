@@ -13,9 +13,8 @@ export class WebMarker extends LitElement {
   @property()
   marks!: Mark[];
 
-  @property({ type: Boolean, reflect: false }) outline: boolean = false;
-
-  @property({ type: Boolean, reflect: false }) outlineEffect: boolean = false;
+  @property()
+  show = false;
 
   private markerService = new MarkerService();
 
@@ -24,6 +23,20 @@ export class WebMarker extends LitElement {
     const filteredMarks = this.marks.filter(e => e.url === location.href);
     filteredMarks.forEach(mark => highlightText(mark));
     console.log(`${filteredMarks.length} marks found!`);
+
+    window.addEventListener('mouseup', (e: MouseEvent) => {
+      const selection = window.getSelection();
+      if (this.show && !selection.toString().length) this.show = false;
+      else if (selection.toString().length > 3) {
+        this.style.left = e.clientX + 'px';
+        this.style.top = e.clientY + 'px';
+        this.show = true;
+      }
+    });
+
+    window.addEventListener('mousedown', (e: MouseEvent) => {
+      this.show && !window.getSelection().toString().length ? this.show = false : '';
+    });
   }
 
   loadedEvent() {
@@ -36,7 +49,9 @@ export class WebMarker extends LitElement {
   }
 
   async emit() {
+    this.show = false;
     const selection = window.getSelection();
+    console.log("Click")
     const range = selection.getRangeAt(0);
     const mark: Mark = {
       url: location.href,
@@ -70,13 +85,14 @@ export class WebMarker extends LitElement {
 
   render() {
     return html`
-          <button class='
-            ${this.outline ? ' outline' : ''}
-            ${this.outlineEffect ? 'outlineEffect' : ''}' @click=${() => this.emit()}>
-              <span>
-                <slot></slot>
-              </span>
-            </button>
+    ${this.show ? html`
+    <div class="markContainer">
+      <button>
+      <svg-icon @click=${() => this.emit()} id="pencilIcon" iconName="pencil"></svg-icon>
+  </button>
+  </div>
+            ` : ''}
+
 `;
   }
 

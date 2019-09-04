@@ -62,9 +62,11 @@
 
 /* 1 */
 
+/* 2 */
+
 /* harmony import */
 
-/* 2 */
+/* 3 */
 
 /**
 @license @nocompile
@@ -76,7 +78,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-/* 3 */
+/* 4 */
 
 /* WEBPACK VAR INJECTION */
 
@@ -155,7 +157,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 //# sourceMappingURL=webcomponents-bundle.js.map
 
-/* 4 */
+/* 5 */
 
 // DOM APIs, for completeness
 
@@ -169,7 +171,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 // `setimmediate` library.
 
-/* 5 */
+/* 6 */
 
 // Spec says greater than zero
 
@@ -203,7 +205,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 // "too much recursion" error.
 
-/* 6 */
+/* 7 */
 
 // shim for using process in browser
 
