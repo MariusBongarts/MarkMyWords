@@ -1,0 +1,1180 @@
+/******/
+
+// webpackBootstrap
+
+// The module cache
+
+// The require function
+
+// Check if module is in cache
+
+// Create a new module (and put it into the cache)
+
+// Execute the module function
+
+// Return the exports of the module
+
+// Flag the module as loaded
+
+// expose the modules object (__webpack_modules__)
+
+// Load entry module and return exports
+
+// expose the module cache
+
+// define getter function for harmony exports
+
+// define __esModule on exports
+
+// create a fake namespace object
+
+// mode & 1: value is a module id, require it
+
+// mode & 2: merge all properties of value into the ns
+
+// mode & 4: return value when already ns object
+
+// mode & 8|1: behave like require
+
+// getDefaultExport function for compatibility with non-harmony modules
+
+// Object.prototype.hasOwnProperty.call
+
+// __webpack_public_path__
+
+/************************************************************************/
+
+/* 0 */
+
+/***/
+
+// extracted by mini-css-extract-plugin
+
+/* 1 */
+
+/* 2 */
+
+// Module
+
+/* 3 */
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+
+// css base code, injected by the css-loader
+
+// return the list of modules as css string
+
+// Adapted from convert-source-map (MIT)
+
+// import a list of modules into the list
+
+// skip already imported module
+
+// this implementation is not 100% perfect for weird media query combinations
+
+// when a module is imported multiple times with different media queries.
+
+// I hope this will never occur (Hey this way we have smaller bundles)
+
+/* 4 */
+
+// EXTERNAL MODULE: ./src/index.scss
+
+// CONCATENATED MODULE: ./node_modules/lit-html/lib/directive.js
+
+/**
+ * @license
+ * Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at
+ * http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at
+ * http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at
+ * http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at
+ * http://polymer.github.io/PATENTS.txt
+ */
+
+/**
+ * An expression marker used text-positions, multi-binding attributes, and
+ * attributes with markup-like text values.
+ */
+
+/**
+ * Brands a function as a directive so that lit-html will call the function
+ * during template rendering, rather than passing as a value.
+ *
+ * @param f The directive factory function. Must be a function that returns a
+ * function of the signature `(part: Part) => void`. The returned function will
+ * be called with the part object
+ *
+ * @example
+ *
+ * ```
+ * import {directive, html} from 'lit-html';
+ *
+ * const immutable = directive((v) => (part) => {
+ *   if (part.value !== v) {
+ *     part.setValue(v)
+ *   }
+ * });
+ * ```
+ */
+
+// tslint:disable-next-line:no-any
+
+/**
+ * An updateable Template that tracks the location of dynamic parts.
+ */
+
+/* NodeFilter.SHOW_{ELEMENT|COMMENT|TEXT} */
+
+// Edge needs all 4 parameters present; IE11 needs 3rd parameter to be
+
+// null
+
+// Keeps track of the last index associated with a part. We try to delete
+
+// unnecessary nodes, but we never want to associate two different parts
+
+// to the same index. They must have a constant node between.
+
+/* Node.ELEMENT_NODE */
+
+// Per
+
+// https://developer.mozilla.org/en-US/docs/Web/API/NamedNodeMap,
+
+// attributes are not guaranteed to be returned in document order.
+
+// In particular, Edge/IE can return them out of order, so we cannot
+
+// assume a correspondance between part index and attribute index.
+
+// Get the template literal section leading up to the first
+
+// expression in this attribute
+
+// Find the attribute name
+
+/* Node.TEXT_NODE */
+
+// Generate a new text node for each literal section
+
+// These nodes are also used as the markers for node parts
+
+// If there's no text, we must insert a comment to mark our place.
+
+// Else, we can trust it will stick around after cloning.
+
+// We have a part for each match found
+
+/* Node.COMMENT_NODE */
+
+// Add a new marker node to be the startNode of the Part if any of
+
+// the following are true:
+
+//  * We don't have a previousSibling
+
+//  * The previousSibling is already the start of a previous part
+
+// If we don't have a nextSibling, keep this node so we have an end.
+
+// Else, we can remove it to save future costs.
+
+// Comment node has a binding marker inside, make an inactive part
+
+// The binding won't work, but subsequent bindings will
+
+// TODO (justinfagnani): consider whether it's even worth it to
+
+// make bindings in comments work
+
+// Remove text binding nodes after the walk to not disturb the TreeWalker
+
+// Allows `document.createComment('')` to be renamed for a
+
+// small manual size-savings.
+
+//# sourceMappingURL=template.js.map
+
+// CONCATENATED MODULE: ./node_modules/lit-html/lib/template-instance.js
+
+/**
+ * @module lit-html
+ */
+
+/**
+ * An instance of a `Template` that can be attached to the DOM and updated
+ * with new values.
+ */
+
+// When using the Custom Elements polyfill, clone the node, rather than
+
+// importing it, to keep the fragment in the template's document. This
+
+// leaves the fragment inert so custom elements won't upgrade and
+
+// potentially modify their contents by creating a polyfilled ShadowRoot
+
+// while we traverse the tree.
+
+// Loop through all the nodes and parts of a template
+
+// Consecutive Parts may have the same node index, in the case of
+
+// multiple bound attributes on an element. So each iteration we either
+
+// increment the nodeIndex, if we aren't on a node with a part, or the
+
+// partIndex if we are. By not incrementing the nodeIndex when we find a
+
+// part, we allow for the next part to be associated with the current
+
+// node if neccessasry.
+
+//# sourceMappingURL=template-instance.js.map
+
+// CONCATENATED MODULE: ./node_modules/lit-html/lib/template-result.js
+
+/**
+ * The return type of `html`, which holds a Template and the values from
+ * interpolated expressions.
+ */
+
+/**
+     * Returns a string of HTML used to create a `<template>` element.
+     */
+
+// This exec() call does two things:
+
+// 1) Appends a suffix to the bound attribute name to opt out of special
+
+// attribute value parsing that IE11 and Edge do, like for style and
+
+// many SVG attributes. The Template class also appends the same suffix
+
+// when looking up attributes to create Parts.
+
+// 2) Adds an unquoted-attribute-safe marker for the first expression in
+
+// an attribute. Subsequent attribute expressions will use node markers,
+
+// and this is safe since attributes with multiple expressions are
+
+// guaranteed to be quoted.
+
+// We're starting a new bound attribute.
+
+// Add the safe attribute suffix, and use unquoted-attribute-safe
+
+// marker.
+
+/**
+ * A TemplateResult for SVG fragments.
+ *
+ * This class wraps HTMl in an `<svg>` tag in order to parse its contents in the
+ * SVG namespace, then modifies the template to remove the `<svg>` tag so that
+ * clones only container the original fragment.
+ */
+
+//# sourceMappingURL=template-result.js.map
+
+// CONCATENATED MODULE: ./node_modules/lit-html/lib/parts.js
+
+/**
+ * Sets attribute values for AttributeParts, so that the value is only set once
+ * even if there are multiple parts for an attribute.
+ */
+
+/**
+     * Creates a single part. Override this to create a differnt type of part.
+     */
+
+// If the value is a not a directive, dirty the committer so that it'll
+
+// call setAttribute. If the value is a directive, it'll dirty the
+
+// committer if it calls setValue().
+
+/**
+     * Inserts this part into a container.
+     *
+     * This part must be empty, as its contents are not automatically moved.
+     */
+
+/**
+     * Inserts this part between `ref` and `ref`'s next sibling. Both `ref` and
+     * its next sibling must be static, unchanging nodes such as those that appear
+     * in a literal section of a template.
+     *
+     * This part must be empty, as its contents are not automatically moved.
+     */
+
+/**
+     * Appends this part into a parent part.
+     *
+     * This part must be empty, as its contents are not automatically moved.
+     */
+
+/**
+     * Appends this part after `ref`
+     *
+     * This part must be empty, as its contents are not automatically moved.
+     */
+
+// Fallback, will render the string representation
+
+// If we only have a single text node between the markers, we can just
+
+// set its value, rather than replacing it.
+
+// TODO(justinfagnani): Can we just check if this.value is primitive?
+
+// Make sure we propagate the template processor from the TemplateResult
+
+// so that we use its syntax extension, etc. The template factory comes
+
+// from the render function options so that it can control template
+
+// caching and preprocessing.
+
+// For an Iterable, we create a new InstancePart per item, then set its
+
+// value to the item. This is a little bit of overhead for every item in
+
+// an Iterable, but it lets us recurse easily and efficiently update Arrays
+
+// of TemplateResults that will be commonly returned from expressions like:
+
+// array.map((i) => html`${i}`), by reusing existing TemplateInstances.
+
+// If _value is an array, then the previous render was of an
+
+// iterable and _value will contain the NodeParts from the previous
+
+// render. If _value is not an array, clear this part and make a new
+
+// array for NodeParts.
+
+// Lets us keep track of how many items we stamped so we can clear leftover
+
+// items from a previous render
+
+// Try to reuse an existing part
+
+// If no existing part, create a new one
+
+// Truncate the parts array so _value reflects the current state
+
+/**
+ * Implements a boolean attribute, roughly as defined in the HTML
+ * specification.
+ *
+ * If the value is truthy, then the attribute is present with a value of
+ * ''. If the value is falsey, the attribute is removed.
+ */
+
+/**
+ * Sets attribute values for PropertyParts, so that the value is only set once
+ * even if there are multiple parts for a property.
+ *
+ * If an expression controls the whole property value, then the value is simply
+ * assigned to the property under control. If there are string literals or
+ * multiple expressions, then the strings are expressions are interpolated into
+ * a string first.
+ */
+
+// Detect event listener options support. If the `capture` property is read
+
+// from the options object, then options are supported. If not, then the thrid
+
+// argument to add/removeEventListener is interpreted as the boolean capture
+
+// value so we should only pass the `capture` property.
+
+// We copy options because of the inconsistent behavior of browsers when reading
+
+// the third argument of add/removeEventListener. IE11 doesn't support options
+
+// at all. Chrome 41 only reads `capture` if the argument is an object.
+
+//# sourceMappingURL=parts.js.map
+
+// CONCATENATED MODULE: ./node_modules/lit-html/lib/default-template-processor.js
+
+/**
+ * Creates Parts when a template is instantiated.
+ */
+
+/**
+     * Create parts for an attribute-position binding, given the event, attribute
+     * name, and string literals.
+     *
+     * @param element The element containing the binding
+     * @param name  The attribute name
+     * @param strings The string literals. There are always at least two strings,
+     *   event for fully-controlled bindings with a single expression.
+     */
+
+/**
+     * Create parts for a text-position binding.
+     * @param templateFactory
+     */
+
+//# sourceMappingURL=default-template-processor.js.map
+
+// CONCATENATED MODULE: ./node_modules/lit-html/lib/template-factory.js
+
+/**
+ * The default TemplateFactory which caches Templates keyed on
+ * result.type and result.strings.
+ */
+
+// If the TemplateStringsArray is new, generate a key from the strings
+
+// This key is shared between all templates with identical content
+
+// Check if we already have a Template for this key
+
+// If we have not seen this key before, create a new Template
+
+// Cache the Template for this key
+
+// Cache all future queries for this TemplateStringsArray
+
+//# sourceMappingURL=template-factory.js.map
+
+// CONCATENATED MODULE: ./node_modules/lit-html/lib/render.js
+
+//# sourceMappingURL=render.js.map
+
+// CONCATENATED MODULE: ./node_modules/lit-html/lit-html.js
+
+/**
+ *
+ * Main lit-html module.
+ *
+ * Main exports:
+ *
+ * -  [[html]]
+ * -  [[svg]]
+ * -  [[render]]
+ *
+ * @module lit-html
+ * @preferred
+ */
+
+/**
+ * Do not remove this comment; it keeps typedoc from misplacing the module
+ * docs.
+ */
+
+// TODO(justinfagnani): remove line when we get NodePart moving methods
+
+// IMPORTANT: do not change the property name or the assignment expression.
+
+// This line will be used in regexes to search for lit-html usage.
+
+// TODO(justinfagnani): inject version number at build time
+
+/**
+ * Interprets a template literal as an HTML template that can efficiently
+ * render to and update a container.
+ */
+
+/**
+ * Interprets a template literal as an SVG template that can efficiently
+ * render to and update a container.
+ */
+
+/**
+ * Removes the list of nodes from a Template safely. In addition to removing
+ * nodes from the Template, the Template part indices are updated to match
+ * the mutated Template DOM.
+ *
+ * As the template is walked the removal state is tracked and
+ * part indices are adjusted as needed.
+ *
+ * div
+ *   div#1 (remove) <-- start removing (removing node is div#1)
+ *     div
+ *       div#2 (remove)  <-- continue removing (removing node is still div#1)
+ *         div
+ * div <-- stop removing since previous sibling is the removing node (div#1,
+ * removed 4 nodes)
+ */
+
+// End removal if stepped past the removing node
+
+// A node to remove was found in the template
+
+// Track node we're removing
+
+// When removing, increment count by which to adjust subsequent part indices
+
+// If part is in a removed node deactivate it by setting index to -1 or
+
+// adjust the index as needed.
+
+// go to the next active part.
+
+/* Node.DOCUMENT_FRAGMENT_NODE */
+
+//# sourceMappingURL=modify-template.js.map
+
+// CONCATENATED MODULE: ./node_modules/lit-html/lib/shady-render.js
+
+/**
+ * Module to add shady DOM/shady CSS polyfill support to lit-html template
+ * rendering. See the [[render]] method for details.
+ *
+ * @module shady-render
+ * @preferred
+ */
+
+// Get a key to lookup in `templateCaches`.
+
+/**
+ * Template factory which scopes template DOM using ShadyCSS.
+ * @param scopeName {string}
+ */
+
+// Move styles out of rendered DOM and store.
+
+// If there are no styles, skip unnecessary work
+
+// Ensure prepareTemplateStyles is called to support adding
+
+// styles via `prepareAdoptedCssText` since that requires that
+
+// `prepareTemplateStyles` is called.
+
+// Collect styles into a single style. This helps us make sure ShadyCSS
+
+// manipulations will not prevent us from being able to fix up template
+
+// part indices.
+
+// NOTE: collecting styles is inefficient for browsers but ShadyCSS
+
+// currently does this anyway. When it does not, this should be changed.
+
+// Remove styles from nested templates in this scope.
+
+// IE 11 doesn't support the iterable param Set constructor
+
+// And then put the condensed style into the "root" template passed in as
+
+// `template`.
+
+/**
+ * Inserts the given node into the Template, optionally before the given
+ * refNode. In addition to inserting the node into the Template, the Template
+ * part indices are updated to match the mutated Template DOM.
+ */
+
+// If there's no refNode, then put node at end of template.
+
+// No part indices need to be shifted in this case.
+
+// If we've inserted the node, simply adjust all subsequent parts
+
+// Note, it's important that ShadyCSS gets the template that `lit-html`
+
+// will actually render so that it can update the style inside when
+
+// needed (e.g. @apply native Shadow DOM case).
+
+// When in native Shadow DOM, re-add styling to rendered content using
+
+// the style ShadyCSS produced.
+
+// When not in native Shadow DOM, at this point ShadyCSS will have
+
+// removed the style from the lit template and parts will be broken as a
+
+// result. To fix this, we put back the style node ShadyCSS removed
+
+// and then tell lit to remove that node from the template.
+
+// NOTE, ShadyCSS creates its own style so we can safely add/remove
+
+// `condensedStyle` here.
+
+//# sourceMappingURL=shady-render.js.map
+
+// CONCATENATED MODULE: ./node_modules/lit-element/lib/updating-element.js
+
+/**
+ * When using Closure Compiler, JSCompiler_renameProperty(property, object) is
+ * replaced at compile time by the munged name for object[property]. We cannot
+ * alias this function, so we have to use a small shim that has the same
+ * behavior when not compiling.
+ */
+
+// if the value is `null` or `undefined` pass this through
+
+// to allow removing/no change behavior.
+
+/**
+ * Change function that returns true if `value` is different from `oldValue`.
+ * This method is used as the default for a property's `hasChanged` function.
+ */
+
+/**
+ * Base element class which manages element properties and attributes. When
+ * properties change, the `update` method is asynchronously called. This method
+ * should be supplied by subclassers to render updates as desired.
+ */
+
+/**
+         * Map with keys for any properties that have changed since the last
+         * update cycle with previous values.
+         */
+
+/**
+         * Map with keys of properties that should be reflected when updated.
+         */
+
+/**
+     * Returns a list of attributes corresponding to the registered properties.
+     * @nocollapse
+     */
+
+// note: piggy backing on this to ensure we're finalized.
+
+// Use forEach so this works even if for/of loops are compiled to for loops
+
+// expecting arrays
+
+/**
+     * Ensures the private `_classProperties` property metadata is created.
+     * In addition to `finalize` this is also called in `createProperty` to
+     * ensure the `@property` decorator can add property metadata.
+     */
+
+/** @nocollapse */
+
+// ensure private storage for property declarations.
+
+// NOTE: Workaround IE11 not supporting Map constructor argument.
+
+/**
+     * Creates a property accessor on the element prototype if one does not exist.
+     * The property setter calls the property's `hasChanged` property option
+     * or uses a strict identity check to determine whether or not to request
+     * an update.
+     * @nocollapse
+     */
+
+// Do not generate an accessor if the prototype already has one, since
+
+// it would be lost otherwise and that would never be the user's intention;
+
+// Instead, we expect users to call `requestUpdate` themselves from
+
+// user-defined accessors. Note that if the super has an accessor we will
+
+// still overwrite it
+
+// Note, since this can be called by the `@property` decorator which
+
+// is called before `finalize`, we ensure storage exists for property
+
+// metadata.
+
+// tslint:disable-next-line:no-any no symbol in index
+
+/**
+     * Creates property accessors for registered properties and ensures
+     * any superclasses are also finalized.
+     * @nocollapse
+     */
+
+// finalize any superclasses
+
+// make any properties
+
+// Note, only process "own" properties since this element will inherit
+
+// any properties defined on the superClass, and finalization ensures
+
+// the entire prototype chain is finalized.
+
+// initialize Map populated in observedAttributes
+
+// support symbols in properties (IE11 does not support this)
+
+// This for/of is ok because propKeys is an array
+
+// note, use of `any` is due to TypeSript lack of support for symbol in
+
+// index types
+
+/**
+     * Returns the property name for the given attribute `name`.
+     * @nocollapse
+     */
+
+/**
+     * Returns true if a property should request an update.
+     * Called when a property value is set and uses the `hasChanged`
+     * option for the property if present or a strict identity check.
+     * @nocollapse
+     */
+
+/**
+     * Returns the property value for the given attribute value.
+     * Called via the `attributeChangedCallback` and uses the property's
+     * `converter` or `converter.fromAttribute` property option.
+     * @nocollapse
+     */
+
+/**
+     * Returns the attribute value for the given property value. If this
+     * returns undefined, the property will *not* be reflected to an attribute.
+     * If this returns null, the attribute will be removed, otherwise the
+     * attribute will be set to the value.
+     * This uses the property's `reflect` and `type.toAttribute` property options.
+     * @nocollapse
+     */
+
+/**
+     * Performs element initialization. By default captures any pre-set values for
+     * registered properties.
+     */
+
+// ensures first update will be caught by an early access of `updateComplete`
+
+/**
+     * Fixes any properties set on the instance before upgrade time.
+     * Otherwise these would shadow the accessor and break these properties.
+     * The properties are stored in a Map which is played back after the
+     * constructor runs. Note, on very old versions of Safari (<=9) or Chrome
+     * (<=41), properties created for native platform properties like (`id` or
+     * `name`) may not have default values set in the element constructor. On
+     * these browsers native properties appear on instances and therefore their
+     * default value will overwrite any element default (e.g. if the element sets
+     * this.id = 'id' in the constructor, the 'id' will become '' since this is
+     * the native platform default).
+     */
+
+/**
+     * Applies previously saved instance properties.
+     */
+
+// Ensure first connection completes an update. Updates cannot complete before
+
+// connection and if one is pending connection the `_hasConnectionResolver`
+
+// will exist. If so, resolve it to complete the update, otherwise
+
+// requestUpdate.
+
+/**
+     * Allows for `super.disconnectedCallback()` in extensions while
+     * reserving the possibility of making non-breaking feature additions
+     * when disconnecting at some point in the future.
+     */
+
+/**
+     * Synchronizes property values when attributes change.
+     */
+
+// an undefined value does not change the attribute.
+
+// Track if the property is being reflected to avoid
+
+// setting the property again via `attributeChangedCallback`. Note:
+
+// 1. this takes advantage of the fact that the callback is synchronous.
+
+// 2. will behave incorrectly if multiple attributes are in the reaction
+
+// stack at time of calling. However, since we process attributes
+
+// in `update` this should not be possible (or an extreme corner case
+
+// that we'd like to discover).
+
+// mark state reflecting
+
+// mark state not reflecting
+
+// Use tracking info to avoid deserializing attribute value if it was
+
+// just set from a property setter.
+
+/**
+     * This private version of `requestUpdate` does not access or return the
+     * `updateComplete` promise. This promise can be overridden and is therefore
+     * not free to access.
+     */
+
+// If we have a property key, perform property update steps.
+
+// Add to reflecting properties set.
+
+// Note, it's important that every change has a chance to add the
+
+// property to `_reflectingProperties`. This ensures setting
+
+// attribute + property reflects correctly.
+
+// Abort the request if the property should not be considered changed.
+
+/**
+     * Requests an update which is processed asynchronously. This should
+     * be called when an element should update based on some state not triggered
+     * by setting a property. In this case, pass no arguments. It should also be
+     * called when manually implementing a property setter. In this case, pass the
+     * property `name` and `oldValue` to ensure that any configured property
+     * options are honored. Returns the `updateComplete` Promise which is resolved
+     * when the update completes.
+     *
+     * @param name {PropertyKey} (optional) name of requesting property
+     * @param oldValue {any} (optional) old value of requesting property
+     * @returns {Promise} A Promise that is resolved when the update completes.
+     */
+
+/**
+     * Sets up the element to asynchronously update.
+     */
+
+// Mark state updating...
+
+// Ensure any previous update has resolved before updating.
+
+// This `await` also ensures that property changes are batched.
+
+// Ignore any previous errors. We only care that the previous cycle is
+
+// done. Any error should have been handled in the previous update.
+
+// Make sure the element has connected before updating.
+
+// If `performUpdate` returns a Promise, we await it. This is done to
+
+// enable coordinating updates with a scheduler. Note, the result is
+
+// checked to avoid delaying an additional microtask unless we need to.
+
+/**
+     * Performs an element update. Note, if an exception is thrown during the
+     * update, `firstUpdated` and `updated` will not be called.
+     *
+     * You can override this method to change the timing of updates. If this
+     * method is overridden, `super.performUpdate()` must be called.
+     *
+     * For instance, to schedule updates to occur just before the next frame:
+     *
+     * ```
+     * protected async performUpdate(): Promise<unknown> {
+     *   await new Promise((resolve) => requestAnimationFrame(() => resolve()));
+     *   super.performUpdate();
+     * }
+     * ```
+     */
+
+// Mixin instance properties once, if they exist.
+
+// Prevent `firstUpdated` and `updated` from running when there's an
+
+// update exception.
+
+// Ensure element can accept additional updates after an exception.
+
+/**
+     * Returns a Promise that resolves when the element has completed updating.
+     * The Promise value is a boolean that is `true` if the element completed the
+     * update without triggering another update. The Promise result is `false` if
+     * a property was set inside `updated()`. If the Promise is rejected, an
+     * exception was thrown during the update. This getter can be implemented to
+     * await additional state. For example, it is sometimes useful to await a
+     * rendered element before fulfilling this Promise. To do this, first await
+     * `super.updateComplete` then any subsequent state.
+     *
+     * @returns {Promise} The Promise returns a boolean that indicates if the
+     * update resolved without triggering another update.
+     */
+
+/**
+     * Controls whether or not `update` should be called when the element requests
+     * an update. By default, this method always returns `true`, but this can be
+     * customized to control when to update.
+     *
+     * * @param _changedProperties Map of changed properties with old values
+     */
+
+/**
+     * Updates the element. This method reflects property values to attributes.
+     * It can be overridden to render and keep updated element DOM.
+     * Setting properties inside this method will *not* trigger
+     * another update.
+     *
+     * * @param _changedProperties Map of changed properties with old values
+     */
+
+// Use forEach so this works even if for/of loops are compiled to for
+
+// loops expecting arrays
+
+/**
+     * Invoked whenever the element is updated. Implement to perform
+     * post-updating tasks via DOM APIs, for example, focusing an element.
+     *
+     * Setting properties inside this method will trigger the element to update
+     * again after this update cycle completes.
+     *
+     * * @param _changedProperties Map of changed properties with old values
+     */
+
+/**
+     * Invoked when the element is first updated. Implement to perform one time
+     * work on the element after update.
+     *
+     * Setting properties inside this method will trigger the element to update
+     * again after this update cycle completes.
+     *
+     * * @param _changedProperties Map of changed properties with old values
+     */
+
+/**
+ * Marks class as having finished creating properties.
+ */
+
+//# sourceMappingURL=updating-element.js.map
+
+// CONCATENATED MODULE: ./node_modules/lit-element/lib/decorators.js
+
+// When decorating an accessor, pass it through and add property metadata.
+
+// Note, the `hasOwnProperty` check in `createProperty` ensures we don't
+
+// stomp over the user's accessor.
+
+// When @babel/plugin-proposal-decorators implements initializers,
+
+// do this instead of the initializer below. See:
+
+// https://github.com/babel/babel/issues/9260 extras: [
+
+//   {
+
+//     kind: 'initializer',
+
+//     placement: 'own',
+
+//     initializer: descriptor.initializer,
+
+//   }
+
+// ],
+
+// tslint:disable-next-line:no-any decorator
+
+/**
+ * A property decorator which creates a LitElement property which reflects a
+ * corresponding attribute value. A `PropertyDeclaration` may optionally be
+ * supplied to configure property features.
+ *
+ * @ExportDecoratedItems
+ */
+
+/**
+ * A property decorator that converts a class property into a getter that
+ * executes a querySelector on the element's renderRoot.
+ *
+ * @ExportDecoratedItems
+ */
+
+// Note, this is a getter so that it's lazy. In practice, this means
+
+// stylesheets are not created until the first element instance is made.
+
+// Note, if `adoptedStyleSheets` is supported then we assume CSSStyleSheet
+
+// is constructable.
+
+/**
+ * Wrap a value for interpolation in a css tagged template literal.
+ *
+ * This is unsafe because untrusted CSS text can be used to phone home
+ * or exfiltrate data to an attacker controlled site. Take care to only use
+ * this with trusted input.
+ */
+
+//# sourceMappingURL=css-tag.js.map
+
+// CONCATENATED MODULE: ./node_modules/lit-element/lit-element.js
+
+// This line will be used in regexes to search for LitElement usage.
+
+/** Deeply flattens styles array. Uses native flat if available. */
+
+/**
+ * Minimal implementation of Array.prototype.flat
+ * @param arr the array to flatten
+ * @param result the accumlated result
+ */
+
+// Prepare styling that is stamped at first render time. Styling
+
+// is built from user provided `styles` or is inherited from the superclass.
+
+// Take care not to call `this.styles` multiple times since this generates
+
+// new CSSResults each time.
+
+// TODO(sorvell): Since we do not cache CSSResults by input, any
+
+// shared styles will generate new stylesheet objects, which is wasteful.
+
+// This should be addressed when a browser ships constructable
+
+// stylesheets.
+
+// Array.from does not work on Set in IE
+
+/**
+     * Performs element initialization. By default this calls `createRenderRoot`
+     * to create the element `renderRoot` node and captures any pre-set values for
+     * registered properties.
+     */
+
+// Note, if renderRoot is not a shadowRoot, styles would/could apply to the
+
+// element's getRootNode(). While this could be done, we're choosing not to
+
+// support this now since it would require different logic around de-duping.
+
+/**
+     * Returns the node into which the element should render and by default
+     * creates and returns an open shadowRoot. Implement to customize where the
+     * element's DOM is rendered. For example, to render into the element's
+     * childNodes, return `this`.
+     * @returns {Element|DocumentFragment} Returns a node into which to render.
+     */
+
+/**
+     * Applies styling to the element shadowRoot using the `static get styles`
+     * property. Styling will apply using `shadowRoot.adoptedStyleSheets` where
+     * available and will fallback otherwise. When Shadow DOM is polyfilled,
+     * ShadyCSS scopes styles and adds them to the document. When Shadow DOM
+     * is available but `adoptedStyleSheets` is not, styles are appended to the
+     * end of the `shadowRoot` to [mimic spec
+     * behavior](https://wicg.github.io/construct-stylesheets/#using-constructed-stylesheets).
+     */
+
+// There are three separate cases here based on Shadow DOM support.
+
+// (1) shadowRoot polyfilled: use ShadyCSS
+
+// (2) shadowRoot.adoptedStyleSheets available: use it.
+
+// (3) shadowRoot.adoptedStyleSheets polyfilled: append styles after
+
+// rendering
+
+// This must be done after rendering so the actual style insertion is done
+
+// in `update`.
+
+// Note, first update/render handles styleElement so we only call this if
+
+// connected after first update.
+
+/**
+     * Updates the element. This method reflects property values to attributes
+     * and calls `render` to render DOM via lit-html. Setting properties inside
+     * this method will *not* trigger another update.
+     * * @param _changedProperties Map of changed properties with old values
+     */
+
+// When native Shadow DOM is used but adoptedStyles are not supported,
+
+// insert styling after rendering to ensure adoptedStyles have highest
+
+// priority.
+
+/**
+     * Invoked on each update to perform rendering tasks. This method must return
+     * a lit-html TemplateResult. Setting properties inside this method will *not*
+     * trigger the element to update.
+     */
+
+/**
+ * Ensure this class is marked as `finalized` as an optimization ensuring
+ * it will not needlessly try to `finalize`.
+ */
+
+/**
+ * Render method used to render the lit-html TemplateResult to the element's
+ * DOM.
+ * @param {TemplateResult} Template to render.
+ * @param {Element|DocumentFragment} Node into which to render.
+ * @param {String} Element name.
+ * @nocollapse
+ */
+
+// When performing first scope render,
+
+// (1) We've rendered into a fragment so that there's a chance to
+
+// `prepareTemplateStyles` before sub-elements hit the DOM
+
+// (which might cause them to render based on a common pattern of
+
+// rendering in a custom element's `connectedCallback`);
+
+// (2) Scope the template with ShadyCSS one time only for this scope.
+
+// (3) Render the fragment into the container and make sure the
+
+// container knows its `part` is the one we just rendered. This ensures
+
+// DOM will be re-used on subsequent renders.
+
+// After elements have hit the DOM, update styling if this is the
+
+// initial render to this container.
+
+// This is needed whenever dynamic changes are made so it would be
+
+// safest to do every render; however, this would regress performance
+
+// so we leave it up to the user to call `ShadyCSSS.styleElement`
+
+// for dynamic changes.
+
+//# sourceMappingURL=lit-element.js.map
+
+// CONCATENATED MODULE: ./src/services/http-client.ts
+
+// tslint:disable-next-line: no-empty
+
+// CONCATENATED MODULE: ./src/services/marker.service.ts
+
+// Backup Gateway
+
+// this.httpClient = new HttpClient({ baseURL: ' http://10.42.30.122:8080/finance/' });
+
+// CONCATENATED MODULE: ./src/components/app.component.ts
+
+/**
+ * @author Marius Bongarts
+ * Root web component
+ */
+
+/**
+     * @author Marius Bongarts
+     * Root web component
+     */
+
+// This callback is called once the class is otherwise fully defined

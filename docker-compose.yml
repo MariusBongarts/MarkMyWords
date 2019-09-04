@@ -1,0 +1,44 @@
+version: '3'
+services:
+
+  # mongo:
+  #   image: mongo:latest
+  #   container_name: "mongodb"
+  #   volumes:
+  #     - ./data:/data
+  #   ports:
+  #       - 27017:27017
+  #   command: mongod
+
+  server:
+    build:
+      context: ./WebMarkerServer/
+    expose:
+      - 3000
+    environment:
+      API_HOST: "http://localhost:3000"
+      APP_SERVER_PORT: 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - ./WebMarkerServer/src:/srv/app/server/src
+    command: npm start
+    # depends_on:
+    #   - mongo
+
+  client:
+    build:
+      context: ./WebMarkerClient
+    environment:
+      FRONTEND_PORT: 8080
+      API_HOST: "http://localhost:8080"
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    volumes:
+      - ./WebMarkerClient/src:/srv/app/client/src
+    links:
+      - server
+    command: npm start
+

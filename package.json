@@ -1,0 +1,25 @@
+{
+  "name": "webMarker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "background.js",
+  "scripts": {
+    "start": "npm run build --prefix WebMarkerClient && npm run build --prefix components/web-marker && tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marius2502/WebMarker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marius2502/WebMarker/issues"
+  },
+  "homepage": "https://github.com/marius2502/WebMarker#readme",
+  "dependencies": {
+    "@types/chrome": "0.0.88",
+    "@webcomponents/custom-elements": "^1.2.4"
+  }
+}

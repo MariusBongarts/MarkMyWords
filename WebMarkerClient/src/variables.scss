@@ -1,0 +1,12 @@
+:host {
+  --app-primary-color: rgb(29, 202, 255);
+  --app-primary-color-hover: rgb(13, 183, 235);
+  --app-primary-color-shadow: rgba(13, 183, 235, 0.308);
+  --app-secondary-color: #838383;
+}
+
+  // Bootstrap responsive breakpoints
+  $break-small: 576px;
+  $break-medium: 768px;
+  $break-large: 1092px;
+  $break-extra-large: 1200px;
