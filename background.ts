@@ -35,7 +35,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 })
 
 chrome.browserAction.onClicked.addListener(function (tab) {
-  chrome.tabs.create({ url: 'http://localhost:8080/' });
+  chrome.tabs.create({ url: 'http://ec2-3-130-73-179.us-east-2.compute.amazonaws.com:8080' });
 })
 
   // Sends message to current contentScript when page changes
