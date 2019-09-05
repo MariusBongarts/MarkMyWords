@@ -1,17 +1,37 @@
 
-
 :host {
   position: fixed;
 }
 
 
 .markContainer {
-  background: rgba(0, 0, 0, 0.342);
+  background: rgb(0, 0, 0);
   padding: 5px;
 
 }
 
-.icon {
-  width: 100%;
+bronco-icon {
+  --size: 18px;
+  --color: white;
   height: 100%;
+}
+
+bronco-icon.active {
+  --color: #92ffaa;
+}
+
+bronco-icon:hover {
+  --color: #92ffaa;
+}
+
+.btn {
+  border: 1px solid black;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Blue */
+.info {
+  border-color: white;
+  color: dodgerblue;
 }

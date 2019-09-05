@@ -21,7 +21,7 @@ function configureApp(app) {
             res.set('Access-Control-Allow-Headers', 'content-type');
             res.set('Access-Control-Allow-Methods', 'DELETE');
         }
-        res.set('Set-Cookie', 'SID=xyz; Path=/myapp; Secure; HttpOnly; SameSite=Strict');
+        // res.set('Set-Cookie', 'SID=xyz; Path=/myapp; Secure; HttpOnly; SameSite=Strict')
         next();
     });
     app.use('/marks', marks);

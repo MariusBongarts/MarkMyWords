@@ -87,8 +87,11 @@ export class WebMarker extends LitElement {
     return html`
     ${this.show ? html`
     <div class="markContainer">
-      <button>
-      <svg-icon @click=${() => this.emit()} id="pencilIcon" iconName="pencil"></svg-icon>
+  <button class="btn info" style="color: none; background: none" @click=${() => this.emit()}>
+    <bronco-icon class=${false ? 'active' : ''} iconName="edit"></bronco-icon>
+  </button>
+  <button class="btn info" style="color: none; background: none" @click=${() => this.emit()}>
+    <bronco-icon iconName="delete"></bronco-icon>
   </button>
   </div>
             ` : ''}

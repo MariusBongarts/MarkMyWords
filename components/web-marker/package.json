@@ -71,6 +71,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "@marius/broncoicon": "git+https://github.com/marius2502/bronco-icon.git",
     "@mdi/font": "^4.2.95"
   }
 }

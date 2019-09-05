@@ -46,17 +46,31 @@
 
 /* 0 */
 
-/***/
-
-// extracted by mini-css-extract-plugin
-
 /* 1 */
 
 /* 2 */
 
+/* 3 */
+
+/* 4 */
+
+/* 5 */
+
+/* 6 */
+
+/* 7 */
+
+/***/
+
+// extracted by mini-css-extract-plugin
+
+/* 8 */
+
+/* 9 */
+
 // Module
 
-/* 3 */
+/* 10 */
 
 /*
   MIT License http://www.opensource.org/licenses/mit-license.php
@@ -79,9 +93,25 @@
 
 // I hope this will never occur (Hey this way we have smaller bundles)
 
-/* 4 */
+/* 11 */
+
+/*! For license information please see main.js.LICENSE */
+
+/* 12 */
 
 // EXTERNAL MODULE: ./src/index.scss
+
+// CONCATENATED MODULE: ./src/services/http-client.ts
+
+// tslint:disable-next-line: no-empty
+
+// CONCATENATED MODULE: ./src/services/marker.service.ts
+
+//this.httpClient = new HttpClient({ baseURL: 'http://ec2-3-130-73-179.us-east-2.compute.amazonaws.com:3000' });
+
+// Backup Gateway
+
+// this.httpClient = new HttpClient({ baseURL: ' http://10.42.30.122:8080/finance/' });
 
 // CONCATENATED MODULE: ./node_modules/lit-html/lib/directive.js
 
@@ -1114,6 +1144,18 @@
  * it will not needlessly try to `finalize`.
  */
 
+//# sourceMappingURL=lit-element.js.map
+
+// CONCATENATED MODULE: ./src/helper/markerHelper.ts
+
+// tslint:disable-next-line: prefer-for-of
+
+// preElement.appendChild(markElement);
+
+//
+
+// CONCATENATED MODULE: ./src/components/app.component.ts
+
 /**
  * Render method used to render the lit-html TemplateResult to the element's
  * DOM.
@@ -1153,32 +1195,8 @@
 
 // for dynamic changes.
 
-//# sourceMappingURL=lit-element.js.map
-
-// CONCATENATED MODULE: ./src/services/http-client.ts
-
-// tslint:disable-next-line: no-empty
-
-// CONCATENATED MODULE: ./src/services/marker.service.ts
-
-//this.httpClient = new HttpClient({ baseURL: 'http://localhost:3000' });
-
-// Backup Gateway
-
-// this.httpClient = new HttpClient({ baseURL: ' http://10.42.30.122:8080/finance/' });
-
-// CONCATENATED MODULE: ./src/helper/dateHelper.ts
-
-// CONCATENATED MODULE: ./src/components/app.component.ts
-
-/**
- * @author Marius Bongarts
- * Root web component
- */
-
-/**
-     * @author Marius Bongarts
-     * Root web component
-     */
-
 // This callback is called once the class is otherwise fully defined
+
+// EXTERNAL MODULE: ./node_modules/@marius/broncoicon/dist/main.js
+
+// CONCATENATED MODULE: ./src/index.ts
