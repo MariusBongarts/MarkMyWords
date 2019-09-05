@@ -1,4 +1,5 @@
 // Add to document to load data
+const link = document.createElement('link');
 const marker = document.createElement("web-marker");
 document.body.appendChild(marker);
 // window.addEventListener("contextmenu", (e) => {
@@ -19,20 +20,4 @@ mark, mark > * {
   color: #000;
 }`;
 document.body.appendChild(style);
-function showMarkerTool(x, y) {
-    const marker = document.createElement("web-marker");
-    marker.textContent = "Mark";
-    marker.style.position = "fixed";
-    marker.style.left = x + "px";
-    marker.style.top = y - 50 + "px";
-    document.body.appendChild(marker);
-}
-function hideMarkerTool() {
-    try {
-        let markers = document.getElementsByTagName('web-marker');
-        markers[0].remove();
-    }
-    catch (error) {
-    }
-}
 //# sourceMappingURL=content.js.map

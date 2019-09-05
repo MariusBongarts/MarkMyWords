@@ -24,9 +24,9 @@ export class WebMarker extends LitElement {
     filteredMarks.forEach(mark => highlightText(mark));
     console.log(`${filteredMarks.length} marks found!`);
 
-    window.addEventListener('mouseup', (e: MouseEvent) => {
+    window.addEventListener('click', (e: MouseEvent) => {
       const selection = window.getSelection();
-      if (this.show && !selection.toString().length) this.show = false;
+      if (this.show) this.show = false;
       else if (selection.toString().length > 3) {
         this.style.left = e.clientX + 'px';
         this.style.top = e.clientY + 'px';
@@ -34,9 +34,9 @@ export class WebMarker extends LitElement {
       }
     });
 
-    window.addEventListener('mousedown', (e: MouseEvent) => {
-      this.show && !window.getSelection().toString().length ? this.show = false : '';
-    });
+    // window.addEventListener('mousedown', (e: MouseEvent) => {
+    //   this.show && !window.getSelection().toString().length ? this.show = false : '';
+    // });
   }
 
   loadedEvent() {
@@ -48,7 +48,8 @@ export class WebMarker extends LitElement {
     );
   }
 
-  async emit() {
+  async emit(e: MouseEvent) {
+    e.stopPropagation();
     this.show = false;
     const selection = window.getSelection();
     const range = selection.getRangeAt(0);
@@ -87,10 +88,10 @@ export class WebMarker extends LitElement {
     return html`
     ${this.show ? html`
     <div class="markContainer">
-  <button class="btn info" style="color: none; background: none" @click=${() => this.emit()}>
+  <button class="btn info" style="color: none; background: none" @click=${(e: MouseEvent) =>  this.emit(e)}>
     <bronco-icon class=${false ? 'active' : ''} iconName="edit"></bronco-icon>
   </button>
-  <button class="btn info" style="color: none; background: none" @click=${() => this.emit()}>
+  <button class="btn info" style="color: none; background: none">
     <bronco-icon iconName="delete"></bronco-icon>
   </button>
   </div>
