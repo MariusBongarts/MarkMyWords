@@ -51,7 +51,6 @@ export class WebMarker extends LitElement {
   async emit() {
     this.show = false;
     const selection = window.getSelection();
-    console.log("Click")
     const range = selection.getRangeAt(0);
     const mark: Mark = {
       url: location.href,
@@ -73,6 +72,7 @@ export class WebMarker extends LitElement {
     };
 
     highlightText(mark);
+    window.getSelection().empty();
 
     await this.markerService.createMark(mark);
     // this.dispatchEvent(
