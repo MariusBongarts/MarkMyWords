@@ -1,14 +1,17 @@
 
+
 :host {
   position: fixed;
 }
 
 
 .markContainer {
+  background: rgba(0, 0, 0, 0.342);
+  padding: 5px;
 
 }
 
-#pencilIcon {
-  --size: 12px;
-  --color: green;
+.icon {
+  width: 100%;
+  height: 100%;
 }

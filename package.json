@@ -21,5 +21,8 @@
   "dependencies": {
     "@types/chrome": "0.0.88",
     "@webcomponents/custom-elements": "^1.2.4"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.2"
   }
 }
