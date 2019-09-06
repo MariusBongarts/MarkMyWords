@@ -11,18 +11,80 @@ document.body.appendChild(marker);
 // });
 
 
+
 const style = document.createElement("style");
 style.innerHTML = `
 mark {
   border-radius: 5px;
   padding: 2px 2px;
 }
+
 mark, mark > * {
   background-color: #92ffaa;
   color: #000;
 }
-mark:hover my-marker {
-  display: block !important;
+
+my-marker {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 500ms, visibility 500ms;
+  animation: slideOut 0.6s forwards;
 }
+
+mark:hover my-marker {
+  visibility: visible;
+  opacity: 1;
+  -webkit-animation: slideIn 0.4 forwards;
+  animation: slideIn 0.4s forwards;
+}
+
+\
+@keyframes slideIn {\
+    100% {\
+      -webkit-transform: translateY(0%);\
+    }\
+    0% {\
+      -webkit-transform: translateY(-100%);\
+    }\
+}\
+\
+\
+@keyframes slideOut {\
+    0% {\
+      -webkit-transform: translateY(0%);\
+    }\
+    100% {\
+      -webkit-transform: translateY(-100%);\
+    }\
+}\
+\
 `;
+
+
+// let slideIn = `\
+// @keyframes slideIn {\
+//     100% {\
+//       transform: translateY(0%);\
+//     }\
+//     0% {\
+//       transform: translateY(-100%);\
+//     }\
+// }\
+// \
+// `;
+
+// let slideOut = `\
+// @keyframes slideOut {\
+//     0% {\
+//       transform: translateY(0%);\
+//     }\
+//     100% {\
+//       transform: translateY(-100%);\
+//     }\
+// }\
+// \
+// `;
+
+// style.innerHTML += slideIn;
+// style.innerHTML += slideOut;
 document.body.appendChild(style);

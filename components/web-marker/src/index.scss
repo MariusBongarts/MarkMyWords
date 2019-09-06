@@ -7,8 +7,41 @@ mark, mark > * {
   color: #000;
 }
 
+my-marker {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 500ms, visibility 500ms;
+  transition: opacity 500ms, visibility 500ms;
+  animation: slideOut 0.6s forwards;
+}
+
 mark:hover {
   my-marker {
-    display: block !important;
+    visibility: visible;
+    opacity: 1;
+    -webkit-animation: slideIn 0.4 forwards;
+    animation: slideIn 0.4s forwards;
   }
+}
+
+
+@-webkit-keyframes slideIn {
+  100% { -webkit-transform: translateY(0%); }
+  0% { -webkit-transform: translateY(-100%); }
+}
+
+@keyframes slideIn {
+  100% { -webkit-transform: translateY(0%); }
+  0% { -webkit-transform: translateY(-100%); }
+}
+
+// @-webkit-keyframes slideOut {
+//   0% { -webkit-transform: translateY(0%); }
+//   100% { -webkit-transform: translateY(-100%); }
+
+// }
+
+@keyframes slideOut {
+  0% { -webkit-transform: translateY(0%); }
+  100% { -webkit-transform: translateY(-100%); }
 }

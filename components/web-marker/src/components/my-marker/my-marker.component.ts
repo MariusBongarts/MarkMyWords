@@ -73,12 +73,14 @@ export class MyMarkElement extends LitElement {
     return html`
     ${this.show ? html`
     <div class="markContainer">
-  <button class="btn info" style="color: none; background: none" @click=${(e: MouseEvent) => this.emit(e)}>
-    <bronco-icon class=${false ? 'active' : ''} iconName="edit"></bronco-icon>
-  </button>
-  <button class="btn info" style="color: none; background: none">
-    <bronco-icon iconName="delete"></bronco-icon>
-  </button>
+      <div  class="innerContainer">
+      <button class="btn info" style="color: none; background: #ffffff00" @click=${(e: MouseEvent) => this.emit(e)}>
+        <bronco-icon class=${false ? 'active' : ''} iconName="edit"></bronco-icon>
+      </button>
+      <button class="btn info" style="color: none; background: none">
+        <bronco-icon iconName="delete"></bronco-icon>
+      </button>
+  </div>
   </div>
     ` : ''}
  `;

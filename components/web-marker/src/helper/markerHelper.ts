@@ -20,24 +20,15 @@ export function highlightText(range?: Range, mark?: Mark) {
     const bounds = markElement.getBoundingClientRect();
     myMarkElement.show = true;
     myMarkElement.style.position = 'absolute';
-    myMarkElement.style.display = 'none';
-    myMarkElement.style.width = bounds.width + 'px';
-    myMarkElement.style.left = bounds.left + 'px';
 
-    // markElement.addEventListener('mouseenter', (e: MouseEvent) => {
-    //   myMarkElement.style.left = e.clientX + 'px';
-    //   myMarkElement.style.top = e.clientY + 'px';
-    //   console.log(e);
-    //   myMarkElement.show = true;
 
-    // });
-
-    // markElement.addEventListener('mouseleave', () => {
-    //   setTimeout(() => myMarkElement.show = false, 500);
-    // });
-
-    // preElement.appendChild(markElement);
-
+    // myMarkElement.animate([
+    //   { transform: 'translateY(300px)' },
+    //   { transform: 'translateY(0px)' }
+    //   , ],{
+    //     // timing options
+    //     duration: 1000
+    //   });
 
   } catch (error) {
     console.log(error);
