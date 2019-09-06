@@ -1,6 +1,3 @@
-// Add to document to load data
-const link = document.createElement('link');
-
 const marker = document.createElement("web-marker");
 document.body.appendChild(marker);
 
@@ -25,4 +22,3 @@ mark, mark > * {
   color: #000;
 }`;
 document.body.appendChild(style);
-

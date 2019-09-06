@@ -1,5 +1,3 @@
-// Add to document to load data
-const link = document.createElement('link');
 const marker = document.createElement("web-marker");
 document.body.appendChild(marker);
 // window.addEventListener("contextmenu", (e) => {

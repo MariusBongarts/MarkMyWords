@@ -19,11 +19,6 @@ export class WebMarker extends LitElement {
   private markerService = new MarkerService();
 
   async firstUpdated() {
-    this.marks = await this.markerService.getMarks();
-    const filteredMarks = this.marks.filter(e => e.url === location.href);
-    filteredMarks.forEach(mark => highlightText(mark));
-    console.log(`${filteredMarks.length} marks found!`);
-
     window.addEventListener('click', (e: MouseEvent) => {
       const selection = window.getSelection();
       if (this.show) this.show = false;
@@ -34,9 +29,16 @@ export class WebMarker extends LitElement {
       }
     });
 
-    // window.addEventListener('mousedown', (e: MouseEvent) => {
-    //   this.show && !window.getSelection().toString().length ? this.show = false : '';
-    // });
+    try {
+      this.marks = await this.markerService.getMarks();
+      const filteredMarks = this.marks.filter(e => e.url === location.href);
+      filteredMarks.forEach(mark => highlightText(mark));
+      console.log(`${filteredMarks.length} marks found!`);
+    } catch (error) {
+      this.marks = [];
+      console.log('MarkMyWords Server error!');
+    }
+
   }
 
   loadedEvent() {
@@ -88,7 +90,7 @@ export class WebMarker extends LitElement {
     return html`
     ${this.show ? html`
     <div class="markContainer">
-  <button class="btn info" style="color: none; background: none" @click=${(e: MouseEvent) =>  this.emit(e)}>
+  <button class="btn info" style="color: none; background: none" @click=${(e: MouseEvent) => this.emit(e)}>
     <bronco-icon class=${false ? 'active' : ''} iconName="edit"></bronco-icon>
   </button>
   <button class="btn info" style="color: none; background: none">

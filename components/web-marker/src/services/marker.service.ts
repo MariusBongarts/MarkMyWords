@@ -15,13 +15,9 @@ export class MarkerService {
   }
 
   async getMarks(): Promise<Mark[]> {
-    try {
-      const response = await this.httpClient.get('/marks');
-      const marks: Mark[] = (await response.json() as Mark[]);
-      return marks;
-    } catch (error) {
-      return [];
-    }
+    const response = await this.httpClient.get('/marks');
+    const marks: Mark[] = (await response.json() as Mark[]);
+    return marks;
   }
 
   async createMark(mark: Mark): Promise<Mark | undefined> {
