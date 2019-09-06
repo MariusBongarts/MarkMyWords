@@ -1,28 +1,58 @@
+import { MyMarkElement } from './../components/my-marker/my-marker.component';
 import { Mark } from './../models/mark';
 
-export function highlightText(mark: Mark) {
+export function highlightText(range?: Range, mark?: Mark) {
 
   try {
-    let container = findSelectionNode(mark);
-    container ? container = container : container = document.body;
-    const startContainer = findStartEndContainer(container, mark, true);
-    const endContainer = findStartEndContainer(document.body, mark, false);
 
-    // let preElement = document.createElement('pre');
+    mark ? range = recreateRange(mark) : range = range;
+
     const markElement = document.createElement('mark');
-    const range = document.createRange();
-
-    range.setStart(startContainer, mark.startOffset);
-    range.setEnd(endContainer, mark.endOffset);
-
     markElement.appendChild(range.extractContents());
+    range.insertNode(markElement);
+
+    const myMarkElement = document.createElement('my-marker') as MyMarkElement;
+
+    myMarkElement.id = mark.id;
+
+    markElement.appendChild(myMarkElement);
+
+    const bounds = markElement.getBoundingClientRect();
+    myMarkElement.show = true;
+    myMarkElement.style.position = 'absolute';
+    myMarkElement.style.display = 'none';
+    myMarkElement.style.width = bounds.width + 'px';
+    myMarkElement.style.left = bounds.left + 'px';
+
+    // markElement.addEventListener('mouseenter', (e: MouseEvent) => {
+    //   myMarkElement.style.left = e.clientX + 'px';
+    //   myMarkElement.style.top = e.clientY + 'px';
+    //   console.log(e);
+    //   myMarkElement.show = true;
+
+    // });
+
+    // markElement.addEventListener('mouseleave', () => {
+    //   setTimeout(() => myMarkElement.show = false, 500);
+    // });
+
     // preElement.appendChild(markElement);
 
-    range.insertNode(markElement);
 
   } catch (error) {
     console.log(error);
   }
+}
+
+function recreateRange(mark) {
+  let container = findSelectionNode(mark);
+  container ? container = container : container = document.body;
+  const startContainer = findStartEndContainer(container, mark, true);
+  const endContainer = findStartEndContainer(document.body, mark, false);
+  const range = document.createRange();
+  range.setStart(startContainer, mark.startOffset);
+  range.setEnd(endContainer, mark.endOffset);
+  return range;
 }
 
 export function findSelectionNode(mark: Mark) {
@@ -55,7 +85,7 @@ export function findStartEndContainer(container: HTMLElement, mark: Mark, start:
       }
     }
   } catch (error) {
-//
+    //
   }
 
 }
@@ -69,7 +99,7 @@ export function textNodesUnder(node) {
     }
     return all;
   } catch (error) {
-//
+    //
   }
 
 }

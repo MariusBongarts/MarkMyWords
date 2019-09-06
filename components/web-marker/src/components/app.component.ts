@@ -19,10 +19,15 @@ export class WebMarker extends LitElement {
   private markerService = new MarkerService();
 
   async firstUpdated() {
-    window.addEventListener('click', (e: MouseEvent) => {
-      const selection = window.getSelection();
-      if (this.show) this.show = false;
-      else if (selection.toString().length > 3) {
+    document.addEventListener('selectionchange', (e: Event) => {
+      const selectionText = window.getSelection().toString();
+      if (!selectionText.length || selectionText.includes('[Bearbeiten | Quelltext bearbeiten]')) this.show = false;
+    });
+    document.addEventListener('click', (e: MouseEvent) => {
+      const selectionText = window.getSelection().toString();
+      if (!selectionText.length || selectionText.includes('[Bearbeiten | Quelltext bearbeiten]')) this.show = false;
+      else if (selectionText.length) {
+        this.style.position = 'fixed';
         this.style.left = e.clientX + 'px';
         this.style.top = e.clientY + 'px';
         this.show = true;
@@ -32,7 +37,7 @@ export class WebMarker extends LitElement {
     try {
       this.marks = await this.markerService.getMarks();
       const filteredMarks = this.marks.filter(e => e.url === location.href);
-      filteredMarks.forEach(mark => highlightText(mark));
+      filteredMarks.forEach(mark => highlightText(null, mark));
       console.log(`${filteredMarks.length} marks found!`);
     } catch (error) {
       this.marks = [];
@@ -50,56 +55,12 @@ export class WebMarker extends LitElement {
     );
   }
 
-  async emit(e: MouseEvent) {
-    e.stopPropagation();
-    this.show = false;
-    const selection = window.getSelection();
-    const range = selection.getRangeAt(0);
-    const mark: Mark = {
-      url: location.href,
-      origin: location.href,
-      text: selection.toString(),
-      anchorNodeText: selection.anchorNode['data'],
-      anchorOffset: selection.anchorOffset,
-      createdAt: new Date().getTime(),
-      startOffset: range.startOffset,
-      endOffset: range.endOffset,
-      nodeData: range.startContainer.nodeValue,
-      nodeHTML: range.startContainer.parentElement.innerHTML,
-      completeText: range.startContainer.parentElement.textContent,
-      nodeTagName: range.startContainer.parentElement.tagName.toLowerCase(),
-      startContainer: range.startContainer,
-      endContainer: range.endContainer,
-      startContainerText: range.startContainer.textContent,
-      endContainerText: range.endContainer.textContent
-    };
-
-    highlightText(mark);
-    window.getSelection().empty();
-
-    await this.markerService.createMark(mark);
-    // this.dispatchEvent(
-    //   new CustomEvent('clicked', {
-    //     bubbles: true,
-    //     detail: mark
-    //   })
-    // );
-  }
-
   render() {
     return html`
-    ${this.show ? html`
-    <div class="markContainer">
-  <button class="btn info" style="color: none; background: none" @click=${(e: MouseEvent) => this.emit(e)}>
-    <bronco-icon class=${false ? 'active' : ''} iconName="edit"></bronco-icon>
-  </button>
-  <button class="btn info" style="color: none; background: none">
-    <bronco-icon iconName="delete"></bronco-icon>
-  </button>
-  </div>
-            ` : ''}
+  <my-marker .show=${this.show}></my-marker>
 
-`;
+`
   }
+
 
 }

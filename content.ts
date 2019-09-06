@@ -20,5 +20,9 @@ mark {
 mark, mark > * {
   background-color: #92ffaa;
   color: #000;
-}`;
+}
+mark:hover my-marker {
+  display: block !important;
+}
+`;
 document.body.appendChild(style);

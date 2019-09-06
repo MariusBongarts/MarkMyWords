@@ -1,4 +1,5 @@
-export interface Mark {
+import { Entity } from './entity';
+export interface Mark extends Entity{
   url: string,
   origin: string,
   text: string
