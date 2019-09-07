@@ -8,12 +8,13 @@ export function highlightText(range?: Range, mark?: Mark) {
     mark ? range = recreateRange(mark) : range = range;
 
     const markElement = document.createElement('mark');
+
     markElement.appendChild(range.extractContents());
     range.insertNode(markElement);
 
     const myMarkElement = document.createElement('my-marker') as MyMarkerElement;
 
-    myMarkElement.id = mark.id;
+    myMarkElement.markId = mark.id;
 
     const style = document.createElement("style");
 
@@ -39,9 +40,24 @@ export function highlightText(range?: Range, mark?: Mark) {
 
     markElement.appendChild(myMarkElement);
 
+    myMarkElement.addEventListener('deleted', (e: CustomEvent) => {
+      myMarkElement.remove();
+      // Unwraps the mark element
+      const parent = markElement.parentNode;
+      // move all children out of the element
+      while (markElement.firstChild) parent.insertBefore(markElement.firstChild, markElement);
+      // remove the empty element
+      parent.removeChild(markElement);
+      console.log(`Succesfully deleted mark ${e.detail}`);
+    });
+
   } catch (error) {
     console.log(error);
   }
+}
+
+function unwrapMarkElement() {
+
 }
 
 function recreateRange(mark) {

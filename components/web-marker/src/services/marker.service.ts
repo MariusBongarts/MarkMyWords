@@ -29,4 +29,8 @@ export class MarkerService {
       return undefined;
     }
   }
+
+  async deleteMark(markId: string): Promise<void> {
+    await this.httpClient.delete('/marks?id=' + markId);
+  }
 }

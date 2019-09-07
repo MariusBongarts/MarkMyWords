@@ -1201,6 +1201,12 @@
 
 // tslint:disable-next-line: prefer-for-of
 
+// Unwraps the mark element
+
+// move all children out of the element
+
+// remove the empty element
+
 // CONCATENATED MODULE: ./src/components/app.component.ts
 
 /**
@@ -1247,7 +1253,5 @@
 // EXTERNAL MODULE: ./node_modules/uuid/v4.js
 
 /*#__PURE__*/
-
-//this.left = rectLines.length > 1 ? this.left = '50%' : this.left = `${rectLines[0].left - this.parentElement.offsetLeft}px`;
 
 // CONCATENATED MODULE: ./src/components/my-menu/my-menu.component.ts

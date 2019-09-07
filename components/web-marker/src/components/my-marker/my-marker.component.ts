@@ -15,7 +15,7 @@ export class MyMarkerElement extends LitElement {
   marks!: Mark[];
 
   @property()
-  id!: string;
+  markId!: string;
 
   @property()
   left = '0px';
@@ -101,12 +101,21 @@ export class MyMarkerElement extends LitElement {
     // );
   }
 
+  emitDeleted() {
+    this.dispatchEvent(
+      new CustomEvent('deleted', {
+        bubbles: true,
+        detail: this.markId
+      })
+    );
+  }
+
   render() {
     return html`
     ${this.show ? html`
     <div class="markContainer ${this.animation}">
 
-      <my-menu .left=${this.left}></my-menu>
+      <my-menu @deleted=${() => this.emitDeleted()} .left=${this.left} .markId=${this.markId}></my-menu>
 
   </div>
     ` : ''}

@@ -18,6 +18,9 @@ export class MyMarkElement extends LitElement {
   @property()
   show = false;
 
+  @property()
+  markId!: string;
+
 
   private markerService = new MarkerService();
 
@@ -57,15 +60,33 @@ export class MyMarkElement extends LitElement {
 
   }
 
+  async deleteMark() {
+    console.log(`Try to delete  mark ${this.markId}`);
+    try {
+      await this.markerService.deleteMark(this.markId);
+      this.dispatchEvent(
+        new CustomEvent('deleted', {
+          bubbles: true,
+          detail: this.markId
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
   render() {
     return html`
     <div class="menuContainer">
         <button class="btn info" @click=${(e: MouseEvent) => this.emit(e)}>
           <bronco-icon class=${false ? 'active' : ''} iconName="edit"></bronco-icon>
         </button>
-        <button class="btn info">
+        ${this.markId ? html`
+        <button class="btn info" @click=${async () => this.deleteMark()}>
           <bronco-icon iconName="delete"></bronco-icon>
         </button>
+        ` : ''}
     </div>
  `;
   }
