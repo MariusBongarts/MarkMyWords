@@ -16,11 +16,14 @@ export function highlightText(range?: Range, mark?: Mark) {
     myMarkElement.id = mark.id;
 
     markElement.appendChild(myMarkElement);
-
     const bounds = markElement.getBoundingClientRect();
     myMarkElement.show = true;
     myMarkElement.style.position = 'absolute';
-
+    myMarkElement.style.width = `100%`;
+    myMarkElement.style.background = '#8f8f8f63';
+    // myMarkElement.style.left = `${bounds.left + (bounds.width / 2) - 30}px`;
+    myMarkElement.style.overflow = 'hidden';
+    myMarkElement.left = bounds.left + (bounds.width / 2) - 30;
 
     // myMarkElement.animate([
     //   { transform: 'translateY(300px)' },

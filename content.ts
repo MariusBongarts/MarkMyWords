@@ -25,6 +25,7 @@ mark, mark > * {
 }
 
 my-marker {
+  left: 0;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: opacity 500ms, visibility 500ms;
@@ -41,20 +42,20 @@ mark:hover my-marker {
 \
 @keyframes slideIn {\
     100% {\
-      -webkit-transform: translateY(0%);\
+      -webkit-transform:  translate(0%, -100%);\
     }\
     0% {\
-      -webkit-transform: translateY(-100%);\
+      -webkit-transform: translate(0%, -300%);\
     }\
 }\
 \
 \
 @keyframes slideOut {\
     0% {\
-      -webkit-transform: translateY(0%);\
+      -webkit-transform:translate(0%, -100%);\
     }\
     100% {\
-      -webkit-transform: translateY(-100%);\
+      -webkit-transform: translate(0%, -300%);\
     }\
 }\
 \

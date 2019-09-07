@@ -13,6 +13,7 @@ my-marker {
   -webkit-transition: opacity 500ms, visibility 500ms;
   transition: opacity 500ms, visibility 500ms;
   animation: slideOut 0.6s forwards;
+  left: 0;
 }
 
 mark:hover {
@@ -21,19 +22,23 @@ mark:hover {
     opacity: 1;
     -webkit-animation: slideIn 0.4 forwards;
     animation: slideIn 0.4s forwards;
+
   }
 }
 
 
-@-webkit-keyframes slideIn {
-  100% { -webkit-transform: translateY(0%); }
-  0% { -webkit-transform: translateY(-100%); }
-}
+// @-webkit-keyframes slideIn {
+//   100% { -webkit-transform: translateY(0%); }
+//   0% { -webkit-transform: translateY(-100%); }
+// }
 
 @keyframes slideIn {
-  100% { -webkit-transform: translateY(0%); }
-  0% { -webkit-transform: translateY(-100%); }
+  100% {
+    -webkit-transform: translate(0%, -100%);
+  }
+  0% { -webkit-transform: translate(0%, -300%); }
 }
+
 
 // @-webkit-keyframes slideOut {
 //   0% { -webkit-transform: translateY(0%); }
@@ -42,6 +47,6 @@ mark:hover {
 // }
 
 @keyframes slideOut {
-  0% { -webkit-transform: translateY(0%); }
-  100% { -webkit-transform: translateY(-100%); }
+  0% { -webkit-transform: translate(-100%, -100%); }
+  100% { -webkit-transform: translate(-100%, -300%); }
 }

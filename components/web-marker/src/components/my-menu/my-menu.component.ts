@@ -4,10 +4,11 @@ import { Mark } from './../../models/mark';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { highlightText } from '../../helper/markerHelper';
+import { styleMap } from 'lit-html/directives/style-map';
 
-const componentCSS = require('./my-marker.component.scss');
+const componentCSS = require('./my-menu.component.scss');
 
-@customElement('my-marker')
+@customElement('my-menu')
 export class MyMarkElement extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
 
@@ -20,20 +21,13 @@ export class MyMarkElement extends LitElement {
   @property()
   show = false;
 
+
   private markerService = new MarkerService();
 
   async firstUpdated() {
+    console.log(this.left)
   }
 
-
-  loadedEvent() {
-    this.dispatchEvent(
-      new CustomEvent('loaded', {
-        bubbles: true,
-        detail: this.marks
-      })
-    );
-  }
 
   async emit(e: MouseEvent) {
     e.stopPropagation();
@@ -64,23 +58,19 @@ export class MyMarkElement extends LitElement {
     window.getSelection().empty();
 
     await this.markerService.createMark(mark);
-    // this.dispatchEvent(
-    //   new CustomEvent('clicked', {
-    //     bubbles: true,
-    //     detail: mark
-    //   })
-    // );
+
   }
 
   render() {
     return html`
-    ${this.show ? html`
-    <div class="markContainer">
-
-      <my-menu .left=${this.left}></my-menu>
-
-  </div>
-    ` : ''}
+    <div class="menuContainer" style=${styleMap({left: `${this.left}px`})}>
+        <button class="btn info" @click=${(e: MouseEvent) => this.emit(e)}>
+          <bronco-icon class=${false ? 'active' : ''} iconName="edit"></bronco-icon>
+        </button>
+        <button class="btn info">
+          <bronco-icon iconName="delete"></bronco-icon>
+        </button>
+    </div>
  `;
   }
 

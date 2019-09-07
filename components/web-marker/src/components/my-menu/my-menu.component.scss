@@ -1,0 +1,31 @@
+
+
+.menuContainer {
+  position: absolute;
+}
+
+bronco-icon {
+  --size: 18px;
+  --color: white;
+  height: 100%;
+}
+
+bronco-icon.active {
+  --color: #92ffaa;
+}
+
+bronco-icon:hover {
+  --color: #92ffaa;
+}
+
+.btn {
+  border: 1px solid black;
+  background-color: black;
+  cursor: pointer;
+}
+
+/* Blue */
+.info {
+  border-color: white;
+  color: dodgerblue;
+}
