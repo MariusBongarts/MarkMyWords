@@ -4,6 +4,7 @@ import { css, customElement, html, LitElement, property, unsafeCSS, query } from
 import { classMap } from 'lit-html/directives/class-map';
 import { highlightText } from '../helper/markerHelper';
 
+
 const componentCSS = require('./app.component.scss');
 
 @customElement('web-marker')

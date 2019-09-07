@@ -34,6 +34,7 @@
   "license": "ISC",
   "devDependencies": {
     "@appnest/readme": "^1.2.3",
+    "@fortawesome/fontawesome-free": "^5.10.2",
     "@types/jasmine": "^3.3.12",
     "@types/node": "^11.11.3",
     "@types/selenium-webdriver": "^4.0.0",

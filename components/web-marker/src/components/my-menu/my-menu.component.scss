@@ -4,7 +4,15 @@
 }
 
 .menuContainer {
+  color: white;
+  background: black;
+  width: 100px;
+}
 
+.icon {
+  fill: #92ffaa;
+  width: 20px;
+  height: 20px;
 }
 
 bronco-icon {
@@ -22,8 +30,10 @@ bronco-icon:hover {
 }
 
 .btn {
-  border: 1px solid black;
-  background-color: black;
+  z-index: 9999;
+  padding: 0;
+  border: none;
+  background: none;
   cursor: pointer;
 }
 
@@ -32,3 +42,7 @@ bronco-icon:hover {
   border-color: white;
   color: dodgerblue;
 }
+
+.fa{
+  font-family: FontAwesome !important;
+ }
