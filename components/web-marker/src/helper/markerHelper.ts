@@ -19,10 +19,6 @@ export function highlightText(range?: Range, mark?: Mark) {
 
     const rectLines = markElement.getClientRects() as DOMRectList;
 
-    let height = 0;
-    for (let i = 1; i < rectLines.length; i++) {
-      height += rectLines[i].height;
-    }
 
     style.innerHTML = `
     mark {
@@ -36,7 +32,6 @@ export function highlightText(range?: Range, mark?: Mark) {
     }
 
     my-marker {
-      left: 0;
       opacity: 0;
       visibility: hidden;
       -webkit-transition: opacity 500ms, visibility 500ms;
@@ -53,7 +48,7 @@ export function highlightText(range?: Range, mark?: Mark) {
     \
     @keyframes slideIn {\
         100% {\
-          -webkit-transform:  translate(0%, calc(-100% - ${(rectLines.length - 1) * height}px));\
+          -webkit-transform:  translate(0%, calc(-100% - ${(rectLines.length) * rectLines[0].height}px));\
         }\
         0% {\
           -webkit-transform: translate(0%, -300%);\
@@ -63,7 +58,7 @@ export function highlightText(range?: Range, mark?: Mark) {
     \
     @keyframes slideOut {\
         0% {\
-          -webkit-transform:translate(0%, -100%);\
+          -webkit-transform:  translate(0%, calc(-100% - ${(rectLines.length - 1) * rectLines[0].height}px));\
         }\
         100% {\
           -webkit-transform: translate(0%, -300%);\

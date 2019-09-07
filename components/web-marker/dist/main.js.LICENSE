@@ -1248,4 +1248,6 @@
 
 /*#__PURE__*/
 
+// this.style.width = this.parentElement.offsetWidth + 'px';
+
 // CONCATENATED MODULE: ./src/components/my-menu/my-menu.component.ts

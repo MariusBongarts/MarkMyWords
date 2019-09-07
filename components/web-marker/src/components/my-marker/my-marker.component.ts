@@ -28,14 +28,8 @@ export class MyMarkerElement extends LitElement {
 
   async firstUpdated() {
     const rectLines = this.parentElement.getClientRects() as DOMRectList;
-    this.style.width = rectLines[0].width + 'px';
 
-    if (rectLines.length === 1) {
-      this.style.left = rectLines[0].left + 'px';
-    } else {
-      this.style.left = rectLines[1].left + 'px';
-      this.style.width = this.parentElement.offsetWidth + 'px';
-    }
+    // this.style.width = this.parentElement.offsetWidth + 'px';
 
     console.log(this.parentElement.offsetWidth);
     console.log(this.id);
