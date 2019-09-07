@@ -15,6 +15,65 @@ export function highlightText(range?: Range, mark?: Mark) {
 
     myMarkElement.id = mark.id;
 
+    const style = document.createElement("style");
+
+    const rectLines = markElement.getClientRects() as DOMRectList;
+
+    let height = 0;
+    for (let i = 1; i < rectLines.length; i++) {
+      height += rectLines[i].height;
+    }
+
+    style.innerHTML = `
+    mark {
+      border-radius: 5px;
+      padding: 2px 2px;
+    }
+
+    mark, mark > * {
+      background-color: #92ffaa;
+      color: #000;
+    }
+
+    my-marker {
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+      -webkit-transition: opacity 500ms, visibility 500ms;
+      animation: slideOut 0.6s forwards;
+    }
+
+    mark:hover my-marker {
+      visibility: visible;
+      opacity: 1;
+      -webkit-animation: slideIn 0.4 forwards;
+      animation: slideIn 0.4s forwards;
+    }
+
+    \
+    @keyframes slideIn {\
+        100% {\
+          -webkit-transform:  translate(0%, calc(-100% - ${(rectLines.length - 1) * height}px));\
+        }\
+        0% {\
+          -webkit-transform: translate(0%, -300%);\
+        }\
+    }\
+    \
+    \
+    @keyframes slideOut {\
+        0% {\
+          -webkit-transform:translate(0%, -100%);\
+        }\
+        100% {\
+          -webkit-transform: translate(0%, -300%);\
+        }\
+    }\
+    \
+    `;
+
+    document.body.appendChild(style);
+
     markElement.appendChild(myMarkElement);
 
     myMarkElement.show = true;

@@ -1201,8 +1201,6 @@
 
 // tslint:disable-next-line: prefer-for-of
 
-// Calculation of x axis. Substracation of width of markerTool  TODO: 68 has to be found by width of button menu
-
 // CONCATENATED MODULE: ./src/components/app.component.ts
 
 /**
@@ -1249,42 +1247,5 @@
 // EXTERNAL MODULE: ./node_modules/uuid/v4.js
 
 /*#__PURE__*/
-
-// CONCATENATED MODULE: ./node_modules/lit-html/directives/style-map.js
-
-/**
- * @license
- * Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at
- * http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at
- * http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at
- * http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at
- * http://polymer.github.io/PATENTS.txt
- */
-
-/**
- * Stores the StyleInfo object applied to a given AttributePart.
- * Used to unset existing values when a new StyleInfo object is applied.
- */
-
-// Handle static styles the first time we see a Part
-
-// Remove old properties that no longer exist in styleInfo
-
-// Add or update properties
-
-/**
- * Stores AttributeParts that have had static styles applied (e.g. `height: 0;`
- * in style="height: 0; ${styleMap()}"). Static styles are applied only the
- * first time the directive is run on a part.
- */
-
-// Note, could be a WeakSet, but prefer not requiring this polyfill.
-
-//# sourceMappingURL=style-map.js.map
 
 // CONCATENATED MODULE: ./src/components/my-menu/my-menu.component.ts

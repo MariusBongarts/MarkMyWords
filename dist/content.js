@@ -79,5 +79,5 @@ mark:hover my-marker {
 // `;
 // style.innerHTML += slideIn;
 // style.innerHTML += slideOut;
-document.body.appendChild(style);
+// document.body.appendChild(style);
 //# sourceMappingURL=content.js.map

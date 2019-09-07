@@ -27,13 +27,14 @@ export class MyMarkerElement extends LitElement {
   private markerService = new MarkerService();
 
   async firstUpdated() {
-    const rectLines = this.parentElement.getClientRects().length;
-    if (rectLines === 1) {
-      this.style.width = this.parentElement.offsetWidth + 'px';
-      this.style.left = this.parentElement.offsetLeft + 'px';
+    const rectLines = this.parentElement.getClientRects() as DOMRectList;
+    this.style.width = rectLines[0].width + 'px';
+
+    if (rectLines.length === 1) {
+      this.style.left = rectLines[0].left + 'px';
     } else {
-      this.style.width = '100%';
-      this.style.left = '0';
+      this.style.left = rectLines[1].left + 'px';
+      this.style.width = this.parentElement.offsetWidth + 'px';
     }
 
     console.log(this.parentElement.offsetWidth);
