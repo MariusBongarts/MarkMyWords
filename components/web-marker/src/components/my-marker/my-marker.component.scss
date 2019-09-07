@@ -5,7 +5,7 @@
   min-width: 100px;
   width: 100%;
   left: 0;
-  background: rgba(128, 128, 128, 0.219);
+  // background: rgba(161, 161, 161, 0.335);
 }
 
 
@@ -16,4 +16,35 @@
   min-width: 100px;
   display: flex;
   justify-content: center;
+  opacity: 0;
+  animation: slideOut 0.4s forwards;
+  visibility: hidden;
+  transition: opacity 500ms, visibility 500ms;
+  animation: slideIn 0.4s forwards;
+}
+
+.markContainer.slideIn {
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  animation: slideIn 0.4s forwards !important;
+}
+
+.markContainer.slideOut {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  animation: slideOut 0.4s forwards !important;
+}
+
+
+@keyframes slideIn {
+  100% {
+    -webkit-transform: translate(0%, -100%);
+  }
+  0% { -webkit-transform: translate(0%, -300%); }
+}
+
+@keyframes slideOut {
+  100% { -webkit-transform: translate(0%, -300%); }
+  0% { -webkit-transform: translate(0%, -100%); }
 }

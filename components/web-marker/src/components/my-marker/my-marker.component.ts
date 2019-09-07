@@ -23,15 +23,48 @@ export class MyMarkerElement extends LitElement {
   @property()
   show = false;
 
+  @property()
+  animation: 'slideIn' | 'slideOut' = 'slideIn';
+
+  abortHide = false;
+
   private markerService = new MarkerService();
 
   async firstUpdated() {
+    console.log(this.id);
     const rectLines = this.parentElement.getClientRects() as DOMRectList;
     //this.left = rectLines.length > 1 ? this.left = '50%' : this.left = `${rectLines[0].left - this.parentElement.offsetLeft}px`;
-    console.log("LEft: " + this.left);
-    console.log(`rectLines[0].left: ${rectLines[0].left}`);
-    console.log(`this.parentElement.offsetLeft: ${this.parentElement.offsetLeft}`);
-    console.log(this.id);
+
+    this.style.left = rectLines.length === 1 ? this.parentElement.offsetLeft + 'px' : this.parentElement.parentElement.offsetLeft + 'px';
+
+    this.style.width = this.parentElement.offsetWidth + 'px';
+
+    this.style.height = rectLines[0].height + 'px';
+
+
+    const offsetTop = rectLines.length === 1 ? 0 : (rectLines.length - 1) * rectLines[0].height;
+    this.style.transform = `translateY(${-offsetTop}px)`;
+
+    console.log(offsetTop);
+
+
+    this.classList.add('slideIn');
+
+    this.parentElement.addEventListener('mouseenter', (e) => {
+      console.log(e);
+      this.show = true;
+      this.abortHide = true;
+      this.animation = 'slideIn';
+    });
+
+    this.parentElement.addEventListener('mouseleave', () => {
+      this.abortHide = false;
+      setTimeout(() => {
+        if (!this.abortHide) {
+          this.animation = 'slideOut';
+        }
+      }, 500);
+    });
   }
 
   loadedEvent() {
@@ -45,7 +78,6 @@ export class MyMarkerElement extends LitElement {
 
   async emit(e: MouseEvent) {
     e.stopPropagation();
-    this.show = false;
     const selection = window.getSelection();
     const range = selection.getRangeAt(0);
     const mark: Mark = {
@@ -83,7 +115,7 @@ export class MyMarkerElement extends LitElement {
   render() {
     return html`
     ${this.show ? html`
-    <div class="markContainer">
+    <div class="markContainer ${this.animation}">
 
       <my-menu .left=${this.left}></my-menu>
 
@@ -91,5 +123,6 @@ export class MyMarkerElement extends LitElement {
     ` : ''}
  `;
   }
+
 
 }

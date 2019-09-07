@@ -30,50 +30,11 @@ export function highlightText(range?: Range, mark?: Mark) {
       background-color: #92ffaa;
       color: #000;
     }
-
-    my-marker {
-      opacity: 0;
-      visibility: hidden;
-      -webkit-transition: opacity 500ms, visibility 500ms;
-      animation: slideOut 0.6s forwards;
-      width: ${markElement.offsetWidth}px;
-      left: ${rectLines.length > 1 ? markElement.parentElement.offsetLeft : markElement.offsetLeft}px;
-    }
-
-    mark:hover my-marker {
-      visibility: visible;
-      opacity: 1;
-      -webkit-animation: slideIn 0.4 forwards;
-      animation: slideIn 0.4s forwards;
-    }
-
-    \
-    @keyframes slideIn {\
-        100% {\
-          -webkit-transform:  translate(0%, calc(-100% - ${offsetTop}px));\
-        }\
-        0% {\
-          -webkit-transform: translate(0%, -300%);\
-        }\
-    }\
-    \
-    \
-    @keyframes slideOut {\
-        0% {\
-          -webkit-transform:  translate(0%, calc(-100% - ${offsetTop}px));\
-        }\
-        100% {\
-          -webkit-transform: translate(0%, -300%);\
-        }\
-    }\
-    \
     `;
 
-    document.body.appendChild(style);
+    markElement.appendChild(style);
 
     markElement.appendChild(myMarkElement);
-
-    myMarkElement.show = true;
 
   } catch (error) {
     console.log(error);
