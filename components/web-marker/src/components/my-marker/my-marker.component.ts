@@ -5,7 +5,6 @@ import { css, customElement, html, LitElement, property, unsafeCSS, query } from
 import { classMap } from 'lit-html/directives/class-map';
 import { highlightText } from '../../helper/markerHelper';
 import { styleMap } from 'lit-html/directives/style-map';
-
 const componentCSS = require('./my-marker.component.scss');
 
 @customElement('my-marker')
@@ -19,7 +18,7 @@ export class MyMarkerElement extends LitElement {
   id!: string;
 
   @property()
-  left!: number;
+  left = '0px';
 
   @property()
   show = false;
@@ -28,10 +27,10 @@ export class MyMarkerElement extends LitElement {
 
   async firstUpdated() {
     const rectLines = this.parentElement.getClientRects() as DOMRectList;
-
-    // this.style.width = this.parentElement.offsetWidth + 'px';
-
-    console.log(this.parentElement.offsetWidth);
+    //this.left = rectLines.length > 1 ? this.left = '50%' : this.left = `${rectLines[0].left - this.parentElement.offsetLeft}px`;
+    console.log("LEft: " + this.left);
+    console.log(`rectLines[0].left: ${rectLines[0].left}`);
+    console.log(`this.parentElement.offsetLeft: ${this.parentElement.offsetLeft}`);
     console.log(this.id);
   }
 

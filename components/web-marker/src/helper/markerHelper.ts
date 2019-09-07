@@ -19,14 +19,14 @@ export function highlightText(range?: Range, mark?: Mark) {
 
     const rectLines = markElement.getClientRects() as DOMRectList;
 
+    const offsetTop = rectLines.length === 1 ? 0 : (rectLines.length - 1) * rectLines[0].height;
+    console.log("OffsetTop: " + offsetTop);
+
 
     style.innerHTML = `
     mark {
       border-radius: 5px;
       padding: 2px 2px;
-    }
-
-    mark, mark > * {
       background-color: #92ffaa;
       color: #000;
     }
@@ -36,6 +36,8 @@ export function highlightText(range?: Range, mark?: Mark) {
       visibility: hidden;
       -webkit-transition: opacity 500ms, visibility 500ms;
       animation: slideOut 0.6s forwards;
+      width: ${markElement.offsetWidth}px;
+      left: ${rectLines.length > 1 ? markElement.parentElement.offsetLeft : markElement.offsetLeft}px;
     }
 
     mark:hover my-marker {
@@ -48,7 +50,7 @@ export function highlightText(range?: Range, mark?: Mark) {
     \
     @keyframes slideIn {\
         100% {\
-          -webkit-transform:  translate(0%, calc(-100% - ${(rectLines.length) * rectLines[0].height}px));\
+          -webkit-transform:  translate(0%, calc(-100% - ${offsetTop}px));\
         }\
         0% {\
           -webkit-transform: translate(0%, -300%);\
@@ -58,7 +60,7 @@ export function highlightText(range?: Range, mark?: Mark) {
     \
     @keyframes slideOut {\
         0% {\
-          -webkit-transform:  translate(0%, calc(-100% - ${(rectLines.length - 1) * rectLines[0].height}px));\
+          -webkit-transform:  translate(0%, calc(-100% - ${offsetTop}px));\
         }\
         100% {\
           -webkit-transform: translate(0%, -300%);\
