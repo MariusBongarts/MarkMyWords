@@ -29,9 +29,13 @@ export class WebMarker extends LitElement {
       else if (selectionText.length) {
         this.style.position = 'fixed';
         this.style.left = e.clientX + 'px';
-        this.style.top = e.clientY + 'px';
+        this.style.top = e.clientY - 18 + 'px';
         this.show = true;
       }
+    });
+
+    document.addEventListener('scroll', (e: MouseEvent) => {
+      this.show = false;
     });
 
     try {

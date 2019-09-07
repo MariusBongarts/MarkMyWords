@@ -28,11 +28,14 @@ export function highlightText(range?: Range, mark?: Mark) {
       border-radius: 5px;
       padding: 2px 2px;
       background-color: #92ffaa;
-      color: #000;
+    }
+
+    mark > *:not(my-marker) {
+      background-color: #92ffaa;
     }
     `;
 
-    markElement.appendChild(style);
+    document.body.appendChild(style);
 
     markElement.appendChild(myMarkElement);
 

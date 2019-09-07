@@ -33,25 +33,14 @@ export class MyMarkerElement extends LitElement {
   async firstUpdated() {
     console.log(this.id);
     const rectLines = this.parentElement.getClientRects() as DOMRectList;
-    //this.left = rectLines.length > 1 ? this.left = '50%' : this.left = `${rectLines[0].left - this.parentElement.offsetLeft}px`;
-
     this.style.left = rectLines.length === 1 ? this.parentElement.offsetLeft + 'px' : this.parentElement.parentElement.offsetLeft + 'px';
-
     this.style.width = this.parentElement.offsetWidth + 'px';
-
     this.style.height = rectLines[0].height + 'px';
-
-
     const offsetTop = rectLines.length === 1 ? 0 : (rectLines.length - 1) * rectLines[0].height;
     this.style.transform = `translateY(${-offsetTop}px)`;
-
-    console.log(offsetTop);
-
-
     this.classList.add('slideIn');
 
     this.parentElement.addEventListener('mouseenter', (e) => {
-      console.log(e);
       this.show = true;
       this.abortHide = true;
       this.animation = 'slideIn';
@@ -63,7 +52,7 @@ export class MyMarkerElement extends LitElement {
         if (!this.abortHide) {
           this.animation = 'slideOut';
         }
-      }, 500);
+      }, 300);
     });
   }
 
