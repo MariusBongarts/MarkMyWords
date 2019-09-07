@@ -1,12 +1,14 @@
 
 :host {
   z-index: 9999;
+  position: absolute;
+  left: 0;
 }
 
 
 .markContainer {
   display: flex;
-  // justify-content: center;
+  justify-content: center;
   overflow: hidden;
   border-radius: 5px;
   padding: 5px;

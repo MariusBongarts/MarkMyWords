@@ -4,15 +4,19 @@ import { Mark } from './../../models/mark';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { highlightText } from '../../helper/markerHelper';
+import { styleMap } from 'lit-html/directives/style-map';
 
 const componentCSS = require('./my-marker.component.scss');
 
 @customElement('my-marker')
-export class MyMarkElement extends LitElement {
+export class MyMarkerElement extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
 
   @property()
   marks!: Mark[];
+
+  @property()
+  id!: string;
 
   @property()
   left!: number;
@@ -23,8 +27,18 @@ export class MyMarkElement extends LitElement {
   private markerService = new MarkerService();
 
   async firstUpdated() {
-  }
+    const rectLines = this.parentElement.getClientRects().length;
+    if (rectLines === 1) {
+      this.style.width = this.parentElement.offsetWidth + 'px';
+      this.style.left = this.parentElement.offsetLeft + 'px';
+    } else {
+      this.style.width = '100%';
+      this.style.left = '0';
+    }
 
+    console.log(this.parentElement.offsetWidth);
+    console.log(this.id);
+  }
 
   loadedEvent() {
     this.dispatchEvent(

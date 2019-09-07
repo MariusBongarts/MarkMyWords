@@ -46,6 +46,8 @@
 
 /* 0 */
 
+/* 1 */
+
 /***/
 
 // This works in non-strict mode
@@ -59,8 +61,6 @@
 // We return undefined, instead of nothing here, so it's
 
 // easier to handle this case. if(!global) { ...}
-
-/* 1 */
 
 /* 2 */
 

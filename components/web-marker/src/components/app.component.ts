@@ -21,11 +21,11 @@ export class WebMarker extends LitElement {
   async firstUpdated() {
     document.addEventListener('selectionchange', (e: Event) => {
       const selectionText = window.getSelection().toString();
-      if (!selectionText.length || selectionText.includes('[Bearbeiten | Quelltext bearbeiten]')) this.show = false;
+      if (!selectionText.length) this.show = false;
     });
     document.addEventListener('click', (e: MouseEvent) => {
       const selectionText = window.getSelection().toString();
-      if (!selectionText.length || selectionText.includes('[Bearbeiten | Quelltext bearbeiten]')) this.show = false;
+      if (!selectionText.length) this.show = false;
       else if (selectionText.length) {
         this.style.position = 'fixed';
         this.style.left = e.clientX + 'px';

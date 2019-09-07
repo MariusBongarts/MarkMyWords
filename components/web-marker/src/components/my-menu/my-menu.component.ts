@@ -16,16 +16,12 @@ export class MyMarkElement extends LitElement {
   marks!: Mark[];
 
   @property()
-  left!: number;
-
-  @property()
   show = false;
 
 
   private markerService = new MarkerService();
 
   async firstUpdated() {
-    console.log(this.left)
   }
 
 
@@ -63,7 +59,7 @@ export class MyMarkElement extends LitElement {
 
   render() {
     return html`
-    <div class="menuContainer" style=${styleMap({left: `${this.left}px`})}>
+    <div class="menuContainer">
         <button class="btn info" @click=${(e: MouseEvent) => this.emit(e)}>
           <bronco-icon class=${false ? 'active' : ''} iconName="edit"></bronco-icon>
         </button>

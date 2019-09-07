@@ -1,4 +1,4 @@
-import { MyMarkElement } from './../components/my-marker/my-marker.component';
+import { MyMarkerElement } from './../components/my-marker/my-marker.component';
 import { Mark } from './../models/mark';
 
 export function highlightText(range?: Range, mark?: Mark) {
@@ -11,27 +11,13 @@ export function highlightText(range?: Range, mark?: Mark) {
     markElement.appendChild(range.extractContents());
     range.insertNode(markElement);
 
-    const myMarkElement = document.createElement('my-marker') as MyMarkElement;
+    const myMarkElement = document.createElement('my-marker') as MyMarkerElement;
 
     myMarkElement.id = mark.id;
 
     markElement.appendChild(myMarkElement);
-    const bounds = markElement.getBoundingClientRect();
-    myMarkElement.show = true;
-    myMarkElement.style.position = 'absolute';
-    myMarkElement.style.width = `100%`;
-    myMarkElement.style.background = '#8f8f8f63';
-    // myMarkElement.style.left = `${bounds.left + (bounds.width / 2) - 30}px`;
-    myMarkElement.style.overflow = 'hidden';
-    myMarkElement.left = bounds.left + (bounds.width / 2) - 30;
 
-    // myMarkElement.animate([
-    //   { transform: 'translateY(300px)' },
-    //   { transform: 'translateY(0px)' }
-    //   , ],{
-    //     // timing options
-    //     duration: 1000
-    //   });
+    myMarkElement.show = true;
 
   } catch (error) {
     console.log(error);
