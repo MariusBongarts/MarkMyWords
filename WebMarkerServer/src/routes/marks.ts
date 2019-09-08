@@ -5,7 +5,7 @@ import { MongoGenericDAO } from '../models/mongo-generic.dao';
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  console.log("Get")
+  console.log(`Get from ${req.url}`);
   const marksDAO: MongoGenericDAO<Mark> = req.app.locals.marksDAO;
 
   const marks = await marksDAO.findAll();
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  console.log("Post")
+  console.log(`Post from ${req.url}`);
   const marksDAO: MongoGenericDAO<Mark> = req.app.locals.marksDAO;
   const mark = req.body as Mark;
   const createdMark = await marksDAO.create(mark);

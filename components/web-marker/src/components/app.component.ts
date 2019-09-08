@@ -39,15 +39,11 @@ export class WebMarker extends LitElement {
       this.show = false;
     });
 
-    try {
-      this.marks = await this.markerService.getMarks();
-      const filteredMarks = this.marks.filter(e => e.url === location.href);
-      filteredMarks.forEach(mark => highlightText(null, mark));
-      console.log(`${filteredMarks.length} marks found!`);
-    } catch (error) {
-      this.marks = [];
-      console.log('MarkMyWords Server error!');
-    }
+    this.marks = await this.markerService.getMarks();
+    console.log(this.marks);
+    const filteredMarks = this.marks.filter(e => e.url === location.href);
+    filteredMarks.forEach(mark => highlightText(null, mark));
+    console.log(`${filteredMarks.length} marks found!`);
 
   }
 

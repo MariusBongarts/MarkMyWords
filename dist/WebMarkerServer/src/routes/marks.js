@@ -9,13 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import express from 'express';
 const router = express.Router();
 router.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    console.log("Get");
+    console.log(`Get from ${req.url}`);
     const marksDAO = req.app.locals.marksDAO;
     const marks = yield marksDAO.findAll();
     res.send(marks);
 }));
 router.post('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    console.log("Post");
+    console.log(`Post from ${req.url}`);
     const marksDAO = req.app.locals.marksDAO;
     const mark = req.body;
     const createdMark = yield marksDAO.create(mark);
