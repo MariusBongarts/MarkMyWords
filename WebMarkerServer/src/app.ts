@@ -12,7 +12,7 @@ function configureApp(app: Express) {
   app.use(function (req, res, next) {
 
     if (true) {
-      res.set('Access-Control-Allow-Origin', req.get('Origin'));
+      res.set('Access-Control-Allow-Origin', '*');
       res.set('Access-Control-Allow-Headers', 'content-type');
       res.set('Access-Control-Allow-Methods', 'DELETE');
     }
