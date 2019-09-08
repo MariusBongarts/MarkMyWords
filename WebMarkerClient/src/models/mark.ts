@@ -7,7 +7,6 @@ export interface Mark extends Entity{
   anchorOffset: number,
   createdAt: number,
   nodeTagName: string,
-  nodeHTML: string,
   startOffset: number,
   endOffset: number,
   nodeData: string,

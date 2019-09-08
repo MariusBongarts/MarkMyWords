@@ -46,8 +46,6 @@
 
 /* 0 */
 
-/* 1 */
-
 /***/
 
 // This works in non-strict mode
@@ -62,13 +60,105 @@
 
 // easier to handle this case. if(!global) { ...}
 
+/* 1 */
+
 /* 2 */
+
+/* WEBPACK VAR INJECTION */
+
+// DOM APIs, for completeness
+
+// Does not start the time, just sets up the members needed.
+
+// setimmediate attaches itself to the global object
+
+// On some exotic environments, it's not clear which object `setimmediate` was
+
+// able to install onto.  Search each possibility in the same order as the
+
+// `setimmediate` library.
 
 /* 3 */
 
-/* harmony import */
+// Spec says greater than zero
+
+// Don't get fooled by e.g. browserify environments.
+
+// The test against `importScripts` prevents this implementation from being installed inside a web worker,
+
+// where `global.postMessage` means something completely different and can't be used for this purpose.
+
+// For web workers, where supported
+
+// For IE 6–8
+
+// Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
+
+// into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
+
+// For non-IE10 modern browsers
+
+// Callback can either be a function or a string
+
+// Copy function arguments
+
+// Store and register the task
+
+// From the spec: "Wait until any invocations of this algorithm started before this one have completed."
+
+// So if we're currently running a task, we'll need to delay this invocation.
+
+// Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
+
+// "too much recursion" error.
 
 /* 4 */
+
+// shim for using process in browser
+
+// cached from whatever global is present so that test runners that stub it
+
+// don't break things.  But we need to wrap it in a try catch in case it is
+
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+
+// function because try/catches deoptimize in certain engines.
+
+//normal enviroments in sane situations
+
+// if setTimeout wasn't available but was latter defined
+
+// when when somebody has screwed with setTimeout but no I.E. maddness
+
+// When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+
+// same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+
+// if clearTimeout wasn't available but was latter defined
+
+// When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+
+// same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+
+// Some versions of I.E. have different rules for clearTimeout vs setTimeout
+
+// v8 likes predictible objects
+
+// empty string to avoid regexp issues
+
+/* 5 */
+
+/* 6 */
+
+/* 7 */
+
+/* 8 */
+
+/* 9 */
+
+/* harmony import */
+
+/* 10 */
 
 /**
 @license @nocompile
@@ -80,9 +170,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-/* 5 */
-
-/* WEBPACK VAR INJECTION */
+/* 11 */
 
 /*
 
@@ -158,85 +246,3 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 //# sourceMappingURL=webcomponents-bundle.js.map
-
-/* 6 */
-
-// DOM APIs, for completeness
-
-// Does not start the time, just sets up the members needed.
-
-// setimmediate attaches itself to the global object
-
-// On some exotic environments, it's not clear which object `setimmediate` was
-
-// able to install onto.  Search each possibility in the same order as the
-
-// `setimmediate` library.
-
-/* 7 */
-
-// Spec says greater than zero
-
-// Don't get fooled by e.g. browserify environments.
-
-// The test against `importScripts` prevents this implementation from being installed inside a web worker,
-
-// where `global.postMessage` means something completely different and can't be used for this purpose.
-
-// For web workers, where supported
-
-// For IE 6–8
-
-// Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
-
-// into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
-
-// For non-IE10 modern browsers
-
-// Callback can either be a function or a string
-
-// Copy function arguments
-
-// Store and register the task
-
-// From the spec: "Wait until any invocations of this algorithm started before this one have completed."
-
-// So if we're currently running a task, we'll need to delay this invocation.
-
-// Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
-
-// "too much recursion" error.
-
-/* 8 */
-
-// shim for using process in browser
-
-// cached from whatever global is present so that test runners that stub it
-
-// don't break things.  But we need to wrap it in a try catch in case it is
-
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-
-// function because try/catches deoptimize in certain engines.
-
-//normal enviroments in sane situations
-
-// if setTimeout wasn't available but was latter defined
-
-// when when somebody has screwed with setTimeout but no I.E. maddness
-
-// When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-
-// same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-
-// if clearTimeout wasn't available but was latter defined
-
-// When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-
-// same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-
-// Some versions of I.E. have different rules for clearTimeout vs setTimeout
-
-// v8 likes predictible objects
-
-// empty string to avoid regexp issues

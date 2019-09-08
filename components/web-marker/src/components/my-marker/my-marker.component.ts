@@ -32,28 +32,30 @@ export class MyMarkerElement extends LitElement {
 
   async firstUpdated() {
     console.log(this.id);
-    const rectLines = this.parentElement.getClientRects() as DOMRectList;
-    this.style.left = rectLines.length === 1 ? this.parentElement.offsetLeft + 'px' : this.parentElement.parentElement.offsetLeft + 'px';
-    this.style.width = this.parentElement.offsetWidth + 'px';
-    this.style.height = rectLines[0].height + 'px';
-    const offsetTop = rectLines.length === 1 ? 0 : (rectLines.length - 1) * rectLines[0].height;
-    this.style.transform = `translateY(${-offsetTop}px)`;
-    this.classList.add('slideIn');
+    if (this.markId) {
+      const rectLines = this.parentElement.getClientRects() as DOMRectList;
+      this.style.left = rectLines.length === 1 ? this.parentElement.offsetLeft + 'px' : this.parentElement.parentElement.offsetLeft + 'px';
+      this.style.width = this.parentElement.offsetWidth + 'px';
+      this.style.height = rectLines[0].height + 'px';
+      const offsetTop = rectLines.length === 1 ? 0 : (rectLines.length - 1) * rectLines[0].height;
+      this.style.transform = `translateY(${-offsetTop}px)`;
+      this.classList.add('slideIn');
 
-    this.parentElement.addEventListener('mouseenter', (e) => {
-      this.show = true;
-      this.abortHide = true;
-      this.animation = 'slideIn';
-    });
+      this.parentElement.addEventListener('mouseenter', (e) => {
+        this.show = true;
+        this.abortHide = true;
+        this.animation = 'slideIn';
+      });
 
-    this.parentElement.addEventListener('mouseleave', () => {
-      this.abortHide = false;
-      setTimeout(() => {
-        if (!this.abortHide) {
-          this.animation = 'slideOut';
-        }
-      }, 300);
-    });
+      this.parentElement.addEventListener('mouseleave', () => {
+        this.abortHide = false;
+        setTimeout(() => {
+          if (!this.abortHide) {
+            this.animation = 'slideOut';
+          }
+        }, 300);
+      });
+    }
   }
 
   loadedEvent() {
@@ -80,7 +82,6 @@ export class MyMarkerElement extends LitElement {
       startOffset: range.startOffset,
       endOffset: range.endOffset,
       nodeData: range.startContainer.nodeValue,
-      nodeHTML: range.startContainer.parentElement.innerHTML,
       completeText: range.startContainer.parentElement.textContent,
       nodeTagName: range.startContainer.parentElement.tagName.toLowerCase(),
       startContainer: range.startContainer,
@@ -93,12 +94,6 @@ export class MyMarkerElement extends LitElement {
     window.getSelection().empty();
 
     await this.markerService.createMark(mark);
-    // this.dispatchEvent(
-    //   new CustomEvent('clicked', {
-    //     bubbles: true,
-    //     detail: mark
-    //   })
-    // );
   }
 
   emitDeleted() {
@@ -114,10 +109,8 @@ export class MyMarkerElement extends LitElement {
     return html`
     ${this.show ? html`
     <div class="markContainer ${this.animation}">
-
       <my-menu @deleted=${() => this.emitDeleted()} .left=${this.left} .markId=${this.markId}></my-menu>
-
-  </div>
+    </div>
     ` : ''}
  `;
   }

@@ -4,26 +4,13 @@ import { Mark } from './../models/mark';
 export function highlightText(range?: Range, mark?: Mark) {
 
   try {
-
     mark ? range = recreateRange(mark) : range = range;
-
     const markElement = document.createElement('mark');
-
     markElement.appendChild(range.extractContents());
     range.insertNode(markElement);
-
     const myMarkElement = document.createElement('my-marker') as MyMarkerElement;
-
     myMarkElement.markId = mark.id;
-
-    const style = document.createElement("style");
-
-    const rectLines = markElement.getClientRects() as DOMRectList;
-
-    const offsetTop = rectLines.length === 1 ? 0 : (rectLines.length - 1) * rectLines[0].height;
-    console.log("OffsetTop: " + offsetTop);
-
-
+    const style = document.createElement('style');
     style.innerHTML = `
     mark {
       border-radius: 5px;
@@ -35,11 +22,8 @@ export function highlightText(range?: Range, mark?: Mark) {
       background-color: #92ffaa;
     }
     `;
-
     document.body.appendChild(style);
-
     markElement.appendChild(myMarkElement);
-
     myMarkElement.addEventListener('deleted', (e: CustomEvent) => {
       myMarkElement.remove();
       // Unwraps the mark element
@@ -56,37 +40,16 @@ export function highlightText(range?: Range, mark?: Mark) {
   }
 }
 
-function unwrapMarkElement() {
-
-}
 
 function recreateRange(mark) {
-  let container = findSelectionNode(mark);
-  container ? container = container : container = document.body;
-  const startContainer = findStartEndContainer(container, mark, true);
+  // let container = findSelectionNode(mark);
+  // container ? container = container : container = document.body;
+  const startContainer = findStartEndContainer(document.body, mark, true);
   const endContainer = findStartEndContainer(document.body, mark, false);
   const range = document.createRange();
   range.setStart(startContainer, mark.startOffset);
   range.setEnd(endContainer, mark.endOffset);
   return range;
-}
-
-export function findSelectionNode(mark: Mark) {
-  const elements = document.body.getElementsByTagName(mark.nodeTagName);
-  if (elements && elements.length) {
-    // tslint:disable-next-line: prefer-for-of
-    for (let i = 0; i < elements.length; i++) {
-      try {
-
-        if (elements[i].innerHTML === mark.nodeHTML) {
-          return elements[i] as HTMLElement;
-        }
-
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }
 }
 
 export function findStartEndContainer(container: HTMLElement, mark: Mark, start: boolean) {
