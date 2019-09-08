@@ -16,22 +16,22 @@ app.use(bodyParser.json({
 
 // Set HTTP-Header
 app.use(function (req, res, next) {
-    // res.set('X-Frame-Options', 'DENY');
-    // res.set('Referrer-Policy', 'no-referrer');
-    // res.set('Cross-Origin-Resource-Policy', 'same-origin');
-    // res.set('Set-Cookie', 'SID=xyz; Path=/myapp; Secure; HttpOnly; SameSite=Strict')
+    res.set('X-Frame-Options', 'DENY');
+    res.set('Referrer-Policy', 'no-referrer');
+    res.set('Cross-Origin-Resource-Policy', 'same-origin');
+    res.set('Set-Cookie', 'SID=xyz; Path=/myapp; Secure; HttpOnly; SameSite=Strict')
     next();
 });
 
-app.use(csp({
-    directives: {
-        reportUri: `/reports`,
-        frameAncestors: ["'none'"],
-        imgSrc: [`'self'`, `http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png`],
-        scriptSrc: ["'self'"],
-        styleSrc: ["'self'", "'unsafe-inline'", `https://fonts.googleapis.com`]
-    }
-}));
+// app.use(csp({
+//     directives: {
+//         reportUri: `/reports`,
+//         frameAncestors: ["'none'"],
+//         imgSrc: [`'self'`, `http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png`],
+//         scriptSrc: ["'self'"],
+//         styleSrc: ["'self'", "'unsafe-inline'", `https://fonts.googleapis.com`]
+//     }
+// }));
 
 
 app.use(express.static(appDir));
