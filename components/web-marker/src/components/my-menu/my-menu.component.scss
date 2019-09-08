@@ -18,11 +18,21 @@
 }
 
 .icon {
-  fill: #92ffaa;
+  fill: white;
   color: white;
   width: 20px;
   height: 20px;
   margin: auto;
+}
+
+.btn.active .markIcon, .btn:hover .markIcon {
+  fill: #92ffaa;
+  transform: scale(1.1);
+}
+
+.btn.href:hover .hrefIcon {
+  transform: rotateZ(360deg);
+  transition-duration: 0.3s;
 }
 
 
