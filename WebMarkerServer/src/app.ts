@@ -20,7 +20,7 @@ function configureApp(app: Express) {
     next();
 
   });
-  app.use('/', marks);
+  app.use('/marks', marks);
 }
 
 function originAllowed(req: any) {
