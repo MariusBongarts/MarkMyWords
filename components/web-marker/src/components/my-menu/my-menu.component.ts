@@ -53,7 +53,7 @@ export class MyMarkElement extends LitElement {
 
   /**
    * Created mark to save it in database.
-   * Important is that the attributes of the range are saved to recreate it later.
+   * Attributes of the range are saved to recreate it later.
    *
    * @returns {Mark}
    * @memberof MyMarkElement
@@ -66,19 +66,16 @@ export class MyMarkElement extends LitElement {
       url: location.href,
       origin: location.href,
       text: selection.toString(),
-      anchorNodeText: selection.anchorNode['data'],
+      title: document.title,
       anchorOffset: selection.anchorOffset,
       createdAt: new Date().getTime(),
-      startOffset: range.startOffset,
-      endOffset: range.endOffset,
       nodeData: range.startContainer.nodeValue,
       completeText: range.startContainer.parentElement.textContent,
       nodeTagName: range.startContainer.parentElement.tagName.toLowerCase(),
-      startContainer: range.startContainer,
-      endContainer: range.endContainer,
       startContainerText: range.startContainer.textContent,
       endContainerText: range.endContainer.textContent,
-      title: document.title
+      startOffset: range.startOffset,
+      endOffset: range.endOffset,
     };
     return mark;
   }

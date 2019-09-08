@@ -1197,13 +1197,51 @@
 
 // CONCATENATED MODULE: ./src/helper/markerHelper.ts
 
+/**
+ * Creates the mark element to highlight text
+ *
+ * @param {Range} [range]
+ * @param {Mark} [mark]
+ * @returns
+ */
+
+/**
+ * Returns the StartContainer or EndContainer to recreate the range of the given mark
+ *
+ * @export
+ * @param {HTMLElement} container
+ * @param {Mark} mark
+ * @param {boolean} start true = searchs for StartContainer; false = searchs for EndContainer
+ * @returns {HTMLElement}
+ */
+
+/**
+ * Creates the mark in the DOM. Afterwards it listenes for a deletion event to remove it.
+ *
+ * @param {HTMLElement} markElement
+ * @param {Mark} mark
+ */
+
+/**
+ * Adds the style for the mark element.
+ *
+ */
+
+// CONCATENATED MODULE: ./src/components/app.component.ts
+
 // Unwraps the mark element
 
 // move all children out of the element
 
 // remove the empty element
 
-// CONCATENATED MODULE: ./src/components/app.component.ts
+/**
+ * Returns all text nodes under an element
+ *
+ * @export
+ * @param {Node} node
+ * @returns {Node[]}
+ */
 
 // tslint:disable-next-line: prefer-for-of
 
@@ -1321,7 +1359,7 @@
 
 /**
      * Created mark to save it in database.
-     * Important is that the attributes of the range are saved to recreate it later.
+     * Attributes of the range are saved to recreate it later.
      *
      * @returns {Mark}
      * @memberof MyMarkElement

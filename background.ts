@@ -8,12 +8,20 @@ interface Window {
 }
 
 interface Mark {
+  id: string,
+  createdAt: number,
   url: string,
   origin: string,
   text: string
-  anchorNodeText: string,
   anchorOffset: number,
-  createdAt: number
+  nodeTagName: string,
+  startOffset: number,
+  endOffset: number,
+  nodeData: string,
+  startContainerText: string,
+  endContainerText: string,
+  completeText: string,
+  title: string
 }
 
 // END INTERFACES
