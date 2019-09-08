@@ -40,7 +40,6 @@ export function highlightText(range?: Range, mark?: Mark) {
   }
 }
 
-
 function recreateRange(mark) {
   // let container = findSelectionNode(mark);
   // container ? container = container : container = document.body;

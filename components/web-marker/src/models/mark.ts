@@ -14,5 +14,6 @@ export interface Mark extends Entity{
   endContainer: Node,
   startContainerText: string,
   endContainerText: string,
-  completeText: string
+  completeText: string,
+  title: string
 }

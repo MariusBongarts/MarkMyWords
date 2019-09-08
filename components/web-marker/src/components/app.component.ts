@@ -1,9 +1,7 @@
 import { MarkerService } from './../services/marker.service';
 import { Mark } from './../models/mark';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
 import { highlightText } from '../helper/markerHelper';
-
 
 const componentCSS = require('./app.component.scss');
 
@@ -17,21 +15,39 @@ export class WebMarker extends LitElement {
   @property()
   show = false;
 
+  /**
+   * Set width of menu in px to calculate center
+   *
+   * @memberof WebMarker
+   */
+  @property()
+  menuWidth = 80;
+
   private markerService = new MarkerService();
 
   async firstUpdated() {
+    this.listenToShowMarker();
+    await this.loadMarks();
+  }
+
+  /**
+   * Listens for click and selection events to show or hide the marker
+   *
+   * @memberof WebMarker
+   */
+  listenToShowMarker() {
+
     document.addEventListener('selectionchange', (e: Event) => {
+      console.log(e);
       const selectionText = window.getSelection().toString();
       if (!selectionText.length) this.show = false;
     });
+
     document.addEventListener('click', (e: MouseEvent) => {
       const selectionText = window.getSelection().toString();
       if (!selectionText.length) this.show = false;
       else if (selectionText.length) {
-        this.style.position = 'fixed';
-        this.style.left = e.clientX + 'px';
-        this.style.top = e.clientY - 18 + 'px';
-        this.show = true;
+        this.setPositionOfMarkerForClick(e);
       }
     });
 
@@ -39,29 +55,43 @@ export class WebMarker extends LitElement {
       this.show = false;
     });
 
+  }
+
+  /**
+   *  Sets the position of the marker for a click event.
+   *  Gets the center from the bounds of the createdRange
+   *
+   * @param {MouseEvent} e
+   * @memberof WebMarker
+   */
+  setPositionOfMarkerForClick(e: MouseEvent) {
+    const rangeBounds = window.getSelection().getRangeAt(0).getBoundingClientRect();
+    console.log(e);
+    this.style.position = 'fixed';
+    this.style.left = rangeBounds.left + (rangeBounds.width / 2) - (this.menuWidth / 2) + 'px';
+    this.style.top = rangeBounds.top + 'px';
+    this.show = true;
+  }
+
+  /**
+   *  This method loads all marks from server, filters them for current
+   *  url, and highlights all marks for current page
+   *
+   * @todo Load only marks with current url from server
+   *
+   * @memberof WebMarker
+   */
+  async loadMarks() {
     this.marks = await this.markerService.getMarks();
     console.log(this.marks);
     const filteredMarks = this.marks.filter(e => e.url === location.href);
     filteredMarks.forEach(mark => highlightText(null, mark));
     console.log(`${filteredMarks.length} marks found!`);
-
-  }
-
-  loadedEvent() {
-    this.dispatchEvent(
-      new CustomEvent('loaded', {
-        bubbles: true,
-        detail: this.marks
-      })
-    );
   }
 
   render() {
     return html`
-  <my-marker .show=${this.show}></my-marker>
-
-`
+  <my-marker .show=${this.show} .menuWidth=${this.menuWidth}></my-marker>`;
   }
-
 
 }

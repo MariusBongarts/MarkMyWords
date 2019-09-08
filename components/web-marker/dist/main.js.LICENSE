@@ -46,111 +46,9 @@
 
 /* 0 */
 
-/***/
-
-// This works in non-strict mode
-
-// This works if eval is allowed (see CSP)
-
-// This works if the window reference is available
-
-// g can still be undefined, but nothing to do about it...
-
-// We return undefined, instead of nothing here, so it's
-
-// easier to handle this case. if(!global) { ...}
-
 /* 1 */
 
-// Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
-
-// Copy bytes to buffer, if provided
-
-/* 2 */
-
-/* WEBPACK VAR INJECTION */
-
-// DOM APIs, for completeness
-
-// Does not start the time, just sets up the members needed.
-
-// setimmediate attaches itself to the global object
-
-// On some exotic environments, it's not clear which object `setimmediate` was
-
-// able to install onto.  Search each possibility in the same order as the
-
-// `setimmediate` library.
-
-/* 3 */
-
-// Spec says greater than zero
-
-// Don't get fooled by e.g. browserify environments.
-
-// The test against `importScripts` prevents this implementation from being installed inside a web worker,
-
-// where `global.postMessage` means something completely different and can't be used for this purpose.
-
-// For web workers, where supported
-
-// For IE 6–8
-
-// Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
-
-// into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
-
-// For non-IE10 modern browsers
-
-// Callback can either be a function or a string
-
-// Copy function arguments
-
-// Store and register the task
-
-// From the spec: "Wait until any invocations of this algorithm started before this one have completed."
-
-// So if we're currently running a task, we'll need to delay this invocation.
-
-// Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
-
-// "too much recursion" error.
-
-/* 4 */
-
-// shim for using process in browser
-
-// cached from whatever global is present so that test runners that stub it
-
-// don't break things.  But we need to wrap it in a try catch in case it is
-
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-
-// function because try/catches deoptimize in certain engines.
-
-//normal enviroments in sane situations
-
-// if setTimeout wasn't available but was latter defined
-
-// when when somebody has screwed with setTimeout but no I.E. maddness
-
-// When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-
-// same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-
-// if clearTimeout wasn't available but was latter defined
-
-// When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-
-// same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-
-// Some versions of I.E. have different rules for clearTimeout vs setTimeout
-
-// v8 likes predictible objects
-
-// empty string to avoid regexp issues
-
-/* 5 */
+/***/
 
 /*
   MIT License http://www.opensource.org/licenses/mit-license.php
@@ -173,6 +71,18 @@
 
 // I hope this will never occur (Hey this way we have smaller bundles)
 
+/* 2 */
+
+// Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+
+// Copy bytes to buffer, if provided
+
+/* 3 */
+
+/* 4 */
+
+/* 5 */
+
 /* 6 */
 
 /* 7 */
@@ -181,59 +91,19 @@
 
 /* 9 */
 
+// extracted by mini-css-extract-plugin
+
 /* 10 */
 
 /* 11 */
 
-/* 12 */
+// Module
 
-// extracted by mini-css-extract-plugin
+/* 12 */
 
 /* 13 */
 
 /* 14 */
-
-// Imports
-
-// Module
-
-/* 15 */
-
-// If url is already wrapped in quotes, remove them
-
-// Should url be wrapped?
-
-// See https://drafts.csswg.org/css-values-3/#urls
-
-/* 16 */
-
-/* 17 */
-
-/* 18 */
-
-/* 19 */
-
-/* 20 */
-
-/* 21 */
-
-/* 22 */
-
-/* 23 */
-
-/* 24 */
-
-/* 25 */
-
-/* 26 */
-
-/* 27 */
-
-/* 28 */
-
-/*! For license information please see main.js.LICENSE */
-
-/* 29 */
 
 // Unique ID creation requires a high quality random # generator.  In the
 
@@ -259,7 +129,7 @@
 
 // quality.
 
-/* 30 */
+/* 15 */
 
 /**
  * Convert array of 16 byte values to UUID string format of the form:
@@ -268,71 +138,11 @@
 
 // join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
 
-/* 31 */
+/* 16 */
 
-/* 32 */
+/* 17 */
 
-/* 33 */
-
-/*!
- * Font Awesome Free 5.10.2 by @fontawesome - https://fontawesome.com
- * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- */
-
-/**
-     * Font Awesome 4 used the prefix of `fa` for all icons. With the introduction
-     * of new styles we needed to differentiate between them. Prefix `fa` is now an alias
-     * for `fas` so we'll easy the upgrade process for our users by automatically defining
-     * this as well.
-     */
-
-// Getting an empty string will occur if the attribute is set on the HTML tag but without a value
-
-// We'll assume that this is an indication that it should be toggled to true
-
-// For example <script data-search-pseudo-elements src="..."></script>
-
-// run promise callbacks
-
-// reset async asyncQueue
-
-// then should be retrieved only once
-
-/**
-   * @class
-   */
-
-// already resolved, call callback async
-
-// subscribe
-
-// If we already have a replaced node we do not want to continue nesting within it.
-
-// Short-circuit to the standard replacement
-
-// noop
-
-// This node is already being processed
-
-// If we've already processed it but the current computed style does not result in a font-family,
-
-// that probably means that a class name that was previously present to make the icon has been
-
-// removed. So we now should delete the icon.
-
-// Only convert the pseudo element in this :before/:after position into an icon if we haven't
-
-// already done so with the same prefix and iconName
-
-// Delete the old one, since we're replacing it with a new one
-
-/*#__PURE__*/
-
-/* 34 */
-
-/* 35 */
-
-/* 36 */
+/* 18 */
 
 // EXTERNAL MODULE: ./src/index.scss
 
@@ -1440,10 +1250,90 @@
 
 // for dynamic changes.
 
-// EXTERNAL MODULE: ./node_modules/@marius/broncoicon/dist/main.js
+/**
+         * Set width of menu in px to calculate center
+         *
+         * @memberof WebMarker
+         */
+
+/**
+     * Listens for click and selection events to show or hide the marker
+     *
+     * @memberof WebMarker
+     */
+
+/**
+     *  Sets the position of the marker for a click event.
+     *  Gets the center from the bounds of the createdRange
+     *
+     * @param {MouseEvent} e
+     * @memberof WebMarker
+     */
+
+/**
+     *  This method loads all marks from server, filters them for current
+     *  url, and highlights all marks for current page
+     *
+     * @todo Load only marks with current url from server
+     *
+     * @memberof WebMarker
+     */
+
+// CONCATENATED MODULE: ./src/components/my-marker/my-marker.component.ts
+
+/**
+         *  Necessary to abort hide animation when user enters mark again
+         *
+         * @memberof MyMarkerElement
+         */
+
+/**
+     *  Sets position of this component so that it is centralized above mark-element
+     *
+     * @memberof MyMarkerElement
+     */
+
+/**
+     *  Register Listener to show and hide hovering menu.
+     *  Abortes hiding when user enters element again after 300ms
+     *
+     * @memberof MyMarkerElement
+     */
+
+/**
+     *  Cascading event to trigger delete in root component
+     *
+     * @memberof MyMarkerElement
+     */
 
 // EXTERNAL MODULE: ./node_modules/uuid/v4.js
 
-// EXTERNAL MODULE: ./node_modules/@fortawesome/fontawesome-free/js/all.js
+/*#__PURE__*/
 
-// CONCATENATED MODULE: ./src/components/my-menu/my-menu.component.ts
+/**
+     *  Width is set dynamically because it it necessary to calculcate center in parent element
+     *
+     * @memberof MyMarkElement
+     */
+
+/**
+     *
+     *
+     * @param {MouseEvent}
+     * @memberof MyMarkElement
+     */
+
+/**
+     * Created mark to save it in database.
+     * Important is that the attributes of the range are saved to recreate it later.
+     *
+     * @returns {Mark}
+     * @memberof MyMarkElement
+     */
+
+/**
+     *  First dispatches event to delete mark in client,
+     *  then deletes it in server.
+     *
+     * @memberof MyMarkElement
+     */

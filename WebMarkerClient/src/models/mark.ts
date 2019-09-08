@@ -1,5 +1,5 @@
 import { Entity } from './entity';
-export interface Mark extends Entity{
+export interface Mark extends Entity {
   url: string,
   origin: string,
   text: string
@@ -14,5 +14,6 @@ export interface Mark extends Entity{
   endContainer: Node,
   startContainerText: string,
   endContainerText: string,
-  completeText: string
+  completeText: string,
+  title: string
 }

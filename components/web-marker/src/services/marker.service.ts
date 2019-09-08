@@ -23,13 +23,9 @@ export class MarkerService {
   }
 
   async createMark(mark: Mark): Promise<Mark | undefined> {
-    try {
-      const response = await this.httpClient.post('/marks', mark);
-      const createdMark: Mark = (await response.json() as Mark);
-      return createdMark;
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await this.httpClient.post('/marks', mark);
+    const createdMark: Mark = (await response.json() as Mark);
+    return createdMark;
   }
 
   async deleteMark(markId: string): Promise<void> {
