@@ -41,8 +41,6 @@ export function highlightText(range?: Range, mark?: Mark) {
 }
 
 function recreateRange(mark) {
-  // let container = findSelectionNode(mark);
-  // container ? container = container : container = document.body;
   const startContainer = findStartEndContainer(document.body, mark, true);
   const endContainer = findStartEndContainer(document.body, mark, false);
   const range = document.createRange();

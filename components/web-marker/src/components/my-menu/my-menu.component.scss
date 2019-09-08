@@ -4,7 +4,8 @@
   color: white;
   height: 20px;
   width: 80px;
-  margin: auto;
+  margin: -10px auto 0px auto;
+  margin-bottom: 100px;
   background: black;
 }
 
@@ -36,13 +37,3 @@
 }
 
 button:focus {outline:0;}
-
-/* Blue */
-.info {
-  border-color: white;
-  color: dodgerblue;
-}
-
-.fa{
-  font-family: FontAwesome !important;
- }

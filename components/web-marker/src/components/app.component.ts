@@ -38,7 +38,6 @@ export class WebMarker extends LitElement {
   listenToShowMarker() {
 
     document.addEventListener('selectionchange', (e: Event) => {
-      console.log(e);
       const selectionText = window.getSelection().toString();
       if (!selectionText.length) this.show = false;
     });
@@ -66,7 +65,6 @@ export class WebMarker extends LitElement {
    */
   setPositionOfMarkerForClick(e: MouseEvent) {
     const rangeBounds = window.getSelection().getRangeAt(0).getBoundingClientRect();
-    console.log(e);
     this.style.position = 'fixed';
     this.style.left = rangeBounds.left + (rangeBounds.width / 2) - (this.menuWidth / 2) + 'px';
     this.style.top = rangeBounds.top + 'px';

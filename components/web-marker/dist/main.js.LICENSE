@@ -1197,10 +1197,6 @@
 
 // CONCATENATED MODULE: ./src/helper/markerHelper.ts
 
-// let container = findSelectionNode(mark);
-
-// container ? container = container : container = document.body;
-
 // Unwraps the mark element
 
 // move all children out of the element
