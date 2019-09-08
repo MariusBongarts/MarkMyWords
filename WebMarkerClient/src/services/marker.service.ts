@@ -8,7 +8,7 @@ export class MarkerService {
   constructor() {
     //this.httpClient = new HttpClient({ baseURL: 'http://ec2-3-130-73-179.us-east-2.compute.amazonaws.com:3000' });
     // this.httpClient = new HttpClient({ baseURL: 'http://localhost:3000' });
-    this.httpClient = new HttpClient({ baseURL: 'https://marius96.uber.space/marks' });
+    this.httpClient = new HttpClient({ baseURL: 'https://marius96.uber.space' });
     // Backup Gateway
     // this.httpClient = new HttpClient({ baseURL: ' http://10.42.30.122:8080/finance/' });
   }
