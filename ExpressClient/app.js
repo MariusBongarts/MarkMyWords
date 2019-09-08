@@ -10,16 +10,16 @@ var http = require("http"),
     PORT = process.env.PORT || 8080,
     appDir = pathUtils.resolve(__dirname, "public");
 
-app.use(bodyParser.json({
-    type: ['json', 'application/csp-report']
-}))
+// app.use(bodyParser.json({
+//     type: ['json', 'application/csp-report']
+// }))
 
 // Set HTTP-Header
 app.use(function (req, res, next) {
-    res.set('X-Frame-Options', 'DENY');
-    res.set('Referrer-Policy', 'no-referrer');
-    res.set('Cross-Origin-Resource-Policy', 'same-origin');
-    res.set('Set-Cookie', 'SID=xyz; Path=/myapp; Secure; HttpOnly; SameSite=Strict')
+    // res.set('X-Frame-Options', 'DENY');
+    // res.set('Referrer-Policy', 'no-referrer');
+    // res.set('Cross-Origin-Resource-Policy', 'same-origin');
+    // res.set('Set-Cookie', 'SID=xyz; Path=/myapp; Secure; HttpOnly; SameSite=Strict')
     next();
 });
 
@@ -40,15 +40,15 @@ app.get("*", function (req, res) {
     res.sendFile(pathUtils.resolve(appDir, "index.html"));
 });
 
-app.post('/reports', (req, res) => {
-    if (req.body) {
-        console.log('CSP Violation: ', req.body)
-    } else {
-        console.log('CSP Violation: No data received!')
-    }
+// app.post('/reports', (req, res) => {
+//     if (req.body) {
+//         console.log('CSP Violation: ', req.body)
+//     } else {
+//         console.log('CSP Violation: No data received!')
+//     }
 
-    res.status(204).end()
-})
+//     res.status(204).end()
+// })
 
 http.createServer(app).listen(PORT, function () {
     console.log("Express server listening on port " + PORT);
