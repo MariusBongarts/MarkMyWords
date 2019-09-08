@@ -36,7 +36,6 @@ export class MyMarkerElement extends LitElement {
       const rectLines = this.parentElement.getClientRects() as DOMRectList;
       this.style.left = rectLines.length === 1 ? this.parentElement.offsetLeft + 'px' : this.parentElement.parentElement.offsetLeft + 'px';
       this.style.width = this.parentElement.offsetWidth + 'px';
-      this.style.height = rectLines[0].height + 'px';
       const offsetTop = rectLines.length === 1 ? 0 : (rectLines.length - 1) * rectLines[0].height;
       this.style.transform = `translateY(${-offsetTop}px)`;
       this.classList.add('slideIn');
@@ -108,8 +107,8 @@ export class MyMarkerElement extends LitElement {
   render() {
     return html`
     ${this.show ? html`
-    <div class="markContainer ${this.animation}">
-      <my-menu @deleted=${() => this.emitDeleted()} .left=${this.left} .markId=${this.markId}></my-menu>
+    <div class="markContainer">
+      <my-menu class="${this.animation}" @deleted=${() => this.emitDeleted()} .left=${this.left} .markId=${this.markId}></my-menu>
     </div>
     ` : ''}
  `;

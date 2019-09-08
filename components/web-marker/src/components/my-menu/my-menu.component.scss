@@ -1,33 +1,27 @@
 
 :host {
   color: white;
+  width: 100px;
+  height: 20px;
+  margin: auto;
+  background: black;
 }
 
 .menuContainer {
   color: white;
-  background: black;
-  width: 100px;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .icon {
   fill: #92ffaa;
+  color: white;
   width: 20px;
   height: 20px;
+  margin: auto;
 }
 
-bronco-icon {
-  --size: 18px;
-  --color: white;
-  height: 100%;
-}
-
-bronco-icon.active {
-  --color: #92ffaa;
-}
-
-bronco-icon:hover {
-  --color: #92ffaa;
-}
 
 .btn {
   z-index: 9999;
@@ -36,6 +30,8 @@ bronco-icon:hover {
   background: none;
   cursor: pointer;
 }
+
+button:focus {outline:0;}
 
 /* Blue */
 .info {
