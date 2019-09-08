@@ -2,7 +2,9 @@ import express, { Express } from 'express';
 import * as bodyParser from 'body-parser';
 import startDB from './db';
 import marks from './routes/marks';
-import client from './routes/client';
+import path from 'path';
+
+const appDir = path.resolve(__dirname, "public");
 
 const port = 3000;
 
@@ -22,7 +24,7 @@ function configureApp(app: Express) {
 
   });
   app.use('/marks', marks);
-  app.use('/home', client);
+  app.use('', express.static(appDir));
 }
 
 function originAllowed(req: any) {
