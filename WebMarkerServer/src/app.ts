@@ -2,6 +2,7 @@ import express, { Express } from 'express';
 import * as bodyParser from 'body-parser';
 import startDB from './db';
 import marks from './routes/marks';
+import client from './routes/client';
 
 const port = 3000;
 
@@ -21,6 +22,7 @@ function configureApp(app: Express) {
 
   });
   app.use('/marks', marks);
+  app.use('/home', client);
 }
 
 function originAllowed(req: any) {
