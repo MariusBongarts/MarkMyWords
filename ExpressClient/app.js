@@ -30,8 +30,7 @@ app.use(csp({
         imgSrc: [`'self'`, `http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png`],
         scriptSrc: ["'self'"],
         styleSrc: ["'self'", "'unsafe-inline'", `https://fonts.googleapis.com`]
-    },
-    browserSniff: true
+    }
 }));
 
 
