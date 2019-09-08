@@ -1340,6 +1340,14 @@
      * @memberof MyMarkerElement
      */
 
+// CONCATENATED MODULE: ./src/services/router.ts
+
+// a-Element ermitteln
+
+// nur interne Links
+
+// e. g. 'user/sign-in' (without leading slash)
+
 // EXTERNAL MODULE: ./node_modules/uuid/v4.js
 
 /*#__PURE__*/

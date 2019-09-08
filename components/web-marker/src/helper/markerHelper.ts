@@ -117,7 +117,7 @@ function addStyles() {
   style.innerHTML = `
       mark {
         border-radius: 5px;
-        padding: 2px 2px;
+        padding: 2px 0px;
         background-color: #92ffaa;
       }
 
