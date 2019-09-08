@@ -16,10 +16,10 @@ app.use(bodyParser.json({
 
 // Set HTTP-Header
 app.use(function (req, res, next) {
-    res.set('X-Frame-Options', 'DENY');
-    res.set('Referrer-Policy', 'no-referrer');
-    res.set('Cross-Origin-Resource-Policy', 'same-origin');
-    res.set('Set-Cookie', 'SID=xyz; Path=/myapp; Secure; HttpOnly; SameSite=Strict')
+    // res.set('X-Frame-Options', 'DENY');
+    // res.set('Referrer-Policy', 'no-referrer');
+    // res.set('Cross-Origin-Resource-Policy', 'same-origin');
+    // res.set('Set-Cookie', 'SID=xyz; Path=/myapp; Secure; HttpOnly; SameSite=Strict')
     next();
 });
 
