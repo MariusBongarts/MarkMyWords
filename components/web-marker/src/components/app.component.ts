@@ -21,7 +21,7 @@ export class WebMarker extends LitElement {
    * @memberof WebMarker
    */
   @property()
-  menuWidth = 80;
+  menuWidth = 100;
 
   private markerService = new MarkerService();
 

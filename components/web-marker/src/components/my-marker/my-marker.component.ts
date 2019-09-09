@@ -74,7 +74,7 @@ export class MyMarkerElement extends LitElement {
         }
       }, 300);
     });
-   }
+  }
 
   /**
    *  Cascading event to trigger delete in root component

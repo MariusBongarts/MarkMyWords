@@ -3,7 +3,7 @@
   z-index: 9999 !important;
   color: white;
   height: 20px;
-  width: 80px;
+  width: 100%;
   margin: -10px auto 0px auto;
   margin-bottom: 100px;
   background: black;
@@ -20,19 +20,17 @@
 .icon {
   fill: white;
   color: white;
-  width: 20px;
-  height: 20px;
+  width: 100%;
+  height: 100%;
   margin: auto;
+}
+
+.btn:hover .icon {
+  transform: scale(1.05);
 }
 
 .btn.active .markIcon, .btn:hover .markIcon {
   fill: #92ffaa;
-  transform: scale(1.1);
-}
-
-.btn.href:hover .hrefIcon {
-  transform: rotateZ(360deg);
-  transition-duration: 0.3s;
 }
 
 
