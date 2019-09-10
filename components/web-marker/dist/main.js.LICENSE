@@ -46,8 +46,6 @@
 
 /* 0 */
 
-/* 1 */
-
 /***/
 
 /*
@@ -70,6 +68,8 @@
 // when a module is imported multiple times with different media queries.
 
 // I hope this will never occur (Hey this way we have smaller bundles)
+
+/* 1 */
 
 /* 2 */
 
@@ -143,6 +143,10 @@
 /* 17 */
 
 /* 18 */
+
+/* 19 */
+
+/* 20 */
 
 // EXTERNAL MODULE: ./src/index.scss
 
@@ -1285,7 +1289,8 @@
 // for dynamic changes.
 
 /**
-         * Set width of menu in px to calculate center
+         * Set width of menu in px to calculate center.
+         * Only for making new marks.
          *
          * @memberof WebMarker
          */
@@ -1340,17 +1345,11 @@
      * @memberof MyMarkerElement
      */
 
-// CONCATENATED MODULE: ./src/services/router.ts
-
-// a-Element ermitteln
-
-// nur interne Links
-
-// e. g. 'user/sign-in' (without leading slash)
-
 // EXTERNAL MODULE: ./node_modules/uuid/v4.js
 
 /*#__PURE__*/
+
+// CONCATENATED MODULE: ./src/components/my-menu/my-menu.component.ts
 
 /**
      *  Width is set dynamically because it it necessary to calculcate center in parent element
@@ -1379,3 +1378,9 @@
      *
      * @memberof MyMarkElement
      */
+
+/* tslint:disable: max-line-length */
+
+// CONCATENATED MODULE: ./src/helper/router.ts
+
+// CONCATENATED MODULE: ./src/components/my-tags/my-tags.component.ts

@@ -9,6 +9,9 @@ export class MyMarkerElement extends LitElement {
   listener = [];
 
   @property()
+  editTags = false;
+
+  @property()
   marks!: Mark[];
 
   @property()
@@ -69,7 +72,7 @@ export class MyMarkerElement extends LitElement {
     this.parentElement.addEventListener('mouseleave', () => {
       this.abortHide = false;
       setTimeout(() => {
-        if (!this.abortHide) {
+        if (!this.abortHide && !this.editTags) {
           this.animation = 'slideOut';
         }
       }, 300);
@@ -92,10 +95,17 @@ export class MyMarkerElement extends LitElement {
 
   render() {
     return html`
+    ${this.editTags ? html`
+    <bronco-chip-list .chips=${document.title.split(' ')}></bronco-chip-list>
+    ` : ''}
     ${this.show ? html`
     <div class="markContainer">
-      <my-menu .menuWidth=${this.menuWidth} class="${this.animation}" @deleted=${() => this.emitDeleted()} .markId=${this.markId}></my-menu>
+      <my-menu .menuWidth=${this.menuWidth} class="${this.animation}"
+      @deleted=${() => this.emitDeleted()}
+      @editTags=${() => this.editTags ? this.editTags = false : this.editTags = true}
+      .markId=${this.markId}></my-menu>
     </div>
+
     ` : ''}
  `;
   }

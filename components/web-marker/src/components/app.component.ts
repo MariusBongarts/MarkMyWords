@@ -16,12 +16,13 @@ export class WebMarker extends LitElement {
   show = false;
 
   /**
-   * Set width of menu in px to calculate center
+   * Set width of menu in px to calculate center.
+   * Only for making new marks.
    *
    * @memberof WebMarker
    */
   @property()
-  menuWidth = 100;
+  menuWidth = 80;
 
   private markerService = new MarkerService();
 
@@ -89,7 +90,8 @@ export class WebMarker extends LitElement {
 
   render() {
     return html`
-  <my-marker .show=${this.show} .menuWidth=${this.menuWidth}></my-marker>`;
+  <my-marker .show=${this.show} .menuWidth=${this.menuWidth}></my-marker>
+  `;
   }
 
 }
