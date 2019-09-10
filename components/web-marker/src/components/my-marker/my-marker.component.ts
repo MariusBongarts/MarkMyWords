@@ -93,10 +93,15 @@ export class MyMarkerElement extends LitElement {
     );
   }
 
+  getTagsForMark() {
+    const defaultTags = document.title.split(' ');
+    return defaultTags.slice(0, 2);
+  }
+
   render() {
     return html`
     ${this.editTags ? html`
-    <bronco-chip-list .chips=${document.title.split(' ')}></bronco-chip-list>
+    <bronco-chip-list .chips=${this.getTagsForMark()}></bronco-chip-list>
     ` : ''}
     ${this.show ? html`
     <div class="markContainer">

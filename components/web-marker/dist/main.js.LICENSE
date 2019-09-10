@@ -148,6 +148,10 @@
 
 /* 20 */
 
+/*! For license information please see main.js.LICENSE */
+
+/* 21 */
+
 // EXTERNAL MODULE: ./src/index.scss
 
 // CONCATENATED MODULE: ./src/services/http-client.ts
@@ -1384,3 +1388,7 @@
 // CONCATENATED MODULE: ./src/helper/router.ts
 
 // CONCATENATED MODULE: ./src/components/my-tags/my-tags.component.ts
+
+// EXTERNAL MODULE: ./node_modules/@marius/broncochiplist/dist/main.js
+
+// CONCATENATED MODULE: ./src/index.ts
