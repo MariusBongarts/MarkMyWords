@@ -100,14 +100,17 @@ export class MyMarkerElement extends LitElement {
 
   render() {
     return html`
-    ${this.editTags ? html`
-    <bronco-chip-list .chips=${this.getTagsForMark()}></bronco-chip-list>
-    ` : ''}
     ${this.show ? html`
+    ${this.editTags ? html`
+    <div class="chip-container">
+      <bronco-chip-list .chips=${this.getTagsForMark()} @blur=${() => this.editTags = false}></bronco-chip-list>
+    </div>
+    ` : ''}
     <div class="markContainer">
       <my-menu .menuWidth=${this.menuWidth} class="${this.animation}"
       @deleted=${() => this.emitDeleted()}
       @editTags=${() => this.editTags ? this.editTags = false : this.editTags = true}
+      .editTags=${this.editTags}
       .markId=${this.markId}></my-menu>
     </div>
 

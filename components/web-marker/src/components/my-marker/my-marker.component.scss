@@ -48,8 +48,15 @@
   0% { -webkit-transform: translate(0%, -100%); }
 }
 
-bronco-chip-list {
+.chip-container {
   position: absolute;
   width: 100%;
-  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+bronco-chip-list {
+  position: absolute;
+  height: 30px;
+  width: 300px;
 }

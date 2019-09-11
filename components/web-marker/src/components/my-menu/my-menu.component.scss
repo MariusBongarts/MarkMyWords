@@ -23,12 +23,16 @@
   margin: auto;
 }
 
-.btn:hover .icon {
+.btn:hover .icon, .btn:focus .icon {
   transform: scale(1.05);
 }
 
 .btn.active .markIcon, .btn:hover .markIcon {
   fill: #92ffaa;
+}
+
+.btn.active .tagIcon, .btn:hover .tagIcon {
+  color: rgb(75, 153, 255);
 }
 
 
