@@ -90,7 +90,7 @@ export class WebMarker extends LitElement {
 
   render() {
     return html`
-  <my-marker .show=${this.show} .menuWidth=${this.menuWidth}></my-marker>
+  <my-marker .marks=${this.marks ? this.marks : []} .show=${this.show} .menuWidth=${this.menuWidth}></my-marker>
   `;
   }
 

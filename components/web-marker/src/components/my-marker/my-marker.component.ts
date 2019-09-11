@@ -1,5 +1,6 @@
+import { MarkerService } from './../../services/marker.service';
 import { Mark } from './../../models/mark';
-import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
+import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 const componentCSS = require('./my-marker.component.scss');
 
 @customElement('my-marker')
@@ -12,13 +13,13 @@ export class MyMarkerElement extends LitElement {
   editTags = false;
 
   @property()
-  marks!: Mark[];
-
-  @property()
   menuWidth!: number;
 
   @property()
   markId!: string;
+
+  @property()
+  tags = ['Test'];
 
   @property()
   show = false;
@@ -93,9 +94,9 @@ export class MyMarkerElement extends LitElement {
     );
   }
 
-  getTagsForMark() {
-    const defaultTags = document.title.split(' ');
-    return defaultTags.slice(0, 2);
+  updateTags() {
+    this.editTags = false;
+    console.log('TODO: Update in Server.')
   }
 
   render() {
@@ -103,13 +104,19 @@ export class MyMarkerElement extends LitElement {
     ${this.show ? html`
     ${this.editTags ? html`
     <div class="chip-container">
-      <bronco-chip-list .chips=${this.getTagsForMark()} @blur=${() => this.editTags = false}></bronco-chip-list>
+      <bronco-chip-list
+      @tagsChanged=${(e: CustomEvent) => this.tags = e.detail}
+      @submitTriggered=${() => this.updateTags()}
+      @blur=${() => this.editTags = false}
+      .focused=${this.editTags}
+      .chips=${this.tags}
+      ></bronco-chip-list>
     </div>
     ` : ''}
     <div class="markContainer">
       <my-menu .menuWidth=${this.menuWidth} class="${this.animation}"
       @deleted=${() => this.emitDeleted()}
-      @editTags=${() => this.editTags ? this.editTags = false : this.editTags = true}
+      @editTags=${() => this.editTags ? this.updateTags() : this.editTags = true}
       .editTags=${this.editTags}
       .markId=${this.markId}></my-menu>
     </div>

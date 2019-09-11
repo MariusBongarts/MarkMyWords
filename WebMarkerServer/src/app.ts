@@ -17,7 +17,7 @@ function configureApp(app: Express) {
     if (true) {
       res.set('Access-Control-Allow-Origin', '*');
       res.set('Access-Control-Allow-Headers', 'content-type');
-      res.set('Access-Control-Allow-Methods', 'DELETE');
+      res.set('Access-Control-Allow-Methods', '*');
     }
     // res.set('Set-Cookie', 'SID=xyz; Path=/myapp; Secure; HttpOnly; SameSite=Strict')
     next();

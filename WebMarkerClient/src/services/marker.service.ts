@@ -25,6 +25,13 @@ export class MarkerService {
     }
   }
 
+  async getMarkById(id: string): Promise<Mark> {
+      const response = await this.httpClient.get('/marks/' + id);
+      console.log(response);
+      const mark = (await response.json() as Mark);
+      return mark;
+  }
+
   async createMark(mark: Mark): Promise<Mark | undefined> {
     try {
       const response = await this.httpClient.post('/marks', mark);
@@ -34,6 +41,13 @@ export class MarkerService {
       return undefined;
     }
   }
+
+  async updateMark(mark: Mark): Promise<Mark> {
+    const response = await this.httpClient.put('/marks', mark);
+    console.log(response);
+    const newMark = (await response.json() as Mark);
+    return newMark;
+}
 
   async deleteMark(mark: Mark): Promise<void> {
     try {

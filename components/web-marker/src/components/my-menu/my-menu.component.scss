@@ -23,8 +23,20 @@
   margin: auto;
 }
 
+.btn.user {
+  border-left: 1px solid rgba(187, 187, 187, 0.459);
+}
+
+.icon.user-icon {
+  transform: scale(1.1);
+}
+
 .btn:hover .icon, .btn:focus .icon {
   transform: scale(1.05);
+}
+
+.btn:hover .icon.user-icon {
+  transform: scale(1.15);
 }
 
 .btn.active .markIcon, .btn:hover .markIcon {

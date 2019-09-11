@@ -31,8 +31,7 @@ export class HttpClient {
       headers: {
         'Content-Type': 'application/json; charset=utf-8'
       },
-      method,
-      credentials: 'include'
+      method
     };
 
     if (body) {

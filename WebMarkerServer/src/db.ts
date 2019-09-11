@@ -17,7 +17,7 @@ export default async function startDB(app: Express) {
   //   authSource: 'myDB'
   // };
   try {
-    const client = await MongoClient.connect(url);
+    const client = await MongoClient.connect(url, { useNewUrlParser: true });
     const db = client.db('webMarker');
     app.locals.marksDAO = new MongoGenericDAO<Mark>(db, 'marks');
     console.log("Successfully connected to MongoDB!")

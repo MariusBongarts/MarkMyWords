@@ -26,8 +26,11 @@ export class MongoGenericDAO<T extends Entity> implements GenericDAO<T> {
   }
 
   public async update(entity: Partial<T>) {
+    console.log(entity);
     const result = await this.db.collection(this.collection).updateOne(
-      { id: entity.id }, { $set: entity });
+      { _id: Object(entity._id) },
+      { $set: entity });
+    console.log(entity);
     return !!result.modifiedCount;
   }
 

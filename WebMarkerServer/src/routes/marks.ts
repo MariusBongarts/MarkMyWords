@@ -13,6 +13,15 @@ router.get('/', async (req, res) => {
   res.send(marks);
 });
 
+router.get('/:id', async (req, res) => {
+  console.log(`Get from ${req.url}`);
+  const marksDAO: MongoGenericDAO<Mark> = req.app.locals.marksDAO;
+  const id = req.params.id
+  const marks = await marksDAO.findOne({id: id});
+
+  res.send(marks);
+});
+
 router.post('/', async (req, res) => {
   console.log(`Post from ${req.url}`);
   const marksDAO: MongoGenericDAO<Mark> = req.app.locals.marksDAO;
@@ -28,6 +37,15 @@ router.delete('/', async (req, res) => {
   await marksDAO.delete(markId);
   res.send(200);
 });
+
+router.put('/', async (req, res) => {
+  const marksDAO: MongoGenericDAO<Mark> = req.app.locals.marksDAO;
+  const mark = req.body as Mark;
+  console.log(`Updating ${mark.id}`);
+  await marksDAO.update({...mark});
+  res.send(200);
+});
+
 
 
 export default router;
