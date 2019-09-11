@@ -107,7 +107,7 @@ export class MyMarkerElement extends LitElement {
       <bronco-chip-list
       @tagsChanged=${(e: CustomEvent) => this.tags = e.detail}
       @submitTriggered=${() => this.updateTags()}
-      @blur=${() => this.editTags = false}
+      @blur=${(e) => console.log(e)}
       .focused=${this.editTags}
       .chips=${this.tags}
       ></bronco-chip-list>
