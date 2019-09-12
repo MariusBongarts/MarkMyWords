@@ -34,9 +34,7 @@ export class MarkerService {
   }
 
   async updateMark(mark: Mark): Promise<void> {
-    const response = await this.httpClient.put('/marks', mark);
-    const newMark = (await response.json() as Mark);
-    console.log(response);
+    await this.httpClient.put('/marks', mark);
   }
 
   async getMarkById(id: string): Promise<Mark> {

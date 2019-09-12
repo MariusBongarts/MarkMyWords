@@ -57,8 +57,7 @@ export class MyMarkElement extends LitElement {
     const mark = this.createMark();
     highlightText(null, mark);
     window.getSelection().empty();
-    const test = await this.markerService.createMark(mark);
-    console.log(test);
+    await this.markerService.createMark(mark);
   }
 
   /**

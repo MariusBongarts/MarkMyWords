@@ -1,213 +1,423 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-  <meta charset="utf-8">
-  <title>bronco-button</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+<meta charset="utf-8">
+<meta name="Content-Language" content="german">
+<meta name="revisit-after" content="3 days">
+<meta name="distribution" content="global">
+<meta name="rating" content="general">
+<meta name="Author" content="Wirtschaftslexikon24.com">
+<meta name="copyright" content="Wirtschaftslexikon24">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="./fonts/wirtschaftslexikon.css" type="text/css"><title>Wirtschaftslexikon</title>
+
+
+<script src="./suche/include/ajax/prototype.js" type="text/javascript"></script>
+<script src="./suche/include/ajax/scriptaculous.js" type="text/javascript"></script>
+<script type="text/javascript">
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_changeProp(objId,x,theProp,theValue) { //v9.0
+  var obj = null; with (document){ if (getElementById)
+  obj = getElementById(objId); }
+  if (obj){
+    if (theValue == true || theValue == false)
+      eval("obj.style."+theProp+"="+theValue);
+    else eval("obj.style."+theProp+"='"+theValue+"'");
+  }
+}
+
+function formsend(x)
+  	{
+	  document.getElementById(x).submit();
+	}
+
+function golink(x)
+  	{
+	  location.href=(x);
+	}
+  </script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+		<script>
+		window.addEventListener("load", function(){
+		window.cookieconsent.initialise({
+		  "palette": {
+		    "popup": {
+		      "background": "#000"
+		    },
+		    "button": {
+		      "background": "#ff6634"
+		    }
+		  },
+		  "theme": "classic"
+		})});
+		</script>
 </head>
 
-<body>
-    <web-marker></web-marker>
+<body leftmargin="0" topmargin="0" onload="MM_preloadImages('./img/w24-03_05_hover.jpg','./img/w24-03_08_hover.jpg','./img/w24-03_09_hover.jpg','./img/w24-03_10_hover.jpg','./img/w24-03_07_hover.jpg','./img/w24-03_06_hover.jpg','./img/w24-03_04_hover.jpg','./img/wirtschaftslexikon-suche-on.jpg')" bgcolor="#ffffff" marginheight="0" marginwidth="0">
+<web-marker></web-marker>
+<div id="auto_suggest" class="suggest">
+                </div>
+                <table id="Tabelle_01" border="0" cellpadding="0" cellspacing="0" height="1189" width="1008">
+<tbody><tr><td colspan="1" background="./img/head_schwarz_wirtschaftslexikon.jpg">&nbsp;</td>
+<td colspan="2" background="./img/head_schwarz_wirtschaftslexikon.jpg"><table border="0"><tbody><tr><td class="headschrift"><a href="http://www.wirtschaftslexikon24.com/empfohlen-wirtschaftslexikon.htm">Empfehlungen</a></td> <td><a href="http://www.wirtschaftslexikon24.com/suche/search.php"><img src="./img/wirtschaftslexikon-suche3.jpg" alt="" name="suchknopf" id="suchknopf" onmouseover="MM_swapImage('suchknopf','','./img/wirtschaftslexikon-suche-on3.jpg',1)" onmouseout="MM_swapImgRestore()" height="62" width="102"></a></td></tr></tbody></table> </td>
+
+<td colspan="20" class="abcleiste" background="./img/head_schwarz_wirtschaftslexikon.jpg">
+	<a href="http://www.wirtschaftslexikon24.com/i/index-a.htm">A</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-b.htm">B</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-c.htm">C</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-d.htm">D</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-e.htm">E</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-f.htm">F</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-g.htm">G</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-h.htm">H</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-i.htm">I</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-j.htm">J</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-k.htm">K</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-l.htm">L</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-m.htm">M</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-n.htm">N</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-o.htm">O</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-p.htm">P</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-q.htm">Q</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-r.htm">R</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-s.htm">S</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-t.htm">T</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-u.htm">U</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-v.htm">V</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-w.htm">W</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-x.htm">X</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-y.htm">Y</a> &nbsp;
+	<a href="http://www.wirtschaftslexikon24.com/i/index-z.htm">Z</a> &nbsp;
+
+</td>
+<td background="./img/head_schwarz_wirtschaftslexikon.jpg"> <img src="./img/wirtschaftslexikon.gif" alt="" height="62" width="1"></td>
+  </tr>
+	<tr>
+		<td colspan="4"><a href="http://www.wirtschaftslexikon24.com/"><img src="./img/w24-03_11.jpg" alt="" height="85" width="404"></a></td>
+		<td colspan="2" background="./img/wirtschaftslexikon.gif">&nbsp;</td>
+	  <td class="titlemenu" id="title-home" onmouseover="MM_changeProp('title-home','','backgroundColor','444444','TD');MM_changeProp('menuhome','','color','ffffff','TD')" onmouseout="MM_changeProp('title-home','','backgroundColor','ffffff','TD');MM_changeProp('menuhome','','color','9A9A9A','TD')"><a href="http://www.wirtschaftslexikon24.com/" class="titlelink" id="menuhome">Home</a></td>
+        <td colspan="3" class="titlemenu" id="title-top10" onmouseover="MM_changeProp('title-top10','','backgroundColor','444444','TD');MM_changeProp('menutop10','','color','ffffff','TD')" onmouseout="MM_changeProp('title-top10','','backgroundColor','ffffff','TD');MM_changeProp('menutop10','','color','9A9A9A','TD')"><a href="http://www.wirtschaftslexikon24.com/top-wirtschaftslexikon.htm" class="titlelink" id="menutop10">Top 10</a></td>
+		<td colspan="3" class="titlemenuorange" id="title-fachbereiche" onmouseover="MM_changeProp('title-fachbereiche','','backgroundColor','444444','TD');MM_changeProp('menufachbereiche','','color','ffffff','TD')" onmouseout="MM_changeProp('title-fachbereiche','','backgroundColor','ff6634','TD');MM_changeProp('menufachbereiche','','color','ffffff','TD')"><a href="http://www.wirtschaftslexikon24.com/fachbereiche-wirtschaftslexikon.htm" class="titlelinkorange" id="menufachbereiche">Fachbereiche</a></td>
+		<td colspan="4" class="titlemenu" id="title-news" onmouseover="MM_changeProp('title-news','','backgroundColor','444444','TD');MM_changeProp('menunews','','color','ffffff','TD')" onmouseout="MM_changeProp('title-news','','backgroundColor','ffffff','TD');MM_changeProp('menunews','','color','9A9A9A','TD')"><a href="http://www.wirtschaftslexikon24.com/news-wirtschaftslexikon.htm" class="titlelink" id="menunews">News</a></td>
+		<td colspan="7" class="titlemenu" id="title-hilfe" onmouseover="MM_changeProp('title-hilfe','','backgroundColor','444444','TD');MM_changeProp('menuhilfe','','color','ffffff','TD')" onmouseout="MM_changeProp('title-hilfe','','backgroundColor','ffffff','TD');MM_changeProp('menuhilfe','','color','9A9A9A','TD')"><a href="http://www.wirtschaftslexikon24.com/hilfe-wirtschaftslexikon.htm" class="titlelink" id="menuhilfe">Hilfe &amp; FAQ</a></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="85" width="1"></td>
+	</tr>
+	<tr>
+		<td colspan="24">
+			<img src="./img/w24-03_18.jpg" alt="" height="26" width="1008"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="26" width="1"></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="./img/w24-03_19.jpg" alt="" height="20" width="24"></td>
+		<td colspan="20" background="./img/orange_dot.jpg"><br>
+</td>
+		<td colspan="2" background="./img/orange_dot.jpg"><br>
+</td>
+		<td>
+			<img src="./img/w24-03_22.jpg" alt="" height="20" width="24"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="20" width="1"></td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<img src="./img/w24-03_23.jpg" alt="" height="57" width="24"></td>
+		<td colspan="7" class="breadcrumbs" background="./img/orange_dot.jpg">&nbsp;&nbsp;&nbsp;&nbsp;<b>HOME</b> / <b><a href="http://www.wirtschaftslexikon24.com/">WIRTSCHAFTSLEXIKON</a></b> / Startseite</td>
+		<form id="mainform" name="mainform" method="get" action="http://www.wirtschaftslexikon24.com/suche/search.php"></form>
+        <td colspan="11">
+		<input name="search" id="search" value="1" type="hidden">
+        <input autocomplete="off" name="query" class="suchfeld" id="query" onfocus="MM_changeProp('query','','value',value='','INPUT/TEXT')" value="Geben Sie hier den gesuchten Fachbegriff ein" type="text">
+        </td>
+                <script type="text/javascript">
+                  new Ajax.Autocompleter("query", "auto_suggest", "./suche/include/suggest.php", { parameters: "media_only=&amp;type=and&amp;catid=&amp;category=-1&amp;db=0&amp;prefix=0" } );
+                </script>
+		<td colspan="2">
+			<img src="./img/w24-03_26.jpg" alt="" onclick="formsend('mainform')" class="finger" height="29" width="34"></td>
+
+        <td colspan="2" rowspan="2" background="./img/orange_dot.jpg"><br>
+</td>
+		<td rowspan="2">
+			<img src="./img/w24-03_28.jpg" alt="" height="57" width="24"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="29" width="1"></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="./img/w24-03_29.jpg" alt="" height="28" width="39"></td>
+		<td colspan="19" background="./img/orange_dot.jpg">&nbsp;</td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="28" width="1"></td>
+	</tr>
+	<tr>
+			<td colspan="1"><br>
+</td>
+            <td colspan="22">
+
+             <!--- Beginning Main Content --->
+
+             	<table>
+		<tbody><tr>
+             	<td class="haupttext" valign="top" width="66%">
+             	<h2 style="padding-top: 20px;">Willkommen auf Wirtschaftslexikon 24</h2>
+             	<p>Eine aktualisierte Version unseres Wirtschaftslexikons wurde soeben online gestellt.</p>
+                <p><b>Tipps zum Schnelleinstieg:</b>
+Um sofort loslegen zu können, schmökern Sie doch einfach ein wenig in
+unserem Wirtschaftslexikon herum oder gehen Sie ganz gezielt zu einem
+von Ihnen gesuchten Fachbegriff. Ganz am oberen Rand der Seite befindet
+sich die Liste der Anfangsbuchstaben in alphabetischer Reihenfolge.
+Klicken Sie doch einfach auf einen dieser Buchstaben und Sie erhalten
+sofort eine Liste aller Fachbegriffe aus dem Wirtschaftsleben die
+diesen Buchstaben als Anfangsbuchstaben haben. Mit etwas Erfahrung
+werden Sie merken, dass in diesen alphabetischen Listen längst nicht
+alle Fachbegriffe aufgelistet sind, sondern nur die allerwichtigsten.
+Eine weitaus vielfältigere Möglichkeit mit unserem Lexikon zu arbeiten
+ist es, im Suchfeld rechts oben einfach die ersten Buchstaben eines von
+Ihnen gesuchten Begriffes einzutippen. So können Sie dann bereits aus
+den angezeigten Vorschlägen einen Begriff auswählen. Durch die Suche
+mit der rechts oben angezeigten Suchmaske können Sie ganz leicht unser
+komplettes Wirtschaftslexikon nach Belieben durchstöbern.</p>
+
+<p>Ein wichtiger Grundsatz unseres Wirtschaftslexikon ist es, sämtliche
+Inhalte unseren Besuchern kostenlos zur Verfügung zu stellen. Die
+angezeigte Werbung verfolgt keinesfalls den Zweck einer
+Gewinnerzielung, sondern dient vielmehr der Deckung elementar
+anfallender Kosten durch den Onlinebetrieb unseres Wirtschaftslexikons.</p>
+
+<p>Zuletzt erfreute sich unser Wirtschaftslexikon immer größerer
+Beliebtheit. Dies wurde besonders nach der letzten Überarbeitung und
+Aktualisierung spürbar.</p><br><br>
+             	<hr>
+             	<p>.</p>
+
+             	</td>
+
+             	<td width="4%">&nbsp;</td>
+
+             	<td class="haupttext" valign="top" width="30%">
+             	<br><br><br>
+             			<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+				<!-- w24com_unten -->
+				<ins class="adsbygoogle" style="width: 336px; height: 280px;" data-ad-client="ca-pub-9910049981367182" data-ad-slot="4942520401"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+
+		<br>
+		<b>Zuletzt überarbeiteter Fachbegriff:</b>
+             	<p>11.05.2017<br><u>Geldmarktfonds</u> -  <a href="./d/geldmarkt/geldmarkt.htm">Geldmarkt</a>-Fonds, <a href="./d/investmentfonds/investmentfonds.htm">Investmentfonds</a>, die kurzfristige <a href="./d/geldanlage/geldanlage.htm">Geldanlage</a>n auf dem Geld- und <a href="./d/kapitalmarkt/kapitalmarkt.htm">Kapitalmarkt</a> (im letzteren insbesondere in Papiere mit kurzen <a href="./d/restlaufzeit/restlaufzeit.htm">Restlaufzeit</a>en)
+sowie entsprechende Derivative betreiben. Sie wurden von
+US-amerikanischen Broker-Häusern als innovatives Anlagemedium
+entwickelt, bevor <a href="./d/kreditinstitute/kreditinstitute.htm">Kreditinstitute</a> durch die Deregulation berechtigt waren, entsprechende Anlagemöglichkeiten zu bieten.
+
+<a href="./d/geldmarktfonds/geldmarktfonds.htm">Geldmarktfonds</a> in den USA, die in kurzfristige <a href="./d/geldmarkttitel/geldmarkttitel.htm">Geldmarkttitel</a> &gt;&gt;&gt; <a href="http://www.wirtschaftslexikon24.com/d/money-market-funds/money-market-funds.htm">Money Market Funds</a></p>
+             	<br><br>
+             	</td>
+             	</tr><tr>
+		</tr></tbody></table>
 
 
-    <div id="mw-head-base" class="noprint"></div>
-    <div id="content" class="mw-body" role="main">
-      <a id="top"></a>
-      <div id="siteNotice" class="mw-body-content"><!-- CentralNotice --></div>
-      <div class="mw-indicators mw-body-content">
-    </div>
-
-      <h1 id="firstHeading" class="firstHeading" lang="de">Speicherkapazität</h1>
-
-      <div id="bodyContent" class="mw-body-content">
-        <div id="siteSub" class="noprint">aus Wikipedia, der freien Enzyklop&auml;die</div>
-        <div id="contentSub"></div>
 
 
+             <!--- End Main Content --->
+    	     </td>
+   			<td colspan="1"><br>
+</td>
 
-        <div id="jump-to-nav"></div>
-        <a class="mw-jump-link" href="#mw-head">Zur Navigation springen</a>
-        <a class="mw-jump-link" href="#p-search">Zur Suche springen</a>
-        <div id="mw-content-text" lang="de" dir="ltr" class="mw-content-ltr"><div class="mw-parser-output"><table id="Vorlage_Dieser_Artikel" cellpadding="0" cellspacing="8" class="hintergrundfarbe1 rahmenfarbe1 noprint navigation-not-searchable" style="border-bottom-style: solid; clear: right; font-size: 95%; margin-bottom: 1em; width: 100%;" role="navigation">
+       	<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="447" width="1"></td>
+	</tr>
+	<tr>
+		<td rowspan="4" background="./img/head_schwarz_wirtschaftslexikon.jpg"><br>
+</td>
+		<td colspan="7" rowspan="3" class="newsletter">
+        <p style="font-size: 22px; font-family: Arial,Helvetica,sans-serif;"><b>Schreiben Sie sich in unseren kostenlosen Newsletter ein</b></p>
+	    <p style="font-size: 14px;"><i class="foundicon-checkmark"></i>&nbsp;&nbsp;Bleiben
+Sie auf dem Laufenden über Neuigkeiten und Aktualisierungen bei unserem
+Wirtschaftslexikon, indem Sie unseren monatlichen Newsletter empfangen.
+Garantiert keine Werbung. Jederzeit mit einem Klick abbestellbar.</p></td>
+		<td colspan="14" background="./img/orange_dot.jpg">&nbsp;</td>
+		<td background="./img/orange_dot.jpg">&nbsp;</td>
+		<td>
+			<img src="./img/w24-03_36.jpg" alt="" height="35" width="24"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="35" width="1"></td>
+	</tr>
+	<tr>
+        <form id="newsl" name="newsl" method="post" action="http://www.wirtschaftslexikon24.com/newsletter-subscribe.php"></form>
+		<td colspan="8">
+        <input name="newsletteremail" class="suchfeld_newsl" id="newsletteremail" onfocus="MM_changeProp('newsletteremail','','value',value='','INPUT/TEXT')" value="Geben Sie Ihre Email ein." type="text">
+    	</td>
 
-    <tbody><tr>
-    <td class="noviewer" style="width: 26px; vertical-align: middle" id="bksicon" role="presentation"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Disambig-dark.svg/25px-Disambig-dark.svg.png" decoding="async" width="25" height="19" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Disambig-dark.svg/38px-Disambig-dark.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Disambig-dark.svg/50px-Disambig-dark.svg.png 2x" data-file-width="444" data-file-height="340" />
-    </td>
-    <td style="vertical-align: middle">Dieser Artikel behandelt nur die Kapazität von elektronischen Datenspeichern. Für andere Arten von Speichern, siehe <a href="/wiki/Speicher" title="Speicher">Speicher</a>.
-    </td></tr></tbody></table>
-    <p>Die <b>Speicherkapazität</b> bezeichnet die maximale <a href="/wiki/Datenmenge" title="Datenmenge">Datenmenge</a>, die in einer <a href="/wiki/Datenstruktur" title="Datenstruktur">Datenstruktur</a> oder in einem <a href="/wiki/Datenspeicher" title="Datenspeicher">Datenspeicher</a> gespeichert werden kann.
-    </p><p>Der Begriff <i>Speicherplatz</i> wird häufig synonym zu <i>Speicherkapazität</i> verwendet, kann jedoch auch für den Speicherbedarf (in <a href="/wiki/Byte" title="Byte">Byte</a>) eines Datenobjektes stehen (wie bei <a href="/wiki/Datei" title="Datei">Dateien</a> oder <a href="/wiki/Verzeichnisstruktur" title="Verzeichnisstruktur">Verzeichnissen</a>). Neben diesen Bedeutungen wird <i>Speicherplatz</i> auch manchmal im Sinne von <a href="/wiki/Speicherelement" title="Speicherelement">Speicherelement</a> verwendet.<sup id="cite_ref-1" class="reference"><a href="#cite_note-1">&#91;1&#93;</a></sup>
-    </p>
-    <h2><span id="Ma.C3.9Fangaben"></span><span class="mw-headline" id="Maßangaben">Maßangaben</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Speicherkapazit%C3%A4t&amp;veaction=edit&amp;section=1" class="mw-editsection-visualeditor" title="Abschnitt bearbeiten: Maßangaben">Bearbeiten</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Speicherkapazit%C3%A4t&amp;action=edit&amp;section=1" title="Abschnitt bearbeiten: Maßangaben">Quelltext bearbeiten</a><span class="mw-editsection-bracket">]</span></span></h2>
-    <p>Da die Speicherkapazität eine spezielle Datenmenge darstellt, wird sie in den gleichen Einheiten wie diese gemessen, also in <a href="/wiki/Bit" title="Bit">Bit</a>, <a href="/wiki/Byte" title="Byte">Byte</a> und deren Vielfachen, welche mit Hilfe von <a href="/wiki/Vors%C3%A4tze_f%C3%BCr_Ma%C3%9Feinheiten" title="Vorsätze für Maßeinheiten">Vorsätzen für Maßeinheiten</a> (kurz <i>Präfixe</i>) gebildet werden können. Häufig wird die Speicherkapazität nicht in dezimalen, sondern in binären Vielfachen durch <a href="/wiki/Bin%C3%A4rpr%C3%A4fix" title="Binärpräfix">Binärpräfixe</a> angegeben.
-    </p>
-    <h2><span class="mw-headline" id="Siehe_auch">Siehe auch</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Speicherkapazit%C3%A4t&amp;veaction=edit&amp;section=2" class="mw-editsection-visualeditor" title="Abschnitt bearbeiten: Siehe auch">Bearbeiten</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Speicherkapazit%C3%A4t&amp;action=edit&amp;section=2" title="Abschnitt bearbeiten: Siehe auch">Quelltext bearbeiten</a><span class="mw-editsection-bracket">]</span></span></h2>
-    <ul><li><a href="/wiki/Datenkompression" title="Datenkompression">Datenkompression</a> zur Ausnutzung von <a href="/wiki/Redundanz_(Informationstheorie)" title="Redundanz (Informationstheorie)">Redundanz</a></li>
-    <li><a href="/wiki/Vergleich_optischer_Datentr%C3%A4ger" title="Vergleich optischer Datenträger">Vergleich optischer Datenträger</a>: CD, DVD, HD DVD und Blu-ray Disc</li></ul>
-    <h2><span class="mw-headline" id="Einzelnachweise">Einzelnachweise</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Speicherkapazit%C3%A4t&amp;veaction=edit&amp;section=3" class="mw-editsection-visualeditor" title="Abschnitt bearbeiten: Einzelnachweise">Bearbeiten</a><span class="mw-editsection-divider"> | </span><a href="/w/index.php?title=Speicherkapazit%C3%A4t&amp;action=edit&amp;section=3" title="Abschnitt bearbeiten: Einzelnachweise">Quelltext bearbeiten</a><span class="mw-editsection-bracket">]</span></span></h2>
-    <ol class="references">
-    <li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">Duden, <i>Deutsches Universalwörterbuch</i>, 6. Aufl. (2006), <i>Speicherplatz</i></span>
-    </li>
-    </ol>
-    <div id="normdaten" class="catlinks normdaten-typ-s">Normdaten&#160;(Sachbegriff): <a href="/wiki/Gemeinsame_Normdatei" title="Gemeinsame Normdatei">GND</a>: <span class="plainlinks-print"><a rel="nofollow" class="external text" href="https://d-nb.info/gnd/4529652-2">4529652-2</a></span> <span class="metadata noprint">(<a rel="nofollow" class="external text" href="http://swb.bsz-bw.de/DB=2.104/SET=1/TTL=1/CMD?retrace=0&amp;trm_old=&amp;ACT=SRCHA&amp;IKT=2999&amp;SRT=RLV&amp;TRM=4529652-2">OGND</a>, <a rel="nofollow" class="external text" href="https://beacon.findbuch.de/seemore/gnd-aks?format=sources&amp;id=4529652-2">AKS</a>)</span>       <span class="metadata"></span></div>
-    <!--
-    NewPP limit report
-    Parsed by mw1265
-    Cached time: 20190816020459
-    Cache expiry: 2592000
-    Dynamic content: false
-    Complications: []
-    CPU time usage: 0.044 seconds
-    Real time usage: 0.064 seconds
-    Preprocessor visited node count: 183/1000000
-    Preprocessor generated node count: 0/1500000
-    Post‐expand include size: 1821/2097152 bytes
-    Template argument size: 242/2097152 bytes
-    Highest expansion depth: 6/40
-    Expensive parser function count: 0/500
-    Unstrip recursion depth: 0/20
-    Unstrip post‐expand size: 327/5000000 bytes
-    Number of Wikibase entities loaded: 1/400
-    Lua time usage: 0.007/10.000 seconds
-    Lua memory usage: 658 KB/50 MB
-    -->
-    <!--
-    Transclusion expansion time report (%,ms,calls,template)
-    100.00%   49.849      1 -total
-     66.22%   33.012      1 Vorlage:Normdaten
-     52.07%   25.954      1 Vorlage:Wikidata-Registrierung
-     13.09%    6.527      1 Vorlage:Dieser_Artikel
-      6.39%    3.186      1 Vorlage:Bausteindesign1
-    -->
+		<td colspan="6">
+			<img src="./img/w24-03_39.jpg" style="cursor: pointer;" onclick="formsend('newsl')" height="28" width="85"></td>
+		<td rowspan="3" background="./img/orange_dot.jpg"><br>
+</td>
+		<td rowspan="3" background="./img/w24-03_36.jpg">&nbsp;</td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="28" width="1"></td>
+	</tr>
+	<tr>
+		<td colspan="14" rowspan="2" background="./img/orange_dot.jpg">&nbsp;</td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="76" width="1"></td>
+	</tr>
+	<tr>
+		<td colspan="7">
+			<img src="./img/w24-03_43.jpg" alt="" height="9" width="655"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="9" width="1"></td>
+	</tr>
+	<tr>
+		<td colspan="1" class="fussfeld"><br>
+</td>
+	  <td colspan="22" class="fussfeld">
+        <p class="weitere">&nbsp;&nbsp;&nbsp;</p>
 
-    <!-- Saved in parser cache with key dewiki:stable-pcache:idhash:23814-0!canonical and timestamp 20190816020459 and revision id 183678853
-     -->
-    </div><noscript><img src="//de.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>
+                    <table cellpadding="30" width="100%">
+                        <tbody><tr>
+                            <td valign="top" width="32%">
+                            <p class="fuss_uberschrift"><i class="foundicon-right-arrow"></i>&nbsp;&nbsp;&nbsp;Praxisnahe Definitionen</p>
+                            <p class="fuss_text">Nutzen
+Sie die jeweilige Begriffserklärung bei Ihrer täglichen Arbeit. Jede
+Definition ist wesentlich umfangreicher angelegt als in einem
+gewöhnlichen Glossar.</p>
+                            <p class="fuss_text"><a href="http://www.wirtschaftslexikon24.com/d/wissenschaft/wissenschaft.htm"><i class="foundicon-plus" style="font-size: 10px;"></i>&nbsp;&nbsp;Wissenschaft</a></p>
+                            <p class="fuss_text"><a href="http://www.wirtschaftslexikon24.com/d/definition/definition.htm"><i class="foundicon-plus" style="font-size: 10px;"></i>&nbsp;&nbsp;Definition</a></p>
+                            <p class="fuss_text"><a href="http://www.wirtschaftslexikon24.com/d/zuschlagskalkulation/zuschlagskalkulation.htm"><i class="foundicon-plus" style="font-size: 10px;"></i>&nbsp;&nbsp;Zuschlagskalkulation</a></p></td>
+                            <td valign="top" width="36%">
+                            <p class="fuss_uberschrift"><i class="foundicon-right-arrow"></i>&nbsp;&nbsp;&nbsp;Fachbegriffe der Volkswirtschaft</p>
+                            <p class="fuss_text">Die
+Volkswirtschaftslehre stellt einen Grossteil der Fachtermini vor, die
+Sie in diesem Lexikon finden werden. Viele Begriffe aus der Finanzwelt
+stehen im Schnittbereich von Betriebswirtschafts- und
+Volkswirtschaftslehre.</p>
+                            <p class="fuss_text"><a href="http://www.wirtschaftslexikon24.com/d/externe-effekte/externe-effekte.htm"><i class="foundicon-plus" style="font-size: 10px;"></i>&nbsp;&nbsp;Externe Effekte</a></p>
+                            <p class="fuss_text"><a href="http://www.wirtschaftslexikon24.com/d/marktversagen/marktversagen.htm"><i class="foundicon-plus" style="font-size: 10px;"></i>&nbsp;&nbsp;Marktversagen</a></p>
+                            <p class="fuss_text"><a href="http://www.wirtschaftslexikon24.com/d/gesetz-gegen-wettbewerbsbeschraenkungen-gwb/gesetz-gegen-wettbewerbsbeschraenkungen-gwb.htm"><i class="foundicon-plus" style="font-size: 10px;"></i>&nbsp;&nbsp;Wettbewerbsbeschränkungen</a></p></td>
+                            <td valign="top" width="32%">
+                            <p class="fuss_uberschrift"><i class="foundicon-right-arrow"></i>&nbsp;&nbsp;&nbsp;Beliebte Artikel</p>
+                            <p class="fuss_text">Bestimmte
+Erklärungen und Begriffsdefinitionen erfreuen sich bei unseren Lesern
+ganz besonderer Beliebtheit. Diese werden mehrmals pro Jahr
+aktualisiert.</p>
+                            <p class="fuss_text"><a href="http://www.wirtschaftslexikon24.com/d/multiplikatorwirkung/multiplikatorwirkung.htm"><i class="foundicon-plus" style="font-size: 10px;"></i>&nbsp;&nbsp;Multiplikatorwirkung</a></p>
+                            <p class="fuss_text"><a href="http://www.wirtschaftslexikon24.com/d/verlustausgleich/verlustausgleich.htm"><i class="foundicon-plus" style="font-size: 10px;"></i>&nbsp;&nbsp;Verlustausgleich</a></p>
+                            <p class="fuss_text"><a href="http://www.wirtschaftslexikon24.com/d/fremdwaehrungskonto/fremdwaehrungskonto.htm"><i class="foundicon-plus" style="font-size: 10px;"></i>&nbsp;&nbsp;Fremdwährungskonto</a></p></td>
+                        </tr>
+                    </tbody></table>
 
-        <div class="printfooter">Abgerufen von „<a dir="ltr" href="https://de.wikipedia.org/w/index.php?title=Speicherkapazität&amp;oldid=183678853">https://de.wikipedia.org/w/index.php?title=Speicherkapazität&amp;oldid=183678853</a>“</div>
+         <hr style="border-style: solid solid none; border-bottom: 1px none; color: rgb(102, 102, 102);">
 
-        <div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Wikipedia:Kategorien" title="Wikipedia:Kategorien">Kategorien</a>: <ul><li><a href="/wiki/Kategorie:Rechnerarchitektur" title="Kategorie:Rechnerarchitektur">Rechnerarchitektur</a></li><li><a href="/wiki/Kategorie:Messgr%C3%B6%C3%9Fe_(Informationstechnik)" title="Kategorie:Messgröße (Informationstechnik)">Messgröße (Informationstechnik)</a></li></ul></div></div>
-        <div class="visualClear"></div>
+      </td>
+		<td colspan="1" class="fussfeld"><br>
+</td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="343" width="1"></td>
+	</tr>
+	<tr>
+	  <td colspan="1" background="./img/dark_dot.jpg">&nbsp;
+			</td>
+		<td colspan="5" class="fusszeile" background="./img/dark_dot.jpg">
+		&nbsp;&nbsp;&nbsp;© 2017 Wirtschaftslexikon24.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All rights reserved.
 
-      </div>
-    </div>
-    <div id='mw-data-after-content'>
-      <div class="read-more-container"></div>
-    </div>
+        </td>
+		<td colspan="18" class="fusszeile_rechts" background="./img/dark_dot.jpg">
+		&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://www.wirtschaftslexikon24.com/">Home</a> &nbsp;|&nbsp; <a href="http://www.wirtschaftslexikon24.com/datenschutzbestimmungen-wirtschaftslexikon.htm">Datenschutzbestimmungen</a> &nbsp;|&nbsp; <a href="http://www.wirtschaftslexikon24.com/impressum-wirtschaftslexikon.htm">Impressum</a> &nbsp;|&nbsp; <a href="http://www.wirtschaftslexikon24.com/nutzungsbestimmungen-wirtschaftslexikon.htm">Rechtliche Hinweise</a></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" width="1"></td>
+	</tr>
+	<tr background="./img/dark_dot.jpg">
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="24"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="39"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="273"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="68"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="34"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="106"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="82"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="53"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="15"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="13"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="33"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="41"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="37"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="4"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="41"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="8"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="26"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="7"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="16"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="25"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="9"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="2"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="28"></td>
+		<td>
+			<img src="./img/wirtschaftslexikon.gif" alt="" height="1" width="24"></td>
+		<td><br>
+</td>
+	</tr>
+</tbody></table>
+<!-- End Save for Web Slices -->
 
-
-        <div id="mw-navigation">
-          <h2>Navigationsmenü</h2>
-          <div id="mw-head">
-                      <div id="p-personal" role="navigation" aria-labelledby="p-personal-label">
-                <h3 id="p-personal-label">Meine Werkzeuge</h3>
-                <ul>
-                  <li id="pt-anonuserpage">Nicht angemeldet</li><li id="pt-anontalk"><a href="/wiki/Spezial:Meine_Diskussionsseite" title="Diskussion über Änderungen von dieser IP-Adresse [n]" accesskey="n">Diskussionsseite</a></li><li id="pt-anoncontribs"><a href="/wiki/Spezial:Meine_Beitr%C3%A4ge" title="Eine Liste der Bearbeitungen, die von dieser IP-Adresse gemacht wurden [y]" accesskey="y">Beiträge</a></li><li id="pt-createaccount"><a href="/w/index.php?title=Spezial:Benutzerkonto_anlegen&amp;returnto=Speicherkapazit%C3%A4t" title="Wir ermutigen dich dazu, ein Benutzerkonto zu erstellen und dich anzumelden. Es ist jedoch nicht zwingend erforderlich.">Benutzerkonto erstellen</a></li><li id="pt-login"><a href="/w/index.php?title=Spezial:Anmelden&amp;returnto=Speicherkapazit%C3%A4t" title="Anmelden ist zwar keine Pflicht, wird aber gerne gesehen. [o]" accesskey="o">Anmelden</a></li>						</ul>
-              </div>
-                      <div id="left-navigation">
-                        <div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
-                <h3 id="p-namespaces-label">Namensräume</h3>
-                <ul>
-                  <li id="ca-nstab-main" class="selected"><span><a href="/wiki/Speicherkapazit%C3%A4t" title="Seiteninhalt anzeigen [c]" accesskey="c">Artikel</a></span></li><li id="ca-talk"><span><a href="/wiki/Diskussion:Speicherkapazit%C3%A4t" rel="discussion" title="Diskussion zum Seiteninhalt [t]" accesskey="t">Diskussion</a></span></li>						</ul>
-              </div>
-                        <div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
-                            <input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-variants-label" />
-                <h3 id="p-variants-label">
-                  <span>Varianten</span>
-                </h3>
-                <ul class="menu">
-                              </ul>
-              </div>
-                      </div>
-            <div id="right-navigation">
-                        <div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
-                <h3 id="p-views-label">Ansichten</h3>
-                <ul>
-                  <li id="ca-view" class="collapsible selected"><span><a href="/wiki/Speicherkapazit%C3%A4t">Lesen</a></span></li><li id="ca-ve-edit" class="collapsible"><span><a href="/w/index.php?title=Speicherkapazit%C3%A4t&amp;veaction=edit" title="Diese Seite mit dem VisualEditor bearbeiten [v]" accesskey="v">Bearbeiten</a></span></li><li id="ca-edit" class="collapsible"><span><a href="/w/index.php?title=Speicherkapazit%C3%A4t&amp;action=edit" title="Diese Seite bearbeiten [e]" accesskey="e">Quelltext bearbeiten</a></span></li><li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=Speicherkapazit%C3%A4t&amp;action=history" title="Frühere Versionen dieser Seite [h]" accesskey="h">Versionsgeschichte</a></span></li>						</ul>
-              </div>
-                        <div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
-                <input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-cactions-label" />
-                <h3 id="p-cactions-label"><span>Mehr</span></h3>
-                <ul class="menu">
-                              </ul>
-              </div>
-                        <div id="p-search" role="search">
-                <h3>
-                  <label for="searchInput">Suche</label>
-                </h3>
-                <form action="/w/index.php" id="searchform">
-                  <div id="simpleSearch">
-                    <input type="search" name="search" placeholder="Wikipedia durchsuchen" title="Durchsuche die Wikipedia [f]" accesskey="f" id="searchInput"/><input type="hidden" value="Spezial:Suche" name="title"/><input type="submit" name="fulltext" value="Suchen" title="Suche nach Seiten, die diesen Text enthalten" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/><input type="submit" name="go" value="Artikel" title="Gehe direkt zu der Seite mit genau diesem Namen, falls sie vorhanden ist." id="searchButton" class="searchButton"/>							</div>
-                </form>
-              </div>
-                      </div>
-          </div>
-          <div id="mw-panel">
-            <div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/wiki/Wikipedia:Hauptseite" title="Hauptseite"></a></div>
-                <div class="portal" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
-          <h3 id="p-navigation-label">Navigation</h3>
-          <div class="body">
-                    <ul>
-              <li id="n-mainpage-description"><a href="/wiki/Wikipedia:Hauptseite" title="Hauptseite besuchen [z]" accesskey="z">Hauptseite</a></li><li id="n-topics"><a href="/wiki/Portal:Wikipedia_nach_Themen">Themenportale</a></li><li id="n-randompage"><a href="/wiki/Spezial:Zuf%C3%A4llige_Seite" title="Zufällige Seite aufrufen [x]" accesskey="x">Zufälliger Artikel</a></li>				</ul>
-                  </div>
-        </div>
-          <div class="portal" role="navigation" id="p-Mitmachen" aria-labelledby="p-Mitmachen-label">
-          <h3 id="p-Mitmachen-label">Mitmachen</h3>
-          <div class="body">
-                    <ul>
-              <li id="n-Artikel-verbessern"><a href="/wiki/Wikipedia:Beteiligen">Artikel verbessern</a></li><li id="n-Neuerartikel"><a href="/wiki/Hilfe:Neuen_Artikel_anlegen">Neuen Artikel anlegen</a></li><li id="n-portal"><a href="/wiki/Wikipedia:Autorenportal" title="Info-Zentrum über Beteiligungsmöglichkeiten">Autorenportal</a></li><li id="n-help"><a href="/wiki/Hilfe:%C3%9Cbersicht" title="Hilfeseite anzeigen">Hilfe</a></li><li id="n-recentchanges"><a href="/wiki/Spezial:Letzte_%C3%84nderungen" title="Liste der letzten Änderungen in Wikipedia [r]" accesskey="r">Letzte Änderungen</a></li><li id="n-contact"><a href="/wiki/Wikipedia:Kontakt">Kontakt</a></li><li id="n-sitesupport"><a href="//donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_de.wikipedia.org&amp;uselang=de" title="Unterstütze uns">Spenden</a></li>				</ul>
-                  </div>
-        </div>
-          <div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
-          <h3 id="p-tb-label">Werkzeuge</h3>
-          <div class="body">
-                    <ul>
-              <li id="t-whatlinkshere"><a href="/wiki/Spezial:Linkliste/Speicherkapazit%C3%A4t" title="Liste aller Seiten, die hierher verlinken [j]" accesskey="j">Links auf diese Seite</a></li><li id="t-recentchangeslinked"><a href="/wiki/Spezial:%C3%84nderungen_an_verlinkten_Seiten/Speicherkapazit%C3%A4t" rel="nofollow" title="Letzte Änderungen an Seiten, die von hier verlinkt sind [k]" accesskey="k">Änderungen an verlinkten Seiten</a></li><li id="t-specialpages"><a href="/wiki/Spezial:Spezialseiten" title="Liste aller Spezialseiten [q]" accesskey="q">Spezialseiten</a></li><li id="t-permalink"><a href="/w/index.php?title=Speicherkapazit%C3%A4t&amp;oldid=183678853" title="Dauerhafter Link zu dieser Seitenversion">Permanenter Link</a></li><li id="t-info"><a href="/w/index.php?title=Speicherkapazit%C3%A4t&amp;action=info" title="Weitere Informationen über diese Seite">Seiten­informationen</a></li><li id="t-wikibase"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q2308599" title="Link zum verbundenen Objekt im Datenrepositorium [g]" accesskey="g">Wikidata-Datenobjekt</a></li><li id="t-cite"><a href="/w/index.php?title=Spezial:Zitierhilfe&amp;page=Speicherkapazit%C3%A4t&amp;id=183678853" title="Hinweise, wie diese Seite zitiert werden kann">Artikel zitieren</a></li>				</ul>
-                  </div>
-        </div>
-          <div class="portal" role="navigation" id="p-coll-print_export" aria-labelledby="p-coll-print_export-label">
-          <h3 id="p-coll-print_export-label">Drucken/­exportieren</h3>
-          <div class="body">
-                    <ul>
-              <li id="coll-create_a_book"><a href="/w/index.php?title=Spezial:Buch&amp;bookcmd=book_creator&amp;referer=Speicherkapazit%C3%A4t">Buch erstellen</a></li><li id="coll-download-as-rl"><a href="/w/index.php?title=Spezial:ElectronPdf&amp;page=Speicherkapazit%C3%A4t&amp;action=show-download-screen">Als PDF herunterladen</a></li><li id="t-print"><a href="/w/index.php?title=Speicherkapazit%C3%A4t&amp;printable=yes" title="Druckansicht dieser Seite [p]" accesskey="p">Druckversion</a></li>				</ul>
-                  </div>
-        </div>
-          <div class="portal" role="navigation" id="p-lang" aria-labelledby="p-lang-label">
-          <h3 id="p-lang-label">In anderen Sprachen</h3>
-          <div class="body">
-                    <ul>
-              <li class="interlanguage-link interwiki-et"><a href="https://et.wikipedia.org/wiki/Mahutavus_(andmekandja)" title="Mahutavus (andmekandja) – Estnisch" lang="et" hreflang="et" class="interlanguage-link-target">Eesti</a></li>				</ul>
-            <div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q2308599#sitelinks-wikipedia" title="Links auf Artikel in anderen Sprachen bearbeiten" class="wbc-editpage">Links bearbeiten</a></span></div>			</div>
-        </div>
-            </div>
-        </div>
-            <div id="footer" role="contentinfo">
-                <ul id="footer-info">
-                    <li id="footer-info-lastmod"> Diese Seite wurde zuletzt am 13. Dezember 2018 um 21:42 Uhr bearbeitet.</li>
-                    <li id="footer-info-copyright"><div id="footer-info-copyright-stats" class="noprint"><a class="external" href="https://tools.wmflabs.org/pageviews?pages=Speicherkapazit%C3%A4t&amp;project=de.wikipedia.org" rel="nofollow">Abrufstatistik</a> · <a class="external" href=" https://xtools.wmflabs.org/articleinfo-authorship/de.wikipedia.org/Speicherkapazit%C3%A4t?uselang=de" rel="nofollow">Autoren</a> </div><div id="footer-info-copyright-separator"><br /></div><div id="footer-info-copyright-info">
-    Der Text ist unter der Lizenz <a class="internal" href="https://de.wikipedia.org/wiki/Wikipedia:Lizenzbestimmungen_Commons_Attribution-ShareAlike_3.0_Unported">„Creative Commons Attribution/Share Alike“</a> verfügbar; Informationen zu den Urhebern und zum Lizenzstatus eingebundener Mediendateien (etwa Bilder oder Videos) können im Regelfall durch Anklicken dieser abgerufen werden. Möglicherweise unterliegen die Inhalte jeweils zusätzlichen Bedingungen. Durch die Nutzung dieser Website erklären Sie sich mit den <a class="internal" href="https://foundation.wikimedia.org/wiki/Terms_of_Use/de">Nutzungsbedingungen</a> und der <a class="internal" href="https://meta.wikimedia.org/wiki/Privacy_policy/de">Datenschutzrichtlinie</a> einverstanden.<br />
-    Wikipedia® ist eine eingetragene Marke der Wikimedia Foundation Inc.</div></li>
-                  </ul>
-                <ul id="footer-places">
-                    <li id="footer-places-privacy"><a href="https://meta.wikimedia.org/wiki/Privacy_policy/de" class="extiw" title="m:Privacy policy/de">Datenschutz</a></li>
-                    <li id="footer-places-about"><a href="/wiki/Wikipedia:%C3%9Cber_Wikipedia" title="Wikipedia:Über Wikipedia">Über Wikipedia</a></li>
-                    <li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:Impressum" title="Wikipedia:Impressum">Impressum</a></li>
-                    <li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Entwickler</a></li>
-                    <li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Cookie_statement">Stellungnahme zu Cookies</a></li>
-                    <li id="footer-places-mobileview"><a href="//de.m.wikipedia.org/w/index.php?title=Speicherkapazit%C3%A4t&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile Ansicht</a></li>
-                  </ul>
-                        <ul id="footer-icons" class="noprint">
-                        <li id="footer-copyrightico">
-                <a href="https://wikimediafoundation.org/"><img src="/static/images/wikimedia-button.png" srcset="/static/images/wikimedia-button-1.5x.png 1.5x, /static/images/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation"/></a>					</li>
-                        <li id="footer-poweredbyico">
-                <a href="https://www.mediawiki.org/"><img src="/static/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/poweredby_mediawiki_132x47.png 1.5x, /static/images/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a>					</li>
-                      </ul>
-                <div style="clear: both;"></div>
-        </div>
+<div id="aktuell"><img src="http://www.wirtschaftslexikon24.com/bilder/2015.png" alt="" height="110" width="172"></div>
 
 
-  </body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-</html>
+  ga('create', 'UA-41321335-1', 'wirtschaftslexikon24.com');
+  ga('send', 'pageview');
+
+</script>
+
+</body></html>
