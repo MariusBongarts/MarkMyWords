@@ -35,15 +35,15 @@ router.delete('/', async (req, res) => {
   const markId = req.query["id"] as string;
   console.log(`Deleting ${markId}`);
   await marksDAO.delete(markId);
-  res.send(200);
+  res.sendStatus(200);
 });
 
 router.put('/', async (req, res) => {
   const marksDAO: MongoGenericDAO<Mark> = req.app.locals.marksDAO;
   const mark = req.body as Mark;
   console.log(`Updating ${mark.id}`);
-  await marksDAO.update({...mark});
-  res.send(200);
+  await marksDAO.update(mark);
+  res.send(mark);
 });
 
 

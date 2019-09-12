@@ -7,8 +7,6 @@ export class MongoGenericDAO<T extends Entity> implements GenericDAO<T> {
   constructor(private db: Db, private collection: string) { }
 
   public async create(entity: Partial<T>) {
-    entity.id = uuidv4();
-    entity.createdAt = new Date().getTime();
     await this.db.collection(this.collection).insertOne(entity);
     return entity as T;
   }
@@ -26,11 +24,9 @@ export class MongoGenericDAO<T extends Entity> implements GenericDAO<T> {
   }
 
   public async update(entity: Partial<T>) {
-    console.log(entity);
     const result = await this.db.collection(this.collection).updateOne(
-      { _id: Object(entity._id) },
+      { id: entity.id },
       { $set: entity });
-    console.log(entity);
     return !!result.modifiedCount;
   }
 

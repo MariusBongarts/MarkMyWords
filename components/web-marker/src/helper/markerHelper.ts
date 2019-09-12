@@ -36,7 +36,7 @@ function createMarkElement(range?: Range, mark?: Mark) {
  */
 function createMyMarkerComponent(markElement: HTMLElement, mark: Mark) {
   const myMarkElement = document.createElement('my-marker') as MyMarkerElement;
-  myMarkElement.markId = mark.id;
+  myMarkElement.mark = mark;
   markElement.appendChild(myMarkElement);
 
   myMarkElement.addEventListener('deleted', (e: CustomEvent) => {

@@ -6,6 +6,7 @@ const componentCSS = require('./my-marker.component.scss');
 @customElement('my-marker')
 export class MyMarkerElement extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
+  markerService = new MarkerService();
 
   listener = [];
 
@@ -16,10 +17,7 @@ export class MyMarkerElement extends LitElement {
   menuWidth!: number;
 
   @property()
-  markId!: string;
-
-  @property()
-  tags = ['Test'];
+  mark!: Mark;
 
   @property()
   show = false;
@@ -36,7 +34,7 @@ export class MyMarkerElement extends LitElement {
 
   async firstUpdated() {
 
-    if (this.markId) {
+    if (this.mark.id) {
       this.setPosition();
       this.registerListener();
     }
@@ -89,13 +87,14 @@ export class MyMarkerElement extends LitElement {
     this.dispatchEvent(
       new CustomEvent('deleted', {
         bubbles: true,
-        detail: this.markId
+        detail: this.mark.id
       })
     );
   }
 
-  updateTags() {
+  async updateTags() {
     this.editTags = false;
+    const response = await this.markerService.updateMark(this.mark);
     console.log('TODO: Update in Server.')
   }
 
@@ -105,20 +104,20 @@ export class MyMarkerElement extends LitElement {
     ${this.editTags ? html`
     <div class="chip-container">
       <bronco-chip-list
-      @tagsChanged=${(e: CustomEvent) => this.tags = e.detail}
+      @tagsChanged=${(e: CustomEvent) => this.mark.tags = e.detail}
       @submitTriggered=${() => this.updateTags()}
       @blur=${(e) => console.log(e)}
       .focused=${this.editTags}
-      .chips=${this.tags}
+      .chips=${this.mark.tags}
       ></bronco-chip-list>
     </div>
     ` : ''}
     <div class="markContainer">
       <my-menu .menuWidth=${this.menuWidth} class="${this.animation}"
       @deleted=${() => this.emitDeleted()}
-      @editTags=${() => this.editTags ? this.updateTags() : this.editTags = true}
+      @editTags=${async () => this.editTags ? this.updateTags() : this.editTags = true}
       .editTags=${this.editTags}
-      .markId=${this.markId}></my-menu>
+      .mark=${this.mark}></my-menu>
     </div>
 
     ` : ''}

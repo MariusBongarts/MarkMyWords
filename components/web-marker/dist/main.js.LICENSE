@@ -148,9 +148,13 @@
 
 /* 20 */
 
-/*! For license information please see main.js.LICENSE */
-
 /* 21 */
+
+/* 22 */
+
+/* 23 */
+
+/* 24 */
 
 // EXTERNAL MODULE: ./src/index.scss
 
@@ -1389,6 +1393,126 @@
 
 // CONCATENATED MODULE: ./src/components/my-tags/my-tags.component.ts
 
-// EXTERNAL MODULE: ./node_modules/@marius/broncochiplist/dist/main.js
+// CONCATENATED MODULE: ./src/components/bronco-chip/app.component.ts
 
-// CONCATENATED MODULE: ./src/index.ts
+/**
+ * Modern chip
+ * @event clicked - Dispatches when chip is clicked.
+ * @event removed - Dispatched when removed is clicked.
+ * @slot - Default content.
+ * @cssprop --bg-color - Background color
+ * @cssprop --height - Height of the chip
+ *
+ */
+
+/**
+     * Modern chip
+     * @event clicked - Dispatches when chip is clicked.
+     * @event removed - Dispatched when removed is clicked.
+     * @slot - Default content.
+     * @cssprop --bg-color - Background color
+     * @cssprop --height - Height of the chip
+     *
+     */
+
+/**
+         *
+         * If true, trash icon will be shown with red background
+         * @type {boolean}
+         * @memberof BroncoChip
+         */
+
+/**
+         *
+         * Makes the chip outlined
+         * @type {boolean}
+         * @memberof BroncoChip
+         */
+
+/**
+         * Enables the outline effect after clicking
+         * @type {boolean}
+         * @memberof BroncoChip
+         */
+
+// CONCATENATED MODULE: ./src/components/bronco-chip-list/app.component.ts
+
+/**
+ * Modern chip
+ * @event tagsChanged - Dispatched when tags changed and returns array of tags
+ * @event submitTriggered - Submit event when user enters 'ENTER' twise
+ * @slot - Default content.
+ * @cssprop --bg-color - Background color
+ * @cssprop --color - Font color
+ * @cssprop --font-size - Font size
+ * @cssprop --min-height - Min-height of the chip-list
+ * @cssprop --primary-color - Primary color which is set on focus
+ *
+ */
+
+/**
+     * Modern chip
+     * @event tagsChanged - Dispatched when tags changed and returns array of tags
+     * @event submitTriggered - Submit event when user enters 'ENTER' twise
+     * @slot - Default content.
+     * @cssprop --bg-color - Background color
+     * @cssprop --color - Font color
+     * @cssprop --font-size - Font size
+     * @cssprop --min-height - Min-height of the chip-list
+     * @cssprop --primary-color - Primary color which is set on focus
+     *
+     */
+
+/**
+         * Array of tags as strings
+         *
+         * @memberof BroncoChipList
+         */
+
+/**
+         * Property to set focus on input initially
+         *
+         * @memberof BroncoChipList
+         */
+
+/**
+         * Property to prevent to fast deleting. So that user has to click backspace twice.
+         *
+         * @memberof BroncoChipList
+         */
+
+/**
+         * Property to trigger submit after entering ENTER twice
+         *
+         * @memberof BroncoChipList
+         */
+
+/**
+     * Listen to keyboard event to either add or remove tags
+     * Tags are being added when user enters space or enter
+     *
+     * @param {KeyboardEvent} e
+     * @memberof BroncoChipList
+     */
+
+/**
+     * Adds a tag if current value is not empty.
+     * It splits the current value by space
+     *
+     * @param {HTMLInputElement} target
+     * @memberof BroncoChipList
+     */
+
+/**
+     * Deletes a tag if it is already markes as deleted.
+     *
+     * @param {HTMLInputElement} target
+     * @memberof BroncoChipList
+     */
+
+/**
+ * A property decorator that converts a class property into a getter
+ * that executes a querySelectorAll on the element's renderRoot.
+ *
+ * @ExportDecoratedItems
+ */
