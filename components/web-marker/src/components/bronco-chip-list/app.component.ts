@@ -1,3 +1,5 @@
+import { MarkerService } from './../../services/marker.service';
+import { Mark } from './../../../../../WebMarkerServer/src/models/mark';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 
@@ -18,6 +20,7 @@ const componentCSS = require('./app.component.scss');
 @customElement('bronco-chip-list')
 export class BroncoChipList extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
+  markerService = new MarkerService();
 
   @query('#tag') inputElement!: HTMLInputElement;
 
@@ -29,6 +32,13 @@ export class BroncoChipList extends LitElement {
   @property()
   chips = [] as string[];
 
+  /**
+   * Current mark
+   *
+   * @memberof BroncoChipList
+   */
+  @property()
+  mark: Mark;
 
   /**
    * Property to set focus on input initially
@@ -55,9 +65,16 @@ export class BroncoChipList extends LitElement {
   markedToSubmit = false;
 
   firstUpdated() {
+    this.chips = this.mark.tags;
     document.addEventListener('click', () => this.markedToDelete = false);
 
     this.focused ? this.inputElement.focus() : '';
+  }
+
+  async disconnectedCallback() {
+    this.mark.tags = this.chips;
+    await this.markerService.updateMark(this.mark);
+    this.submit();
   }
 
   emit() {
@@ -87,11 +104,7 @@ export class BroncoChipList extends LitElement {
     if (!target.value && e.key === 'Enter') {
       if (this.markedToSubmit) {
         this.markedToSubmit = false;
-        this.dispatchEvent(
-          new CustomEvent('submitTriggered', {
-            bubbles: true,
-            detail: this.chips
-          }));
+        this.submit();
       } else {
         this.markedToSubmit = true;
       }
@@ -108,6 +121,14 @@ export class BroncoChipList extends LitElement {
     }
 
     this.emit();
+  }
+
+  submit() {
+    this.dispatchEvent(
+      new CustomEvent('submitTriggered', {
+        bubbles: true,
+        detail: this.chips
+      }));
   }
 
   /**

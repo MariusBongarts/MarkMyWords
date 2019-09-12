@@ -94,7 +94,6 @@ export class MyMarkerElement extends LitElement {
 
   async updateTags() {
     this.editTags = false;
-    await this.markerService.updateMark(this.mark);
   }
 
   render() {
@@ -106,7 +105,7 @@ export class MyMarkerElement extends LitElement {
       @tagsChanged=${(e: CustomEvent) => this.mark.tags = e.detail}
       @submitTriggered=${() => this.updateTags()}
       .focused=${this.editTags}
-      .chips=${this.mark.tags}
+      .mark=${this.mark}
       ></bronco-chip-list>
     </div>
     ` : ''}
