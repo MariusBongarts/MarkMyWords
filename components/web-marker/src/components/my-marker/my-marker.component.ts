@@ -94,8 +94,7 @@ export class MyMarkerElement extends LitElement {
 
   async updateTags() {
     this.editTags = false;
-    const response = await this.markerService.updateMark(this.mark);
-    console.log('TODO: Update in Server.')
+    await this.markerService.updateMark(this.mark);
   }
 
   render() {
@@ -106,7 +105,6 @@ export class MyMarkerElement extends LitElement {
       <bronco-chip-list
       @tagsChanged=${(e: CustomEvent) => this.mark.tags = e.detail}
       @submitTriggered=${() => this.updateTags()}
-      @blur=${(e) => console.log(e)}
       .focused=${this.editTags}
       .chips=${this.mark.tags}
       ></bronco-chip-list>

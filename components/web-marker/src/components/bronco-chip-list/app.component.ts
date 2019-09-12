@@ -57,7 +57,6 @@ export class BroncoChipList extends LitElement {
   firstUpdated() {
     document.addEventListener('click', () => this.markedToDelete = false);
 
-    document.addEventListener('blur', (e) => console.log(e));
     this.focused ? this.inputElement.focus() : '';
   }
 
@@ -140,7 +139,7 @@ export class BroncoChipList extends LitElement {
     }
   }
 
-  filterChips(event: CustomEvent, chip: string) {
+  filterChips(chip: string) {
     this.chips = this.chips.filter(e => e !== chip);
   }
 
@@ -148,8 +147,8 @@ export class BroncoChipList extends LitElement {
     return html`
 <div class="chip-list ${this.markedToSubmit ? 'marked-to-submit' : ''}">
 ${this.chips.map((chip, index) => html`
-<bronco-chip @click=${(e: Event) => e.preventDefault()} .deleteMode="${this.markedToDelete && index === this.chips.length - 1}"
-@deleted=${(e: CustomEvent) => this.filterChips(e, chip)}
+<bronco-chip .deleteMode="${this.markedToDelete && index === this.chips.length - 1}"
+@deleted=${() => this.filterChips(chip)}
 
 >${chip}</bronco-chip>
 `)}
