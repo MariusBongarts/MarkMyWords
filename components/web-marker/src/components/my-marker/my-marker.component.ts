@@ -48,13 +48,17 @@ export class MyMarkerElement extends LitElement {
   setPosition() {
     console.log(this.id);
     const rectLines = this.parentElement.getClientRects() as DOMRectList;
-    this.style.left = rectLines.length === 1 ? this.parentElement.offsetLeft + 'px' : this.parentElement.parentElement.offsetLeft + 'px';
+    // this.style.left = rectLines.length === 1 ? this.parentElement.offsetLeft + 'px' : this.parentElement.parentElement.offsetLeft + 'px';
     this.style.width = this.parentElement.offsetWidth + 'px';
-    const offsetTop = rectLines.length === 1 ? 0 : (rectLines.length - 1) * rectLines[0].height;
-    this.style.transform = `translateY(${-offsetTop}px)`;
+    const offsetTop = rectLines.length === 1 ? 15 : rectLines.length * rectLines[0].height;
+    console.log(rectLines);
+    if (rectLines.length === 1) {
+      this.style.transform = `translate(${this.parentElement.offsetLeft}px, ${-offsetTop}px)`;
+    } else {
+      this.style.transform = `translateY(${-offsetTop}px)`;
+    }
     this.classList.add('slideIn');
   }
-
 
   /**
    *  Register Listener to show and hide hovering menu.
@@ -75,7 +79,7 @@ export class MyMarkerElement extends LitElement {
         if (!this.abortHide && !this.editTags) {
           this.animation = 'slideOut';
         }
-      }, 300);
+      }, 400);
     });
   }
 

@@ -166,7 +166,7 @@
 
 //this.httpClient = new HttpClient({ baseURL: 'http://ec2-3-130-73-179.us-east-2.compute.amazonaws.com:3000' });
 
-//this.httpClient = new HttpClient({ baseURL: 'https://marius96.uber.space' });
+// this.httpClient = new HttpClient({ baseURL: 'http://localhost:3000' });
 
 // Backup Gateway
 
@@ -1339,6 +1339,8 @@
      *
      * @memberof MyMarkerElement
      */
+
+// this.style.left = rectLines.length === 1 ? this.parentElement.offsetLeft + 'px' : this.parentElement.parentElement.offsetLeft + 'px';
 
 /**
      *  Register Listener to show and hide hovering menu.

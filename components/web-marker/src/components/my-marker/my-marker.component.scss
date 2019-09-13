@@ -2,8 +2,9 @@
 :host {
   z-index: 9999 !important;
   position: absolute;
+  display: flex;
+  justify-content: center;
   height: 0px;
-  left: 0;
   background: none;
 }
 
