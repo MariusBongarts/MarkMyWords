@@ -22,6 +22,7 @@ export function highlightText(range?: Range, mark?: Mark) {
  */
 function createMarkElement(range?: Range, mark?: Mark) {
   mark ? range = recreateRange(mark) : range = range;
+  console.log(range);
   const markElement = document.createElement('mark');
   markElement.appendChild(range.extractContents());
   range.insertNode(markElement);
@@ -53,6 +54,7 @@ function createMyMarkerComponent(markElement: HTMLElement, mark: Mark) {
 }
 
 function recreateRange(mark) {
+  console.log(mark);
   const startContainer = findStartEndContainer(document.body, mark, true);
   const endContainer = findStartEndContainer(document.body, mark, false);
   const range = document.createRange();
@@ -119,6 +121,7 @@ function addStyles() {
         border-radius: 5px;
         padding: 2px 0px;
         background-color: #92ffaa;
+        width: 100%;
       }
 
       mark > *:not(my-marker) {

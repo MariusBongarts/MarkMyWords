@@ -1343,6 +1343,21 @@
 // this.style.left = rectLines.length === 1 ? this.parentElement.offsetLeft + 'px' : this.parentElement.parentElement.offsetLeft + 'px';
 
 /**
+     * Iterates over all rectlines and returns the maximum width of line
+     *
+     * @param {DOMRectList} rectLines
+     * @returns
+     * @memberof MyMarkerElement
+     */
+
+/**
+     * Iterates over all clientRect rows and sums up all heights
+     *
+     * @returns
+     * @memberof MyMarkerElement
+     */
+
+/**
      *  Register Listener to show and hide hovering menu.
      *  Abortes hiding when user enters element again after 300ms
      *

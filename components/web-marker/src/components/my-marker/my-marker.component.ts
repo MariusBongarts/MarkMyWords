@@ -49,15 +49,51 @@ export class MyMarkerElement extends LitElement {
     console.log(this.id);
     const rectLines = this.parentElement.getClientRects() as DOMRectList;
     // this.style.left = rectLines.length === 1 ? this.parentElement.offsetLeft + 'px' : this.parentElement.parentElement.offsetLeft + 'px';
-    this.style.width = this.parentElement.offsetWidth + 'px';
-    const offsetTop = rectLines.length === 1 ? 15 : rectLines.length * rectLines[0].height;
+    this.style.width = this.getWidth(rectLines) + 'px';
+    const offsetTop = this.getOffsetTop(rectLines);
+    const offsetLeft = this.getOffsetLeft(rectLines);
     console.log(rectLines);
-    if (rectLines.length === 1) {
-      this.style.transform = `translate(${this.parentElement.offsetLeft}px, ${-offsetTop}px)`;
-    } else {
-      this.style.transform = `translateY(${-offsetTop}px)`;
-    }
+    this.style.transform = `translate(${offsetLeft}, ${-offsetTop}px)`;
     this.classList.add('slideIn');
+  }
+
+
+  /**
+   * Iterates over all rectlines and returns the maximum width of line
+   *
+   * @param {DOMRectList} rectLines
+   * @returns
+   * @memberof MyMarkerElement
+   */
+  getWidth(rectLines: DOMRectList) {
+    let width = this.parentElement.offsetWidth;
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < rectLines.length; i++) {
+      width < rectLines[i].width ? width = rectLines[i].width : '';
+    }
+    return width;
+  }
+
+  getOffsetLeft(rectLines: DOMRectList) {
+    if (rectLines.length === 1) return this.parentElement.offsetLeft + 'px';
+    else return 0 + 'px';
+  }
+
+  /**
+   * Iterates over all clientRect rows and sums up all heights
+   *
+   * @returns
+   * @memberof MyMarkerElement
+   */
+  getOffsetTop(rectLines: DOMRectList) {
+    let offsetTop = 0;
+    if (rectLines.length === 1) return rectLines[0].height + 5;
+
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < rectLines.length; i++) {
+      offsetTop += rectLines[i].height;
+    }
+    return offsetTop;
   }
 
   /**
