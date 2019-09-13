@@ -57,7 +57,6 @@ export class MyMarkerElement extends LitElement {
     this.classList.add('slideIn');
   }
 
-
   /**
    * Iterates over all rectlines and returns the maximum width of line
    *
