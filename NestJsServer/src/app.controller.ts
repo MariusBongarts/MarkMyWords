@@ -7,8 +7,4 @@ export class AppController {
     private readonly appService: AppService
     ) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
 }
