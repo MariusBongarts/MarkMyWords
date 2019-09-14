@@ -80,7 +80,7 @@ export class MyMarkElement extends LitElement {
       anchorOffset: selection.anchorOffset,
       createdAt: new Date().getTime(),
       nodeData: range.startContainer.nodeValue,
-      completeText: range.startContainer.parentElement.textContent,
+      completeText: range.startContainer.parentElement.innerText,
       nodeTagName: range.startContainer.parentElement.tagName.toLowerCase(),
       startContainerText: range.startContainer.textContent,
       endContainerText: range.endContainer.textContent,
