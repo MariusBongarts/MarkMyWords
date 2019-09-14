@@ -1,0 +1,6 @@
+Step 1: Rename this file to either development.env or production.env
+Step 2: Enter required fields
+Step 3: Delete these 3 step instructions
+
+MONGODB_URI =
+JWT_KEY=
