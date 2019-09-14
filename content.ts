@@ -5,6 +5,3 @@ document.body.appendChild(marker);
 //   hideMarkerTool();
 //   if (window.getSelection().toString().length) showMarkerTool(e.clientX, e.clientY);
 // });
-
-
-

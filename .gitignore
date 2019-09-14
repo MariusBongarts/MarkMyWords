@@ -1,12 +1,12 @@
 # Packages
-node_modules/
-components/web-marker/node_modules
-WebMarkerClient/node_modules
-WebMarkerServer/node_modules
+**/*node_modules
 
 # Test-coverage Istanbul
-coverage/
+**/*coverage
 
 
 # Mac only
 .DS_Store
+
+#files
+*.map

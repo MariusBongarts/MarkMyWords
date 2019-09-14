@@ -27,6 +27,14 @@ export class WebMarker extends LitElement {
   private markerService = new MarkerService();
 
   async firstUpdated() {
+
+    // TODO: Login and save JWT in storage
+    chrome.storage.sync.set({ jwt_key: 'MyFuckingSecretKey' });
+
+    chrome.storage.sync.get((items) => {
+      console.log(`Current JWT: ${items['jwt_key']}`);
+    });
+
     this.listenToShowMarker();
     await this.loadMarks();
   }

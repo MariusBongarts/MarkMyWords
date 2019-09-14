@@ -18,5 +18,5 @@
     "scripts": ["./dist/background.js"],
     "persistent": false
   },
-  "permissions": ["tabs", "contextMenus"]
+  "permissions": ["tabs", "contextMenus", "storage"]
 }

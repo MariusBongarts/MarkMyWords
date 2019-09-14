@@ -60,11 +60,26 @@ chrome.tabs.onUpdated.addListener(() => {
 });
 
 chrome.runtime.onInstalled.addListener(function() {
+
+  // chrome.storage.sync.set({jwt_key: 'mySecretKey'});
+
   chrome.contextMenus.create({
     id: "selection",
     title: "Save: ' %s '",
     contexts: ["selection"],
   });
+});
+
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+  for (var key in changes) {
+    var storageChange = changes[key];
+    console.log('Storage key "%s" in namespace "%s" changed. ' +
+                'Old value was "%s", new value is "%s".',
+                key,
+                namespace,
+                storageChange.oldValue,
+                storageChange.newValue);
+  }
 });
 
 

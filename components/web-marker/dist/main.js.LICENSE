@@ -1303,6 +1303,8 @@
          * @memberof WebMarker
          */
 
+// TODO: Login and save JWT in storage
+
 /**
      * Listens for click and selection events to show or hide the marker
      *
