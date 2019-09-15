@@ -1,10 +1,9 @@
 import { User } from './user.interface';
-import { Email } from './decorators/email.decorator';
+import { UserJwt } from './decorators/email.decorator';
 import { Controller, Get, Post, Body, UseGuards, Req } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
 import { AuthGuard } from '@nestjs/passport';
-import { ConfigService } from './../config/config.service';
 
 @Controller('users')
 export class UsersController {
@@ -23,8 +22,9 @@ export class UsersController {
     // to access the route
     @Get('test')
     @UseGuards(AuthGuard())
-    async testAuthRoute(@Email() email) {
-        const user: User = await this.usersService.findOneByEmail(email);
+    async testAuthRoute(@UserJwt() userJwt) {
+        const user: User = await this.usersService.findOneByEmail(userJwt.email);
+        console.log(user);
         return {
             message: `Hello ${user.email}`
         }

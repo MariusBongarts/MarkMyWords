@@ -1,4 +1,5 @@
 import { Entity } from './entity';
+import { Entity } from './entity';
 export interface Mark extends Entity{
   url: string,
   origin: string,
