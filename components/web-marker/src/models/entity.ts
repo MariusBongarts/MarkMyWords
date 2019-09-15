@@ -1,4 +1,4 @@
 export interface Entity {
-  id: string
+  _id: string
   createdAt: number
 }

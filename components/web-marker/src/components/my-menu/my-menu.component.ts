@@ -47,7 +47,7 @@ export class MyMarkElement extends LitElement {
   }
 
   /**
-   *
+   * This method creates the mark in the browser. The id will be given to element after server created element.
    *
    * @param {MouseEvent}
    * @memberof MyMarkElement
@@ -56,8 +56,8 @@ export class MyMarkElement extends LitElement {
     this.show = false;
     const mark = this.createMark();
     highlightText(null, mark);
+    const newMark = await this.markerService.createMark(mark);
     window.getSelection().empty();
-    await this.markerService.createMark(mark);
   }
 
   /**
@@ -71,7 +71,7 @@ export class MyMarkElement extends LitElement {
     const selection = window.getSelection();
     const range = selection.getRangeAt(0);
     const mark: Mark = {
-      id: uuidv4(),
+      _id: uuidv4(),
       url: location.href,
       origin: location.href,
       tags: this.getDefaultMarks(),
@@ -106,11 +106,11 @@ export class MyMarkElement extends LitElement {
     this.dispatchEvent(
       new CustomEvent('deleted', {
         bubbles: true,
-        detail: this.mark.id
+        detail: this.mark._id
       })
     );
     try {
-      await this.markerService.deleteMark(this.mark.id);
+      await this.markerService.deleteMark(this.mark._id);
     } catch (error) {
       console.log(error);
     }

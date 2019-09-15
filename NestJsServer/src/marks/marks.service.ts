@@ -18,7 +18,7 @@ export class MarksService {
   }
 
   async createMark(user: JwtPayload, mark: Mark) {
-    const createdMark = new this.markModel(mark);
+    let createdMark = new this.markModel(mark);
     createdMark._user = user._id;
     return await createdMark.save();
   }

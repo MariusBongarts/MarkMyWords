@@ -1,5 +1,5 @@
+import { Mark } from './../../models/mark';
 import { MarkerService } from './../../services/marker.service';
-import { Mark } from './../../../../../WebMarkerServer/src/models/mark';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 

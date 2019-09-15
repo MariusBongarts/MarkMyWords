@@ -36,6 +36,7 @@ export class MarksController {
   @Post('')
   @UseGuards(AuthGuard())
   async createMark(@UserJwt() userJwt, @Body() mark) {
+    console.log(mark);
     const createdMark = await this.marksService.createMark(userJwt as JwtPayload, mark);
     return createdMark;
   }

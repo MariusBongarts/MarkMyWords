@@ -10,8 +10,7 @@ export const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    },
-    marks: [{ type: mongoose.Schema.ObjectId, ref: 'Mark'}]
+    }
 });
 
 // NOTE: Arrow functions are not used here as we do not want to use lexical scope for 'this'
