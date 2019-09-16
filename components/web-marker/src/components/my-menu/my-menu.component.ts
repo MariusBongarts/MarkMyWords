@@ -71,7 +71,7 @@ export class MyMarkElement extends LitElement {
     const selection = window.getSelection();
     const range = selection.getRangeAt(0);
     const mark: Mark = {
-      _id: uuidv4(),
+      id: uuidv4(),
       url: location.href,
       origin: location.href,
       tags: this.getDefaultMarks(),
@@ -106,11 +106,11 @@ export class MyMarkElement extends LitElement {
     this.dispatchEvent(
       new CustomEvent('deleted', {
         bubbles: true,
-        detail: this.mark._id
+        detail: this.mark.id
       })
     );
     try {
-      await this.markerService.deleteMark(this.mark._id);
+      await this.markerService.deleteMark(this.mark.id);
     } catch (error) {
       console.log(error);
     }

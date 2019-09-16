@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 
 export const MarkSchema = new mongoose.Schema({
-    _id: {
+    id: {
         type: String,
         unique: true,
         required: true

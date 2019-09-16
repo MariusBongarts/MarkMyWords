@@ -14,7 +14,7 @@ export class MarksService {
   }
 
   async findMarkById(user: JwtPayload, markId: string) {
-    return await this.markModel.findOne({ _user: user._id, _id: markId });
+    return await this.markModel.findOne({ _user: user._id, id: markId });
   }
 
   async createMark(user: JwtPayload, mark: Mark) {
@@ -24,10 +24,10 @@ export class MarksService {
   }
 
   async deleteMark(user: JwtPayload, markId: string) {
-    return await this.markModel.deleteOne({ _user: user._id, _id: markId });
+    return await this.markModel.deleteOne({ _user: user._id, did: markId });
   }
 
   async updateMark(user: JwtPayload, mark: Mark) {
-    return await this.markModel.updateOne({ _user: user._id, _id: mark._id }, mark);
+    return await this.markModel.updateOne({ _user: user._id, id: mark.id }, mark);
   }
 }

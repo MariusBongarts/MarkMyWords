@@ -7,8 +7,8 @@ export class MarkerService {
 
   constructor() {
     //this.httpClient = new HttpClient({ baseURL: 'http://ec2-3-130-73-179.us-east-2.compute.amazonaws.com:3000' });
-    //this.httpClient = new HttpClient({ baseURL: 'http://localhost:3000' });
-    this.httpClient = new HttpClient({ baseURL: 'https://marius96.uber.space' });
+    this.httpClient = new HttpClient({ baseURL: 'http://localhost:3000' });
+    //this.httpClient = new HttpClient({ baseURL: 'https://marius96.uber.space' });
 
     // Backup Gateway
     // this.httpClient = new HttpClient({ baseURL: ' http://10.42.30.122:8080/finance/' });
@@ -26,7 +26,7 @@ export class MarkerService {
     console.log(mark)
     const response = await this.httpClient.post('/marks', mark);
     const createdMark: Mark = (await response.json() as Mark);
-    console.log(`Created mark with id ${createdMark._id}`);
+    console.log(`Created mark with id ${createdMark.id}`);
     return createdMark;
   }
 

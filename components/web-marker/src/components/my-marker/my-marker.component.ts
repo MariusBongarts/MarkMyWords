@@ -127,7 +127,7 @@ export class MyMarkerElement extends LitElement {
     this.dispatchEvent(
       new CustomEvent('deleted', {
         bubbles: true,
-        detail: this.mark._id
+        detail: this.mark.id
       })
     );
   }
