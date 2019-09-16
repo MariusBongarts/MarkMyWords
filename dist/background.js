@@ -16,10 +16,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     console.log(request.selection);
     sendResponse(window.marks);
 });
-chrome.browserAction.onClicked.addListener(function (tab) {
-    // chrome.tabs.create({ url: 'http://ec2-3-130-73-179.us-east-2.compute.amazonaws.com:8080' });
-    chrome.tabs.create({ url: 'https://marius96.uber.space' });
-});
+// chrome.browserAction.onClicked.addListener(function (tab) {
+//   // chrome.tabs.create({ url: 'http://ec2-3-130-73-179.us-east-2.compute.amazonaws.com:8080' });
+//   chrome.tabs.create({ url: 'https://marius96.uber.space' });
+// })
 // Sends message to current contentScript when page changes
 chrome.tabs.onUpdated.addListener(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {

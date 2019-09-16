@@ -158,6 +158,8 @@
 
 // EXTERNAL MODULE: ./src/index.scss
 
+// CONCATENATED MODULE: ./src/services/jwt.service.ts
+
 // CONCATENATED MODULE: ./src/services/http-client.ts
 
 // tslint:disable-next-line: no-empty
@@ -1302,8 +1304,6 @@
          *
          * @memberof WebMarker
          */
-
-// TODO: Login and save JWT in storage
 
 /**
      * Listens for click and selection events to show or hide the marker

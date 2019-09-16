@@ -28,7 +28,7 @@ export class AuthService {
                     resolve(this.createJwtPayload(userToAttempt));
 
                 } else {
-                    throw new UnauthorizedException();
+                    resolve(new UnauthorizedException());
                 }
 
             });
