@@ -166,7 +166,7 @@
 
 //this.httpClient = new HttpClient({ baseURL: 'http://ec2-3-130-73-179.us-east-2.compute.amazonaws.com:3000' });
 
-// this.httpClient = new HttpClient({ baseURL: 'http://localhost:3000' });
+//this.httpClient = new HttpClient({ baseURL: 'https://marius96.uber.space' });
 
 // Backup Gateway
 
@@ -1385,7 +1385,7 @@
      */
 
 /**
-     *
+     * This method creates the mark in the browser. The id will be given to element after server created element.
      *
      * @param {MouseEvent}
      * @memberof MyMarkElement
