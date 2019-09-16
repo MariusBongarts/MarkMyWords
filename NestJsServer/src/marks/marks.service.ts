@@ -24,7 +24,7 @@ export class MarksService {
   }
 
   async deleteMark(user: JwtPayload, markId: string) {
-    return await this.markModel.deleteOne({ _user: user._id, did: markId });
+    return await this.markModel.deleteOne({ _user: user._id, id: markId });
   }
 
   async updateMark(user: JwtPayload, mark: Mark) {
