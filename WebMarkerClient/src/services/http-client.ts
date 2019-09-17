@@ -29,7 +29,8 @@ export class HttpClient {
   private async createFetch(method: string, url: string, body?: any) {
     const requestOptions: RequestInit = {
       headers: {
-        'Content-Type': 'application/json; charset=utf-8'
+        'Content-Type': 'application/json; charset=utf-8',
+        'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDdlYTYyMzU2NTZmMTJiNDAyYjUzYzAiLCJlbWFpbCI6Im1hcml1c2JvbmdhcnRzQHdlYi5kZSIsImlhdCI6MTU2ODczMTY2NywiZXhwIjoxNTY5MDkxNjY3fQ.jTlwigM93zUIVnOHjQw6mktrRb4bFaJunywyA4hePcE`
       },
       method
     };

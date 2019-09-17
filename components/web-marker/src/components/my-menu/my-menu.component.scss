@@ -1,3 +1,4 @@
+@import '../../variables.scss';
 :host {
   z-index: 9999 !important;
   color: white;
@@ -40,11 +41,11 @@
 }
 
 .btn.active .markIcon, .btn:hover .markIcon {
-  fill: #92ffaa;
+  fill: var(--highlight-color);
 }
 
-.btn.active .tagIcon, .btn:hover .tagIcon {
-  color: #78c0a8;
+.btn.active .tagIcon, .btn:hover .tagIcon, .icon.user-icon:hover {
+  color: var(--primary-dark);
 }
 
 
