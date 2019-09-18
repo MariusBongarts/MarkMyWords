@@ -30,7 +30,6 @@ export class HttpClient {
 
   private async createFetch(method: string, url: string, body?: any) {
     const jwtToken = await this.jwtService.getJwt();
-    console.log(jwtToken);
     const requestOptions: RequestInit = {
       headers: {
         'Content-Type': 'application/json; charset=utf-8',

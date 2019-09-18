@@ -1,4 +1,6 @@
+import { JwtPayload } from './../models/jwtPayload';
 import { HttpClient } from './http-client';
+import jwt_decode from 'jwt-decode';
 
 export class JwtService {
   httpClient!: HttpClient;
@@ -18,7 +20,32 @@ export class JwtService {
     });
   }
 
-  
+  getJwtPayload(): Promise<JwtPayload> {
+    return new Promise((res) => {
+      try {
+        chrome.storage.sync.get((items) => {
+          console.log('1')
+          let payload;
+          try {
+            payload = jwt_decode(items['jwt_key']);
+          } catch (error) {
+            res({} as JwtPayload);
+          }
+          console.log('2')
+          res(payload);
+        });
+      } catch (error) {
+        try {
+          const jwt = localStorage.jwt_webmarker;
+          const payload = jwt_decode(jwt);
+          payload ? res(payload) : res({} as JwtPayload);
+        } catch (error) {
+
+        }
+      }
+    });
+  }
+
   setJwt(jwt: string) {
     try {
       localStorage.jwt_webmarker = jwt;

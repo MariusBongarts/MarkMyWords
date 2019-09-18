@@ -1,6 +1,12 @@
+import { JwtPayload } from './../../models/jwtPayload';
+import { LoginUserDto } from './../../models/loginUserDto';
+import { UserService } from './../../services/user.service';
+import { MarkerService } from './../../services/marker.service';
+import { Mark } from './../../../../../WebMarkerClient/src/models/mark';
 import { JwtService } from './../../services/jwt.service';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import './sign-in/sign-in.component.ts';
+import './profile-overview/profile-overview.component.ts';
 
 const componentCSS = require('./app.component.scss');
 
@@ -8,16 +14,45 @@ const componentCSS = require('./app.component.scss');
 export class WebMarker extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
   jwtService = new JwtService();
+  markService = new MarkerService();
+  userService = new UserService();
 
-  firstUpdated() {
-    console.log(this.jwtService.getJwt());
+  @property()
+  loaded = false;
+
+  @property()
+  marks!: Mark[];
+
+  @property()
+  loggedUser: JwtPayload;
+
+  async firstUpdated() {
+    await this.loadUserData();
+  }
+
+  async loadUserData() {
+    try {
+      this.loggedUser = await this.jwtService.getJwtPayload();
+      this.loaded = true;
+    } catch (error) {
+      this.logout();
+      this.loaded = true;
+    }
+  }
+
+  logout() {
+    this.loggedUser = undefined;
+    this.userService.logout();
   }
 
 
   render() {
     return html`
-  <sign-in></sign-in>
+    ${this.loaded ? html`
+    ${this.loggedUser ?
+      html`<profile-overview @logout=${() => this.logout()} .loggedUser=${this.loggedUser}></profile-overview>` :
+      html`<sign-in @login=${async () => await this.loadUserData()}></sign-in>`}
+      ` : html`<p>Loading...</p>`}
   `;
   }
-
 }

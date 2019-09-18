@@ -11,7 +11,6 @@ const componentCSS = require('./sign-in.component.scss');
  *
  * It allows the user to login.
  *
- * @author David Ehring
  * @export
  * @class SignInComponent
  * @extends {LitElement}
