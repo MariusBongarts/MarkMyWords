@@ -4,7 +4,7 @@
   "description": "",
   "main": "background.js",
   "scripts": {
-    "start": "npm run build --prefix components/web-marker && npm run build --prefix components/pop-up && tsc -w",
+    "start": "npm run build --prefix components/web-marker && tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

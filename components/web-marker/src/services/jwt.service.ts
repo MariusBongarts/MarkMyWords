@@ -12,15 +12,16 @@ export class JwtService {
           res(items['jwt_key']);
         });
       } catch (error) {
-        res('');
+        let jwt = localStorage.jwt_webmarker;
+        jwt ? res(jwt) : res('');
       }
     });
   }
 
-
-
+  
   setJwt(jwt: string) {
     try {
+      localStorage.jwt_webmarker = jwt;
       chrome.storage.sync.set({ jwt_key: jwt });
     } catch (error) {
       console.log(error);

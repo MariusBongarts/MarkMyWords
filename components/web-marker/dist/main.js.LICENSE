@@ -156,6 +156,14 @@
 
 /* 24 */
 
+/* 25 */
+
+/* 26 */
+
+/* 27 */
+
+/* 28 */
+
 // EXTERNAL MODULE: ./src/index.scss
 
 // CONCATENATED MODULE: ./src/services/jwt.service.ts
@@ -1087,6 +1095,13 @@
  * @ExportDecoratedItems
  */
 
+/**
+ * A property decorator that converts a class property into a getter
+ * that executes a querySelectorAll on the element's renderRoot.
+ *
+ * @ExportDecoratedItems
+ */
+
 // Note, this is a getter so that it's lazy. In practice, this means
 
 // stylesheets are not created until the first element instance is made.
@@ -1529,9 +1544,39 @@
      * @memberof BroncoChipList
      */
 
+// CONCATENATED MODULE: ./src/services/user.service.ts
+
 /**
- * A property decorator that converts a class property into a getter
- * that executes a querySelectorAll on the element's renderRoot.
+     * Signs the user in and saves the jwtToken in the jwtService.
+     *
+     * @returns {Promise<string>}
+     * @memberof UserService
+     */
+
+// CONCATENATED MODULE: ./src/components/pop-up/sign-in/sign-in.component.ts
+
+/**
  *
- * @ExportDecoratedItems
+ * This component is the sign-in component.
+ *
+ * It allows the user to login.
+ *
+ * @author David Ehring
+ * @export
+ * @class SignInComponent
+ * @extends {LitElement}
  */
+
+/**
+     *
+     * This component is the sign-in component.
+     *
+     * It allows the user to login.
+     *
+     * @author David Ehring
+     * @export
+     * @class SignInComponent
+     * @extends {LitElement}
+     */
+
+// CONCATENATED MODULE: ./src/components/pop-up/app.component.ts
