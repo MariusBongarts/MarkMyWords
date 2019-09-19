@@ -1,0 +1,55 @@
+@import '../../variables.scss';
+
+div {
+  width: 100%;
+  display: flex;
+}
+
+blockquote {
+  font-size: 1em;
+  width: 100%;
+  font-family: Open Sans;
+  font-style: italic;
+  color: #555555;
+  padding: 1.2em 30px 0.5em 75px;
+  border-left: 8px solid var(--primary-color);
+  line-height: 1.6;
+  position: relative;
+  color: white;
+  background: var(--secondary-color);
+  margin: 0;
+}
+
+.mark {
+  float: right;
+}
+mark {
+  background: var(--primary-color);
+  color: white;
+}
+
+blockquote::before {
+  font-family: Arial;
+  content: "\201C";
+  color: var(--primary-color);
+  font-size: 4em;
+  position: absolute;
+  left: 10px;
+  top: -10px;
+}
+
+blockquote:nth-of-type(even) {
+  text-align: right;
+  border-right: 8px solid var(--primary-color);
+  border-left: none;
+  padding: 1.2em 75px 1.2em 30px;
+}
+
+blockquote:nth-of-type(even)::before {
+  right: 25px;
+  top: -10px;
+}
+
+blockquote::after {
+  content: "";
+}

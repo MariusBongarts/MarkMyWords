@@ -1,0 +1,47 @@
+@import './../../variables.scss';
+
+:host {
+  --bg-color: #3d3d3d;
+  --color: white;
+  --min-height: 0;
+  --font-size: 1em;
+}
+
+bronco-chip {
+  padding: 0;
+  margin: 0;
+}
+
+.chip-list {
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: left;
+  min-height: var(--min-height);
+}
+
+
+.chip-list > bronco-chip {
+  display: flex;
+  margin: 2px 2px;
+}
+
+input {
+  color: var(--color);
+  outline: none;
+  font-size: var(--font-size);
+  border: none;
+  padding: 5px;
+  flex: 1 auto;
+  width: 80px;
+  overflow: hidden;
+  background: none;
+  border-bottom: 1px solid #ffffffc9;
+  margin: 0px 5px;
+}
+
+
+input::placeholder {
+  color: #ffffffc9;
+}
+

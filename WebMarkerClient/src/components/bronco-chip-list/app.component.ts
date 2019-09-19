@@ -2,7 +2,6 @@ import { Mark } from './../../models/mark';
 import { MarkerService } from './../../services/marker.service';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
-import './../bronco-chip/app.component';
 
 const componentCSS = require('./app.component.scss');
 
@@ -39,7 +38,7 @@ export class BroncoChipList extends LitElement {
    * @memberof BroncoChipList
    */
   @property()
-  mark: Mark;
+  mark!: Mark;
 
   /**
    * Property to set focus on input initially
@@ -69,17 +68,6 @@ export class BroncoChipList extends LitElement {
     this.chips = this.mark.tags;
     document.addEventListener('click', () => this.markedToDelete = false);
     this.focused ? this.inputElement.focus() : '';
-    this.closeOnOutsideClick();
-  }
-
-  closeOnOutsideClick() {
-    document.body.onclick = (e) => {
-
-      if (e.target !== this && e.target['tagName'] !== 'MY-MARKER') {
-        this.remove();
-        document.body.onclick = undefined;
-      }
-    }
   }
 
   async disconnectedCallback() {
@@ -175,6 +163,7 @@ export class BroncoChipList extends LitElement {
 
   filterChips(chip: string) {
     this.chips = this.chips.filter(e => e !== chip);
+    this.emit();
   }
 
   render() {

@@ -25,21 +25,27 @@ export class AppRoot extends LitElement {
     console.log(this.marks);
   }
 
+  async updateMark(mark: Mark, tags: string[]){
+    mark.tags = tags;
+    await this.markService.updateMark(mark);
+  }
+
   render() {
     return html`
           ${this.marks && this.marks.length ? this.marks.map(mark => html`
-          <blockquote>
-            ${mark.completeText.split(mark.text)[0]}
-            <mark>${mark.text}</mark>
-            ${mark.completeText.split(mark.text)[1]}
-            <br>
+          <div class="container">
+          <block-qoute .mark=${mark}></block-qoute>
+          <bronco-chip-list .mark=${mark}
+          @tagsChanged=${(e: CustomEvent) => this.updateMark(mark, e.detail as string[])}></bronco-chip-list>
             <div class="footer" style="width: 100%">
             <span>${timeSinceTimestamp(mark.createdAt)} ago</span>
             <a href="${mark.url}" target="_blank">${mark.url.substring(0, 50)}</a>
             </div>
             <button
             @click=${async () => await this.deleteMark(mark)}>X</button>
-          </blockquote>`) :
+          </div>
+
+          `) :
         html`<sign-in @login=${async () => await this.firstUpdated()}></sign-in>`}
 `;
   }
