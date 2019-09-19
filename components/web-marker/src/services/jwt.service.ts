@@ -40,6 +40,7 @@ export class JwtService {
           const payload = jwt_decode(jwt);
           payload ? res(payload) : res({} as JwtPayload);
         } catch (error) {
+          res({} as JwtPayload)
 
         }
       }

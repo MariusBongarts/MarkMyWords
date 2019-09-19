@@ -1,6 +1,7 @@
 import { JwtService } from './jwt.service';
 import { LoginUserDto } from './../models/loginUserDto';
 import { HttpClient } from './http-client';
+import { environment } from '../environments/environment.dev';
 
 
 export class UserService {
@@ -8,11 +9,7 @@ export class UserService {
   jwtService = new JwtService();
 
   constructor() {
-    this.httpClient = new HttpClient({ baseURL: 'http://localhost:3000' });
-    //this.httpClient = new HttpClient({ baseURL: 'https://marius96.uber.space' });
-
-    // Backup Gateway
-    // this.httpClient = new HttpClient({ baseURL: ' http://10.42.30.122:8080/finance/' });
+    this.httpClient = new HttpClient({ baseURL: environment.BACKEND_URL });
   }
 
   /**

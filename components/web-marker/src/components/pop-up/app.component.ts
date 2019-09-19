@@ -28,15 +28,14 @@ export class WebMarker extends LitElement {
 
   async firstUpdated() {
     await this.loadUserData();
+    this.loaded = true;
   }
 
   async loadUserData() {
     try {
       this.loggedUser = await this.jwtService.getJwtPayload();
-      this.loaded = true;
     } catch (error) {
       this.logout();
-      this.loaded = true;
     }
   }
 

@@ -1,17 +1,13 @@
 import { Mark } from './../models/mark';
 import { HttpClient } from './http-client';
+import { environment } from '../environments/environment.dev';
 
 
 export class MarkerService {
   httpClient!: HttpClient;
 
   constructor() {
-    //this.httpClient = new HttpClient({ baseURL: 'http://ec2-3-130-73-179.us-east-2.compute.amazonaws.com:3000' });
-    this.httpClient = new HttpClient({ baseURL: 'http://localhost:3000' });
-    //this.httpClient = new HttpClient({ baseURL: 'https://marius96.uber.space' });
-
-    // Backup Gateway
-    // this.httpClient = new HttpClient({ baseURL: ' http://10.42.30.122:8080/finance/' });
+    this.httpClient = new HttpClient({ baseURL: environment.BACKEND_URL });
   }
 
   async getMarks(): Promise<Mark[]> {
