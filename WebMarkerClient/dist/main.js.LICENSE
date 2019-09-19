@@ -52,49 +52,6 @@
 
 /* 2 */
 
-/* 3 */
-
-/* 4 */
-
-/* 5 */
-
-/* 6 */
-
-/* 7 */
-
-/* 8 */
-
-// extracted by mini-css-extract-plugin
-
-/* 9 */
-
-/* 10 */
-
-/**
- * The code was extracted from:
- * https://github.com/davidchambers/Base64.js
- */
-
-// initialize result and counters
-
-// get next character
-
-// character found in table? initialize bit storage and add its ascii value;
-
-// and if not first of each 4 characters,
-
-// convert the first 8 bits to one ascii character
-
-// try to find character in table (0-63, not found => -1)
-
-/* 11 */
-
-/* 12 */
-
-// Module
-
-/* 13 */
-
 /*
   MIT License http://www.opensource.org/licenses/mit-license.php
   Author Tobias Koppers @sokra
@@ -116,7 +73,54 @@
 
 // I hope this will never occur (Hey this way we have smaller bundles)
 
+/* 3 */
+
+/* 4 */
+
+/* 5 */
+
+/* 6 */
+
+/* 7 */
+
+/* 8 */
+
+/* 9 */
+
+// extracted by mini-css-extract-plugin
+
+/* 10 */
+
+/* 11 */
+
+/**
+ * The code was extracted from:
+ * https://github.com/davidchambers/Base64.js
+ */
+
+// initialize result and counters
+
+// get next character
+
+// character found in table? initialize bit storage and add its ascii value;
+
+// and if not first of each 4 characters,
+
+// convert the first 8 bits to one ascii character
+
+// try to find character in table (0-63, not found => -1)
+
+/* 12 */
+
+/* 13 */
+
+// Module
+
 /* 14 */
+
+/* 15 */
+
+/* 16 */
 
 // EXTERNAL MODULE: ./src/index.scss
 
@@ -990,6 +994,8 @@
 
 // CONCATENATED MODULE: ./node_modules/lit-element/lib/decorators.js
 
+// This callback is called once the class is otherwise fully defined
+
 // When decorating an accessor, pass it through and add property metadata.
 
 // Note, the `hasOwnProperty` check in `createProperty` ensures we don't
@@ -1027,6 +1033,13 @@
 /**
  * A property decorator that converts a class property into a getter that
  * executes a querySelector on the element's renderRoot.
+ *
+ * @ExportDecoratedItems
+ */
+
+/**
+ * A property decorator that converts a class property into a getter
+ * that executes a querySelectorAll on the element's renderRoot.
  *
  * @ExportDecoratedItems
  */
@@ -1227,4 +1240,35 @@
      * Root web component
      */
 
-// This callback is called once the class is otherwise fully defined
+// CONCATENATED MODULE: ./src/services/user.service.ts
+
+/**
+     * Signs the user in and saves the jwtToken in the jwtService.
+     *
+     * @returns {Promise<string>}
+     * @memberof UserService
+     */
+
+// CONCATENATED MODULE: ./src/components/sign-in/sign-in.component.ts
+
+/**
+ *
+ * This component is the sign-in component.
+ *
+ * It allows the user to login.
+ *
+ * @export
+ * @class SignInComponent
+ * @extends {LitElement}
+ */
+
+/**
+     *
+     * This component is the sign-in component.
+     *
+     * It allows the user to login.
+     *
+     * @export
+     * @class SignInComponent
+     * @extends {LitElement}
+     */

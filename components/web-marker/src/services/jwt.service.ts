@@ -44,9 +44,9 @@ export class JwtService {
         try {
           const jwt = localStorage.jwt_webmarker;
           const payload = jwt_decode(jwt);
-          payload ? res(payload) : res({} as JwtPayload);
+          payload ? res(payload as JwtPayload) : res({} as JwtPayload);
         } catch (error) {
-          res({} as JwtPayload)
+          res({} as JwtPayload);
 
         }
       }
