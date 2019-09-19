@@ -67,8 +67,18 @@ export class BroncoChipList extends LitElement {
   firstUpdated() {
     this.chips = this.mark.tags;
     document.addEventListener('click', () => this.markedToDelete = false);
-
     this.focused ? this.inputElement.focus() : '';
+    this.closeOnOutsideClick();
+  }
+
+  closeOnOutsideClick() {
+    document.body.onclick = (e) => {
+
+      if (e.target !== this && e.target['tagName'] !== 'MY-MARKER') {
+        this.remove();
+        document.body.onclick = undefined;
+      }
+    }
   }
 
   async disconnectedCallback() {
