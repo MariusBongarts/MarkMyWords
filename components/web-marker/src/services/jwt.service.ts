@@ -20,6 +20,12 @@ export class JwtService {
     });
   }
 
+  /**
+   * Tries to get the jwt-token either from the chrome storage or localstorage
+   *
+   * @returns {Promise<JwtPayload>}
+   * @memberof JwtService
+   */
   getJwtPayload(): Promise<JwtPayload> {
     return new Promise((res) => {
       try {

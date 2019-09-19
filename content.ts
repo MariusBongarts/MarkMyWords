@@ -10,22 +10,24 @@ chrome.runtime.onMessage.addListener(request => {
 
   // Show or hides the popup component
   if (request.id === 'togglePopup') {
-    !showPopup ? document.body.appendChild(popup) : document.body.removeChild(popup);
-    if (!showPopup) {
+    try {
+      document.body.removeChild(popup)
+    } catch (error) {
+      document.body.appendChild(popup)
       closePopupOnOutsideClick();
-    };
-    showPopup = true;
-  } else {
-    showPopup = false
-  }
+    }
+  };
 });
 
 function closePopupOnOutsideClick() {
   document.body.onclick = (e) => {
     if (e.target !== popup) {
-      popup.remove();
-      showPopup = false;
-      document.body.onclick = undefined;
+      try {
+        document.body.onclick = undefined;
+        popup.remove();
+      } catch (error) {
+
+      }
     }
   }
 }

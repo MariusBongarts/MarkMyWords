@@ -199,6 +199,13 @@
 
 // CONCATENATED MODULE: ./src/services/jwt.service.ts
 
+/**
+     * Tries to get the jwt-token either from the chrome storage or localstorage
+     *
+     * @returns {Promise<JwtPayload>}
+     * @memberof JwtService
+     */
+
 // CONCATENATED MODULE: ./src/services/http-client.ts
 
 // tslint:disable-next-line: no-empty
