@@ -1,7 +1,8 @@
+@import './../../variables.scss';
+
 :host {
   --bg-color: #3d3d3d;
   --color: white;
-  --primary-color: #78c0a8;
   --min-height: 0;
   --font-size: 1em;
 }
@@ -13,7 +14,7 @@ bronco-chip {
 }
 
 .chip-list {
-  background-color: var(--bg-color);
+  background-color: var(--secondary-color);
   border-radius: 10px;
   border-width: 0 0 1px;
   border-bottom: 1px solid;
@@ -31,7 +32,7 @@ bronco-chip {
 }
 
 .chip-list.marked-to-submit {
-  box-shadow: 1px 1px 2px 2px #62ff9e;
+  box-shadow: 1px 1px 2px 2px var(--primary-light);
 }
 
 .chip-list > bronco-chip {

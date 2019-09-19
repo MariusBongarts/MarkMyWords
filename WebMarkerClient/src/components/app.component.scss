@@ -1,57 +1,64 @@
-@import '../variables.scss';
-blockquote{
+@import "../variables.scss";
+
+blockquote {
   font-size: 1em;
-  width:50%;
-  margin:50px auto;
-  font-family:Open Sans;
-  font-style:italic;
+  width: 50%;
+  margin: 50px auto;
+  font-family: Open Sans;
+  font-style: italic;
   color: #555555;
-  padding:1.2em 30px 1.2em 75px;
-  border-left:8px solid #488f79 ;
-  line-height:1.6;
+  padding: 1.2em 30px 0.5em 75px;
+  border-left: 8px solid var(--primary-color);
+  line-height: 1.6;
   position: relative;
-  background:#EDEDED;
+  color: white;
+  background: var(--secondary-color);
 }
 
 .mark {
-  float:right
+  float: right;
 }
 
-blockquote::before{
-  font-family:Arial;
+blockquote::before {
+  font-family: Arial;
   content: "\201C";
-  color:#78C0A8;
-  font-size:4em;
+  color: var(--primary-color);
+  font-size: 4em;
   position: absolute;
   left: 10px;
-  top:-10px;
+  top: -10px;
 }
 
 blockquote:nth-of-type(even) {
   text-align: right;
-  border-right: 8px solid #78C0A8;
+  border-right: 8px solid var(--primary-color);
   border-left: none;
   padding: 1.2em 75px 1.2em 30px;
 }
 
 blockquote:nth-of-type(even)::before {
   right: 25px;
-  top:-10px;
+  top: -10px;
 }
 
-blockquote::after{
-  content: '';
+blockquote::after {
+  content: "";
 }
 
 .footer {
   display: flex;
   justify-content: space-between;
-  margin-top:1em;
+  margin-top: 1em;
+  font-size: 0.8em;
+  background: var(--secondary-light);
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
 }
 
-blockquote a{
-  display:block;
-  color:#333333;
+blockquote a {
+  display: block;
+  color: white;
   font-style: normal;
   font-weight: bold;
   text-decoration: none;
@@ -59,12 +66,29 @@ blockquote a{
 }
 
 blockquote span {
-  color: grey;
+  color: white;
   bottom: 10px;
 }
 
-
-
 mark {
-  background: #78C0A8
+  background: var(--primary-color);
+}
+
+button {
+  background: var(--error-color);
+  color: white;
+  border: none;
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  width: 25px;
+  height: 25px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  display: none;
+}
+
+blockquote:hover button {
+  display: block;
 }

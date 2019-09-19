@@ -37,10 +37,10 @@ export class AppRoot extends LitElement {
             <span>${timeSinceTimestamp(mark.createdAt)} ago</span>
             <a href="${mark.url}" target="_blank">${mark.url.substring(0, 50)}</a>
             </div>
-            <button style="position: absolute; right: 0px; top: -22px"
-            @click=${async () => await this.deleteMark(mark)}>Delete mark</button>
+            <button
+            @click=${async () => await this.deleteMark(mark)}>X</button>
           </blockquote>`) :
-        html`<h1>No marks made yet</h1>`}
+        html`<sign-in @login=${async () => await this.firstUpdated()}></sign-in>`}
 `;
   }
 

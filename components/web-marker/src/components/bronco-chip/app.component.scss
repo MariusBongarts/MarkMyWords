@@ -1,11 +1,11 @@
+@import '../../variables.scss';
 :host {
   --height: 28px;
-  --bg-color: #78c0a8;
 }
 .chip {
   display: inline-flex;
   flex-direction: row;
-  background-color: var(--bg-color);
+  background-color: var(--primary-color);
   border: none;
   cursor: default;
   height: var(--height);
@@ -14,7 +14,7 @@
   padding: 0;
   margin: 0px 1px;
   font-size: 14px;
-  color: #333333;
+  color: #ffffff;
   font-family: "Open Sans", sans-serif;
   white-space: nowrap;
   align-items: center;
@@ -22,6 +22,7 @@
   vertical-align: middle;
   text-decoration: none;
   justify-content: space-between;
+  font-weight: bold;
 }
 
 .chip-content {
@@ -53,7 +54,7 @@
   margin-right: 2px;
 }
 .chip-svg:hover {
-  color: #666666;
+  color: #bbbbbb;
 }
 
 .chip.delete-mode .chip-svg {
@@ -66,7 +67,7 @@
   transition: background 0.3s;
 }
 .ripple:hover {
-  background: var(--bg-color) radial-gradient(circle, transparent 1%, var(--bg-color) 1%) center/15000%;
+  background: var(--primary-dark) radial-gradient(circle, transparent 1%, var(--primary-color) 1%) center/15000%;
 }
 .ripple:active {
   background-color: rgba(199, 199, 199, 0.589);

@@ -114,7 +114,7 @@ export class MyMarkerElement extends LitElement {
         if (!this.abortHide && !this.editTags) {
           this.animation = 'slideOut';
         }
-      }, 400);
+      }, 500);
     });
   }
 
@@ -134,6 +134,7 @@ export class MyMarkerElement extends LitElement {
 
   async updateTags() {
     this.editTags = false;
+    this.animation = 'slideOut';
   }
 
   render() {

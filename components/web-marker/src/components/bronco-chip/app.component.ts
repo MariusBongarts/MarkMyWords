@@ -8,7 +8,7 @@ const componentCSS = require('./app.component.scss');
  * @event clicked - Dispatches when chip is clicked.
  * @event removed - Dispatched when removed is clicked.
  * @slot - Default content.
- * @cssprop --bg-color - Background color
+ * @cssprop --primary-color - Background color
  * @cssprop --height - Height of the chip
  *
  */
