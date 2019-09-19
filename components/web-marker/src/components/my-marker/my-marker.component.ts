@@ -74,7 +74,7 @@ export class MyMarkerElement extends LitElement {
   }
 
   getOffsetLeft(rectLines: DOMRectList) {
-    if (rectLines.length === 1) return this.parentElement.offsetLeft + 'px';
+    if (rectLines.length === 1) return this.parentElement.offsetLeft - this.parentElement.parentElement.offsetLeft + 'px';
     else return 0 + 'px';
   }
 
