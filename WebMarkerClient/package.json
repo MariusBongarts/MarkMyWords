@@ -1,7 +1,7 @@
 {
-  "name": "@marius/dockerclient",
+  "name": "@marius/webmarkerclient",
   "version": "1.0.0",
-  "identifier": "bronco-calendar",
+  "identifier": "webMarker",
   "description": "Client in docker environment",
   "private": true,
   "main": "index.js",
@@ -74,6 +74,7 @@
     "@marius/broncoicon": "git+https://github.com/marius2502/bronco-icon.git",
     "@types/bson": "^4.0.0",
     "bson": "^4.0.2",
+    "jwt-decode": "^2.2.0",
     "material-icons": "^0.3.1"
   },
   "proxy": "http://server:3000"

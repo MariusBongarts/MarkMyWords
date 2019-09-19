@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/marius2502/WebMarker#readme",
   "dependencies": {
+    "@types/jwt-decode": "^2.2.1",
     "@webcomponents/custom-elements": "^1.2.4"
   },
   "devDependencies": {

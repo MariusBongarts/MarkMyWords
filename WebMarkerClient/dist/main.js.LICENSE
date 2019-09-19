@@ -46,17 +46,54 @@
 
 /* 0 */
 
-/***/
-
-// extracted by mini-css-extract-plugin
-
 /* 1 */
+
+/***/
 
 /* 2 */
 
+/* 3 */
+
+/* 4 */
+
+/* 5 */
+
+/* 6 */
+
+/* 7 */
+
+/* 8 */
+
+// extracted by mini-css-extract-plugin
+
+/* 9 */
+
+/* 10 */
+
+/**
+ * The code was extracted from:
+ * https://github.com/davidchambers/Base64.js
+ */
+
+// initialize result and counters
+
+// get next character
+
+// character found in table? initialize bit storage and add its ascii value;
+
+// and if not first of each 4 characters,
+
+// convert the first 8 bits to one ascii character
+
+// try to find character in table (0-63, not found => -1)
+
+/* 11 */
+
+/* 12 */
+
 // Module
 
-/* 3 */
+/* 13 */
 
 /*
   MIT License http://www.opensource.org/licenses/mit-license.php
@@ -79,7 +116,7 @@
 
 // I hope this will never occur (Hey this way we have smaller bundles)
 
-/* 4 */
+/* 14 */
 
 // EXTERNAL MODULE: ./src/index.scss
 
@@ -1155,19 +1192,26 @@
 
 //# sourceMappingURL=lit-element.js.map
 
+// EXTERNAL MODULE: ./node_modules/jwt-decode/lib/index.js
+
+/*#__PURE__*/
+
+// CONCATENATED MODULE: ./src/services/jwt.service.ts
+
+/**
+     * Tries to get the jwt-token either from the chrome storage or localstorage
+     *
+     * @returns {Promise<JwtPayload>}
+     * @memberof JwtService
+     */
+
 // CONCATENATED MODULE: ./src/services/http-client.ts
 
 // tslint:disable-next-line: no-empty
 
+// CONCATENATED MODULE: ./src/environments/environment.dev.ts
+
 // CONCATENATED MODULE: ./src/services/marker.service.ts
-
-//this.httpClient = new HttpClient({ baseURL: 'http://ec2-3-130-73-179.us-east-2.compute.amazonaws.com:3000' });
-
-//this.httpClient = new HttpClient({ baseURL: 'https://marius96.uber.space' });
-
-// Backup Gateway
-
-// this.httpClient = new HttpClient({ baseURL: ' http://10.42.30.122:8080/finance/' });
 
 // CONCATENATED MODULE: ./src/helper/dateHelper.ts
 

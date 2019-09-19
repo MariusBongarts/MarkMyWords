@@ -47,7 +47,7 @@ export class AppRoot extends LitElement {
 
   async deleteMark(mark: Mark) {
     this.marks = this.marks.filter(e => e !== mark);
-    await this.markService.deleteMark(mark);
+    await this.markService.deleteMark(mark.id);
   }
 
 }

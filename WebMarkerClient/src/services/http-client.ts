@@ -1,8 +1,10 @@
+import { JwtService } from './jwt.service';
 export interface HttpClientConfig {
   baseURL: string
 }
 
 export class HttpClient {
+  jwtService = new JwtService();
 
   constructor(private config: HttpClientConfig) { }
 
@@ -27,10 +29,11 @@ export class HttpClient {
   }
 
   private async createFetch(method: string, url: string, body?: any) {
+    const jwtToken = await this.jwtService.getJwt();
     const requestOptions: RequestInit = {
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
-        'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDdlYTYyMzU2NTZmMTJiNDAyYjUzYzAiLCJlbWFpbCI6Im1hcml1c2JvbmdhcnRzQHdlYi5kZSIsImlhdCI6MTU2ODczMTY2NywiZXhwIjoxNTY5MDkxNjY3fQ.jTlwigM93zUIVnOHjQw6mktrRb4bFaJunywyA4hePcE`
+        'Authorization': `Bearer ${jwtToken}`
       },
       method
     };

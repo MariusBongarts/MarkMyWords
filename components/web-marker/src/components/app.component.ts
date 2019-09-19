@@ -67,7 +67,7 @@ export class WebMarker extends LitElement {
   setPositionOfMarkerForClick(e: MouseEvent) {
     const rangeBounds = window.getSelection().getRangeAt(0).getBoundingClientRect();
     this.style.position = 'fixed';
-    this.style.left = rangeBounds.left + (rangeBounds.width / 2) - (this.menuWidth / 2) + 'px';
+    this.style.left = rangeBounds.left + (rangeBounds.width / 2) - (this.menuWidth / 2) - 35 + 'px';
     this.style.top = rangeBounds.top + 'px';
     this.show = true;
   }
