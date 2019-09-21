@@ -195,6 +195,10 @@
 
 /* 35 */
 
+/* 36 */
+
+/* 37 */
+
 // EXTERNAL MODULE: ./src/index.scss
 
 // EXTERNAL MODULE: ./node_modules/jwt-decode/lib/index.js
@@ -1684,3 +1688,5 @@
      * @class LobbyContainer
      * @extends {LitElement}
      */
+
+// CONCATENATED MODULE: ./src/components/bubbles-animation/bubbles-animation.component.ts
