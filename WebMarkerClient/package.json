@@ -71,9 +71,11 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.1",
     "@marius/broncoicon": "git+https://github.com/marius2502/bronco-icon.git",
     "@types/bson": "^4.0.0",
     "bson": "^4.0.2",
+    "fontawesome": "^5.6.3",
     "jwt-decode": "^2.2.0",
     "material-icons": "^0.3.1"
   },

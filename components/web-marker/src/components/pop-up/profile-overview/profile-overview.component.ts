@@ -56,7 +56,9 @@ class ProfileOverviewComponent extends LitElement {
     ${this.marks ? html`
     <h5>Anzahl Markierungen: ${this.marks.length}<h5>
     ` : ''}
-    <button @click=${() => this.emitLogout()}>Logout</button>
+    <div clas="footer">
+      <button @click=${() => this.emitLogout()}>Logout</button>
+    </div>
     </div>
   `
   }

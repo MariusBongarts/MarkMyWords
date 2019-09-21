@@ -4,7 +4,7 @@
   --bg-color: #3d3d3d;
   --color: white;
   --min-height: 0;
-  --font-size: 1em;
+  --font-size: 20px;
 }
 
 bronco-chip {
@@ -43,7 +43,7 @@ bronco-chip {
 input {
   color: var(--color);
   outline: none;
-  font-size: var(--font-size);
+  font-size: 20px !important;
   border: none;
   padding: 5px;
   flex: 1 auto;

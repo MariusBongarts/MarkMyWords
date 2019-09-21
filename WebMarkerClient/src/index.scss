@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+  src: url("../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot");
+  src: url("../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2") format("woff2"), url("../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff") format("woff"), url("../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf") format("truetype"), url("../node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg#fontawesome") format("svg");
+}
+
 body {
   background: #676767;
+  font-family: 'Open Sans', sans-serif;
 }
