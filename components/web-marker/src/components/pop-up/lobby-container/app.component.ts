@@ -85,7 +85,8 @@ class LobbyContainer extends LitElement {
 
 	render() {
 		return html`
-<div class="bubblesContainer">
+<bubbles-animation>
+
 	<div class="container ${this.formSuccess ? 'form-success' : ''}">
 		<h1>Welcome</h1>
 		${!this.formSuccess ? html`
@@ -97,19 +98,7 @@ class LobbyContainer extends LitElement {
 		` : ''}
 	</div>
 
-	<ul class="bg-bubbles">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
-</div>
+	</bubbles-animation>
   `
 	}
 }
