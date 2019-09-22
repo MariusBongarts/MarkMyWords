@@ -31,7 +31,7 @@ class TabBarComponent extends LitElement {
   render() {
     return html`
 <nav class="tabbar">
-<ul style="--x:54px;">
+<ul style="">
 ${this.entries.map(entry => html`
 <li
 @click=${() => this.activeEntry = entry[0]}

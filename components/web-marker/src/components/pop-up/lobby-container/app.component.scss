@@ -50,7 +50,7 @@ form input:focus {
 form button {
   appearance: none;
   outline: 0;
-  background-color: var(--secondary-light);
+  background-color: var(--secondary-color);
   border: 0;
   padding: 10px 15px;
   color: #53e3a6;
@@ -68,6 +68,6 @@ form button.loading {
 }
 
 form button:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--secondary-dark);
   // background-color: #f5f7f9;
 }

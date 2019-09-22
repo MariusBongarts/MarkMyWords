@@ -1,8 +1,8 @@
 @import '../../../variables.scss';
 
 .tabbar {
-  --primary: var(--primary-color);
-  --background: #fff;
+  --primary: var(--primary-light);
+  --background: var(--secondary-color);
   --inactive: #99A3BA;
   --shadow: rgba(18, 22, 33, .24);
   --line: #CDD9ED;
