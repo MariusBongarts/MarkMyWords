@@ -2,7 +2,6 @@ import { LoginUserDto } from './../../../models/loginUserDto';
 import { UserService } from './../../../services/user.service';
 import { css, customElement, html, LitElement, query, property, unsafeCSS } from 'lit-element';
 
-
 const componentCSS = require('./tab-bar.component.scss');
 
 /**
@@ -20,10 +19,10 @@ const componentCSS = require('./tab-bar.component.scss');
 class TabBarComponent extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
 
-  entries = [['calendar', 'Events'], ['files', 'Files'], ['notification', 'Notification'], ['settings', 'Settings']];
+  entries = [['user', 'User'], ['tags', 'Tags'], ['folder', 'Folder'], ['settings', 'Settings']];
 
   @property()
-  activeEntry = 'calendar';
+  activeEntry = 'user';
 
   firstUpdated() {
   }

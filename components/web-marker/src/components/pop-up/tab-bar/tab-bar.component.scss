@@ -52,7 +52,7 @@
               border-radius: 48% 0 0 0;
           }
           a {
-              padding: 20px 0;
+              padding: 20px 0 10px 0;
               display: block;
               text-decoration: none;
               position: relative;
@@ -136,27 +136,27 @@
                   }
               }
           }
-          &.calendar {
-              a {
-                  div {
-                      -webkit-mask-box-image: url('https://aaroniker.me/feather-icons/calendar.svg');
-                      mask: url('https://aaroniker.me/feather-icons/calendar.svg');
-                  }
-              }
+          &.tags {
+            a {
+                div {
+                    -webkit-mask-box-image: url('https://aaroniker.me/feather-icons/tag.svg');
+                    mask: url('https://aaroniker.me/feather-icons/tag.svg');
+                }
+            }
           }
-          &.files {
-              a {
-                  div {
-                      -webkit-mask-box-image: url('https://aaroniker.me/feather-icons/file.svg');
-                      mask: url('https://aaroniker.me/feather-icons/file.svg');
-                  }
-              }
+          &.user {
+            a {
+                div {
+                    -webkit-mask-box-image: url('https://aaroniker.me/feather-icons/user.svg');
+                    mask: url('https://aaroniker.me/feather-icons/user.svg');
+                }
+            }
           }
-          &.notification {
+          &.folder {
               a {
                   div {
-                      -webkit-mask-box-image: url('https://aaroniker.me/feather-icons/bell.svg');
-                      mask: url('https://aaroniker.me/feather-icons/bell.svg');
+                      -webkit-mask-box-image: url('https://aaroniker.me/feather-icons/folder.svg');
+                      mask: url('https://aaroniker.me/feather-icons/folder.svg');
                   }
               }
           }

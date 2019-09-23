@@ -13,7 +13,8 @@ module.exports = {
     rules: [
       { test: /\.ts$/, use: 'ts-loader' },
       {
-        test: /\.scss$/, include: /index\.scss$/, use: [{ loader: MiniCssExtractPlugin.loader },
+        test: /\.scss$/, include: /index\.scss$/,
+        use: [{ loader: MiniCssExtractPlugin.loader, options: { publicPath: '/assets' } },
           'css-loader', 'postcss-loader', 'sass-loader']
       },
       {
@@ -22,7 +23,7 @@ module.exports = {
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [{ loader: 'file-loader', options: { outputPath: 'assets/' } }]
+        use: [ { loader: 'file-loader', options: { outputPath: 'assets/', publicPath: '/assets' } } ]
       }
     ]
   },
