@@ -4,7 +4,7 @@ import { LoginUserDto } from './../../../models/loginUserDto';
 import { UserService } from './../../../services/user.service';
 import { css, customElement, html, LitElement, query, property, unsafeCSS } from 'lit-element';
 import { JwtPayload } from '../../../models/jwtPayload';
-
+import './../mark-element/mark-element.component';
 
 const componentCSS = require('./profile-overview.component.scss');
 
@@ -49,15 +49,28 @@ class ProfileOverviewComponent extends LitElement {
     );
   }
 
+  checkEqual(id1: string, id2: string) {
+    console.log(id1);
+    console.log(id2);
+    console.log(id2 === id1);
+    return id2 === id1;
+
+  }
+
   render() {
     return html`
     <div class="container">
-    <p>${this.loggedUser.email}</p>
-    ${this.marks ? html`
-    <h5>Anzahl Markierungen: ${this.marks.length}<h5>
-    ` : ''}
-    <div clas="footer">
-      <button @click=${() => this.emitLogout()}>Logout</button>
+    <div class="main">
+      ${this.marks ? this.marks.map(mark => html`
+      <mark-element
+      .mark=${mark}
+      ></mark-element>`) : html`<p>Loading</p>`}
+    </div>
+
+    <div class="footer">
+    <p style="width: 100%; text-align: center; margin: 5px">${this.loggedUser.email}</p>
+    <br>
+    <button @click=${() => this.emitLogout()}>Logout</button>
     </div>
     </div>
   `

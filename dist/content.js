@@ -11,21 +11,20 @@ chrome.runtime.onMessage.addListener(request => {
         }
         catch (error) {
             document.body.appendChild(popup);
-            closePopupOnOutsideClick();
+            // closePopupOnOutsideClick();
         }
     }
     ;
 });
-function closePopupOnOutsideClick() {
-    document.body.onclick = (e) => {
-        if (e.target !== popup) {
-            try {
-                document.body.onclick = undefined;
-                popup.remove();
-            }
-            catch (error) {
-            }
-        }
-    };
-}
+// function closePopupOnOutsideClick() {
+//   document.body.onclick = (e) => {
+//     if (e.target !== popup) {
+//       try {
+//         document.body.onclick = undefined;
+//         popup.remove();
+//       } catch (error) {
+//       }
+//     }
+//   }
+// }
 //# sourceMappingURL=content.js.map

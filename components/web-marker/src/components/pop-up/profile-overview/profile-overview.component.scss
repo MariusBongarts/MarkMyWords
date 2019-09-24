@@ -1,24 +1,55 @@
 @import "../../../variables.scss";
 
+
+:host {
+  z-index: 9999 !important;
+  position: fixed;
+  top: 1vh;
+  right: 5px;
+  width: 250px;
+  height: 98vh;
+  background: var(--secondary-color);
+  border-radius: 10px;
+  box-shadow: 3px 3px 4px 4px #8080806c;
+}
+
 .container {
   color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main {
+  overflow: scroll;
+}
+
+.main::-webkit-scrollbar {
+  display: none;
+}
+
+.footer {
+  background: var(--secondary-dark);
+  border-radius: 0px 0px 10px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 button {
   appearance: none;
   outline: 0;
-  background-color: white;
+  background-color: var(--error-color);
   border: 0;
-  padding: 5px 10px;
-  color: var(--error-color);
+  padding: 2px 4px;
+  color: white;
   border-radius: 3px;
-  width: 150px;
+  width: 100px;
   cursor: pointer;
   font-size: 18px;
   transition-duration: 0.25s;
   margin: 5px;
 }
 
-.footer {
-  width: 100%;
-}
+

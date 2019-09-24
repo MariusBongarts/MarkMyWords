@@ -1,6 +1,10 @@
 @import '../../variables.scss';
 :host {
   --height: 28px;
+  --font-size: 14px;
+  --font-weight: bold;
+  --margin: 0px 1px;
+  --width: 100%;
 }
 .chip {
   display: inline-flex;
@@ -9,11 +13,11 @@
   border: none;
   cursor: default;
   height: var(--height);
-  width: 100%;
   outline: none;
   padding: 0;
-  margin: 0px 1px;
-  font-size: 14px;
+  width: var(--width);
+  margin: var(--margin);
+  font-size: var(--font-size);
   color: #ffffff;
   font-family: "Open Sans", sans-serif;
   white-space: nowrap;
@@ -22,7 +26,7 @@
   vertical-align: middle;
   text-decoration: none;
   justify-content: space-between;
-  font-weight: bold;
+  font-weight: var(--font-weight);
 }
 
 .chip-content {

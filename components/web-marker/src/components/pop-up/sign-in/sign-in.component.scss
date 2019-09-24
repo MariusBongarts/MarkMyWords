@@ -1,5 +1,9 @@
 @import '../../../variables.scss';
 
+:host {
+  min-width: 360px;
+}
+
 h1 {
   font-weight: lighter;
   padding-left: 20px;

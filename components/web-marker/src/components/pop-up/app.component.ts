@@ -50,7 +50,6 @@ export class WebMarker extends LitElement {
     ${this.loaded ? html`
     ${this.loggedUser ?
           html`
-      <tab-bar></tab-bar>
       <profile-overview @logout=${() => this.logout()} .loggedUser=${this.loggedUser}></profile-overview>` :
         // html`<sign-in @login=${async () => await this.loadUserData()}></sign-in>`}
         html`<lobby-container @login=${async () => await this.loadUserData()}></lobby-container>`}
