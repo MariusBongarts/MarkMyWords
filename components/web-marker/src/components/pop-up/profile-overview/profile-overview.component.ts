@@ -35,7 +35,7 @@ class ProfileOverviewComponent extends LitElement {
   async firstUpdated() {
     this.marks = [];
     try {
-      this.marks = await this.markService.getMarks();
+      this.marks = await this.markService.getMarksForUrl(location.href);
     } catch (error) {
       this.emitLogout();
     }

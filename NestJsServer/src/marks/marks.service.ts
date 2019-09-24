@@ -13,6 +13,11 @@ export class MarksService {
     return await this.markModel.find({ _user: user._id }).exec();
   }
 
+  async getMarksForUrl(user: JwtPayload, url: string) {
+    console.log(url);
+    return await this.markModel.find({ _user: user._id, url: url }).exec();
+  }
+
   async findMarkById(user: JwtPayload, markId: string) {
     return await this.markModel.findOne({ _user: user._id, id: markId });
   }

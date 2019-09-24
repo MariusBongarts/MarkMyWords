@@ -73,19 +73,17 @@ export class WebMarker extends LitElement {
   }
 
   /**
-   *  This method loads all marks from server, filters them for current
-   *  url, and highlights all marks for current page
+   *  This method loads all marks for current url from server
    *
    * @todo Load only marks with current url from server
    *
    * @memberof WebMarker
    */
   async loadMarks() {
-    this.marks = await this.markerService.getMarks();
+    this.marks = await this.markerService.getMarksForUrl(location.href);
     console.log(this.marks);
-    const filteredMarks = this.marks.filter(e => e.url === location.href);
-    filteredMarks.forEach(mark => highlightText(null, mark));
-    console.log(`${filteredMarks.length} marks found!`);
+    this.marks.forEach(mark => highlightText(null, mark));
+    console.log(`${this.marks.length} marks found!`);
   }
 
   render() {

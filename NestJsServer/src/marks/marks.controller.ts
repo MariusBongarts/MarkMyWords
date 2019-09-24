@@ -3,7 +3,7 @@ import { UsersService } from './../users/users.service';
 import { Mark } from './mark.interface';
 import { MarksService } from './marks.service';
 import { UserJwt } from './../users/decorators/email.decorator';
-import { Controller, Get, Post, Body, UseGuards, Req, Delete, Param, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Req, Delete, Param, Put, Query } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('marks')
@@ -25,6 +25,13 @@ export class MarksController {
   async getMarks(@UserJwt() userJwt) {
     const marks = await this.marksService.getMarksForUser(userJwt);
     return marks;
+  }
+
+  @Get('/url')
+  @UseGuards(AuthGuard())
+  async getMarksForUrl(@UserJwt() userJwt, @Query() query) {
+    console.log(query.url);
+    return await this.marksService.getMarksForUrl(userJwt as JwtPayload, query.url);
   }
 
   @Get(':id')

@@ -1375,8 +1375,7 @@
      */
 
 /**
-     *  This method loads all marks from server, filters them for current
-     *  url, and highlights all marks for current page
+     *  This method loads all marks for current url from server
      *
      * @todo Load only marks with current url from server
      *

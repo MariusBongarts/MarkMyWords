@@ -18,6 +18,14 @@ export class MarkerService {
     return marks;
   }
 
+  async getMarksForUrl(url: string): Promise<Mark[]> {
+    const response = await this.httpClient.get('/marks/url?url=' + url);
+    console.log(response);
+    const marks: Mark[] = (await response.json() as Mark[]);
+    console.log(marks);
+    return marks;
+  }
+
   async createMark(mark: Partial<Mark>): Promise<Mark | undefined> {
     console.log(mark)
     const response = await this.httpClient.post('/marks', mark);
