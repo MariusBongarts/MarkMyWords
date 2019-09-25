@@ -5,6 +5,8 @@ import { UserService } from './../../../services/user.service';
 import { css, customElement, html, LitElement, query, property, unsafeCSS } from 'lit-element';
 import { JwtPayload } from '../../../models/jwtPayload';
 import './../mark-element/mark-element.component';
+import openSocket from 'socket.io-client';
+import { environment } from '../../../environments/environment.dev';
 
 const componentCSS = require('./profile-overview.component.scss');
 
@@ -22,6 +24,7 @@ const componentCSS = require('./profile-overview.component.scss');
 @customElement('profile-overview')
 class ProfileOverviewComponent extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
+  socket = openSocket(environment.SOCKET_URL);
 
   userService = new UserService();
   markService = new MarkerService();
@@ -39,6 +42,13 @@ class ProfileOverviewComponent extends LitElement {
     } catch (error) {
       this.emitLogout();
     }
+    this.socket.on('newMark', (data) => {
+      this.marks = [...this.marks, data];
+    });
+  }
+
+  disconnectedCallback() {
+    this.socket.disconnect();
   }
 
   emitLogout() {

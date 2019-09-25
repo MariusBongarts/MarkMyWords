@@ -1,3 +1,4 @@
+import { MarkGateway } from './mark.gateway';
 import { UsersModule } from './../users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MarkSchema } from './mark.schema';
@@ -13,7 +14,7 @@ import { MarksService } from './marks.service';
     UsersModule
   ],
   exports: [MarksService],
-  providers: [MarksService],
+  providers: [MarksService, MarkGateway],
   controllers: [MarksController]
 })
 export class MarksModule {}

@@ -1,3 +1,5 @@
+import { Client } from 'socket.io';
+import { MarkGateway } from './mark.gateway';
 import { JwtPayload } from './../auth/interfaces/jwt-payload.interface';
 import { UsersService } from './../users/users.service';
 import { Mark } from './mark.interface';
@@ -6,12 +8,14 @@ import { UserJwt } from './../users/decorators/email.decorator';
 import { Controller, Get, Post, Body, UseGuards, Req, Delete, Param, Put, Query } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
+
 @Controller('marks')
 export class MarksController {
 
   constructor(
     private marksService: MarksService,
-    private usersService: UsersService) { }
+    private usersService: UsersService) {
+    }
 
   /**
    * Returns all marks for logged user

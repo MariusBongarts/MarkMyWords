@@ -8,7 +8,13 @@ export class MarkerService {
 
   constructor() {
     this.httpClient = new HttpClient({ baseURL: environment.BACKEND_URL });
+
+    // this.socket.on('connect', () => {
+    //   console.log('Listening on WebSocket for new marks...');
+    // });
+
   }
+
 
   async getMarks(): Promise<Mark[]> {
     const response = await this.httpClient.get('/marks');
