@@ -7,10 +7,12 @@ import { MarksService } from './marks.service';
 import { UserJwt } from './../users/decorators/email.decorator';
 import { Controller, Get, Post, Body, UseGuards, Req, Delete, Param, Put, Query } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { Logger } from '@nestjs/common';
 
 
 @Controller('marks')
 export class MarksController {
+  private logger = new Logger('MarksController');
 
   constructor(
     private marksService: MarksService,
@@ -26,42 +28,48 @@ export class MarksController {
    */
   @Get('')
   @UseGuards(AuthGuard())
-  async getMarks(@UserJwt() userJwt) {
+  async getMarks(@UserJwt() userJwt: JwtPayload, @Req() req) {
     const marks = await this.marksService.getMarksForUser(userJwt);
+    this.logger.log(`${userJwt.email} loaded ${marks.length} marks from ${req.headers.origin}.`);
     return marks;
   }
 
   @Get('/url')
   @UseGuards(AuthGuard())
-  async getMarksForUrl(@UserJwt() userJwt, @Query() query) {
-    console.log(query.url);
-    return await this.marksService.getMarksForUrl(userJwt as JwtPayload, query.url);
+  async getMarksForUrl(@UserJwt() userJwt: JwtPayload, @Query() query, @Req() req) {
+    const marks = await this.marksService.getMarksForUrl(userJwt, query.url);
+    this.logger.log(`${userJwt.email} loaded ${marks.length} marks from ${req.headers.origin}.`);
+    return marks;
   }
 
   @Get(':id')
   @UseGuards(AuthGuard())
-  async getMarkById(@UserJwt() userJwt, @Param('id') markId) {
-    return await this.marksService.findMarkById(userJwt as JwtPayload, markId);
+  async getMarkById(@UserJwt() userJwt: JwtPayload, @Param('id') markId, @Req() req) {
+    const mark = await this.marksService.findMarkById(userJwt, markId);
+    this.logger.log(`${userJwt.email} loaded mark ${mark.id} from ${req.headers.origin}.`);
+    return mark;
   }
 
   @Post('')
   @UseGuards(AuthGuard())
-  async createMark(@UserJwt() userJwt, @Body() mark) {
-    console.log(mark);
-    const createdMark = await this.marksService.createMark(userJwt as JwtPayload, mark);
+  async createMark(@UserJwt() userJwt: JwtPayload, @Body() mark, @Req() req) {
+    const createdMark = await this.marksService.createMark(userJwt, mark);
+    this.logger.log(`${userJwt.email} created mark ${mark.id} from ${req.headers.origin}.`);
     return createdMark;
   }
 
   @Delete(':id')
   @UseGuards(AuthGuard())
-  async deleteMark(@UserJwt() userJwt, @Param('id') markId) {
-    const createdMark = await this.marksService.deleteMark(userJwt as JwtPayload, markId);
-    return createdMark;
+  async deleteMark(@UserJwt() userJwt: JwtPayload, @Param('id') markId, @Req() req) {
+    const deletedMark = await this.marksService.deleteMark(userJwt, markId);
+    this.logger.log(`${userJwt.email} deleted mark ${markId} from ${req.headers.origin}.`);
+    return deletedMark;
   }
 
   @Put('')
   @UseGuards(AuthGuard())
-  async updateMark(@UserJwt() userJwt, @Body() mark) {
-    return await this.marksService.updateMark(userJwt as JwtPayload, mark);
+  async updateMark(@UserJwt() userJwt: JwtPayload, @Body() mark, @Req() req) {
+    this.logger.log(`${userJwt.email} updated mark ${mark.id} from ${req.headers.origin}.`);
+    return await this.marksService.updateMark(userJwt, mark);
   }
 }
