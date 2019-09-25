@@ -29,7 +29,6 @@ export class MarksController {
   @Get('')
   @UseGuards(AuthGuard())
   async getMarks(@UserJwt() userJwt: JwtPayload, @Req() req) {
-    console.log(req);
     const marks = await this.marksService.getMarksForUser(userJwt);
     this.logger.log(`${userJwt.email} loaded ${marks.length} marks from ${req.get('origin')}.`);
     return marks;
@@ -37,10 +36,9 @@ export class MarksController {
 
   @Get('/url')
   @UseGuards(AuthGuard())
-  async getMarksForUrl(@UserJwt() userJwt: JwtPayload, @Query() query, @Req() req) {
-    console.log(req);
+  async getMarksForUrl(@UserJwt() userJwt: JwtPayload, @Query() query) {
     const marks = await this.marksService.getMarksForUrl(userJwt, query.url);
-    this.logger.log(`${userJwt.email} loaded ${marks.length} marks from ${req.get('origin')}.`);
+    this.logger.log(`${userJwt.email} loaded ${marks.length} marks from ${query.url}.`);
     return marks;
   }
 
