@@ -42,8 +42,15 @@ class ProfileOverviewComponent extends LitElement {
     } catch (error) {
       this.emitLogout();
     }
-    this.socket.on('newMark', (data) => {
+    this.socket.on('newMark', (data, error) => {
+      console.log('++++++++++++++++++++ Data from Socket ++++++++++++++++');
+      console.log(data);
+      console.log(error);
       this.marks = [...this.marks, data];
+    });
+
+    this.socket.on('connect', () => {
+      console.log('Listening on WebSocket for new marks...');
     });
   }
 

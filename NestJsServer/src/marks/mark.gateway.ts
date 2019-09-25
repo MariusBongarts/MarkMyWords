@@ -12,10 +12,12 @@ export class MarkGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
     async handleConnection() {
         this.logger.log('New client connected');
+        return true;
     }
 
     async handleDisconnect(){
         this.logger.log('Client disconnected');
+        return true;
     }
 
     // @SubscribeMessage('newMark')
