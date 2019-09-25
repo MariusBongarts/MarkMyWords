@@ -10,9 +10,9 @@ export class MarkGateway implements OnGatewayConnection, OnGatewayDisconnect {
     marks: Mark[] = [];
     private logger = new Logger('MarkGateway');
 
-    async handleConnection() {
+    async handleConnection(client) {
         this.logger.log('New client connected');
-        return true;
+        client.emit('connection', 'Successfully connected to server');
     }
 
     async handleDisconnect(){
