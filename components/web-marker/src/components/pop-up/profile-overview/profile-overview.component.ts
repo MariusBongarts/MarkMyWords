@@ -42,15 +42,21 @@ class ProfileOverviewComponent extends LitElement {
     } catch (error) {
       this.emitLogout();
     }
-    this.socket.on('newMark', (data, error) => {
-      console.log('++++++++++++++++++++ Data from Socket ++++++++++++++++');
-      console.log(data);
-      console.log(error);
-      this.marks = [...this.marks, data];
+
+    this.handleSockets();
+  }
+
+  handleSockets() {
+    this.socket.on('createMark', (createdMark: Mark) => {
+      this.marks = [...this.marks, createdMark];
     });
 
-    this.socket.on('connect', () => {
-      console.log('Listening on WebSocket for new marks...');
+    this.socket.on('deleteMark', (deletedMarkId: string) => {
+      this.marks = this.marks.filter(mark => mark.id !== deletedMarkId);
+    });
+
+    this.socket.on('updateMark', (updatedMark: Mark) => {
+      this.marks = this.marks.map(mark => mark.id === updatedMark.id ? updatedMark : mark);
     });
   }
 

@@ -29,15 +29,17 @@ export class MarksService {
   async createMark(user: JwtPayload, mark: Mark) {
     let createdMark = new this.markModel(mark);
     createdMark._user = user._id;
-    this.markGateway.wss.emit('newMark', createdMark);
+    this.markGateway.createMark(createdMark);
     return await createdMark.save();
   }
 
   async deleteMark(user: JwtPayload, markId: string) {
+    this.markGateway.deleteMark(markId)
     return await this.markModel.deleteOne({ _user: user._id, id: markId });
   }
 
   async updateMark(user: JwtPayload, mark: Mark) {
+    this.markGateway.updateMark(mark);
     return await this.markModel.updateOne({ _user: user._id, id: mark.id }, mark);
   }
 }

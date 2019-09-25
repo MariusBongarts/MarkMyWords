@@ -12,18 +12,22 @@ export class MarkGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
     async handleConnection(client) {
         this.logger.log('New client connected');
-        client.emit('connection', 'Successfully connected to server');
     }
 
     async handleDisconnect(){
         this.logger.log('Client disconnected');
-        return true;
     }
 
-    // @SubscribeMessage('newMark')
-    // handleEvent(client: Client, data: Mark): Mark {
-    //   console.log(data);
-    //   return data;
-    // }
+    createMark(mark: Mark) {
+        this.wss.emit('createMark', mark);
+    }
+
+    deleteMark(markId: string) {
+        this.wss.emit('deleteMark', markId);
+    }
+
+    updateMark(mark: Mark) {
+        this.wss.emit('updateMark', mark);
+    }
 
 }
