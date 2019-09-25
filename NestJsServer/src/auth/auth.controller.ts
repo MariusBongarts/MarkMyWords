@@ -11,7 +11,7 @@ export class AuthController {
 
     @Post()
     async login(@Body() loginUserDto: LoginUserDto, @Req() req) {
-        this.logger.log(`Login attempt of ${loginUserDto.email} from ${req.headers.origin}.`);
+        this.logger.log(`Login attempt of ${loginUserDto.email} from ${req.get('origin')}.`);
         return await this.authService.validateUserByPassword(loginUserDto);
     }
 
