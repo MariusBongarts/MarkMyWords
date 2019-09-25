@@ -2777,12 +2777,6 @@
 
 // CONCATENATED MODULE: ./src/services/marker.service.ts
 
-// this.socket.on('connect', () => {
-
-//   console.log('Listening on WebSocket for new marks...');
-
-// });
-
 // CONCATENATED MODULE: ./node_modules/lit-html/lib/directive.js
 
 /**

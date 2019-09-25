@@ -3,7 +3,7 @@ import { WebSocketGateway, WebSocketServer, SubscribeMessage, OnGatewayConnectio
 import { Client, Server } from 'socket.io';
 import { Logger } from '@nestjs/common';
 
-@WebSocketGateway(3001)
+@WebSocketGateway(3001, {origins: '*:*'})
 export class MarkGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
     @WebSocketServer() wss: Server;
