@@ -55,9 +55,9 @@ export class PopUpComponent extends LitElement {
     ${this.loggedUser ?
           html`
       ${this.showAccountPopup ? html`
-      <account-overview></account-overview>
+      <account-overview @logout=${() => this.logout()} .loggedUser=${this.loggedUser}></account-overview>
       ` : ''}
-      <mark-overview @logout=${() => this.logout()} .loggedUser=${this.loggedUser}></mark-overview>` :
+      <mark-overview .loggedUser=${this.loggedUser}></mark-overview>` :
         // html`<sign-in @login=${async () => await this.loadUserData()}></sign-in>`}
         html`<lobby-container @login=${async () => await this.loadUserData()}></lobby-container>`}
       ` : html`<p>Loading...</p>`}

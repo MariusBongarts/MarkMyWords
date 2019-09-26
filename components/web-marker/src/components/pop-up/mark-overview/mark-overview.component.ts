@@ -107,12 +107,6 @@ class MarkOverviewComponent extends LitElement {
       .mark=${mark}
       ></mark-element>`) : html`<p>Loading</p>`}
     </div>
-
-    <div class="footer">
-    <p style="width: 100%; text-align: center; margin: 5px">${this.loggedUser.email}</p>
-    <br>
-    <button @click=${() => this.emitLogout()}>Logout</button>
-  </div>
 </div>
 ` : ''}
   `

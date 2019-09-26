@@ -17,7 +17,8 @@
       "quotemark": [true, "single"],
       "trailing-comma": false,
       "curly": false,
-      "no-string-literal": false
+      "no-string-literal": false,
+      "indent": false,
     },
     "rulesDirectory": []
 }
