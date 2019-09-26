@@ -5,11 +5,13 @@
   --font-weight: bold;
   --margin: 0px 1px;
   --width: 100%;
+  --color: white;
+  --background-color: var(--primary-color);
 }
 .chip {
   display: inline-flex;
   flex-direction: row;
-  background-color: var(--primary-color);
+  background-color: var(--background-color);
   border: none;
   cursor: default;
   height: var(--height);
@@ -18,7 +20,7 @@
   width: var(--width);
   margin: var(--margin);
   font-size: var(--font-size);
-  color: #ffffff;
+  color: var(--color);
   font-family: var(--font-family);
   white-space: nowrap;
   align-items: center;

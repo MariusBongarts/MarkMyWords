@@ -104,6 +104,7 @@ class MarkOverviewComponent extends LitElement {
       <div class="main">
         ${this.marks ? this.marks.map(mark => html`
         <mark-element
+      .loggedUser=${this.loggedUser}
       .mark=${mark}
       ></mark-element>`) : html`<p>Loading</p>`}
     </div>
