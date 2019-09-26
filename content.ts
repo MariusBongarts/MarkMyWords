@@ -1,8 +1,9 @@
+import { PopUpComponent } from './components/web-marker/src/components/pop-up/app.component';
 const marker = document.createElement("web-marker");
 document.body.appendChild(marker);
 
-const popup = document.createElement("pop-up");
-let showPopup = false;
+const popup = document.createElement("pop-up") as PopUpComponent;
+document.body.appendChild(popup);
 
 
 // Listens for messages from background script
@@ -10,12 +11,7 @@ chrome.runtime.onMessage.addListener(request => {
 
   // Show or hides the popup component
   if (request.id === 'togglePopup') {
-    try {
-      document.body.removeChild(popup)
-    } catch (error) {
-      document.body.appendChild(popup)
-      // closePopupOnOutsideClick();
-    }
+    popup.showAccountPopup ? popup.showAccountPopup = false : popup.showAccountPopup = true;
   };
 });
 

@@ -7,4 +7,5 @@ import './components/bronco-chip-list/app.component.ts';
 import './components/pop-up/app.component.ts';
 import './components/pop-up/tab-bar/tab-bar.component.ts';
 import './components/pop-up/lobby-container/app.component.ts';
+import './components/pop-up/account-overview/account-overview.component.ts';
 import './components/bubbles-animation/bubbles-animation.component';

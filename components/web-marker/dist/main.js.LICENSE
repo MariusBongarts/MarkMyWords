@@ -2754,6 +2754,10 @@
 
 /* 90 */
 
+/* 91 */
+
+/* 92 */
+
 // EXTERNAL MODULE: ./src/index.scss
 
 // EXTERNAL MODULE: ./node_modules/jwt-decode/lib/index.js
@@ -4198,7 +4202,7 @@
      * @extends {LitElement}
      */
 
-// CONCATENATED MODULE: ./src/components/pop-up/profile-overview/profile-overview.component.ts
+// CONCATENATED MODULE: ./src/components/pop-up/mark-overview/mark-overview.component.ts
 
 /**
  *
@@ -4207,7 +4211,7 @@
  * It allows the user to login.
  *
  * @export
- * @class ProfileOverviewComponent
+ * @class MarkOverviewComponent
  * @extends {LitElement}
  */
 
@@ -4218,7 +4222,7 @@
      * It allows the user to login.
      *
      * @export
-     * @class ProfileOverviewComponent
+     * @class MarkOverviewComponent
      * @extends {LitElement}
      */
 
@@ -4273,5 +4277,7 @@
      * @class LobbyContainer
      * @extends {LitElement}
      */
+
+// CONCATENATED MODULE: ./src/components/pop-up/account-overview/account-overview.component.ts
 
 // CONCATENATED MODULE: ./src/components/bubbles-animation/bubbles-animation.component.ts

@@ -4,23 +4,22 @@
 :host {
   z-index: 9999 !important;
   position: fixed;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
   min-width: 360px;
   min-height: 360px;
   background: var(--primary-color);
   // background: linear-gradient(to top left, #53e3a6 0%, #00b077 100%);
   // background: linear-gradient(to bottom right, #00b077 0%, #53e3a6 100%);
-
   background: linear-gradient(to top right, var(--primary-color) 0%, var(--primary-light) 100%);
   border-radius: 10px;
-  box-shadow: 2px 2px 3px 3px rgba(128, 128, 128, 0.363);
 }
 
 .container.form-success h1 {
   transform: translateY(85px);
 }
 .container {
+  box-shadow: 2px 2px 3px 3px rgba(128, 128, 128, 0.363);
   margin: 0 auto;
   padding: 20px 0;
   height: 100%;

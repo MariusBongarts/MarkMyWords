@@ -30,7 +30,7 @@ class MarkElementComponent extends LitElement {
   render() {
     return html`
     <div class="mark">
-      <p>${this.mark.text}</p>
+      <blockquote>${this.mark.text}</blockquote>
       ${this.mark.tags.map(tag => html`
       <bronco-chip
       .hideDeleteIcon=${true}

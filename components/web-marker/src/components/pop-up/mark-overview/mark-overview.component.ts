@@ -8,9 +8,8 @@ import './../mark-element/mark-element.component';
 import openSocket from 'socket.io-client';
 import { environment } from '../../../environments/environment.dev';
 import { JwtService } from '../../../services/jwt.service';
-import { Socket } from 'socket.io-client';
 
-const componentCSS = require('./profile-overview.component.scss');
+const componentCSS = require('./mark-overview.component.scss');
 
 /**
  *
@@ -19,12 +18,12 @@ const componentCSS = require('./profile-overview.component.scss');
  * It allows the user to login.
  *
  * @export
- * @class ProfileOverviewComponent
+ * @class MarkOverviewComponent
  * @extends {LitElement}
  */
 
-@customElement('profile-overview')
-class ProfileOverviewComponent extends LitElement {
+@customElement('mark-overview')
+class MarkOverviewComponent extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
   socket: SocketIOClient.Socket;
 
@@ -38,6 +37,9 @@ class ProfileOverviewComponent extends LitElement {
 
   @property()
   marks!: Mark[];
+
+  @property()
+  show = true;
 
   async firstUpdated() {
     this.marks = [];
@@ -94,20 +96,14 @@ class ProfileOverviewComponent extends LitElement {
     );
   }
 
-  checkEqual(id1: string, id2: string) {
-    console.log(id1);
-    console.log(id2);
-    console.log(id2 === id1);
-    return id2 === id1;
-
-  }
-
   render() {
     return html`
+    <button class="hideShow" @click=${() => this.show ? this.show = false : this.show = true}>${this.show ? '<' : '>'}</button>
+    ${this.show ? html`
     <div class="container">
-    <div class="main">
-      ${this.marks ? this.marks.map(mark => html`
-      <mark-element
+      <div class="main">
+        ${this.marks ? this.marks.map(mark => html`
+        <mark-element
       .mark=${mark}
       ></mark-element>`) : html`<p>Loading</p>`}
     </div>
@@ -116,8 +112,9 @@ class ProfileOverviewComponent extends LitElement {
     <p style="width: 100%; text-align: center; margin: 5px">${this.loggedUser.email}</p>
     <br>
     <button @click=${() => this.emitLogout()}>Logout</button>
-    </div>
-    </div>
+  </div>
+</div>
+` : ''}
   `
   }
 }

@@ -6,15 +6,15 @@
   position: fixed;
   top: 0px;
   left: 0px;
-  width: 250px;
   height: 100vh;
   background: var(--secondary-color);
-  box-shadow: 3px 3px 4px 4px #8080806c;
 }
 
 .container {
+  box-shadow: 2px 2px 3px 3px #46464650;
   color: white;
   height: 100%;
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -49,6 +49,17 @@ button {
   font-size: 18px;
   transition-duration: 0.25s;
   margin: 5px;
+}
+
+.hideShow {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: -20px;
+  top: 45%;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  box-shadow: 1px 1px 2px 2px #0000001e;
 }
 
 

@@ -5,11 +5,16 @@
 }
 
 .mark {
-  background: linear-gradient(to top right, var(--primary-dark) 0%, var(--primary-color) 100%);
+  //background: linear-gradient(to top right, var(--primary-dark) 0%, var(--primary-color) 100%);
+  background: var(--secondary-dark);
   color: white;
   padding: 10px;
   margin-top: 10px;
   border-radius: 5px;
+}
+
+blockquote {
+  border-left: solid 1px var(--primary-color);
 }
 
 bronco-chip {
