@@ -18,7 +18,7 @@ export class MarkGateway implements OnGatewayConnection, OnGatewayDisconnect {
     async handleConnection(socket: Socket) {
         this.logger.log('New client connected');
         socket.on('join', (data: {id: string, email: string}) => {
-            this.logger.log(`${data.email} succesfully joined socket room.`);
+            this.logger.log(`${data.email} succesfully joined socket room ${data.id}.`);
             socket.join(data.id);
         });
     }

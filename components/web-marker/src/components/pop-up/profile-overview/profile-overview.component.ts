@@ -62,7 +62,11 @@ class ProfileOverviewComponent extends LitElement {
 
   handleSockets() {
     this.socket.on('createMark', (createdMark: Mark) => {
-      this.marks = [...this.marks, createdMark];
+      if (location.href === createdMark.url) {
+        this.marks = [...this.marks, createdMark];
+      } else {
+        // TODO: Maybe a popup to show that on different page has been added a mark?
+      }
     });
 
     this.socket.on('deleteMark', (deletedMarkId: string) => {
