@@ -1,3 +1,4 @@
+import { JwtPayload } from './../auth/interfaces/jwt-payload.interface';
 import { LoginUserDto } from './../../../WebMarkerClient/src/models/loginUserDto';
 import { AuthService } from './../auth/auth.service';
 import { User } from './../users/user.interface';
@@ -7,22 +8,19 @@ import { WebSocketGateway, WebSocketServer, SubscribeMessage, OnGatewayConnectio
 import { Client, Server, Socket } from 'socket.io';
 import { Logger, UseGuards, Body } from '@nestjs/common';
 import * as jwt_decode from 'jwt-decode';
-import { JwtPayload } from 'src/auth/interfaces/jwt-payload.interface';
-export type UserClient = { client: any, userId: string };
 
 @WebSocketGateway(3001, { origins: '*:*' })
 export class MarkGateway implements OnGatewayConnection, OnGatewayDisconnect {
     @WebSocketServer() wss: Server;
     marks: Mark[] = [];
-    connectedClients = [] as UserClient[];
     private logger = new Logger('MarkGateway');
 
-    async handleConnection(client) {
+    async handleConnection(socket: Socket) {
         this.logger.log('New client connected');
-        const user = jwt_decode(client.handshake.query.jwt) as JwtPayload;
-        console.log(user._id);
-        this.connectedClients.push({ client: client, userId: user._id })
-        client.emit('connect', 'Success');
+        socket.on('join', (data: {id: string, email: string}) => {
+            this.logger.log(`${data.email} succesfully joined socket room.`);
+            socket.join(data.id);
+        });
     }
 
     async handleDisconnect() {
@@ -30,19 +28,37 @@ export class MarkGateway implements OnGatewayConnection, OnGatewayDisconnect {
     }
 
     @SubscribeMessage('createMark')
-    async onCreateMark(client: Client, mark: Mark) {
-        this.wss.emit('createMark', mark);
-        //client.server.emit('createMark', mark);
-        // client.conn.emit('createMark', mark);
+    async onCreateMark(client: Socket, mark: Mark) {
+        this.emitToOneClient(client, 'createMark', mark);
     }
     @SubscribeMessage('deleteMark')
-    async onDeleteMark(client, mark: Mark) {
-        this.wss.emit('deleteMark', mark);
+    async onDeleteMark(client, markId: string) {
+        this.emitToOneClient(client, 'deleteMark', markId);
     }
 
     @SubscribeMessage('updateMark')
     async onUpdateMark(client, mark: Mark) {
-        this.wss.emit('updateMark', mark);
+        this.emitToOneClient(client, 'updateMark', mark);
+    }
+
+    emitToOneClient(client: Socket,  eventName: string, data: any) {
+        const userId = this.getJwtPayloadForClient(client)._id;
+        this.wss.in(userId).emit(eventName, data);
+    }
+
+    emitToAllClients(eventName: string, data: any) {
+        this.wss.emit(eventName, data);
+    }
+
+    getJwtPayloadForClient(client: Socket) {
+        try {
+            const jwt = client.handshake.query['jwt'];
+            // TODO: Validate jwt again
+            const jwtPayload: JwtPayload = jwt_decode(jwt);
+            return jwtPayload;
+        } catch (error) {
+            return undefined;
+        }
     }
 
 }

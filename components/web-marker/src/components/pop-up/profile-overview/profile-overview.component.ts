@@ -8,6 +8,7 @@ import './../mark-element/mark-element.component';
 import openSocket from 'socket.io-client';
 import { environment } from '../../../environments/environment.dev';
 import { JwtService } from '../../../services/jwt.service';
+import { Socket } from 'socket.io-client';
 
 const componentCSS = require('./profile-overview.component.scss');
 
@@ -25,7 +26,7 @@ const componentCSS = require('./profile-overview.component.scss');
 @customElement('profile-overview')
 class ProfileOverviewComponent extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
-  socket;
+  socket: SocketIOClient.Socket;
 
   userService = new UserService();
   markService = new MarkerService();
@@ -53,7 +54,10 @@ class ProfileOverviewComponent extends LitElement {
 
   async initSocket() {
     const jwt = await this.jwtService.getJwt();
+    const jwtPayload = await this.jwtService.getJwtPayload();
     this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
+    this.socket.emit('join', { id: jwtPayload._id, email: jwtPayload.email });
+
   }
 
   handleSockets() {
@@ -70,7 +74,7 @@ class ProfileOverviewComponent extends LitElement {
     });
 
     this.socket.on('connect', (data: string) => {
-     console.log('yeah');
+      console.log('yeah');
     });
   }
 
