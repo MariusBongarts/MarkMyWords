@@ -7,6 +7,7 @@ import { JwtPayload } from '../../../models/jwtPayload';
 import './../mark-element/mark-element.component';
 import openSocket from 'socket.io-client';
 import { environment } from '../../../environments/environment.dev';
+import { JwtService } from '../../../services/jwt.service';
 
 const componentCSS = require('./profile-overview.component.scss');
 
@@ -24,10 +25,12 @@ const componentCSS = require('./profile-overview.component.scss');
 @customElement('profile-overview')
 class ProfileOverviewComponent extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
-  socket = openSocket(environment.SOCKET_URL);
+  socket;
 
   userService = new UserService();
   markService = new MarkerService();
+  jwtService = new JwtService();
+
 
   @property()
   loggedUser!: JwtPayload;
@@ -43,7 +46,14 @@ class ProfileOverviewComponent extends LitElement {
       this.emitLogout();
     }
 
+    await this.initSocket();
+
     this.handleSockets();
+  }
+
+  async initSocket() {
+    const jwt = await this.jwtService.getJwt();
+    this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
   }
 
   handleSockets() {
@@ -57,6 +67,10 @@ class ProfileOverviewComponent extends LitElement {
 
     this.socket.on('updateMark', (updatedMark: Mark) => {
       this.marks = this.marks.map(mark => mark.id === updatedMark.id ? updatedMark : mark);
+    });
+
+    this.socket.on('connect', (data: string) => {
+     console.log('yeah');
     });
   }
 

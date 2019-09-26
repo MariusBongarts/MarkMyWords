@@ -13,4 +13,5 @@ export interface Mark extends Entity {
   endContainerText: string;
   completeText: string;
   title: string;
+  _user?: string;
 }

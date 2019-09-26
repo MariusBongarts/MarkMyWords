@@ -23,6 +23,7 @@
     "@webcomponents/custom-elements": "^1.2.4"
   },
   "devDependencies": {
-    "@types/chrome": "0.0.88"
+    "@types/chrome": "0.0.88",
+    "@types/socket.io": "^2.1.3"
   }
 }

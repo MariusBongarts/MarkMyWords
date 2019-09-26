@@ -30,14 +30,12 @@ export class JwtService {
     return new Promise((res) => {
       try {
         chrome.storage.sync.get((items) => {
-          console.log('1')
           let payload;
           try {
             payload = jwt_decode(items['jwt_key']);
           } catch (error) {
             res({} as JwtPayload);
           }
-          console.log('2')
           res(payload);
         });
       } catch (error) {
@@ -47,7 +45,6 @@ export class JwtService {
           payload ? res(payload as JwtPayload) : res({} as JwtPayload);
         } catch (error) {
           res({} as JwtPayload);
-
         }
       }
     });
