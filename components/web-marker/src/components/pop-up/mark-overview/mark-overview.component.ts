@@ -39,7 +39,7 @@ class MarkOverviewComponent extends LitElement {
   marks!: Mark[];
 
   @property()
-  show = true;
+  show = environment.production ? false : true;
 
   async firstUpdated() {
     this.marks = [];
@@ -98,7 +98,7 @@ class MarkOverviewComponent extends LitElement {
 
   render() {
     return html`
-    <button class="hideShow" @click=${() => this.show ? this.show = false : this.show = true}>${this.show ? '<' : '>'}</button>
+    <button class="hideShow" @click=${() => this.show ? this.show = false : this.show = true}>${this.show ? '<' : ''}</button>
     ${this.show ? html`
     <div class="container">
       <div class="main">

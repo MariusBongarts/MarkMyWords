@@ -19,7 +19,7 @@
   margin: var(--margin);
   font-size: var(--font-size);
   color: #ffffff;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-family);
   white-space: nowrap;
   align-items: center;
   border-radius: 16px;
@@ -35,8 +35,8 @@
   align-items: center;
   user-select: none;
   white-space: nowrap;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .chip-close {

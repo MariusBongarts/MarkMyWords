@@ -1,22 +1,23 @@
-@import '../../../variables.scss';
+@import "../../../variables.scss";
 
 :host {
-
 }
 
 .mark {
   //background: linear-gradient(to top right, var(--primary-dark) 0%, var(--primary-color) 100%);
   background: var(--secondary-dark);
-  color: white;
+  color: rgb(253, 253, 253);
   padding: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
+  margin-top: 5px;
 }
 
 blockquote {
   border-left: solid 3px var(--primary-color);
+  font-family: var(--font-family);
   margin: 8px 2px;
   padding-left: 10px;
+  font-size: 12;
+  line-height: 14px;
 }
 
 blockquote:hover {
@@ -24,7 +25,7 @@ blockquote:hover {
 }
 
 bronco-chip {
-  --font-size: 0.8em;
+  --font-size: 10;
   --font-weight: inherit;
   --height: 20px;
   --margin: 2px 1px;
