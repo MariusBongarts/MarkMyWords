@@ -6,13 +6,14 @@
 .mark {
   //background: linear-gradient(to top right, var(--primary-dark) 0%, var(--primary-color) 100%);
   background: var(--secondary-dark);
-  color: rgb(253, 253, 253);
+  color: rgb(201, 201, 201);
   padding: 10px;
+  padding-left: 5px;
   margin-top: 5px;
 }
 
 blockquote {
-  border-left: solid 3px var(--primary-color);
+  border-left: solid 3px var(--primary-dark);
   font-family: var(--font-family);
   margin: 8px 2px;
   padding-left: 10px;
@@ -21,7 +22,8 @@ blockquote {
 }
 
 blockquote:hover {
-  border-left: solid 3px var(--primary-dark);
+  border-left: solid 3px var(--primary-color);
+  color: white;
 }
 
 bronco-chip {
