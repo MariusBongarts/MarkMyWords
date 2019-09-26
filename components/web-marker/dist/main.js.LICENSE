@@ -478,13 +478,49 @@
 /* 9 */
 
 /**
- * A socket.io Encoder instance
+ * Module exports.
+ */
+
+/**
+ * Managers cache.
+ */
+
+/**
+ * Looks up an existing `Manager` for multiplexing.
+ * If the user summons:
+ *
+ *   `io('http://localhost/a');`
+ *   `io('http://localhost/b');`
+ *
+ * We reuse the existing instance based on same scheme/port/host,
+ * and we initialize sockets for each namespace.
  *
  * @api public
  */
 
 /**
  * Protocol version.
+ *
+ * @api public
+ */
+
+/**
+ * `connect`.
+ *
+ * @param {String} uri
+ * @api public
+ */
+
+/**
+ * Expose constructors for standalone build.
+ *
+ * @api public
+ */
+
+/* 10 */
+
+/**
+ * A socket.io Encoder instance
  *
  * @api public
  */
@@ -672,7 +708,7 @@
  * @api private
  */
 
-/* 10 */
+/* 11 */
 
 /*!
  * The buffer module from node.js, for the browser.
@@ -918,7 +954,7 @@
 
 // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
 
-/* 11 */
+/* 12 */
 
 // browser shim for xmlhttprequest module
 
@@ -934,7 +970,7 @@
 
 // https://github.com/yujiosaka/socke.io-ie8-loading-example
 
-/* 12 */
+/* 13 */
 
 /**
  * Transport abstract constructor.
@@ -951,10 +987,6 @@
 
 /**
  * Mix in `Emitter`.
- */
-
-/**
- * Module exports.
  */
 
 /**
@@ -1007,9 +1039,9 @@
  * @api private
  */
 
-/* 13 */
-
 /* 14 */
+
+/* 15 */
 
 /**
  * Parses an URI
@@ -1018,9 +1050,9 @@
  * @api private
  */
 
-/* 15 */
-
 /* 16 */
+
+/* 17 */
 
 /**
  * Returns true if obj is a buffer or an arraybuffer.
@@ -1028,7 +1060,7 @@
  * @api private
  */
 
-/* 17 */
+/* 18 */
 
 /**
  * `Manager` constructor.
@@ -1241,7 +1273,7 @@
  * @api private
  */
 
-/* 18 */
+/* 19 */
 
 /**
  * Module dependencies
@@ -1260,7 +1292,7 @@
 
 // some user agents have empty `location.port`
 
-/* 19 */
+/* 20 */
 
 /**
  * Is XHR2 supported?
@@ -1349,7 +1381,7 @@
 
 // prepend ? to query
 
-/* 20 */
+/* 21 */
 
 /* global Blob File */
 
@@ -1368,7 +1400,7 @@
 
 // see: https://github.com/Automattic/has-binary/pull/4
 
-/* 21 */
+/* 22 */
 
 /**
  * Return a string representing the specified number.
@@ -1397,9 +1429,9 @@
 
 // Expose the `yeast`, `encode` and `decode` functions.
 
-/* 22 */
-
 /* 23 */
+
+/* 24 */
 
 /**
  * Internal events (blacklisted).
@@ -1558,7 +1590,7 @@
  * @api public
  */
 
-/* 24 */
+/* 25 */
 
 /**
  * Helper for subscriptions.
@@ -1569,7 +1601,7 @@
  * @api public
  */
 
-/* 25 */
+/* 26 */
 
 /**
  * Slice reference.
@@ -1584,43 +1616,11 @@
  * @api public
  */
 
-/* 26 */
+/* 27 */
 
 // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
 
 // Copy bytes to buffer, if provided
-
-/* 27 */
-
-/**
- * Managers cache.
- */
-
-/**
- * Looks up an existing `Manager` for multiplexing.
- * If the user summons:
- *
- *   `io('http://localhost/a');`
- *   `io('http://localhost/b');`
- *
- * We reuse the existing instance based on same scheme/port/host,
- * and we initialize sockets for each namespace.
- *
- * @api public
- */
-
-/**
- * `connect`.
- *
- * @param {String} uri
- * @api public
- */
-
-/**
- * Expose constructors for standalone build.
- *
- * @api public
- */
 
 /* 28 */
 
@@ -1659,69 +1659,6 @@
 
 /* 36 */
 
-/* 37 */
-
-// Module
-
-/* 38 */
-
-/* 39 */
-
-/* 40 */
-
-// Unique ID creation requires a high quality random # generator.  In the
-
-// browser this is a little complicated due to unknown quality of Math.random()
-
-// and inconsistent support for the `crypto` API.  We do the best we can via
-
-// feature-detection
-
-// getRandomValues needs to be invoked in a context where "this" is a Crypto
-
-// implementation. Also, find the complete implementation of crypto on IE11.
-
-// WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
-
-// eslint-disable-line no-undef
-
-// Math.random()-based (RNG)
-
-// If all else fails, use Math.random().  It's fast, but is of unspecified
-
-// quality.
-
-/* 41 */
-
-/**
- * Convert array of 16 byte values to UUID string format of the form:
- * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
- */
-
-// join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
-
-/* 42 */
-
-/* 43 */
-
-/* 44 */
-
-/* 45 */
-
-/* 46 */
-
-/* 47 */
-
-/* 48 */
-
-/* 49 */
-
-/* 50 */
-
-/* 51 */
-
-/* 52 */
-
 /**
  * URL parser.
  *
@@ -1743,7 +1680,7 @@
 
 // define href
 
-/* 53 */
+/* 37 */
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -1838,7 +1775,7 @@
 	* Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
 	*/
 
-/* 54 */
+/* 38 */
 
 /**
  * Helpers.
@@ -1886,7 +1823,7 @@
  * @api private
  */
 
-/* 55 */
+/* 39 */
 
 /**
  * Enable namespaces listed in `localStorage.debug` initially.
@@ -1912,7 +1849,7 @@
 
 // double check webkit in userAgent just in case we are in a worker
 
-/* 56 */
+/* 40 */
 
 /**
  * Create a debugger with the given `namespace`.
@@ -1998,9 +1935,9 @@
  * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
  */
 
-/* 57 */
+/* 41 */
 
-/* 58 */
+/* 42 */
 
 /*global Blob,File*/
 
@@ -2055,7 +1992,7 @@
 
 // and object
 
-/* 59 */
+/* 43 */
 
 // base64 is 4/3 + up to two characters of the original data
 
@@ -2073,11 +2010,11 @@
 
 // See: https://github.com/beatgammit/base64-js/issues/42
 
-/* 60 */
+/* 44 */
 
-/* 61 */
+/* 45 */
 
-/* 62 */
+/* 46 */
 
 /**
  * Exports parser
@@ -2086,7 +2023,7 @@
  *
  */
 
-/* 63 */
+/* 47 */
 
 /**
  * Socket constructor.
@@ -2302,7 +2239,7 @@
  *
  */
 
-/* 64 */
+/* 48 */
 
 /**
  * Module exports.
@@ -2316,7 +2253,7 @@
 
 // when trying to create
 
-/* 65 */
+/* 49 */
 
 /* global attachEvent */
 
@@ -2439,7 +2376,7 @@
  * emitted.
  */
 
-/* 66 */
+/* 50 */
 
 /**
  * Gets the keys for an object.
@@ -2448,9 +2385,9 @@
  * @api private
  */
 
-/* 67 */
+/* 51 */
 
-/* 68 */
+/* 52 */
 
 /**
  * An abstraction for slicing an arraybuffer even when
@@ -2459,13 +2396,13 @@
  * @api public
  */
 
-/* 69 */
+/* 53 */
 
 // after first error, rest are passed to err_cb
 
 // future error callbacks will go to error handler
 
-/* 70 */
+/* 54 */
 
 /*! https://mths.be/utf8js v2.1.2 by @mathias */
 
@@ -2497,7 +2434,7 @@
 
 // 3-byte sequence (may include unpaired surrogates)
 
-/* 71 */
+/* 55 */
 
 /*
  * base64-arraybuffer
@@ -2509,7 +2446,7 @@
 
 // Use a lookup table to find the index.
 
-/* 72 */
+/* 56 */
 
 /**
  * Create a blob builder even when vendor prefixes exist
@@ -2529,11 +2466,11 @@
 
 // include the subarray region from the underlying buffer
 
-/* 73 */
+/* 57 */
 
-/* 74 */
+/* 58 */
 
-/* 75 */
+/* 59 */
 
 /**
  * Cached regular expressions.
@@ -2592,7 +2529,7 @@
 
 // double escaping is required for escaped new lines because unescaping of new lines can be done safely on server-side
 
-/* 76 */
+/* 60 */
 
 /**
  * Get either the `WebSocket` or `MozWebSocket` globals
@@ -2677,13 +2614,13 @@
  * @api public
  */
 
-/* 77 */
+/* 61 */
 
 /* (ignored) */
 
-/* 78 */
+/* 62 */
 
-/* 79 */
+/* 63 */
 
 /**
  * Initialize backoff timer with `opts`.
@@ -2732,6 +2669,69 @@
  * @api public
  */
 
+/* 64 */
+
+/* 65 */
+
+// Module
+
+/* 66 */
+
+/* 67 */
+
+/* 68 */
+
+// Unique ID creation requires a high quality random # generator.  In the
+
+// browser this is a little complicated due to unknown quality of Math.random()
+
+// and inconsistent support for the `crypto` API.  We do the best we can via
+
+// feature-detection
+
+// getRandomValues needs to be invoked in a context where "this" is a Crypto
+
+// implementation. Also, find the complete implementation of crypto on IE11.
+
+// WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
+
+// eslint-disable-line no-undef
+
+// Math.random()-based (RNG)
+
+// If all else fails, use Math.random().  It's fast, but is of unspecified
+
+// quality.
+
+/* 69 */
+
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+
+// join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
+
+/* 70 */
+
+/* 71 */
+
+/* 72 */
+
+/* 73 */
+
+/* 74 */
+
+/* 75 */
+
+/* 76 */
+
+/* 77 */
+
+/* 78 */
+
+/* 79 */
+
 /* 80 */
 
 /* 81 */
@@ -2769,7 +2769,7 @@
      * @memberof JwtService
      */
 
-// CONCATENATED MODULE: ./src/services/http-client.ts
+// EXTERNAL MODULE: ./node_modules/socket.io-client/lib/index.js
 
 // tslint:disable-next-line: no-empty
 
@@ -4198,7 +4198,7 @@
      * @extends {LitElement}
      */
 
-// EXTERNAL MODULE: ./node_modules/socket.io-client/lib/index.js
+// CONCATENATED MODULE: ./src/components/pop-up/profile-overview/profile-overview.component.ts
 
 /**
  *
