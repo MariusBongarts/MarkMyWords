@@ -312,6 +312,48 @@
 
 /* 4 */
 
+/**
+ * Module exports.
+ */
+
+/**
+ * Managers cache.
+ */
+
+/**
+ * Looks up an existing `Manager` for multiplexing.
+ * If the user summons:
+ *
+ *   `io('http://localhost/a');`
+ *   `io('http://localhost/b');`
+ *
+ * We reuse the existing instance based on same scheme/port/host,
+ * and we initialize sockets for each namespace.
+ *
+ * @api public
+ */
+
+/**
+ * Protocol version.
+ *
+ * @api public
+ */
+
+/**
+ * `connect`.
+ *
+ * @param {String} uri
+ * @api public
+ */
+
+/**
+ * Expose constructors for standalone build.
+ *
+ * @api public
+ */
+
+/* 5 */
+
 // shim for using process in browser
 
 // cached from whatever global is present so that test runners that stub it
@@ -344,7 +386,7 @@
 
 // empty string to avoid regexp issues
 
-/* 5 */
+/* 6 */
 
 /* WEBPACK VAR INJECTION */
 
@@ -454,7 +496,7 @@
  * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
  */
 
-/* 6 */
+/* 7 */
 
 /**
  * Compiles a querystring
@@ -471,51 +513,9 @@
  * @api private
  */
 
-/* 7 */
-
 /* 8 */
 
 /* 9 */
-
-/**
- * Module exports.
- */
-
-/**
- * Managers cache.
- */
-
-/**
- * Looks up an existing `Manager` for multiplexing.
- * If the user summons:
- *
- *   `io('http://localhost/a');`
- *   `io('http://localhost/b');`
- *
- * We reuse the existing instance based on same scheme/port/host,
- * and we initialize sockets for each namespace.
- *
- * @api public
- */
-
-/**
- * Protocol version.
- *
- * @api public
- */
-
-/**
- * `connect`.
- *
- * @param {String} uri
- * @api public
- */
-
-/**
- * Expose constructors for standalone build.
- *
- * @api public
- */
 
 /* 10 */
 

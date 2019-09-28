@@ -19,7 +19,12 @@ export class MarkerService {
     initSocket() {
         return __awaiter(this, void 0, void 0, function* () {
             const jwt = yield this.jwtService.getJwt();
-            this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
+            if (environment.production) {
+                this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
+            }
+            else {
+                this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt }, transports: ['websocket'] });
+            }
         });
     }
     getMarks() {

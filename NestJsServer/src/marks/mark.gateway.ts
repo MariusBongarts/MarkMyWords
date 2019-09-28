@@ -9,7 +9,7 @@ import { Client, Server, Socket } from 'socket.io';
 import { Logger, UseGuards, Body } from '@nestjs/common';
 import * as jwt_decode from 'jwt-decode';
 
-@WebSocketGateway(3001, { origins: '*:*', transports: ['websocket', 'xhr-polling'] })
+@WebSocketGateway(3001, { origins: '*:*', transports: ['websocket', 'polling'] })
 export class MarkGateway implements OnGatewayConnection, OnGatewayDisconnect {
     @WebSocketServer() wss: Server;
     marks: Mark[] = [];
