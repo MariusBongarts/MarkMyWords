@@ -1,7 +1,8 @@
 @import "../../../variables.scss";
 
 :host {
-  --white-dark: #d3d3d3;
+  --white-dark: #dddddd;
+  font-family: var(--font-family);
 }
 
 .mark {
@@ -18,7 +19,7 @@
 .mark:hover {
   color: white;
 
-  blockquote:hover {
+  blockquote {
     border-left: solid 3px var(--primary-color);
     color: white;
   }
@@ -50,7 +51,6 @@
 
 blockquote {
   border-left: solid 3px var(--primary-dark);
-  font-family: var(--font-family);
   margin: 8px 2px;
   padding-left: 10px;
   font-size: 11px;
@@ -69,4 +69,8 @@ bronco-chip {
 
 .timeSince {
   float: right;
+}
+
+.deleteBtn {
+  cursor: pointer;
 }

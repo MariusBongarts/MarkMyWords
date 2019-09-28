@@ -2,6 +2,7 @@ import { JwtPayload } from './../../../models/jwtPayload';
 import { Mark } from './../../../models/mark';
 import { css, customElement, html, LitElement, query, property, unsafeCSS } from 'lit-element';
 import { timeSinceTimestamp } from '../../../helper/dateHelper';
+import { MarkerService } from '../../../services/marker.service';
 
 const componentCSS = require('./mark-element.component.scss');
 
@@ -19,6 +20,7 @@ const componentCSS = require('./mark-element.component.scss');
 @customElement('mark-element')
 class MarkElementComponent extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
+  markService = new MarkerService();
 
   @property()
   mark: Mark;
@@ -32,12 +34,17 @@ class MarkElementComponent extends LitElement {
   async firstUpdated() {
   }
 
+  deleteMark() {
+    this.dispatchEvent(new CustomEvent('delete'));
+  }
+
   render() {
     return html`
     <div class="mark">
       <div class="header">
         <span>${this.loggedUser.email}</span>
         <span class="timeSince">${timeSinceTimestamp(this.mark.createdAt)} ago</span>
+        <span class="deleteBtn" @click=${() => this.deleteMark()}>X</span>
       </div>
       <div class="main">
         <blockquote>${this.mark.text}</blockquote>

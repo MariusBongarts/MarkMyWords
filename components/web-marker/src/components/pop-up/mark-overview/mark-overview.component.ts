@@ -92,6 +92,10 @@ class MarkOverviewComponent extends LitElement {
     this.socket.disconnect();
   }
 
+  async deleteMark(mark: Mark) {
+    await this.markService.deleteMark(mark.id);
+  }
+
   emitLogout() {
     this.dispatchEvent(
       new CustomEvent('logout', {
@@ -108,6 +112,7 @@ class MarkOverviewComponent extends LitElement {
       <div class="main">
         ${this.marks ? this.marks.map(mark => html`
         <mark-element
+      @delete=${async () => await this.deleteMark(mark)}
       .loggedUser=${this.loggedUser}
       .mark=${mark}
       ></mark-element>`) : html`<p>Loading</p>`}
