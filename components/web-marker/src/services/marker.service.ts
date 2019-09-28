@@ -16,7 +16,7 @@ export class MarkerService {
 
   async initSocket() {
     const jwt = await this.jwtService.getJwt();
-    this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
+    this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt }, transports: ['websocket'] });
   }
 
 

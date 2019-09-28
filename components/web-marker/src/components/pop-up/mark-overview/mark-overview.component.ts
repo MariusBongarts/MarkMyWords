@@ -57,7 +57,7 @@ class MarkOverviewComponent extends LitElement {
   async initSocket() {
     const jwt = await this.jwtService.getJwt();
     const jwtPayload = await this.jwtService.getJwtPayload();
-    this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
+    this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt }, transports: ['websocket', 'xhr-polling'] });
     this.socket.emit('join', { id: jwtPayload._id, email: jwtPayload.email });
 
   }
