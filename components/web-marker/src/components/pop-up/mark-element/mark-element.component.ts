@@ -32,31 +32,45 @@ class MarkElementComponent extends LitElement {
   loggedUser: JwtPayload;
 
   async firstUpdated() {
+    this.addEventListener('mouseenter', () => {
+      this.scrollToMark();
+    })
   }
 
-  deleteMark() {
+  deleteMark(e: MouseEvent) {
+    e.stopPropagation();
     this.dispatchEvent(new CustomEvent('delete'));
+  }
+
+  scrollToMark() {
+    window.scrollTo({
+      top: this.mark.scrollY ? this.mark.scrollY : 0,
+      left: 0,
+      behavior: 'smooth'
+    })
   }
 
   render() {
     return html`
-    <div class="mark" @click=${() => window.scrollTo(0, this.mark.scrollY ? this.mark.scrollY :  0)}>
-      <div class="header">
-        <span>${this.loggedUser.email}</span>
-        <span class="timeSince">${timeSinceTimestamp(this.mark.createdAt)} ago</span>
-        <span class="deleteBtn" @click=${() => this.deleteMark()}>X</span>
-      </div>
-      <div class="main">
-        <blockquote>${this.mark.text}</blockquote>
-      </div>
-    <div class="footer">
-      ${this.mark.tags.map(tag => html`
+    <div class="mark">
+    <div class="header" >
+      <span>${ this.loggedUser.email} </span>
+        <span class="timeSince" > ${ timeSinceTimestamp(this.mark.createdAt)} ago </span>
+          <span class="deleteBtn" @click=${ (e: MouseEvent) => this.deleteMark(e)}> X </span>
+            </div>
+            <div class="main" >
+              <blockquote>${ this.mark.text} </blockquote>
+                </div>
+                <div class="footer" >
+                  ${
+      this.mark.tags.map(tag => html`
       <bronco-chip
       .hideDeleteIcon=${true}
-      >${tag}</bronco-chip>`)}
-    </div>
-    </div>
-      `;
+      >${tag}</bronco-chip>`)
+      }
+</div>
+  </div>
+    `;
   }
 
 }

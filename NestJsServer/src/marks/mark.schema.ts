@@ -20,5 +20,6 @@ export const MarkSchema = new mongoose.Schema({
     startContainerText: String,
     endContainerText: String,
     completeText: String,
-    title: String
+    title: String,
+    scrollY: Number
 });
