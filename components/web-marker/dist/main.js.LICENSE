@@ -71,6 +71,52 @@
 
 /* 1 */
 
+/**
+ * Module dependencies.
+ */
+
+/**
+ * Module exports.
+ */
+
+/**
+ * Managers cache.
+ */
+
+/**
+ * Looks up an existing `Manager` for multiplexing.
+ * If the user summons:
+ *
+ *   `io('http://localhost/a');`
+ *   `io('http://localhost/b');`
+ *
+ * We reuse the existing instance based on same scheme/port/host,
+ * and we initialize sockets for each namespace.
+ *
+ * @api public
+ */
+
+/**
+ * Protocol version.
+ *
+ * @api public
+ */
+
+/**
+ * `connect`.
+ *
+ * @param {String} uri
+ * @api public
+ */
+
+/**
+ * Expose constructors for standalone build.
+ *
+ * @api public
+ */
+
+/* 2 */
+
 // This works in non-strict mode
 
 // This works if eval is allowed (see CSP)
@@ -83,7 +129,7 @@
 
 // easier to handle this case. if(!global) { ...}
 
-/* 2 */
+/* 3 */
 
 /**
  * Initialize a new `Emitter`.
@@ -160,11 +206,7 @@
  * @api public
  */
 
-/* 3 */
-
-/**
- * Module dependencies.
- */
+/* 4 */
 
 /**
  * Check if we are running an android browser. That requires us to use
@@ -309,48 +351,6 @@
 // 310 = char length of Number.MAX_VALUE
 
 // iPhone Safari doesn't let you apply to typed arrays
-
-/* 4 */
-
-/**
- * Module exports.
- */
-
-/**
- * Managers cache.
- */
-
-/**
- * Looks up an existing `Manager` for multiplexing.
- * If the user summons:
- *
- *   `io('http://localhost/a');`
- *   `io('http://localhost/b');`
- *
- * We reuse the existing instance based on same scheme/port/host,
- * and we initialize sockets for each namespace.
- *
- * @api public
- */
-
-/**
- * Protocol version.
- *
- * @api public
- */
-
-/**
- * `connect`.
- *
- * @param {String} uri
- * @api public
- */
-
-/**
- * Expose constructors for standalone build.
- *
- * @api public
- */
 
 /* 5 */
 

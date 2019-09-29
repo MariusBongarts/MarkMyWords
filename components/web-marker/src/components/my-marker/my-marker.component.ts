@@ -62,13 +62,16 @@ export class MyMarkerElement extends LitElement {
 
   handleSockets() {
     this.socket.on('deleteMark', (deletedMarkId: string) => {
-      deleteMarkFromDom(this.parentElement);
-      this.remove();
+      if (this.mark.id === deletedMarkId) {
+        deleteMarkFromDom(this.parentElement);
+        this.remove();
+      }
     });
 
     this.socket.on('updateMark', (updatedMark: Mark) => {
-      console.log("Update in my-marker");
-      this.mark = updatedMark;
+      if (this.mark.id === updatedMark.id) {
+        this.mark = updatedMark;
+      }
     });
 
     this.socket.on('connect', (data: string) => {
