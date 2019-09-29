@@ -103,7 +103,7 @@ class MarkOverviewComponent extends LitElement {
     return html`
     <button class="hideShow" @click=${() => this.show ? this.show = false : this.show = true}>${this.show ?
       html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>`
-      : html`<mark-badge>${this.marks.length}</mark-badge>`}</button>
+      : html`<mark-badge>${this.marks ? this.marks.length : 0}</mark-badge>`}</button>
     ${this.show ? html`
     <div class="container">
       <div class="main">
