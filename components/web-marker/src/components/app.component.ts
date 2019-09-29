@@ -28,7 +28,7 @@ export class WebMarker extends LitElement {
 
   async firstUpdated() {
     this.listenToShowMarker();
-    await this.loadMarks();
+    await this.highlightMarks();
   }
 
   /**
@@ -79,7 +79,7 @@ export class WebMarker extends LitElement {
    *
    * @memberof WebMarker
    */
-  async loadMarks() {
+  async highlightMarks() {
     this.marks = await this.markerService.getMarksForUrl(location.href);
     console.log(this.marks);
     this.marks.forEach(mark => highlightText(null, mark));
@@ -88,7 +88,7 @@ export class WebMarker extends LitElement {
 
   render() {
     return html`
-  <my-marker .marks=${this.marks ? this.marks : []} .show=${this.show} .menuWidth=${this.menuWidth}></my-marker>
+  <my-marker .show=${this.show} .menuWidth=${this.menuWidth}></my-marker>
   `;
   }
 

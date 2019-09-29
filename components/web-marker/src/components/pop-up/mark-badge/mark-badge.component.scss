@@ -1,0 +1,14 @@
+@import "../../../variables.scss";
+
+
+.badge {
+  background: var(--primary-color);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0px;
+  line-height: 20px;
+  font-size: 15px;
+  right: -20%;
+}
