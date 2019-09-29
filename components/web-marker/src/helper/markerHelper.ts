@@ -42,15 +42,19 @@ function createMyMarkerComponent(markElement: HTMLElement, mark: Mark) {
 
   myMarkElement.addEventListener('deleted', (e: CustomEvent) => {
     myMarkElement.remove();
-    // Unwraps the mark element
-    const parent = markElement.parentNode;
-    // move all children out of the element
-    while (markElement.firstChild) parent.insertBefore(markElement.firstChild, markElement);
-    // remove the empty element
-    parent.removeChild(markElement);
+    deleteMarkFromDom(markElement);
     console.log(`Succesfully deleted mark ${e.detail}`);
   });
 
+}
+
+export function deleteMarkFromDom(markElement: HTMLElement) {
+      // Unwraps the mark element
+      const parent = markElement.parentNode;
+      // move all children out of the element
+      while (markElement.firstChild) parent.insertBefore(markElement.firstChild, markElement);
+      // remove the empty element
+      parent.removeChild(markElement);
 }
 
 function recreateRange(mark) {

@@ -1,12 +1,18 @@
+import { environment } from './../../environments/environment.dev';
+import { JwtService } from './../../services/jwt.service';
 import { MarkerService } from './../../services/marker.service';
 import { Mark } from './../../models/mark';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 const componentCSS = require('./my-marker.component.scss');
+import openSocket from 'socket.io-client';
+import { deleteMarkFromDom } from '../../helper/markerHelper';
 
 @customElement('my-marker')
 export class MyMarkerElement extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
   markerService = new MarkerService();
+  jwtService = new JwtService();
+  socket: SocketIOClient.Socket;
 
   listener = [];
 
@@ -38,6 +44,36 @@ export class MyMarkerElement extends LitElement {
       this.setPosition();
       this.registerListener();
     }
+
+    await this.initSocket();
+    this.handleSockets();
+  }
+
+  async initSocket() {
+    const jwt = await this.jwtService.getJwt();
+    const jwtPayload = await this.jwtService.getJwtPayload();
+    if (environment.production) {
+      this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
+    } else {
+      this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt }, transports: ['websocket', 'xhr-polling'] });
+    }
+    this.socket.emit('join', { id: jwtPayload._id, email: jwtPayload.email });
+  }
+
+  handleSockets() {
+    this.socket.on('deleteMark', (deletedMarkId: string) => {
+      deleteMarkFromDom(this.parentElement);
+      this.remove();
+    });
+
+    this.socket.on('updateMark', (updatedMark: Mark) => {
+      console.log("Update in my-marker");
+      this.mark = updatedMark;
+    });
+
+    this.socket.on('connect', (data: string) => {
+      console.log('yeah');
+    });
   }
 
   /**

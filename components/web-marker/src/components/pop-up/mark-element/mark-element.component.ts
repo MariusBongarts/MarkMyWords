@@ -34,9 +34,15 @@ class MarkElementComponent extends LitElement {
   async firstUpdated() {
   }
 
-  deleteMark(e: MouseEvent) {
+  async deleteMark(e: MouseEvent) {
     e.stopPropagation();
-    this.dispatchEvent(new CustomEvent('delete'));
+    await this.markService.deleteMark(this.mark.id);
+  }
+
+  async deleteTagk(e: MouseEvent, deletedTag) {
+    e.stopPropagation();
+    this.mark.tags = this.mark.tags.filter(tag => tag !== deletedTag);
+    await this.markService.updateMark(this.mark);
   }
 
   scrollToMark() {
@@ -54,7 +60,7 @@ class MarkElementComponent extends LitElement {
     <div class="header" >
       <span>${ this.loggedUser.email} </span>
         <span class="timeSince" > ${ timeSinceTimestamp(this.mark.createdAt)} ago </span>
-          <span class="deleteBtn" @click=${ (e: MouseEvent) => this.deleteMark(e)}> X </span>
+          <span class="deleteBtn" @click=${async (e: MouseEvent) => await this.deleteMark(e)}> X </span>
             </div>
             <div class="main" >
               <blockquote>${ this.mark.text} </blockquote>
@@ -63,7 +69,7 @@ class MarkElementComponent extends LitElement {
                   ${
       this.mark.tags.map(tag => html`
       <bronco-chip
-      .hideDeleteIcon=${true}
+      @deleted=${async (e: MouseEvent) => await this.deleteTagk(e, tag)}
       >${tag}</bronco-chip>`)
       }
 </div>
