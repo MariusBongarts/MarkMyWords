@@ -12,5 +12,6 @@ export interface Mark extends Entity{
   startContainerText: string,
   endContainerText: string,
   completeText: string,
-  title: string
+  title: string,
+  scrollY: number
 }

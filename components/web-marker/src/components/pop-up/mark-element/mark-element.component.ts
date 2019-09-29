@@ -40,7 +40,7 @@ class MarkElementComponent extends LitElement {
 
   render() {
     return html`
-    <div class="mark">
+    <div class="mark" @click=${() => window.scrollTo(0, this.mark.scrollY ? this.mark.scrollY :  0)}>
       <div class="header">
         <span>${this.loggedUser.email}</span>
         <span class="timeSince">${timeSinceTimestamp(this.mark.createdAt)} ago</span>

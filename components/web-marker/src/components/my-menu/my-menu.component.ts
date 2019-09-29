@@ -70,6 +70,8 @@ export class MyMarkElement extends LitElement {
   createMark(): Mark {
     const selection = window.getSelection();
     const range = selection.getRangeAt(0);
+    console.log(selection);
+    console.log(selection);
     const mark: Mark = {
       id: uuidv4(),
       url: location.href,
@@ -86,6 +88,7 @@ export class MyMarkElement extends LitElement {
       endContainerText: range.endContainer.textContent,
       startOffset: range.startOffset,
       endOffset: range.endOffset,
+      scrollY: window.scrollY
     };
     console.log(mark);
     return mark;
