@@ -32,9 +32,6 @@ class MarkElementComponent extends LitElement {
   loggedUser: JwtPayload;
 
   async firstUpdated() {
-    this.addEventListener('mouseenter', () => {
-      this.scrollToMark();
-    })
   }
 
   deleteMark(e: MouseEvent) {
@@ -43,16 +40,17 @@ class MarkElementComponent extends LitElement {
   }
 
   scrollToMark() {
-    window.scrollTo({
+    const scrollOptions: ScrollToOptions = {
       top: this.mark.scrollY ? this.mark.scrollY : 0,
       left: 0,
       behavior: 'smooth'
-    })
+    }
+    window.scrollTo(scrollOptions);
   }
 
   render() {
     return html`
-    <div class="mark">
+    <div class="mark" @click=${() => this.scrollToMark()}>
     <div class="header" >
       <span>${ this.loggedUser.email} </span>
         <span class="timeSince" > ${ timeSinceTimestamp(this.mark.createdAt)} ago </span>
