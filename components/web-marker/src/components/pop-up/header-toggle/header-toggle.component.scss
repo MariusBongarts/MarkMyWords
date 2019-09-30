@@ -1,0 +1,33 @@
+@import "../../../variables.scss";
+
+.toggle {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  margin: auto 0px;
+  background: none;
+  width: 70px;
+  font-size: 12px;
+  line-height: 12px;
+  border: none;
+  color: white;
+  outline: none;
+  padding: 2px 0px;
+  box-shadow: 1px 1px 1px 1px #c0c0c024;
+}
+
+button.active {
+  background: var(--primary-color);
+  box-shadow: 1px 1px 1px 1px var(--primary-shadow);
+}
+
+button:nth-child(1) {
+  border-radius: 10px 0px 0px 10px;
+}
+
+button:nth-child(2) {
+  border-radius: 0px 10px 10px 0px;
+}

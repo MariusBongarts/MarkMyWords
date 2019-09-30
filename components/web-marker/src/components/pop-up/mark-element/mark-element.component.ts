@@ -39,7 +39,7 @@ class MarkElementComponent extends LitElement {
     await this.markService.deleteMark(this.mark.id);
   }
 
-  async deleteTagk(e: MouseEvent, deletedTag) {
+  async deleteTag(e: MouseEvent, deletedTag) {
     e.stopPropagation();
     this.mark.tags = this.mark.tags.filter(tag => tag !== deletedTag);
     await this.markService.updateMark(this.mark);
@@ -69,7 +69,7 @@ class MarkElementComponent extends LitElement {
                   ${
       this.mark.tags.map(tag => html`
       <bronco-chip
-      @deleted=${async (e: MouseEvent) => await this.deleteTagk(e, tag)}
+      @deleted=${async (e: MouseEvent) => await this.deleteTag(e, tag)}
       >${tag}</bronco-chip>`)
       }
 </div>

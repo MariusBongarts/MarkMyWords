@@ -10,3 +10,4 @@ import './components/pop-up/lobby-container/app.component.ts';
 import './components/pop-up/account-overview/account-overview.component.ts';
 import './components/bubbles-animation/bubbles-animation.component';
 import './components/pop-up/mark-badge/mark-badge.component.ts';
+import './components/pop-up/header-toggle/header-toggle.component.ts';

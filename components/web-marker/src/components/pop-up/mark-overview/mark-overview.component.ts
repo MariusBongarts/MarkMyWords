@@ -106,6 +106,9 @@ class MarkOverviewComponent extends LitElement {
       : html`<mark-badge>${this.marks ? this.marks.length : 0}</mark-badge>`}</button>
     ${this.show ? html`
     <div class="container">
+    <div class="header">
+    <header-toggle></header-toggle>
+    </div>
       <div class="main">
         ${this.marks ? this.marks.map(mark => html`
         <mark-element
