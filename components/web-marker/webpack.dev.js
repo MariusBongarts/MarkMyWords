@@ -22,5 +22,8 @@ module.exports = {
       use: [ { loader: 'file-loader', options: { outputPath: 'assets/', publicPath: '/assets' } } ]
     }
   ] },
+  watchOptions: {
+    poll: true
+  },
   plugins: [ new HtmlWebpackPlugin({template: './src/index.html'}) ]
 };

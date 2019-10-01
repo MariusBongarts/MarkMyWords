@@ -83,7 +83,7 @@ export class WebMarker extends LitElement {
     this.marks = await this.markerService.getMarksForUrl(location.href);
     console.log(this.marks);
     this.marks.forEach(mark => highlightText(null, mark));
-    console.log(`${this.marks.length} marks found!`);
+    console.log(`${this.marks.length} mark found!`);
   }
 
   render() {

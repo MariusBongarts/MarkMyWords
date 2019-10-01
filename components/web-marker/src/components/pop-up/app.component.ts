@@ -61,7 +61,6 @@ export class PopUpComponent extends LitElement {
         // html`<sign-in @login=${async () => await this.loadUserData()}></sign-in>`}
         html`<lobby-container @login=${async () => await this.loadUserData()}></lobby-container>`}
       ` : html`<p>Loading...</p>`}
-
   `;
   }
 }
