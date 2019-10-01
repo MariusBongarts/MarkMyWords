@@ -2766,6 +2766,14 @@
 
 /* 96 */
 
+/* 97 */
+
+/* 98 */
+
+/* 99 */
+
+/* 100 */
+
 // EXTERNAL MODULE: ./src/index.scss
 
 // EXTERNAL MODULE: ./node_modules/jwt-decode/lib/index.js
@@ -4236,6 +4244,13 @@
      * @extends {LitElement}
      */
 
+/**
+         * 1 = Only marks for current page
+         * 2 = Accordion view of marks for all pages
+         *
+         * @memberof MarkOverviewComponent
+         */
+
 // CONCATENATED MODULE: ./src/components/pop-up/app.component.ts
 
 // html`<sign-in @login=${async () => await this.loadUserData()}></sign-in>`}
@@ -4295,3 +4310,7 @@
 // CONCATENATED MODULE: ./src/components/pop-up/mark-badge/mark-badge.component.ts
 
 // CONCATENATED MODULE: ./src/components/pop-up/header-toggle/header-toggle.component.ts
+
+// CONCATENATED MODULE: ./src/components/pop-up/tree-view/tree-view.component.ts
+
+// CONCATENATED MODULE: ./src/components/pop-up/accordion-view/accordion-view.component.ts

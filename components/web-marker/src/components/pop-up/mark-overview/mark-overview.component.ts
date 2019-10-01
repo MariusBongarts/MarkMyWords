@@ -43,7 +43,7 @@ class MarkOverviewComponent extends LitElement {
    * @memberof MarkOverviewComponent
    */
   @property()
-  activeToggle = 1;
+  activeToggle = 0;
 
   @property()
   marks!: Mark[];

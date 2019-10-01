@@ -32,6 +32,7 @@ class MarkElementComponent extends LitElement {
   loggedUser: JwtPayload;
 
   async firstUpdated() {
+
   }
 
   async deleteMark(e: MouseEvent) {
@@ -46,12 +47,16 @@ class MarkElementComponent extends LitElement {
   }
 
   scrollToMark() {
-    const scrollOptions: ScrollToOptions = {
-      top: this.mark.scrollY ? this.mark.scrollY : 0,
-      left: 0,
-      behavior: 'smooth'
+    if (this.mark.origin == location.href) {
+      const scrollOptions: ScrollToOptions = {
+        top: this.mark.scrollY ? this.mark.scrollY : 0,
+        left: 0,
+        behavior: 'smooth'
+      }
+      window.scrollTo(scrollOptions);
+    } else {
+
     }
-    window.scrollTo(scrollOptions);
   }
 
   render() {

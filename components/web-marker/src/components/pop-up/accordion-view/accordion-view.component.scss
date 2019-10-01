@@ -25,7 +25,9 @@ input {
 }
 .tab {
   width: 100%;
-  color: white;
+  color: var(--white-dark);
+  font-size: 12px;
+  font-family: var(--font-family);
   overflow: hidden;
   &-label {
     display: flex;
@@ -36,7 +38,7 @@ input {
     cursor: pointer;
     /* Icon */
     &:hover {
-      background: darken($midnight, 10%);
+      color: white;
     }
     &::after {
       content: "\276F";
@@ -48,20 +50,20 @@ input {
   }
   &-content {
     max-height: 0;
-    padding: 0 1em;
     color: $midnight;
     background: var(--secondary-color);
     transition: all .35s;
+    padding-bottom: 5px;
   }
   &-close {
     display: flex;
     justify-content: flex-end;
     padding: 1em;
     font-size: 0.75em;
-    background: $midnight;
+    background: var(--secondary-color);
     cursor: pointer;
     &:hover {
-      background: darken($midnight, 10%);
+      background: var(--secondary-light);
     }
   }
 }
@@ -69,13 +71,12 @@ input {
 // :checked
 input:checked {
   + .tab-label {
-    background: darken($midnight, 10%);
+    color: var(--primary-color);
     &::after {
       transform: rotate(90deg);
     }
   }
   ~ .tab-content {
     max-height: 100vh;
-    padding: 1em;
   }
 }
