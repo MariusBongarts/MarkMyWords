@@ -28,7 +28,6 @@ let MarkGateway = class MarkGateway {
     }
     handleConnection(socket) {
         return __awaiter(this, void 0, void 0, function* () {
-            this.logger.log('New client connected');
             socket.on('join', (data) => {
                 this.logger.log(`${data.email} succesfully joined socket room ${data.id}.`);
                 socket.join(data.id);
@@ -37,7 +36,6 @@ let MarkGateway = class MarkGateway {
     }
     handleDisconnect() {
         return __awaiter(this, void 0, void 0, function* () {
-            this.logger.log('Client disconnected');
         });
     }
     onCreateMark(client, mark) {
@@ -96,7 +94,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], MarkGateway.prototype, "onUpdateMark", null);
 MarkGateway = __decorate([
-    websockets_1.WebSocketGateway(3001, { origins: '*:*', transports: ['websocket', 'xhr-polling'] })
+    websockets_1.WebSocketGateway(3001, { origins: '*:*', transports: ['websocket', 'polling'] })
 ], MarkGateway);
 exports.MarkGateway = MarkGateway;
 //# sourceMappingURL=mark.gateway.js.map

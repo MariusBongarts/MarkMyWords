@@ -12,7 +12,7 @@ services:
 
   server:
     build:
-      context: ./WebMarkerServer/
+      context: ./NestJsServer/
     expose:
       - 3000
     environment:
@@ -21,14 +21,14 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./WebMarkerServer/src:/srv/app/server/src
+      - ./NestJsServer/src:/srv/app/server/src
     command: npm start
     # depends_on:
     #   - mongo
 
   client:
     build:
-      context: ./WebMarkerClient
+      context: ./components/web-marker
     environment:
       FRONTEND_PORT: 8080
       API_HOST: "http://localhost:8080"
@@ -37,7 +37,9 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./WebMarkerClient/src:/srv/app/client/src
+      - ./components/web-marker/src:/srv/app/client/src
     links:
       - server
     command: npm start
+
+

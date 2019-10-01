@@ -14,4 +14,5 @@ export interface Mark extends Entity {
     completeText: string;
     title: string;
     _user?: string;
+    scrollY: number;
 }
