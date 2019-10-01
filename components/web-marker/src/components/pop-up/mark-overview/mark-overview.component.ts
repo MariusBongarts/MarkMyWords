@@ -35,6 +35,16 @@ class MarkOverviewComponent extends LitElement {
   @property()
   loggedUser!: JwtPayload;
 
+
+  /**
+   * 1 = Only marks for current page
+   * 2 = Accordion view of marks for all pages
+   *
+   * @memberof MarkOverviewComponent
+   */
+  @property()
+  activeToggle = 1;
+
   @property()
   marks!: Mark[];
 
@@ -102,19 +112,31 @@ class MarkOverviewComponent extends LitElement {
   render() {
     return html`
     <button class="hideShow" @click=${() => this.show ? this.show = false : this.show = true}>${this.show ?
-      html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>`
-      : html`<mark-badge>${this.marks ? this.marks.length : 0}</mark-badge>`}</button>
+        html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>`
+        : html`<mark-badge>${this.marks ? this.marks.length : 0}</mark-badge>`}</button>
     ${this.show ? html`
     <div class="container">
     <div class="header">
-    <header-toggle></header-toggle>
+    <header-toggle
+    .active=${this.activeToggle}
+    @toggleChanged=${(e: CustomEvent) => this.activeToggle = e.detail}></header-toggle>
     </div>
       <div class="main">
-        ${this.marks ? this.marks.map(mark => html`
+
+      ${this.activeToggle === 1 ? html`
+      <!-- Only marks for current page -->
+      ${this.marks ? this.marks.map(mark => html`
         <mark-element
       .loggedUser=${this.loggedUser}
       .mark=${mark}
       ></mark-element>`) : html`<p>Loading</p>`}
+      ` :
+      html`
+      <!-- Accordion view of marks for all pages -->
+      <accordion-view></accordion-view>
+
+      `}
+
     </div>
 </div>
 ` : ''}

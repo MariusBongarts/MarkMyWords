@@ -62,7 +62,6 @@ let PopUpComponent = class PopUpComponent extends LitElement {
             // html`<sign-in @login=${async () => await this.loadUserData()}></sign-in>`}
             html `<lobby-container @login=${() => __awaiter(this, void 0, void 0, function* () { return yield this.loadUserData(); })}></lobby-container>`}
       ` : html `<p>Loading...</p>`}
-
   `;
     }
 };
