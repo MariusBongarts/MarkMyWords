@@ -12,7 +12,7 @@ services:
 
   server:
     build:
-      context: ./NestJsServer/
+      context: ./NestJsServer
     expose:
       - 3000
     environment:

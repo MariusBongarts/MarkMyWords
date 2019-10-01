@@ -7,7 +7,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js --open",
+    "start": "webpack-dev-server --config webpack.dev.js --host 0.0.0.0 --hot --public 0.0.0.0",
     "build": "webpack --config webpack.prod.js --progress",
     "lint": "tslint --force -t verbose -p tsconfig.json",
     "test": "karma start",

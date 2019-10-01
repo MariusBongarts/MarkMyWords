@@ -1,12 +1,8 @@
 import { JwtPayload } from './../auth/interfaces/jwt-payload.interface';
-import { LoginUserDto } from './../../../WebMarkerClient/src/models/loginUserDto';
-import { AuthService } from './../auth/auth.service';
-import { User } from './../users/user.interface';
-import { AuthGuard } from '@nestjs/passport';
 import { Mark } from './mark.interface';
 import { WebSocketGateway, WebSocketServer, SubscribeMessage, OnGatewayConnection, OnGatewayDisconnect } from '@nestjs/websockets';
-import { Client, Server, Socket } from 'socket.io';
-import { Logger, UseGuards, Body } from '@nestjs/common';
+import {  Server, Socket } from 'socket.io';
+import { Logger } from '@nestjs/common';
 import * as jwt_decode from 'jwt-decode';
 
 @WebSocketGateway(3001, { origins: '*:*', transports: ['websocket', 'polling'] })
