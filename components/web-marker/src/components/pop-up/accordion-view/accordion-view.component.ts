@@ -54,25 +54,27 @@ export class TreeViewComponent extends LitElement {
           ${this.selectedOrigin ? html`
           <div class="tab">
             <input type="radio" id="closeBtn" name="radioBtn">
-            <label for="closeBtn" class="tab-close">Close others &times;</label>
           </div>
         ` : ''}
       ${this.origins.map((origin: string) => html`
       <div class="tab">
         <input type="radio" id="${origin}" name="radioBtn">
-
-        <label class="tab-label" for="${origin}"
-        @click=${(e) => this.selectedOrigin === origin ? this.selectedOrigin = '' : this.selectedOrigin = origin}
-        ><span>${origin.substring(0, 30)}</span></label>
-        <div class="tab-content">
-          ${this.marks.filter(mark => mark.origin.includes(origin)).map(mark => html`
-          <mark-element .mark=${mark} .loggedUser=${this.loggedUser}></mark-element>
-          `)}
-          </div>
+        <!-- setTimeout() is necessary to change selectedOrigin after radio input event -->
+        <label class="tab-label" for="${this.selectedOrigin && this.selectedOrigin === origin ? 'closeBtn' : origin}"
+        @click=${(e) => setTimeout(() => this.selectedOrigin === origin ? this.selectedOrigin = '' : this.selectedOrigin = origin , 1) }
+        >
+        <span>${origin.substring(0, 30)}</span>
+        <span class="badge">${this.marks.filter(mark => mark.origin.includes(origin)).length}</span>
+      </label>
+      <div class="tab-content">
+        ${this.marks.filter(mark => mark.origin.includes(origin)).map(mark => html`
+        <mark-element .mark=${mark} .loggedUser=${this.loggedUser}></mark-element>
+        `)}
+      </div>
           `)}
       </div>
 
-        ` : html`Loading....`}
+        ` : html`Loading...`}
 `;
   }
 

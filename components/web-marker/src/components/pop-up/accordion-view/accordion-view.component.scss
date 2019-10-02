@@ -1,6 +1,5 @@
 @import "../../../variables.scss";
-$midnight: #2c3e50;
-$clouds: #ecf0f1;
+// https://codepen.io/raubaca/pen/PZzpVe?editors=1010
 
 input {
   position: absolute;
@@ -26,34 +25,37 @@ input {
 .tab {
   width: 100%;
   color: var(--white-dark);
-  font-size: 12px;
+  margin-top: 5px;
+  font-size: 11px;
   font-family: var(--font-family);
   overflow: hidden;
   &-label {
     display: flex;
     justify-content: space-between;
-    padding: 1em;
+    padding: 5px;
     background: var(--secondary-dark);
     font-weight: bold;
     cursor: pointer;
     /* Icon */
     &:hover {
       color: white;
+      .badge {
+        color: var(--primary-light);
+      }
     }
-    &::after {
+    &::before {
       content: "\276F";
       width: 1em;
-      height: 1em;
+      height: 100%;
       text-align: center;
       transition: all .35s;
     }
   }
   &-content {
     max-height: 0;
-    color: $midnight;
     background: var(--secondary-color);
     transition: all .35s;
-    padding-bottom: 5px;
+    // padding-bottom: 5px;
   }
   &-close {
     display: flex;
@@ -72,11 +74,27 @@ input {
 input:checked {
   + .tab-label {
     color: var(--primary-color);
-    &::after {
+    &::before {
       transform: rotate(90deg);
     }
   }
   ~ .tab-content {
-    max-height: 100vh;
+    max-height: 100%;
   }
+  .badge {
+    color: var(--primary-light);
+  }
+}
+
+
+.badge {
+  background: var(--secondary-dark);
+  color: var(--primary-color);
+  box-shadow: 0 4px 4px -2px rgba(0,0,0,0.5);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  line-height: 15px;
+  text-align: center;
+  margin-right: 10px;
 }

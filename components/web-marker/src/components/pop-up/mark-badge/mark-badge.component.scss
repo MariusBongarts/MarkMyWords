@@ -1,14 +1,21 @@
 @import "../../../variables.scss";
 
+:host {
+  --border-radius: 50%;
+  --font-size: 15px;
+  --position: absolute;
+  --size: 20px;
+  --right: -20%;
+}
 
 .badge {
   background: var(--primary-color);
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  position: absolute;
+  border-radius: var(--border-radius);
+  width: var(--size);
+  height: var(--size);
+  position: var(--position);
   top: 0px;
-  line-height: 20px;
-  font-size: 15px;
-  right: -20%;
+  line-height: var(--size);
+  font-size: var(--font-size);
+  right: var(--right);
 }
