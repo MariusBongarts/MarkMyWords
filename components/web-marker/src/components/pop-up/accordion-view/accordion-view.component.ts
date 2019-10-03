@@ -40,9 +40,11 @@ export class TreeViewComponent extends LitElement {
 
   getDistinctOrigins() {
     this.origins = [...new Set(this.marks.map(mark => mark.origin))];
-    this.origins = this.origins.map(origin => origin.replace(/https:\/\/|http:\/\/|/gi, ''));
+    console.log(this.origins);
+    this.origins = this.origins.map(origin => origin.replace(/https:\/\/|http:\/\/|www.|/gi, ''));
     this.origins = this.origins.map(origin => origin.split('/')[0]);
     this.origins.sort();
+    this.origins = [...new Set(this.origins.map(origin => origin))];
   }
 
 

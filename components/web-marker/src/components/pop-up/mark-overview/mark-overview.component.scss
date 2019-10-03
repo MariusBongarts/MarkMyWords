@@ -1,6 +1,5 @@
 @import "../../../variables.scss";
 
-
 :host {
   z-index: 9999 !important;
   position: fixed;
@@ -54,7 +53,7 @@ button {
   right: -20px;
   top: 45%;
   border-radius: 50%;
-  background-color: var(--secondary-light);
+  background-color: var(--secondary-color);
   box-shadow: 1px 1px 2px 2px #0000001e;
 
   svg {
@@ -67,4 +66,12 @@ button {
   }
 }
 
-
+.hideShow.active {
+  box-shadow: none;
+  left: calc(98%);
+  width: 20px;
+  border-radius: 0px 50% 50% 0px;
+  top: 45%;
+  z-index: 9999;
+  transition-duration: 0s;
+}

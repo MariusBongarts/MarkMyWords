@@ -31,6 +31,8 @@ export class HeaderToggleComponent extends LitElement {
     <button
     @click=${() => this.emitChange()}
     class="${this.active === 1 ? 'active' : ''}">Marks</button>
+
+    <!-- Add bronco searchbar with extending searching -->
     </div>
 `;
   }
