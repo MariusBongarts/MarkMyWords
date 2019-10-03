@@ -21,5 +21,9 @@ bronco-chip {
 }
 
 .selectedChipContainer {
-  padding-right: 5px;
+  padding-right: 8px;
+}
+
+.selectedChipContainer > bronco-chip {
+  margin-top: 10px;
 }

@@ -76,7 +76,7 @@ export class MyMarkElement extends LitElement {
       id: uuidv4(),
       url: location.href,
       origin: location.href,
-      tags: this.getDefaultMarks(),
+      tags: [],
       text: selection.toString(),
       title: document.title,
       anchorOffset: selection.anchorOffset,

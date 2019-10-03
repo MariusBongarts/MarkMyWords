@@ -43,6 +43,12 @@ export class TreeViewComponent extends LitElement {
     this.tags.sort();
   }
 
+  getRelatedTags() {
+    let relatedTags = [];
+    this.marks.filter(mark => mark.tags.includes(this.selectedTag)).forEach(mark => relatedTags = [...relatedTags, ...mark.tags]);
+    return [...new Set(relatedTags)].filter(tag => tag !== this.selectedTag);
+  }
+
 
   render() {
     return html`
@@ -60,7 +66,7 @@ export class TreeViewComponent extends LitElement {
         <span>${tag}</span>
         </div>
         </bronco-chip>`
-      )}
+    )}
     </div>
 
     <!-- If Tag is selected -->
@@ -75,8 +81,20 @@ export class TreeViewComponent extends LitElement {
     </bronco-chip>
   </div>
     ${this.marks.filter(mark => mark.tags.includes(this.selectedTag)).map(mark =>
-    html`<mark-element .mark=${mark} .headerInfo=${urlToOrigin(mark.url)}></mark-element>`
+      html`<mark-element .mark=${mark} .headerInfo=${urlToOrigin(mark.url)}></mark-element>`
     )}
+    <!-- Show related tags -->
+    <div class="container">
+      ${this.getRelatedTags().map(tag => html`
+      <bronco-chip
+        @click=${() => this.selectedTag === tag ? this.selectedTag = '' : this.selectedTag = tag}
+        .badgeValue=${this.marks.filter(mark => mark.tags.includes(tag)).length} .hideDeleteIcon=${true}>
+        <div class="chipContainer">
+          <span>${tag}</span>
+          </div>
+      </bronco-chip>
+      `)}
+    </div>
     `}
         ` : html`Loading...`}
 
