@@ -78,8 +78,8 @@ class MarkElementComponent extends LitElement {
       @deleted=${async (e: MouseEvent) => await this.deleteTag(e, tag)}
       >${tag}</bronco-chip>`)
       }
-</div>
-  </div>
+        </div>
+      </div>
     `;
   }
 

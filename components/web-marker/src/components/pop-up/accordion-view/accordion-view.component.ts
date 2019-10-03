@@ -43,7 +43,7 @@ export class TreeViewComponent extends LitElement {
 
   render() {
     return html`
-    ${this.marks.length ? html`
+    ${this.marks ? html`
     <div class="tabs">
           <!-- Close placeholder -->
           ${this.selectedOrigin ? html`

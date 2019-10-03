@@ -9,7 +9,6 @@ const componentCSS = require('./tags-view.component.scss');
 @customElement('tags-view')
 export class TreeViewComponent extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
-  markService = new MarkerService();
 
   @property()
   activeDirectory = '';
@@ -28,9 +27,6 @@ export class TreeViewComponent extends LitElement {
 
 
   async firstUpdated() {
-    if (!this.marks.length) {
-      this.marks = await this.markService.getMarks();
-    }
     this.getDistinctTags();
     this.loaded = true;
   }
