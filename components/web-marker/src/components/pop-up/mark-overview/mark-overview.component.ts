@@ -45,8 +45,25 @@ class MarkOverviewComponent extends LitElement {
   @property()
   activeToggle = 1;
 
+
+  /**
+   * Only marks fur current url
+   *
+   * @type {Mark[]}
+   * @memberof MarkOverviewComponent
+   */
   @property()
   marks!: Mark[];
+
+
+  /**
+   * All marks, which are passed to accoordion
+   *
+   * @type {Mark[]}
+   * @memberof MarkOverviewComponent
+   */
+  @property()
+  allMarks: Mark[] = [];
 
   @property()
   show = environment.production ? false : true;
@@ -61,6 +78,7 @@ class MarkOverviewComponent extends LitElement {
 
     await this.initSocket();
     this.handleSockets();
+    this.allMarks = await this.markService.getMarks();
   }
 
   async initSocket() {
@@ -77,6 +95,7 @@ class MarkOverviewComponent extends LitElement {
 
   handleSockets() {
     this.socket.on('createMark', (createdMark: Mark) => {
+      this.allMarks = [...this.allMarks, createdMark];
       if (location.href.split('?')[0] === createdMark.url) {
         this.marks = [...this.marks, createdMark];
       } else {
@@ -86,10 +105,12 @@ class MarkOverviewComponent extends LitElement {
 
     this.socket.on('deleteMark', (deletedMarkId: string) => {
       this.marks = this.marks.filter(mark => mark.id !== deletedMarkId);
+      this.allMarks = this.allMarks.filter(mark => mark.id !== deletedMarkId);
     });
 
     this.socket.on('updateMark', (updatedMark: Mark) => {
       this.marks = this.marks.map(mark => mark.id === updatedMark.id ? updatedMark : mark);
+      this.allMarks = this.allMarks.map(mark => mark.id === updatedMark.id ? updatedMark : mark);
     });
 
     this.socket.on('connect', (data: string) => {
@@ -133,7 +154,7 @@ class MarkOverviewComponent extends LitElement {
       ` :
       html`
       <!-- Accordion view of marks for all pages -->
-      <accordion-view></accordion-view>
+      <accordion-view .marks=${this.allMarks}></accordion-view>
 
       `}
 

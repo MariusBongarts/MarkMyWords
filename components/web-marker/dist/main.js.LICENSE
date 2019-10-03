@@ -4257,6 +4257,13 @@
          * @memberof MarkOverviewComponent
          */
 
+/**
+         * All marks, which are passed to accoordion
+         *
+         * @type {Mark[]}
+         * @memberof MarkOverviewComponent
+         */
+
 // CONCATENATED MODULE: ./src/components/pop-up/app.component.ts
 
 // html`<sign-in @login=${async () => await this.loadUserData()}></sign-in>`}

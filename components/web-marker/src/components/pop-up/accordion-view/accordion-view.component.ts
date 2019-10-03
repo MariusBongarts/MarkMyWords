@@ -33,7 +33,9 @@ export class TreeViewComponent extends LitElement {
 
   async firstUpdated() {
     this.loggedUser = await this.jwtService.getJwtPayload();
-    this.marks = await this.markService.getMarks();
+    if (!this.marks.length) {
+      this.marks = await this.markService.getMarks();
+    }
     this.getDistinctOrigins();
     this.loaded = true;
   }
