@@ -3,6 +3,7 @@ import { Mark } from './../../../models/mark';
 import { css, customElement, html, LitElement, query, property, unsafeCSS } from 'lit-element';
 import { timeSinceTimestamp } from '../../../helper/dateHelper';
 import { MarkerService } from '../../../services/marker.service';
+import { navigateExternal } from '../../../helper/router';
 
 const componentCSS = require('./mark-element.component.scss');
 
@@ -47,7 +48,7 @@ class MarkElementComponent extends LitElement {
   }
 
   scrollToMark() {
-    if (this.mark.origin == location.href) {
+    if (this.mark.origin == location.href.split('?')[0]) {
       const scrollOptions: ScrollToOptions = {
         top: this.mark.scrollY ? this.mark.scrollY : 0,
         left: 0,
@@ -55,7 +56,7 @@ class MarkElementComponent extends LitElement {
       }
       window.scrollTo(scrollOptions);
     } else {
-
+      navigateExternal(this.mark.origin + `?scrollY=${this.mark.scrollY}`, false);
     }
   }
 

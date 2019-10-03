@@ -12,7 +12,7 @@ input {
   .col {
     flex:1;
     &:last-child {
-      margin-left: 1em;
+      margin-left: 10px;
     }
   }
 }
@@ -45,7 +45,7 @@ input {
     }
     &::before {
       content: "\276F";
-      width: 1em;
+      width: 10px;
       height: 100%;
       text-align: center;
       transition: all .35s;
@@ -60,8 +60,8 @@ input {
   &-close {
     display: flex;
     justify-content: flex-end;
-    padding: 1em;
-    font-size: 0.75em;
+    padding: 10px;
+    font-size: 7.5px;
     background: var(--secondary-color);
     cursor: pointer;
     &:hover {

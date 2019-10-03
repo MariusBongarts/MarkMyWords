@@ -74,8 +74,8 @@ export class MyMarkElement extends LitElement {
     console.log(selection);
     const mark: Mark = {
       id: uuidv4(),
-      url: location.href,
-      origin: location.href,
+      url: location.href.split('?')[0],
+      origin: location.href.split('?')[0],
       tags: this.getDefaultMarks(),
       text: selection.toString(),
       title: document.title,

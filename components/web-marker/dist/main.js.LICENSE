@@ -3957,6 +3957,12 @@
      * @memberof WebMarker
      */
 
+/**
+     *  Scroll to mark if there is a scrollY param in query url.
+     *  SetTimeout to put at the end of event Loop
+     * @memberof WebMarker
+     */
+
 // CONCATENATED MODULE: ./src/components/my-marker/my-marker.component.ts
 
 /**
@@ -4003,6 +4009,8 @@
 
 // EXTERNAL MODULE: ./node_modules/uuid/v4.js
 
+// CONCATENATED MODULE: ./src/helper/router.ts
+
 // CONCATENATED MODULE: ./src/components/my-menu/my-menu.component.ts
 
 /**
@@ -4034,8 +4042,6 @@
      */
 
 /* tslint:disable: max-line-length */
-
-// CONCATENATED MODULE: ./src/helper/router.ts
 
 // CONCATENATED MODULE: ./src/components/bronco-chip/app.component.ts
 

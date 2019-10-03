@@ -19,7 +19,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 // Sends message to current contentScript when page changes
 chrome.tabs.onUpdated.addListener(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        const marks = window.marks.filter(mark => mark.url === tabs[0].url);
+        const marks = window.marks.filter(mark => mark.url === tabs[0].url.split('?')[0]);
         console.log(tabs[0].url);
         chrome.tabs.sendMessage(tabs[0].id, {
             id: 'init',

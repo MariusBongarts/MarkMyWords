@@ -80,10 +80,36 @@ export class WebMarker extends LitElement {
    * @memberof WebMarker
    */
   async highlightMarks() {
-    this.marks = await this.markerService.getMarksForUrl(location.href);
+    this.scrollToMark();
+    this.marks = await this.markerService.getMarksForUrl(location.href.split('?')[0]);
     console.log(this.marks);
     this.marks.forEach(mark => highlightText(null, mark));
     console.log(`${this.marks.length} mark found!`);
+  }
+
+
+  /**
+   *  Scroll to mark if there is a scrollY param in query url.
+   *  SetTimeout to put at the end of event Loop
+   * @memberof WebMarker
+   */
+  scrollToMark() {
+    setTimeout(() => {
+      const params = location.href.split('?')[1].split('=');
+      params.forEach((param, index) => {
+        if (param === 'scrollY') {
+          console.log("sij")
+          const scrollOptions: ScrollToOptions = {
+            top: Number(params[index+1]),
+            left: 0,
+            behavior: 'smooth'
+          }
+          window.scrollTo(scrollOptions);
+          console.log(params);
+        }
+      });
+    });
+
   }
 
   render() {

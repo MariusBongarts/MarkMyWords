@@ -54,7 +54,7 @@ class MarkOverviewComponent extends LitElement {
   async firstUpdated() {
     this.marks = [];
     try {
-      this.marks = await this.markService.getMarksForUrl(location.href);
+      this.marks = await this.markService.getMarksForUrl(location.href.split('?')[0]);
     } catch (error) {
       this.emitLogout();
     }
@@ -77,7 +77,7 @@ class MarkOverviewComponent extends LitElement {
 
   handleSockets() {
     this.socket.on('createMark', (createdMark: Mark) => {
-      if (location.href === createdMark.url) {
+      if (location.href.split('?')[0] === createdMark.url) {
         this.marks = [...this.marks, createdMark];
       } else {
         // TODO: Maybe a popup to show that on different page has been added a mark?
