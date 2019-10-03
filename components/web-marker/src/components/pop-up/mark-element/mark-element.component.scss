@@ -2,7 +2,7 @@
 
 :host {
   font-family: var(--font-family);
-  --margin-top: 5px;
+  --margin: 5px 0px;
 }
 
 .mark {
@@ -11,7 +11,7 @@
   color: var(--white-dark);
   padding: 10px;
   padding-left: 5px;
-  margin-top: var(--margin-top);
+  margin: var(--margin);
   display: flex;
   flex-wrap: wrap;
 }

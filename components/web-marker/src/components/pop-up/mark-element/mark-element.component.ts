@@ -48,7 +48,7 @@ class MarkElementComponent extends LitElement {
   }
 
   scrollToMark() {
-    if (this.mark.origin == location.href.split('?')[0]) {
+    if (this.mark.origin == location.href) {
       const scrollOptions: ScrollToOptions = {
         top: this.mark.scrollY ? this.mark.scrollY : 0,
         left: 0,
@@ -56,7 +56,7 @@ class MarkElementComponent extends LitElement {
       }
       window.scrollTo(scrollOptions);
     } else {
-      navigateExternal(this.mark.origin + `?scrollY=${this.mark.scrollY}`, false);
+      navigateExternal(this.mark.origin, false);
     }
   }
 

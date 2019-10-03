@@ -40,9 +40,7 @@ export class TreeViewComponent extends LitElement {
       this.tags = [...this.tags, ...mark.tags];
     });
     this.tags = [...new Set(this.tags)];
-    this.tags.sort((a, b) => this.marks.filter(mark => mark.tags.includes(b)).length - this.marks.filter(mark => mark.tags.includes(a)).length)
-    const y = new Date().getTime();
-    console.log(this.tags);
+    this.tags.sort();
   }
 
 
@@ -50,7 +48,7 @@ export class TreeViewComponent extends LitElement {
     return html`
     ${this.loaded ? html`
 
-    <!-- If not tag is selected -->
+    <!-- If no tag is selected -->
     ${!this.selectedTag ? html`
     <div class="container">
       ${this.tags.map(tag =>
@@ -67,18 +65,21 @@ export class TreeViewComponent extends LitElement {
 
     <!-- If Tag is selected -->
     ` : html`
-    <bronco-chip
-    @click=${() => this.selectedTag = ''}
-    .badgeValue=${this.marks.filter(mark => mark.tags.includes(this.selectedTag)).length} .hideDeleteIcon=${true}>
+    <div class="selectedChipContainer">
+      <bronco-chip
+      @click=${() => this.selectedTag = ''}
+      .badgeValue=${this.marks.filter(mark => mark.tags.includes(this.selectedTag)).length} .hideDeleteIcon=${true}>
       <div class="chipContainer">
         <span>${this.selectedTag}</span>
-        </div>
+      </div>
     </bronco-chip>
+  </div>
     ${this.marks.filter(mark => mark.tags.includes(this.selectedTag)).map(mark =>
     html`<mark-element .mark=${mark} .headerInfo=${urlToOrigin(mark.url)}></mark-element>`
     )}
     `}
         ` : html`Loading...`}
+
 `;
   }
 
