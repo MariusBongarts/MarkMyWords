@@ -21,7 +21,6 @@ const componentCSS = require('./mark-overview.component.scss');
  * @class MarkOverviewComponent
  * @extends {LitElement}
  */
-
 @customElement('mark-overview')
 class MarkOverviewComponent extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
@@ -43,7 +42,7 @@ class MarkOverviewComponent extends LitElement {
    * @memberof MarkOverviewComponent
    */
   @property()
-  activeToggle = 1;
+  activeToggle = 2;
 
 
   /**
@@ -137,26 +136,34 @@ class MarkOverviewComponent extends LitElement {
         : html`<mark-badge>${this.marks ? this.marks.length : 0}</mark-badge>`}</button>
     ${this.show ? html`
     <div class="container">
+
     <div class="header">
-    <header-toggle
-    .active=${this.activeToggle}
-    @toggleChanged=${(e: CustomEvent) => this.activeToggle = e.detail}></header-toggle>
+      <header-toggle
+      .active=${this.activeToggle}
+      @toggleChanged=${(e: CustomEvent) => this.activeToggle = e.detail}></header-toggle>
+      <search-bar></search-bar>
+
     </div>
       <div class="main">
 
+      ${this.activeToggle === 0 ? html`
+      <!-- Accordion view of marks for all pages -->
+      <accordion-view .marks=${this.allMarks}></accordion-view>
+      ` : ''}
+
       ${this.activeToggle === 1 ? html`
+      <!-- Accordion view of marks for all pages -->
+      <tags-view .marks=${this.allMarks}></tags-view>
+      ` : ''}
+
+      ${this.activeToggle === 2 ? html`
       <!-- Only marks for current page -->
       ${this.marks ? this.marks.map(mark => html`
         <mark-element
-      .loggedUser=${this.loggedUser}
+      .headerInfo=${this.loggedUser.email}
       .mark=${mark}
       ></mark-element>`) : html`<p>Loading</p>`}
-      ` :
-      html`
-      <!-- Accordion view of marks for all pages -->
-      <accordion-view .marks=${this.allMarks}></accordion-view>
-
-      `}
+      ` : ''}
 
     </div>
 </div>

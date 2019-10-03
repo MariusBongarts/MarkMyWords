@@ -10,8 +10,6 @@ const componentCSS = require('./accordion-view.component.scss');
 @customElement('accordion-view')
 export class TreeViewComponent extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
-  markService = new MarkerService();
-  jwtService = new JwtService();
 
   @property()
   activeDirectory = '';
@@ -25,17 +23,10 @@ export class TreeViewComponent extends LitElement {
   @property()
   selectedOrigin = '';
 
-  @property()
-  loggedUser: JwtPayload;
-
   origins: string[] = [];
 
 
   async firstUpdated() {
-    this.loggedUser = await this.jwtService.getJwtPayload();
-    if (!this.marks.length) {
-      this.marks = await this.markService.getMarks();
-    }
     this.getDistinctOrigins();
     this.loaded = true;
   }
@@ -52,7 +43,7 @@ export class TreeViewComponent extends LitElement {
 
   render() {
     return html`
-    ${this.loaded ? html`
+    ${this.marks.length ? html`
     <div class="tabs">
           <!-- Close placeholder -->
           ${this.selectedOrigin ? html`
@@ -72,7 +63,7 @@ export class TreeViewComponent extends LitElement {
       </label>
       <div class="tab-content">
         ${this.marks.filter(mark => mark.origin.includes(origin)).map(mark => html`
-        <mark-element .mark=${mark} .loggedUser=${this.loggedUser}></mark-element>
+        <mark-element .mark=${mark} .headerInfo=${mark.origin.split(origin)[1].substring(0,20)}></mark-element>
         `)}
       </div>
           `)}

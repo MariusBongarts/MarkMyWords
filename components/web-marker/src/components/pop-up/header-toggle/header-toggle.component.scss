@@ -9,9 +9,9 @@
 button {
   margin: auto 0px;
   background: none;
-  width: 70px;
-  font-size: 12px;
-  line-height: 12px;
+  width: 50px;
+  font-size: 15px;
+  line-height: 15px;
   border: none;
   color: white;
   outline: none;
@@ -28,6 +28,11 @@ button:nth-child(1) {
   border-radius: 10px 0px 0px 10px;
 }
 
-button:nth-child(2) {
+button:nth-child(3) {
   border-radius: 0px 10px 10px 0px;
+}
+
+svg {
+  width: 15px;
+  height: 15px;
 }

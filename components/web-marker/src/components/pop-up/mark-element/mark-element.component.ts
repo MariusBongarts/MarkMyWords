@@ -30,7 +30,7 @@ class MarkElementComponent extends LitElement {
   isActive = false;
 
   @property()
-  loggedUser: JwtPayload;
+  headerInfo: string;
 
   async firstUpdated() {
 
@@ -64,7 +64,7 @@ class MarkElementComponent extends LitElement {
     return html`
     <div class="mark">
     <div class="header" >
-      <span>${ this.loggedUser.email} </span>
+      <span>${ this.headerInfo} </span>
         <span class="timeSince" > ${ timeSinceTimestamp(this.mark.createdAt)} ago </span>
           <span class="deleteBtn" @click=${async (e: MouseEvent) => await this.deleteMark(e)}> X </span>
             </div>

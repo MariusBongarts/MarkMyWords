@@ -17,3 +17,15 @@
 // --primary-light: #78c0a8;
 // --primary-dark: #14614d;
 // ACTION COLOR: 53e3a6
+
+.badge {
+  background: var(--secondary-dark);
+  color: var(--primary-color);
+  box-shadow: 0 4px 4px -2px rgba(0,0,0,0.5);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  line-height: 15px;
+  text-align: center;
+  margin-right: 10px;
+}
