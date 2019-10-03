@@ -39,6 +39,8 @@ export class TreeViewComponent extends LitElement {
       this.tags = [...this.tags, ...mark.tags];
     });
     this.tags = [...new Set(this.tags)];
+    this.tags.sort((a, b) => this.marks.filter(mark => mark.tags.includes(b)).length - this.marks.filter(mark => mark.tags.includes(a)).length)
+    const y = new Date().getTime();
     console.log(this.tags);
   }
 
@@ -56,7 +58,6 @@ export class TreeViewComponent extends LitElement {
       </bronco-chip>`
       )}
     </div>
-
         ` : html`Loading...`}
 `;
   }

@@ -10,7 +10,7 @@ export class MarkBadgeComponenet extends LitElement {
 
   render() {
     return html`
-    <span class="badge"><slot></slot></span>
+    <span class="sideBadge"><slot></slot></span>
 `;
   }
 
