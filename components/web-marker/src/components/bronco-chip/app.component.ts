@@ -78,7 +78,8 @@ export class BroncoChip extends LitElement {
 
   render() {
     return html`
-<div class="chip ripple ${this.deleteMode ? 'delete-mode' : ''}">
+<div class="chip ripple
+${this.deleteMode ? 'delete-mode' : ''}">
   <div class="chip-content"><slot></slot></div>
   ${this.hideDeleteIcon ? '' : html`
   <div class="chip-close" @click=${() => this.emitDeleted()}>

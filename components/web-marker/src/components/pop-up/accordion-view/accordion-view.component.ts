@@ -4,6 +4,7 @@ import { MarkerService } from './../../../services/marker.service';
 import { Mark } from './../../../../../../WebMarkerClient/src/models/mark';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
+import { urlToOrigin } from '../../../helper/urlHelper';
 
 const componentCSS = require('./accordion-view.component.scss');
 
@@ -34,8 +35,7 @@ export class TreeViewComponent extends LitElement {
   getDistinctOrigins() {
     this.origins = [...new Set(this.marks.map(mark => mark.origin))];
     console.log(this.origins);
-    this.origins = this.origins.map(origin => origin.replace(/https:\/\/|http:\/\/|www.|/gi, ''));
-    this.origins = this.origins.map(origin => origin.split('/')[0]);
+    this.origins = this.origins.map(origin => urlToOrigin(origin));
     this.origins.sort();
     this.origins = [...new Set(this.origins.map(origin => origin))];
   }

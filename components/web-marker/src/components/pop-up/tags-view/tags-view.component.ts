@@ -2,6 +2,7 @@ import { MarkerService } from './../../../services/marker.service';
 import { Mark } from './../../../../../../WebMarkerClient/src/models/mark';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
+import { urlToOrigin } from '../../../helper/urlHelper';
 
 const componentCSS = require('./tags-view.component.scss');
 
@@ -20,7 +21,7 @@ export class TreeViewComponent extends LitElement {
   loaded = false;
 
   @property()
-  selectedOrigin = '';
+  selectedTag = '';
 
 
   tags: string[] = [];
@@ -48,16 +49,35 @@ export class TreeViewComponent extends LitElement {
   render() {
     return html`
     ${this.loaded ? html`
+
+    <!-- If not tag is selected -->
+    ${!this.selectedTag ? html`
     <div class="container">
-    ${this.tags.map(tag =>
+      ${this.tags.map(tag =>
       html`
-      <bronco-chip .badgeValue=${this.marks.filter(mark => mark.tags.includes(tag)).length} .hideDeleteIcon=${true}>
+      <bronco-chip
+      @click=${() => this.selectedTag === tag ? this.selectedTag = '' : this.selectedTag = tag}
+      .badgeValue=${this.marks.filter(mark => mark.tags.includes(tag)).length} .hideDeleteIcon=${true}>
       <div class="chipContainer">
-      <span>${tag}</span>
-      </div>
-      </bronco-chip>`
+        <span>${tag}</span>
+        </div>
+        </bronco-chip>`
       )}
     </div>
+
+    <!-- If Tag is selected -->
+    ` : html`
+    <bronco-chip
+    @click=${() => this.selectedTag = ''}
+    .badgeValue=${this.marks.filter(mark => mark.tags.includes(this.selectedTag)).length} .hideDeleteIcon=${true}>
+      <div class="chipContainer">
+        <span>${this.selectedTag}</span>
+        </div>
+    </bronco-chip>
+    ${this.marks.filter(mark => mark.tags.includes(this.selectedTag)).map(mark =>
+    html`<mark-element .mark=${mark} .headerInfo=${urlToOrigin(mark.url)}></mark-element>`
+    )}
+    `}
         ` : html`Loading...`}
 `;
   }
