@@ -62,13 +62,13 @@ class MarkElementComponent extends LitElement {
 
   render() {
     return html`
-    <div class="mark" @click=${() => this.scrollToMark()}>
+    <div class="mark">
     <div class="header" >
       <span>${ this.loggedUser.email} </span>
         <span class="timeSince" > ${ timeSinceTimestamp(this.mark.createdAt)} ago </span>
           <span class="deleteBtn" @click=${async (e: MouseEvent) => await this.deleteMark(e)}> X </span>
             </div>
-            <div class="main" >
+            <div class="main"  @click=${() => this.scrollToMark()}>
               <blockquote>${ this.mark.text} </blockquote>
                 </div>
                 <div class="footer" >

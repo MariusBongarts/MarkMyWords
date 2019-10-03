@@ -80,13 +80,13 @@ ${this.chips.map((t,e)=>Y`
         <button type="button" @click="${this.submit}">Sign-in</button>
       </form>
       `}submit(){return Zt(this,void 0,void 0,function*(){if(this.isFormValid()){const t={email:this.emailElement.value,password:this.passwordElement.value};console.log(t);try{const e=yield this.userService.login(t);console.log(e),e&&this.emitLogin(e)}catch(t){console.log(t)}}else this.form.classList.add("was-validated")})}emitLogin(t){this.dispatchEvent(new CustomEvent("login",{detail:t,bubbles:!0}))}isFormValid(){return this.form.checkValidity()}};te.styles=kt`${wt(Qt)}`,Kt([ft("form")],te.prototype,"form",void 0),Kt([ft("#email")],te.prototype,"emailElement",void 0),Kt([ft("#password")],te.prototype,"passwordElement",void 0),te=Kt([ht("sign-in")],te);var ee=function(t,e,n,r){var i,o=arguments.length,s=o<3?e:null===r?r=Object.getOwnPropertyDescriptor(e,n):r;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)s=Reflect.decorate(t,e,n,r);else for(var a=t.length-1;a>=0;a--)(i=t[a])&&(s=(o<3?i(s):o>3?i(e,n,s):i(e,n))||s);return o>3&&s&&Object.defineProperty(e,n,s),s},ne=function(t,e,n,r){return new(n||(n=Promise))(function(i,o){function s(t){try{c(r.next(t))}catch(t){o(t)}}function a(t){try{c(r.throw(t))}catch(t){o(t)}}function c(t){t.done?i(t.value):new n(function(e){e(t.value)}).then(s,a)}c((r=r.apply(t,e||[])).next())})};const re=n(78);let ie=class extends Ct{constructor(){super(...arguments),this.markService=new p,this.isActive=!1}firstUpdated(){return ne(this,void 0,void 0,function*(){})}deleteMark(t){return ne(this,void 0,void 0,function*(){t.stopPropagation(),yield this.markService.deleteMark(this.mark.id)})}deleteTag(t,e){return ne(this,void 0,void 0,function*(){t.stopPropagation(),this.mark.tags=this.mark.tags.filter(t=>t!==e),yield this.markService.updateMark(this.mark)})}scrollToMark(){if(this.mark.origin==location.href.split("?")[0]){const t={top:this.mark.scrollY?this.mark.scrollY:0,left:0,behavior:"smooth"};window.scrollTo(t)}else Mt(this.mark.origin+`?scrollY=${this.mark.scrollY}`)}render(){return Y`
-    <div class="mark" @click=${()=>this.scrollToMark()}>
+    <div class="mark">
     <div class="header" >
       <span>${this.loggedUser.email} </span>
         <span class="timeSince" > ${function(t){let e=((new Date).getTime()-t)/1e3,n=e/60;e=Math.round(e%60);let r=n/60;n=Math.round(n%60);const i=Math.round(r/24);return`${i>=1?i+"d ":""} ${(r=Math.round(r%24))>=1?r+"h ":""}\n  ${n>=1?n+"m ":""} ${e>=0?e+"s":""}`}(this.mark.createdAt)} ago </span>
           <span class="deleteBtn" @click=${t=>ne(this,void 0,void 0,function*(){return yield this.deleteMark(t)})}> X </span>
             </div>
-            <div class="main" >
+            <div class="main"  @click=${()=>this.scrollToMark()}>
               <blockquote>${this.mark.text} </blockquote>
                 </div>
                 <div class="footer" >
