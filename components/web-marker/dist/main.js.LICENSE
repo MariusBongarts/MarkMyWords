@@ -2782,6 +2782,10 @@
 
 /* 104 */
 
+/* 105 */
+
+/* 106 */
+
 // EXTERNAL MODULE: ./src/index.scss
 
 // EXTERNAL MODULE: ./node_modules/jwt-decode/lib/index.js
@@ -4348,3 +4352,5 @@
 // CONCATENATED MODULE: ./src/components/pop-up/tags-view/tags-view.component.ts
 
 // CONCATENATED MODULE: ./src/components/pop-up/search-bar/search-bar.component.ts
+
+// CONCATENATED MODULE: ./src/components/pop-up/search-view/search-view.component.ts

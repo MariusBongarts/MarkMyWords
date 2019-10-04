@@ -148,7 +148,7 @@ class MarkOverviewComponent extends LitElement {
       <header-toggle
       @inputChange=${(e: CustomEvent) => this.searchValue = e.detail}
       .active=${this.activeToggle}
-      @toggleChanged=${(e: CustomEvent) =>this.emitTabChange(e.detail)}></header-toggle>
+      @toggleChanged=${(e: CustomEvent) => this.emitTabChange(e.detail)}></header-toggle>
       <search-bar></search-bar>
 
     </div>
@@ -158,7 +158,7 @@ class MarkOverviewComponent extends LitElement {
       <search-view .marks=${this.allMarks} .searchValue=${this.searchValue}></search-view>
       ` :
 
-      html`
+          html`
       ${this.activeToggle === 0 ? html`
       <!-- Accordion view of marks for all pages -->
       <accordion-view .marks=${this.allMarks}></accordion-view>
@@ -171,14 +171,27 @@ class MarkOverviewComponent extends LitElement {
 
       ${this.activeToggle === 2 ? html`
       <!-- Only marks for current page -->
-      ${this.marks ? this.marks.map(mark => html`
+      ${this.marks && this.marks.length ? this.marks.map(mark => html`
         <mark-element
       .headerInfo=${this.loggedUser.email}
       .mark=${mark}
-      ></mark-element>`) : html`<p>Loading</p>`}
+      ></mark-element>`) : html`
+      `}
       ` : ''}
       `}
     </div>
+
+    ${this.marks && this.marks.length === 0 && this.activeToggle === 2 ? html`
+    <div class="infoContainer">
+    <div class="info">
+    <span>No marks made on this page</span>
+    </div>
+    <div class="subinfo">
+      <span>Select text on this page to add new highlights.</span>
+    </div>
+    </div>
+    ` : ''}
+
 </div>
 ` : ''}
   `
