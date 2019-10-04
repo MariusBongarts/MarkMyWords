@@ -28,7 +28,7 @@ export class HeaderToggleComponent extends LitElement {
   }
 
   emitInput(e: KeyboardEvent) {
-    const value = this.searchElement.value;
+    const value = this.searchElement.value.toLowerCase();
     this.dispatchEvent(
       new CustomEvent('inputChange', {
         detail: value

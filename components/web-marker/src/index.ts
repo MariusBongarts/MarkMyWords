@@ -15,3 +15,4 @@ import './components/pop-up/tree-view/tree-view.component.ts';
 import './components/pop-up/accordion-view/accordion-view.component.ts';
 import './components/pop-up/tags-view/tags-view.component.ts';
 import './components/pop-up/search-bar/search-bar.component.ts';
+import './components/pop-up/search-view/search-view.component.ts';

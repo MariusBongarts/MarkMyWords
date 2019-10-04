@@ -19,6 +19,9 @@ export class TreeViewComponent extends LitElement {
   marks: Mark[] = [];
 
   @property()
+  filter = '';
+
+  @property()
   loaded = false;
 
   @property()
@@ -51,7 +54,7 @@ export class TreeViewComponent extends LitElement {
             <input type="radio" id="closeBtn" name="radioBtn">
           </div>
         ` : ''}
-      ${this.origins.map((origin: string) => html`
+      ${this.origins.filter(origin => origin.toLowerCase().includes(this.filter)).map((origin: string) => html`
       <div class="tab">
         <input type="radio" id="${origin}" name="radioBtn">
         <!-- setTimeout() is necessary to change selectedOrigin after radio input event -->

@@ -131,6 +131,11 @@ class MarkOverviewComponent extends LitElement {
     );
   }
 
+  emitTabChange(tabNr: number) {
+    this.searchValue = '';
+    this.activeToggle = tabNr;
+  }
+
   render() {
     return html`
     <button class="hideShow ${this.show ? 'active' : ''}" @click=${() => this.show ? this.show = false : this.show = true}>${this.show ?
@@ -143,14 +148,14 @@ class MarkOverviewComponent extends LitElement {
       <header-toggle
       @inputChange=${(e: CustomEvent) => this.searchValue = e.detail}
       .active=${this.activeToggle}
-      @toggleChanged=${(e: CustomEvent) => this.activeToggle = e.detail}></header-toggle>
+      @toggleChanged=${(e: CustomEvent) =>this.emitTabChange(e.detail)}></header-toggle>
       <search-bar></search-bar>
 
     </div>
       <div class="main">
 
       ${this.searchValue ? html`
-      <h1>${this.searchValue}</h1>
+      <search-view .marks=${this.allMarks} .searchValue=${this.searchValue}></search-view>
       ` :
 
       html`

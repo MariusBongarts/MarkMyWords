@@ -7,7 +7,7 @@ import { urlToOrigin } from '../../../helper/urlHelper';
 const componentCSS = require('./tags-view.component.scss');
 
 @customElement('tags-view')
-export class TreeViewComponent extends LitElement {
+export class TagsViewComponent extends LitElement {
   static styles = css`${unsafeCSS(componentCSS)}`;
 
   @property()
@@ -17,21 +17,24 @@ export class TreeViewComponent extends LitElement {
   marks: Mark[] = [];
 
   @property()
+  filter = '';
+
+  @property()
   loaded = false;
 
   @property()
   selectedTag = '';
 
-
+  @property()
   tags: string[] = [];
 
 
   async firstUpdated() {
-    this.getDistinctTags();
+    this.loadDistinctTags();
     this.loaded = true;
   }
 
-  getDistinctTags() {
+  loadDistinctTags() {
     this.marks.forEach(mark => {
       this.tags = [...this.tags, ...mark.tags];
     });
@@ -53,7 +56,7 @@ export class TreeViewComponent extends LitElement {
     <!-- If no tag is selected -->
     ${!this.selectedTag ? html`
     <div class="container">
-      ${this.tags.map(tag =>
+      ${this.tags.filter(tag => tag.toLowerCase().includes(this.filter)).map(tag =>
       html`
       <bronco-chip
       @click=${() => this.selectedTag === tag ? this.selectedTag = '' : this.selectedTag = tag}
