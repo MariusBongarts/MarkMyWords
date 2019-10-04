@@ -8,6 +8,9 @@ export class HeaderToggleComponent extends LitElement {
 
   static styles = css`${unsafeCSS(componentCSS)}`;
 
+  @query('#searchInput')
+  searchElement!: HTMLInputElement;
+
   @property()
   active = 2;
 
@@ -19,6 +22,16 @@ export class HeaderToggleComponent extends LitElement {
     this.dispatchEvent(
       new CustomEvent('toggleChanged', {
         detail: this.active
+      }
+      )
+    )
+  }
+
+  emitInput(e: KeyboardEvent) {
+    const value = this.searchElement.value;
+    this.dispatchEvent(
+      new CustomEvent('inputChange', {
+        detail: value
       }
       )
     )
@@ -50,9 +63,12 @@ export class HeaderToggleComponent extends LitElement {
 
       ` : html`
       <input
+      id="searchInput"
       class="searchInput"
       autofocus
       @blur=${() => this.searchActive = false}
+      @keydown=${(e: KeyboardEvent) => this.emitInput(e)}
+      @keyup=${(e: KeyboardEvent) => this.emitInput(e)}
       placeholder="Search...">
       `}
 

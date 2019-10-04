@@ -34,6 +34,8 @@ class MarkOverviewComponent extends LitElement {
   @property()
   loggedUser!: JwtPayload;
 
+  @property()
+  searchValue: string;
 
   /**
    * 1 = Only marks for current page
@@ -139,6 +141,7 @@ class MarkOverviewComponent extends LitElement {
 
     <div class="header">
       <header-toggle
+      @inputChange=${(e: CustomEvent) => this.searchValue = e.detail}
       .active=${this.activeToggle}
       @toggleChanged=${(e: CustomEvent) => this.activeToggle = e.detail}></header-toggle>
       <search-bar></search-bar>
@@ -146,6 +149,11 @@ class MarkOverviewComponent extends LitElement {
     </div>
       <div class="main">
 
+      ${this.searchValue ? html`
+      <h1>${this.searchValue}</h1>
+      ` :
+
+      html`
       ${this.activeToggle === 0 ? html`
       <!-- Accordion view of marks for all pages -->
       <accordion-view .marks=${this.allMarks}></accordion-view>
@@ -164,7 +172,7 @@ class MarkOverviewComponent extends LitElement {
       .mark=${mark}
       ></mark-element>`) : html`<p>Loading</p>`}
       ` : ''}
-
+      `}
     </div>
 </div>
 ` : ''}
