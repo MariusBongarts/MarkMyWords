@@ -183,10 +183,10 @@ class MarkOverviewComponent extends LitElement {
 
     ${this.marks && this.marks.length === 0 && this.activeToggle === 2 ? html`
     <div class="infoContainer">
-    <div class="info">
+    <div class="mainInfo">
     <span>No marks made on this page</span>
     </div>
-    <div class="subinfo">
+    <div class="subInfo">
       <span>Select text on this page to add new highlights.</span>
     </div>
     </div>
