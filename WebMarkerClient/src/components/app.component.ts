@@ -21,8 +21,12 @@ export class AppRoot extends LitElement {
   title: string = 'MarkMyWords';
 
   async firstUpdated() {
+
+  }
+
+  async loadMarks() {
+    console.log("Load marks");
     this.marks = await this.markService.getMarks();
-    console.log(this.marks);
   }
 
   async updateMark(mark: Mark, tags: string[]){
@@ -46,7 +50,9 @@ export class AppRoot extends LitElement {
           </div>
 
           `) :
-        html`<sign-in @login=${async () => await this.firstUpdated()}></sign-in>`}
+        html`
+        <div id="particles-js"></div>
+        <landing-page @login=${async () => await this.loadMarks()}></landing-page>`}
 `;
   }
 

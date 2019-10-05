@@ -1,0 +1,23 @@
+@import "../../variables.scss";
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--secondary-color);
+}
+
+.loginBtn {
+  position: absolute;
+  background: var(--primary-color);
+  z-index: 9999;
+}
+
+lobby-container {
+  position: absolute;
+  margin: auto;
+
+}

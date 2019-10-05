@@ -1,8 +1,7 @@
-import { LoginUserDto } from './../../../models/loginUserDto';
+import { LoginUserDto } from './../../models/loginUserDto';
+import { UserService } from './../../services/user.service';
 import { css, customElement, html, LitElement, query, property, unsafeCSS } from 'lit-element';
-import { UserService } from '../../../services/user.service';
-
-const componentCSS = require('./app.component.scss');
+const componentCSS = require('./lobby-container.component.scss');
 
 /**
  *
@@ -61,7 +60,6 @@ class LobbyContainer extends LitElement {
 			try {
 				this.loading = true;
 				jwtToken = await this.userService.login(signInData);
-				console.log(jwtToken);
 			} catch (error) {
 				console.log(error);
 			}

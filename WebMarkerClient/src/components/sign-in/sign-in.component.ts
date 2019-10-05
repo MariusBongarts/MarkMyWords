@@ -51,7 +51,7 @@ class SignInComponent extends LitElement {
       <form>
         <div class="input shadow-lg">
           <label for="email">E-Mail</label>
-          <input type="email" autofocus="autofocus" required id="email" name="email">
+          <input type="email" autofocus required id="email" name="email">
           <div class="invalid-feedback">Email is required</div>
         </div>
         <div class="input shadow-lg">
