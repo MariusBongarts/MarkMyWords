@@ -9,7 +9,7 @@
   background: var(--primary-color);
   // background: linear-gradient(to top left, #53e3a6 0%, #00b077 100%);
   // background: linear-gradient(to bottom right, #00b077 0%, #53e3a6 100%);
-  background: linear-gradient(to top right, var(--primary-color) 0%, var(--primary-light) 100%);
+  background: linear-gradient(to top right, var(--primary-color-transparent) 0%, var(--primary-light) 100%);
   border-radius: 10px;
 }
 
@@ -28,7 +28,7 @@
   transition-duration: 1s;
   transition-timing-function: ease-in- put;
   font-weight: 200;
-  color: var(--secondary-color);
+  color: var(--white-dark);
 }
 form {
   padding: 20px 0;

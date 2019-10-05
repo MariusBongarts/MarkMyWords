@@ -1,13 +1,14 @@
 @import "../../variables.scss";
 
+
 .container {
-  background: var(--secondary-color);
   width: 100vw;
   height: 100vh;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--secondary-dark);
 }
 
 .landingContainer {

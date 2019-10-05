@@ -52,13 +52,13 @@ class MarkOverviewComponent extends LitElement {
    *
    * @type {Mark[]}
    * @memberof MarkOverviewComponent
-   */
+   */x
   @property()
   marks!: Mark[];
 
 
   /**
-   * All marks, which are passed to accoordion
+   * All marks, which are passed to accordion
    *
    * @type {Mark[]}
    * @memberof MarkOverviewComponent

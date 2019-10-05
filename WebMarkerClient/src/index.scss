@@ -1,6 +1,9 @@
+$secondary-color: #2e2d2d;
+
 body {
   margin: 0;
   font: normal 75% Arial, Helvetica, sans-serif;
+  background: $secondary-color;
 }
 
 canvas {

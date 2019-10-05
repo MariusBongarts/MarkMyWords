@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  font: normal 75% Arial, Helvetica, sans-serif; }
+  font: normal 75% Arial, Helvetica, sans-serif;
+  background: #2e2d2d; }
 
 canvas {
   display: block;
