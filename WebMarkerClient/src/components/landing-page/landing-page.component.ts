@@ -52,7 +52,7 @@ export class LandingPageComponent extends LitElement {
     <span>Structure your Web</span>
     </div>
     <div class="subInfo">
-      <span>Highlight the web and make notes wherever you want.</span>
+      <span>Highlight the web and save text wherever you want.</span>
     </div>
     </div>
       <hr class="divider">
