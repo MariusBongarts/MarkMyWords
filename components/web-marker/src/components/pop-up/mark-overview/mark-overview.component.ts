@@ -181,7 +181,7 @@ class MarkOverviewComponent extends LitElement {
       `}
     </div>
 
-    ${this.marks && this.marks.length === 0 && this.activeToggle === 2 ? html`
+    ${this.marks && this.marks.length === 0 && this.activeToggle === 2 && !this.searchValue ? html`
     <div class="infoContainer">
     <div class="mainInfo">
     <span>No marks made on this page</span>

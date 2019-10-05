@@ -47,3 +47,9 @@
 .subInfo {
   font-size: 14px;
 }
+
+hr.divider {
+  width: 80%;
+  margin: 10px auto;
+  border: solid 0.2px var(--secondary-light);
+}

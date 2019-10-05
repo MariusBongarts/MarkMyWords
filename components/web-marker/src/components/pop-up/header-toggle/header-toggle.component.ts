@@ -65,8 +65,10 @@ export class HeaderToggleComponent extends LitElement {
       <input
       id="searchInput"
       class="searchInput"
+      type="search"
       autofocus
       @blur=${() => this.searchActive = false}
+      @search=${(e: KeyboardEvent) => this.emitInput(e)}
       @keydown=${(e: KeyboardEvent) => this.emitInput(e)}
       @keyup=${(e: KeyboardEvent) => this.emitInput(e)}
       placeholder="Search...">

@@ -66,6 +66,7 @@ export class TagsViewComponent extends LitElement {
         </div>
         </bronco-chip>`
     )}
+
     </div>
 
     <!-- If Tag is selected -->
@@ -84,6 +85,7 @@ export class TagsViewComponent extends LitElement {
     )}
     <!-- Show related tags -->
     <div class="container">
+    <hr class="divider">
       ${this.getRelatedTags().map(tag => html`
       <bronco-chip
         @click=${() => this.selectedTag === tag ? this.selectedTag = '' : this.selectedTag = tag}
