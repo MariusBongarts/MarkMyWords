@@ -1,23 +1,41 @@
 @import "../../variables.scss";
 
 .container {
+  background: var(--secondary-color);
   width: 100vw;
   height: 100vh;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--secondary-color);
+}
+
+.landingContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: absolute;
+  z-index: 9999;
 }
 
 .loginBtn {
-  position: absolute;
   background: var(--primary-color);
   z-index: 9999;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 20px;
+  color: var(--white-dark);
+  font-weight: bold;
+  box-shadow: 1px 1px 1px 1px var(--primary-color-transparent);
+  outline: none;
+  cursor: pointer;
 }
 
 lobby-container {
   position: absolute;
   margin: auto;
+}
 
+hr.divider {
+  width: 80%;
 }

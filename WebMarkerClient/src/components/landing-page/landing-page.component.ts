@@ -46,10 +46,22 @@ export class LandingPageComponent extends LitElement {
     return html`
     <div class="container">
       ${this.activeElement === 'start' ? html`
+      <div class="landingContainer">
+      <div class="infoContainer">
+    <div class="mainInfo">
+    <span>Structure your Web</span>
+    </div>
+    <div class="subInfo">
+      <span>Highlight the web and make notes wherever you want.</span>
+    </div>
+    </div>
+      <hr class="divider">
       <button
       @click=${() => this.activeElement = 'login'}
       class="loginBtn"
-      >Login</button>` : ''}
+      >Get started</button>
+      </div>
+` : ''}
 
       ${this.activeElement === 'login' ? html`
       <lobby-container

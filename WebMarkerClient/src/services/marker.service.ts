@@ -11,11 +11,15 @@ export class MarkerService {
   }
 
   async getMarks(): Promise<Mark[]> {
+    try {
     const response = await this.httpClient.get('/marks');
     console.log(response);
     const marks: Mark[] = (await response.json() as Mark[]);
     console.log(marks);
     return marks;
+    } catch (error) {
+      return [];
+    }
   }
 
   async createMark(mark: Partial<Mark>): Promise<Mark | undefined> {

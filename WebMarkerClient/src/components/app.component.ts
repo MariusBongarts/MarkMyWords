@@ -20,8 +20,12 @@ export class AppRoot extends LitElement {
   @property()
   title: string = 'MarkMyWords';
 
-  async firstUpdated() {
+  @property()
+  loaded = false;
 
+  async firstUpdated() {
+    await this.loadMarks();
+    this.loaded = true;
   }
 
   async loadMarks() {
@@ -29,30 +33,34 @@ export class AppRoot extends LitElement {
     this.marks = await this.markService.getMarks();
   }
 
-  async updateMark(mark: Mark, tags: string[]){
+  async updateMark(mark: Mark, tags: string[]) {
     mark.tags = tags;
     await this.markService.updateMark(mark);
   }
 
   render() {
     return html`
+    ${!this.loaded ? html`
+    <span>Loading...</span>
+    ` :
+        html`
           ${this.marks && this.marks.length ? this.marks.map(mark => html`
           <div class="container">
-          <block-qoute .mark=${mark}></block-qoute>
-          <bronco-chip-list .mark=${mark}
-          @tagsChanged=${(e: CustomEvent) => this.updateMark(mark, e.detail as string[])}></bronco-chip-list>
+            <block-qoute .mark=${mark}></block-qoute>
+            <bronco-chip-list .mark=${mark}
+            @tagsChanged=${(e: CustomEvent) => this.updateMark(mark, e.detail as string[])}></bronco-chip-list>
             <div class="footer" style="width: 100%">
             <span>${timeSinceTimestamp(mark.createdAt)} ago</span>
             <a href="${mark.url}" target="_blank">${mark.url.substring(0, 50)}</a>
             </div>
             <button
             @click=${async () => await this.deleteMark(mark)}>X</button>
-          </div>
+            </div>
 
-          `) :
-        html`
-        <div id="particles-js"></div>
+            `) :
+            html`
         <landing-page @login=${async () => await this.loadMarks()}></landing-page>`}
+        `}
 `;
   }
 
