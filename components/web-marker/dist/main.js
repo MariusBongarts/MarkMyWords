@@ -179,8 +179,6 @@ class="${t[0]} ${this.activeEntry===t[0]?"active":""}"><a>
 </nav>
 
       `}};ge.styles=xt`${wt(fe)}`,pe([pt()],ge.prototype,"activeEntry",void 0),ge=pe([ht("tab-bar")],ge);var me=function(t,e,n,r){var i,o=arguments.length,s=o<3?e:null===r?r=Object.getOwnPropertyDescriptor(e,n):r;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)s=Reflect.decorate(t,e,n,r);else for(var a=t.length-1;a>=0;a--)(i=t[a])&&(s=(o<3?i(s):o>3?i(e,n,s):i(e,n))||s);return o>3&&s&&Object.defineProperty(e,n,s),s},ye=function(t,e,n,r){return new(n||(n=Promise))(function(i,o){function s(t){try{c(r.next(t))}catch(t){o(t)}}function a(t){try{c(r.throw(t))}catch(t){o(t)}}function c(t){t.done?i(t.value):new n(function(e){e(t.value)}).then(s,a)}c((r=r.apply(t,e||[])).next())})};const be=n(86);let ve=class extends Ct{constructor(){super(...arguments),this.userService=new Gt,this.formSuccess=!1,this.loading=!1}firstUpdated(){this.emailElement.addEventListener("keyup",t=>ye(this,void 0,void 0,function*(){13===t.keyCode&&(yield this.submit())})),this.passwordElement.addEventListener("keyup",t=>ye(this,void 0,void 0,function*(){13===t.keyCode&&(yield this.submit())}))}submit(t){return ye(this,void 0,void 0,function*(){t&&t.preventDefault();let e="";if(this.isFormValid()){const t={email:this.emailElement.value,password:this.passwordElement.value};console.log(t);try{this.loading=!0,e=yield this.userService.login(t),console.log(e)}catch(t){console.log(t)}e&&(this.formSuccess=!0),this.loading=!1}else this.form.classList.add("was-validated");e&&setTimeout(()=>this.emitLogin(e),1e3)})}emitLogin(t){this.dispatchEvent(new CustomEvent("login",{detail:t,bubbles:!0}))}isFormValid(){return this.form.checkValidity()}render(){return Y`
-<bubbles-animation>
-
 	<div class="container ${this.formSuccess?"form-success":""}">
 		<h1>Welcome</h1>
 		${this.formSuccess?"":Y`
@@ -194,8 +192,6 @@ class="${t[0]} ${this.activeEntry===t[0]?"active":""}"><a>
 		</form>
 		`}
 	</div>
-
-	</bubbles-animation>
   `}};ve.styles=xt`${wt(be)}`,me([pt()],ve.prototype,"formSuccess",void 0),me([pt()],ve.prototype,"loading",void 0),me([ft("form")],ve.prototype,"form",void 0),me([ft("#email")],ve.prototype,"emailElement",void 0),me([ft("#password")],ve.prototype,"passwordElement",void 0),ve=me([ht("lobby-container")],ve);var we=function(t,e,n,r){var i,o=arguments.length,s=o<3?e:null===r?r=Object.getOwnPropertyDescriptor(e,n):r;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)s=Reflect.decorate(t,e,n,r);else for(var a=t.length-1;a>=0;a--)(i=t[a])&&(s=(o<3?i(s):o>3?i(e,n,s):i(e,n))||s);return o>3&&s&&Object.defineProperty(e,n,s),s};const xe=n(88);let ke=class extends Ct{constructor(){super(...arguments),this.userService=new Gt}emitLogout(){this.dispatchEvent(new CustomEvent("logout",{bubbles:!0}))}render(){return Y`
 			<div class="container">
 				<h1>Welcome</h1>

@@ -90,6 +90,7 @@ class LobbyContainer extends LitElement {
 
 	render() {
 		return html`
+	<bubbles-animation>
 	<div class="container ${this.formSuccess ? 'form-success' : ''}">
 		<h1>Welcome</h1>
 		${!this.formSuccess ? html`
@@ -98,11 +99,14 @@ class LobbyContainer extends LitElement {
 			<input type="password" required id="password" name="password" placeholder="Password">
 			<button
 			type="submit" id="login-button" @click=${(e: MouseEvent) => this.submit(e)}
-			class="${this.loading ? 'loading' : ''}"
+			class="${this.loading ? 'loading' :
+
+			''}"
 			>${this.loading ? '...' : 'Login'}</button>
 		</form>
 		` : ''}
 	</div>
+	</bubbles-animation>
   `
 	}
 }

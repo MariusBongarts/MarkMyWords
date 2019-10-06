@@ -88,19 +88,21 @@ class LobbyContainer extends LitElement {
 
 	render() {
 		return html`
-	<div class="container ${this.formSuccess ? 'form-success' : ''}">
-		<h1>Welcome</h1>
-		${!this.formSuccess ? html`
-		<form class="form">
-			<input type="email" required id="email" name="email" placeholder="Email">
-			<input type="password" required id="password" name="password" placeholder="Password">
-			<button
-			type="submit" id="login-button" @click=${(e: MouseEvent) => this.submit(e)}
-			class="${this.loading ? 'loading' : ''}"
-			>${this.loading ? '...' : 'Login'}</button>
-		</form>
-		` : ''}
-	</div>
-  `
+			<div class="container ${this.formSuccess ? 'form-success' : ''}">
+					<h1>Welcome</h1>
+					${!this.formSuccess ? html`
+					<form class="form">
+						<input type="email" required id="email" name="email" placeholder="Email">
+						<input type="password" required id="password" name="password" placeholder="Password">
+						<button
+						type="submit" id="login-button" @click=${(e: MouseEvent) => this.submit(e)}
+						class="${this.loading ? 'loading' : ''}"
+						>${this.loading ? '...' : 'Login'}</button>
+					</form>
+					` : ''}
+				</div>
+
+				`
+
 	}
 }

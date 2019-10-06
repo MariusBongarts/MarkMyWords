@@ -24,10 +24,18 @@ class LobbyContainer extends LitElement {
 	render() {
 		return html`
 			<div class="container">
-				<h1>Welcome</h1>
+			<div class="header">
+			</div>
+			<div class="main">
 				<p>${this.loggedUser.email}</p>
-				<br>
-			<button @click=${() => this.emitLogout()}>Logout</button>
+				<hr class="divider">
+
+				<p><a class="goToPageBtn" href="https://marius96.uber.space/" target="_blank">See all marks</a></p>
+
+				<hr class="divider">
+			</div>
+
+			<button class="logoutBtn" @click=${() => this.emitLogout()}>Logout</button>
 			</div>
 
 		`

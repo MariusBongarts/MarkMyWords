@@ -4273,7 +4273,7 @@
          */
 
 /**
-         * All marks, which are passed to accoordion
+         * All marks, which are passed to accordion
          *
          * @type {Mark[]}
          * @memberof MarkOverviewComponent

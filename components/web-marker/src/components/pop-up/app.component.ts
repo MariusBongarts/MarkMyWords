@@ -52,7 +52,7 @@ export class PopUpComponent extends LitElement {
   render() {
     return html`
     ${this.loaded ? html`
-    ${this.loggedUser ?
+    ${this.loggedUser && this.loggedUser.email ?
           html`
       ${this.showAccountPopup ? html`
       <account-overview @logout=${() => this.logout()} .loggedUser=${this.loggedUser}></account-overview>

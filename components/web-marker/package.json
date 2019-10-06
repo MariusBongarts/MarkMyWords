@@ -77,7 +77,6 @@
   "dependencies": {
     "@marius/broncochiplist": "git+https://github.com/marius2502/bronco-chip-list.git",
     "@material/chips": "^3.1.0",
-    "@vaadin/vaadin-core": "^14.0.4",
     "jwt-decode": "^2.2.0",
     "ngx-socket-io": "^3.0.1",
     "paper-chip": "^2.0.20",
