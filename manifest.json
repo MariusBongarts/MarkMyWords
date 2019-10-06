@@ -11,6 +11,10 @@
         "./dist/content.js"]
     }
   ],
+  "icons": {
+    "16": "./assets/markerIcon.png",
+    "128": "./assets/markerIcon.png"
+  },
   "browser_action": {
     "default_title": "WebHighlighter"
   },

@@ -67,9 +67,8 @@ chrome.runtime.onInstalled.addListener(function() {
   });
 });
 
-
 chrome.browserAction.onClicked.addListener(function (tab) {
-  console.log('Clicked Popuo')
+  console.log('Clicked Popup')
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.tabs.sendMessage(tabs[0].id, {
       id: 'togglePopup',
