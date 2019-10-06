@@ -1,5 +1,6 @@
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
+import { startParticlesAnimation } from '../../helper/particlesHelper';
 const componentCSS = require('./landing-page.component.scss');
 
 @customElement('landing-page')
@@ -14,16 +15,10 @@ export class LandingPageComponent extends LitElement {
   particlesMin: any;
 
   firstUpdated() {
-    this.startParticlesAnimation();
+    startParticlesAnimation();
   }
 
-  startParticlesAnimation() {
-    this.particlesMin = require('./particles.min.js');
-    const particles = document.createElement('div');
-    particles.id = 'particles-js';
-    document.body.appendChild(particles);
-    const startParticles = require('./../../helper/particles.js');
-  }
+
 
   disconnectedCallback() {
     try {

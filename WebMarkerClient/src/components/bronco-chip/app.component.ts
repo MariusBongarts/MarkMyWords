@@ -23,7 +23,27 @@ export class BroncoChip extends LitElement {
    * @type {boolean}
    * @memberof BroncoChip
    */
-  @property() deleteMode: boolean = true;
+  @property() deleteMode: boolean = false;
+
+  /**
+   *
+   * If true, trash icon will not be shown
+   * @type {boolean}
+   * @memberof BroncoChip
+   */
+  @property() hideDeleteIcon: boolean = false;
+
+
+  /**
+   *
+   * If value, a badge with number can be shown
+   * @type {number}
+   * @memberof BroncoChip
+   */
+  @property() badgeValue!: number;
+
+  @property()
+  smallDeleteIcon = false;
 
   /**
    *
@@ -58,11 +78,22 @@ export class BroncoChip extends LitElement {
 
   render() {
     return html`
-<div class="chip ripple ${this.deleteMode ? 'delete-mode' : ''}">
+<div class="chip ripple
+${this.deleteMode ? 'delete-mode' : ''}">
   <div class="chip-content"><slot></slot></div>
+  ${this.hideDeleteIcon ? '' : html`
   <div class="chip-close" @click=${() => this.emitDeleted()}>
-      <svg class="chip-svg" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"></path></svg>
-  </div>
+      <!-- <svg class="chip-svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg> -->
+      <svg class="chip-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </div>
+  `}
+
+  ${this.badgeValue ? html`
+  <div class="chip-close">
+      <span class="chip-svg badge">${this.badgeValue}</span>
+    </div>
+
+  ` : ''}
 </div>
 `;
   }

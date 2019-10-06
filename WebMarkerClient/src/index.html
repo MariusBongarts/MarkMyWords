@@ -12,6 +12,18 @@
   <app-root></app-root>
 </body>
 
+<script>
+  setTimeout(() => {
+
+    try {
+      document.body.getElementsByTagName('pop-up')[0].remove();
+      document.body.getElementsByTagName('web-marker')[0].remove();
+    } catch (error) {
+      //
+    }
+  },200)
+</script>
+
 
 
 </html>

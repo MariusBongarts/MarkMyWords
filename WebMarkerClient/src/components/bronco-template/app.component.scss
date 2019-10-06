@@ -1,0 +1,124 @@
+//@import "./../icons.scss";
+
+:host {
+  --bg: none;
+  --header-height: 2.5em;
+  --nav-width: 20em;
+  --color-icon: rgb(177, 177, 177);
+  --shadow-header: 0 8px 8px -8px rgba(128, 128, 128, 0.322);
+  --shadow-nav: 0px 8px 8px rgba(128, 128, 128, 0.322);
+}
+
+.grid-container {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  height: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  grid:
+    "head" 5em
+    "main" 1fr
+    /1fr;
+}
+
+.grid-container.open {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid:
+  "nav head" var(--header-height)
+  "nav  main" 1fr
+  / var(--nav-width) 1fr;
+}
+
+@media only screen and (min-width: 928px) {
+  .grid-container {
+    grid:
+      "nav head" var(--header-height)
+      "nav  main" 1fr
+      / var(--nav-width) 1fr;
+  }
+
+  .hideNav {
+    grid:
+      "head" var(--header-height)
+      "main" 1fr
+      / 1fr;
+    nav {
+      display: none;
+    }
+  }
+}
+
+.grid-container.hideForever {
+  grid:
+    "head" var(--header-height)
+    "main" 1fr
+    / 1fr;
+  nav {
+    display: none;
+  }
+}
+
+/* All Grid Items */
+.grid-container > * {
+  background: var(--bg-color);
+}
+
+header {
+  grid-area: head;
+  box-shadow: var(--shadow-header);
+}
+
+header > ::slotted(*):nth-child(1) {
+  position: relative;
+  height: 100%;
+  line-height: var(--header-height);
+}
+
+
+nav {
+  grid-area: nav;
+  box-shadow: var(--shadow-nav);
+}
+
+nav > ::slotted(*) {
+  min-height: 100vh;
+}
+
+main {
+  grid-area: main;
+}
+
+
+
+main > ::slotted(*) {
+  min-height: calc(100vh - var(--header-height));
+}
+
+#drag {
+  position: fixed;
+  left: calc(var(--nav-width) - 8px);
+  top: 45vh;
+  z-index: 9999;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  background: var(--primary-color);
+  color: white;
+}
+
+.hideNav {
+  left: -10px !important;
+}
+
+
+#drag i:hover {
+  font-size: 50px;  /* Preferred icon size */
+  --color: black;
+}

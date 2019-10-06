@@ -53,9 +53,9 @@ let PopUpComponent = class PopUpComponent extends LitElement {
     render() {
         return html `
     ${this.loaded ? html `
+    <mark-overview .loggedUser=${this.loggedUser}></mark-overview>
       ${this.showAccountPopup && this.loggedUser && this.loggedUser.email ? html `
       <account-overview @logout=${() => this.logout()} .loggedUser=${this.loggedUser}></account-overview>
-      <mark-overview .loggedUser=${this.loggedUser}></mark-overview>
       ` : html `
       ${this.showAccountPopup ? html `
       <lobby-container @login=${() => __awaiter(this, void 0, void 0, function* () { return yield this.loadUserData(); })}></lobby-container>

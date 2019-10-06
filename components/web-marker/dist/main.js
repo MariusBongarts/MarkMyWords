@@ -159,9 +159,9 @@ ${this.chips.map((t,e)=>Y`
 `:""}
   `}};ce.styles=xt`${wt(ae)}`,oe([ut()],ce.prototype,"loggedUser",void 0),oe([ut()],ce.prototype,"searchValue",void 0),oe([ut()],ce.prototype,"activeToggle",void 0),oe([ut()],ce.prototype,"marks",void 0),oe([ut()],ce.prototype,"allMarks",void 0),oe([ut()],ce.prototype,"show",void 0),ce=oe([ht("mark-overview")],ce);var le=function(t,e,n,r){var i,o=arguments.length,s=o<3?e:null===r?r=Object.getOwnPropertyDescriptor(e,n):r;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)s=Reflect.decorate(t,e,n,r);else for(var a=t.length-1;a>=0;a--)(i=t[a])&&(s=(o<3?i(s):o>3?i(e,n,s):i(e,n))||s);return o>3&&s&&Object.defineProperty(e,n,s),s},he=function(t,e,n,r){return new(n||(n=Promise))(function(i,o){function s(t){try{c(r.next(t))}catch(t){o(t)}}function a(t){try{c(r.throw(t))}catch(t){o(t)}}function c(t){t.done?i(t.value):new n(function(e){e(t.value)}).then(s,a)}c((r=r.apply(t,e||[])).next())})};const de=n(82);let pe=class extends Ct{constructor(){super(...arguments),this.jwtService=new o,this.markService=new p,this.userService=new Gt,this.loaded=!1,this.showAccountPopup=!h.production}firstUpdated(){return he(this,void 0,void 0,function*(){yield this.loadUserData(),this.loaded=!0})}loadUserData(){return he(this,void 0,void 0,function*(){try{this.loggedUser=yield this.jwtService.getJwtPayload()}catch(t){this.logout()}})}logout(){this.loggedUser=void 0,this.userService.logout()}render(){return Y`
     ${this.loaded?Y`
+    <mark-overview .loggedUser=${this.loggedUser}></mark-overview>
       ${this.showAccountPopup&&this.loggedUser&&this.loggedUser.email?Y`
       <account-overview @logout=${()=>this.logout()} .loggedUser=${this.loggedUser}></account-overview>
-      <mark-overview .loggedUser=${this.loggedUser}></mark-overview>
       `:Y`
       ${this.showAccountPopup?Y`
       <lobby-container @login=${()=>he(this,void 0,void 0,function*(){return yield this.loadUserData()})}></lobby-container>
