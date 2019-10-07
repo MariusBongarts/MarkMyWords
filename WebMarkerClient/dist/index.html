@@ -12,6 +12,18 @@
   <app-root></app-root>
 <script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="main.js"></script></body>
 
+<script>
+  setTimeout(() => {
+
+    try {
+      document.body.getElementsByTagName('pop-up')[0].remove();
+      document.body.getElementsByTagName('web-marker')[0].remove();
+    } catch (error) {
+      //
+    }
+  },200)
+</script>
+
 
 
 </html>

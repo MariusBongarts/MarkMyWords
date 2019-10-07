@@ -14,12 +14,10 @@ const componentCSS = require('./app.component.scss');
  */
 @customElement('app-root')
 export class AppRoot extends LitElement {
-  markService = new MarkerService();
   jwtService = new JwtService();
 
   static styles = css`${unsafeCSS(componentCSS)}`;
 
-  @property() marks!: Mark[];
 
   @property()
   loggedUser!: JwtPayload;
@@ -35,14 +33,9 @@ export class AppRoot extends LitElement {
     this.loaded = true;
   }
 
-  async loadMarks() {
-    console.log("Load marks");
-    this.marks = await this.markService.getMarks();
-  }
 
   async updateMark(mark: Mark, tags: string[]) {
     mark.tags = tags;
-    await this.markService.updateMark(mark);
   }
 
   render() {
@@ -54,23 +47,20 @@ export class AppRoot extends LitElement {
         ${this.loggedUser && this.loggedUser.email ? html`
         <bronco-template>
 
-            <div slot="header"> Header </div>
+            <div slot="header"></div>
 
             <div slot="nav">
               <mark-overview .loggedUser=${this.loggedUser} .show=${true}></mark-overview>
             </div>
 
-            <div slot="main"> Main </div>
+            <div slot="main">
+              <main-page></main-page>
+            </div>
 
         </bronco-template>
         ` : html`
         <landing-page @login=${async () => this.loggedUser = await this.jwtService.getJwtPayload()}></landing-page>`}
         `}
     `}
-
-  async deleteMark(mark: Mark) {
-    this.marks = this.marks.filter(e => e !== mark);
-    await this.markService.deleteMark(mark.id);
-  }
 
 }

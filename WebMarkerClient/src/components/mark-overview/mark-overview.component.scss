@@ -8,18 +8,20 @@
   height: 100%;
   width: 100%;
   background: var(--secondary-color);
+  max-height: calc(100vh - var(--header-height));
 }
 
 .container {
   color: white;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  max-height: calc(100vh - var(--header-height));
 }
 
 .main {
   overflow: scroll;
+  max-height: calc(100vh - var(--header-height));
 }
 
 .header {

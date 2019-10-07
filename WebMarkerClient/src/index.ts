@@ -14,3 +14,5 @@ import './components/accordion-view/accordion-view.component.ts';
 import './components/tags-view/tags-view.component.ts';
 import './components/search-view/search-view.component.ts';
 import './components/mark-overview/mark-overview.component.ts';
+import './components/mark-element/mark-element.component.ts';
+import './components/main-page/main-page.component.ts';

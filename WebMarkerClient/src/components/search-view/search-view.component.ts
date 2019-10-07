@@ -1,8 +1,7 @@
-import { MarkerService } from './../../../services/marker.service';
-import { Mark } from './../../../../../../WebMarkerClient/src/models/mark';
+import { Mark } from './../../../../WebMarkerClient/src/models/mark';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
-import { urlToOrigin } from '../../../helper/urlHelper';
+import { urlToOrigin } from '../../helper/urlHelper';
 
 const componentCSS = require('./search-view.component.scss');
 
@@ -14,7 +13,7 @@ export class SearchViewComponent extends LitElement {
   marks: Mark[] = [];
 
   @property()
-  searchValue: string;
+  searchValue!: string;
 
 
   render() {

@@ -66,7 +66,7 @@ class MarkElementComponent extends LitElement {
     <div class="header" >
       <span>${ this.headerInfo} </span>
         <span class="timeSince" > ${ timeSinceTimestamp(this.mark.createdAt)} ago </span>
-          <span class="deleteBtn" @click=${async (e: MouseEvent) => await this.deleteMark(e)}> X </span>
+          <span class="deleteBtn" @click=${async (e: MouseEvent) => await this.deleteMark(e)}> &times; </span>
             </div>
             <div class="main"  @click=${() => this.scrollToMark()}>
               <blockquote>${ this.mark.text} </blockquote>

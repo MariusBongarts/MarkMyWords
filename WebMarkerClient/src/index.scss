@@ -1,9 +1,15 @@
 $secondary-color: #2e2d2d;
 
+html {
+  max-height: 100vh;
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   font: normal 75% Arial, Helvetica, sans-serif;
   background: $secondary-color;
+  max-height: 100vh;
 }
 
 canvas {
