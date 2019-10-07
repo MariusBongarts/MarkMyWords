@@ -2742,6 +2742,14 @@
 
 /* 95 */
 
+/* 96 */
+
+/* 97 */
+
+/* 98 */
+
+/* 99 */
+
 // EXTERNAL MODULE: ./src/index.scss
 
 // EXTERNAL MODULE: ./node_modules/jwt-decode/lib/index.js
@@ -2755,6 +2763,21 @@
      *
      * @returns {Promise<JwtPayload>}
      * @memberof JwtService
+     */
+
+// CONCATENATED MODULE: ./src/services/http-client.ts
+
+// tslint:disable-next-line: no-empty
+
+// CONCATENATED MODULE: ./src/environments/environment.dev.ts
+
+// CONCATENATED MODULE: ./src/services/user.service.ts
+
+/**
+     * Signs the user in and saves the jwtToken in the jwtService.
+     *
+     * @returns {Promise<string>}
+     * @memberof UserService
      */
 
 // CONCATENATED MODULE: ./node_modules/lit-html/lib/directive.js
@@ -3838,14 +3861,6 @@
 
 //# sourceMappingURL=lit-element.js.map
 
-// CONCATENATED MODULE: ./src/services/http-client.ts
-
-// tslint:disable-next-line: no-empty
-
-// CONCATENATED MODULE: ./src/environments/environment.dev.ts
-
-// CONCATENATED MODULE: ./src/services/marker.service.ts
-
 // CONCATENATED MODULE: ./src/components/app.component.ts
 
 /**
@@ -3856,15 +3871,6 @@
 /**
      * @author Marius Bongarts
      * Root web component
-     */
-
-// CONCATENATED MODULE: ./src/services/user.service.ts
-
-/**
-     * Signs the user in and saves the jwtToken in the jwtService.
-     *
-     * @returns {Promise<string>}
-     * @memberof UserService
      */
 
 // CONCATENATED MODULE: ./src/components/sign-in/sign-in.component.ts
@@ -3894,6 +3900,8 @@
 // CONCATENATED MODULE: ./src/components/landing-page/landing-page.component.ts
 
 // CONCATENATED MODULE: ./src/helper/particlesHelper.ts
+
+// CONCATENATED MODULE: ./src/services/marker.service.ts
 
 // CONCATENATED MODULE: ./src/components/bronco-chip-list/app.component.ts
 
@@ -4125,3 +4133,7 @@
          *
          * @memberof MarkOverviewComponent
          */
+
+// CONCATENATED MODULE: ./src/components/main-page/main-page.component.ts
+
+// CONCATENATED MODULE: ./src/components/header-bar/header-bar.component.ts

@@ -1,3 +1,4 @@
+import { JwtPayload } from './../../models/jwtPayload';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { SwipeDetector } from '../../helper/swipeDetector';
 import { Swipe } from '../../types/swipe';
@@ -18,6 +19,9 @@ export class BroncoTemplate extends LitElement {
    */
   @property()
   hideNav = false;
+
+  @property()
+  loggedUser!: JwtPayload;
 
 
   /**
@@ -57,21 +61,29 @@ export class BroncoTemplate extends LitElement {
     });
   }
 
+  emitLogout() {
+    this.dispatchEvent(
+      new CustomEvent(
+        'logout',
+      )
+    )
+  }
+
   render() {
     return html`
     <div class="grid-container ${this.hideNav ? 'hideNav' : 'open'} ${this.hideNavForever ? 'hideForever' : ''}">
       <header>
-        <slot name="header"></slot>
+      <header-bar @logout=${() => this.emitLogout()}></header-bar>
       </header>
       <nav>
-        <slot name="nav"></slot>
+        ${this.hideNav ? html`` : html`<mark-overview .loggedUser=${this.loggedUser} .show=${true}></mark-overview>`}
       </nav>
       <main>
         <slot name="main"></slot>
       </main>
     </div>
-    <div id="drag" class="${this.hideNav ? 'hideNav' : ''}" @click=${()=> this.hideNav ? this.hideNav = false :
-          this.hideNav = true}>
+    <div id="drag" class="${this.hideNav ? 'hideNav' : ''}" @click=${() => this.hideNav ? this.hideNav = false :
+        this.hideNav = true}>
       ${this.hideNavForever ? '' : html`
       ${this.hideNav ? html`
       <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>

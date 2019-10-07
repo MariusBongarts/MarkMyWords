@@ -5,7 +5,7 @@
   flex-wrap: wrap;
 }
 
-mark-element {
+block-qoute {
   flex: 1 auto;
   width: 100%;
 }
@@ -13,11 +13,21 @@ mark-element {
 @media only screen and (min-width: 928px) {
 
   .container {
-    padding: 40px;
+    padding: 40px 100px;
   }
 
-  mark-element {
-    width: 25%;
-    margin: 15px;
+  block-qoute {
+    margin: 10px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+
+  .container {
+    padding: 40px 200px;
+  }
+
+  block-qoute {
+    margin: 10px;
   }
 }

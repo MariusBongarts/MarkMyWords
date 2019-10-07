@@ -16,7 +16,7 @@
   max-height: 100vh;
   width: 100%;
   grid:
-    "head" 5em
+    "head" var(--header-height)
     "main" 1fr
     /1fr;
 }
@@ -49,6 +49,10 @@
     nav {
       display: none;
     }
+
+    nav > ::slotted {
+      display: none;
+    }
   }
 }
 
@@ -57,7 +61,7 @@
     "head" var(--header-height)
     "main" 1fr
     / 1fr;
-  nav {
+    nav {
     display: none;
   }
 }
@@ -93,6 +97,7 @@ main {
   grid-area: main;
   background: var(--secondary-color);
   max-height: calc(100vh - var(--header-height));
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 

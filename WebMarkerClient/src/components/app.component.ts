@@ -1,3 +1,4 @@
+import { UserService } from './../services/user.service';
 import { JwtService } from './../services/jwt.service';
 import { JwtPayload } from './../models/jwtPayload';
 import { Mark } from './../models/mark';
@@ -15,12 +16,13 @@ const componentCSS = require('./app.component.scss');
 @customElement('app-root')
 export class AppRoot extends LitElement {
   jwtService = new JwtService();
+  userService = new UserService();
 
   static styles = css`${unsafeCSS(componentCSS)}`;
 
 
   @property()
-  loggedUser!: JwtPayload;
+  loggedUser: JwtPayload | undefined;
 
   @property()
   title: string = 'MarkMyWords';
@@ -38,6 +40,11 @@ export class AppRoot extends LitElement {
     mark.tags = tags;
   }
 
+  async logout() {
+    this.loggedUser = undefined;
+    await this.userService.logout();
+  }
+
   render() {
     return html`
     ${!this.loaded ? html`
@@ -45,13 +52,7 @@ export class AppRoot extends LitElement {
     ` :
         html`
         ${this.loggedUser && this.loggedUser.email ? html`
-        <bronco-template>
-
-            <div slot="header"></div>
-
-            <div slot="nav">
-              <mark-overview .loggedUser=${this.loggedUser} .show=${true}></mark-overview>
-            </div>
+        <bronco-template .loggedUser=${this.loggedUser} @logout=${async () => await this.logout()}>
 
             <div slot="main">
               <main-page></main-page>

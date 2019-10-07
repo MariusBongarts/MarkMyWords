@@ -1,7 +1,12 @@
+html {
+  max-height: 100vh;
+  overflow: hidden; }
+
 body {
   margin: 0;
   font: normal 75% Arial, Helvetica, sans-serif;
-  background: #2e2d2d; }
+  background: #2e2d2d;
+  max-height: 100vh; }
 
 canvas {
   display: block;

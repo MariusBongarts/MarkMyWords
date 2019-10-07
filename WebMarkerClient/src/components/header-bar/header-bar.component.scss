@@ -1,0 +1,26 @@
+@import "../../variables.scss";
+
+:host {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+
+.logoutBtn {
+  appearance: none;
+  outline: 0;
+  background-color: var(--secondary-light);
+  border: 0;
+  padding: 2px 4px;
+  border-radius: 10px;
+  color: white;
+  width: 100px;
+  cursor: pointer;
+  font-size: 14px;
+  transition-duration: 0.25s;
+  margin: 5px;
+}

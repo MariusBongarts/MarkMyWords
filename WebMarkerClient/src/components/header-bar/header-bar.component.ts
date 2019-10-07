@@ -4,29 +4,28 @@ import { css, customElement, html, LitElement, property, unsafeCSS, query } from
 import { classMap } from 'lit-html/directives/class-map';
 import { timeSinceTimestamp } from '../../helper/dateHelper';
 
-const componentCSS = require('./main-page.component.scss');
+const componentCSS = require('./header-bar.component.scss');
 
-@customElement('main-page')
+@customElement('header-bar')
 export class MainPageComponent extends LitElement {
-  markService = new MarkerService();
-
-  @property() marks: Mark[] = [];
 
   static styles = css`${unsafeCSS(componentCSS)}`;
 
-  async firstUpdated() {
-    await this.loadMarks();
-  }
-
-  async loadMarks() {
-    this.marks = await this.markService.getMarks();
-    this.marks.sort((a, b) => b.createdAt - a.createdAt);
+  emitLogout() {
+    this.dispatchEvent(
+      new CustomEvent(
+        'logout',
+      )
+    )
   }
 
   render() {
     return html`
     <div class="container">
-      ${this.marks.length ? this.marks.map(mark => html`<block-qoute .mark=${mark}></block-qoute>`) : ''}
+      <div>
+
+    </div>
+      <button @click=${() => this.emitLogout()} class="logoutBtn">Logout</button>
     </div>
 `;
   }
