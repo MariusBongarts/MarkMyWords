@@ -12,6 +12,16 @@ export class MainPageComponent extends LitElement {
 
   @property() marks: Mark[] = [];
 
+  @property()
+  selectedTag = '';
+
+  @property()
+  selectedUrl = '';
+
+
+  @property()
+  searchValue = '';
+
   static styles = css`${unsafeCSS(componentCSS)}`;
 
   async firstUpdated() {
@@ -23,10 +33,18 @@ export class MainPageComponent extends LitElement {
     this.marks.sort((a, b) => b.createdAt - a.createdAt);
   }
 
+  filteredMarks() {
+    const marks = this.marks.filter(mark => {
+      return mark.text.toLowerCase().includes(this.searchValue.toLowerCase()) &&
+      mark.url.includes(this.selectedUrl);
+    });
+    return this.selectedTag ? marks.filter(mark => mark.tags.includes(this.selectedTag)) : marks;
+  }
+
   render() {
     return html`
     <div class="container">
-      ${this.marks.length ? this.marks.map(mark => html`<block-qoute .mark=${mark}></block-qoute>`) : ''}
+      ${this.marks.length ? this.filteredMarks().map(mark => html`<block-qoute .mark=${mark}></block-qoute>`) : ''}
     </div>
 `;
   }

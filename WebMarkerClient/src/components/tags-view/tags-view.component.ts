@@ -48,6 +48,11 @@ export class TagsViewComponent extends LitElement {
     return [...new Set(relatedTags)].filter(tag => tag !== this.selectedTag);
   }
 
+  selectTag(tag: string) {
+    this.selectedTag === tag ? this.selectedTag = '' : this.selectedTag = tag;
+    this.dispatchEvent(new CustomEvent('selectedTag', { detail: this.selectedTag }));
+  }
+
 
   render() {
     return html`
@@ -59,7 +64,7 @@ export class TagsViewComponent extends LitElement {
       ${this.tags.filter(tag => tag.toLowerCase().includes(this.filter)).map(tag =>
       html`
       <bronco-chip
-      @click=${() => this.selectedTag === tag ? this.selectedTag = '' : this.selectedTag = tag}
+      @click=${() => this.selectTag(tag)}
       .badgeValue=${this.marks.filter(mark => mark.tags.includes(tag)).length} .hideDeleteIcon=${true}>
       <div class="chipContainer">
         <span>${tag}</span>
@@ -73,22 +78,21 @@ export class TagsViewComponent extends LitElement {
     ` : html`
     <div class="selectedChipContainer">
       <bronco-chip
-      @click=${() => this.selectedTag = ''}
+      @click=${() => this.selectTag(this.selectedTag)}
       .badgeValue=${this.marks.filter(mark => mark.tags.includes(this.selectedTag)).length} .hideDeleteIcon=${true}>
       <div class="chipContainer">
         <span>${this.selectedTag}</span>
       </div>
     </bronco-chip>
   </div>
-    ${this.marks.filter(mark => mark.tags.includes(this.selectedTag)).map(mark =>
-      html`<mark-element .mark=${mark} .headerInfo=${urlToOrigin(mark.url)}></mark-element>`
-    )}
+
     <!-- Show related tags -->
     <div class="container">
+    <span>Related Tags</span>
     <hr class="divider">
       ${this.getRelatedTags().map(tag => html`
       <bronco-chip
-        @click=${() => this.selectedTag === tag ? this.selectedTag = '' : this.selectedTag = tag}
+        @click=${() => this.selectTag(tag)}
         .badgeValue=${this.marks.filter(mark => mark.tags.includes(tag)).length} .hideDeleteIcon=${true}>
         <div class="chipContainer">
           <span>${tag}</span>

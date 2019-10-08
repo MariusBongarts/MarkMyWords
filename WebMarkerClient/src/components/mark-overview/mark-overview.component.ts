@@ -138,12 +138,16 @@ class MarkOverviewComponent extends LitElement {
 
       ${this.activeToggle === 0 ? html`
       <!-- Accordion view of marks for all pages -->
-      <accordion-view .marks=${this.marks}></accordion-view>
+      <accordion-view
+            @selectedUrl=${(e: CustomEvent) => this.dispatchEvent(new CustomEvent('selectedUrl', { detail: e.detail }))}
+      .marks=${this.marks}></accordion-view>
       ` : ''}
 
       ${this.activeToggle === 1 ? html`
       <!-- Accordion view of marks for all pages -->
-      <tags-view .marks=${this.marks}></tags-view>
+      <tags-view
+      @selectedTag=${(e: CustomEvent) => this.dispatchEvent(new CustomEvent('selectedTag', { detail: e.detail }))}
+      .marks=${this.marks}></tags-view>
       ` : ''}
 
       ` : ''}

@@ -25,6 +25,15 @@ export class AppRoot extends LitElement {
   loggedUser: JwtPayload | undefined;
 
   @property()
+  selectedTag = '';
+
+  @property()
+  selectedUrl = '';
+
+  @property()
+  searchValue = '';
+
+  @property()
   title: string = 'MarkMyWords';
 
   @property()
@@ -45,6 +54,25 @@ export class AppRoot extends LitElement {
     await this.userService.logout();
   }
 
+  inputChanged(value: string) {
+    this.selectedTag = '';
+    this.selectedUrl = '';
+    this.searchValue = value;
+  }
+
+    selectedTagChanged(tag: string) {
+      this.selectedUrl = '';
+      this.selectedTag = tag;
+      this.searchValue = '';
+    }
+
+    selectedUrlChanged(url: string) {
+      this.selectedTag = '';
+      this.selectedUrl = url;
+      this.searchValue = '';
+    }
+
+
   render() {
     return html`
     ${!this.loaded ? html`
@@ -52,10 +80,17 @@ export class AppRoot extends LitElement {
     ` :
         html`
         ${this.loggedUser && this.loggedUser.email ? html`
-        <bronco-template .loggedUser=${this.loggedUser} @logout=${async () => await this.logout()}>
+        <bronco-template
+        @selectedTag=${(e: CustomEvent) => this.selectedTagChanged(e.detail)}
+        @selectedUrl=${(e: CustomEvent) => this.selectedUrlChanged(e.detail)}
+        @inputChange=${(e: CustomEvent) => this.inputChanged(e.detail)}
+        .loggedUser=${this.loggedUser} @logout=${async () => await this.logout()}>
 
             <div slot="main">
-              <main-page></main-page>
+              <main-page
+              .selectedTag=${this.selectedTag}
+              .selectedUrl=${this.selectedUrl}
+              .searchValue=${this.searchValue}></main-page>
             </div>
 
         </bronco-template>

@@ -8,6 +8,8 @@ const componentCSS = require('./header-bar.component.scss');
 
 @customElement('header-bar')
 export class MainPageComponent extends LitElement {
+  @query('#searchInput')
+  searchElement!: HTMLInputElement;
 
   static styles = css`${unsafeCSS(componentCSS)}`;
 
@@ -19,12 +21,35 @@ export class MainPageComponent extends LitElement {
     )
   }
 
+
+  emitInput(e: KeyboardEvent) {
+    const value = this.searchElement.value.toLowerCase();
+    this.dispatchEvent(
+      new CustomEvent('inputChange', {
+        detail: value
+      }
+      )
+    )
+  }
+
   render() {
     return html`
     <div class="container">
       <div>
 
     </div>
+
+
+    <input
+      id="searchInput"
+      class="searchInput"
+      type="search"
+      autofocus
+      @search=${(e: KeyboardEvent) => this.emitInput(e)}
+      @keydown=${(e: KeyboardEvent) => this.emitInput(e)}
+      @keyup=${(e: KeyboardEvent) => this.emitInput(e)}
+      placeholder="Search...">
+
       <button @click=${() => this.emitLogout()} class="logoutBtn">Logout</button>
     </div>
 `;

@@ -4091,9 +4091,9 @@
 
 // CONCATENATED MODULE: ./src/components/header-toggle/header-toggle.component.ts
 
-// CONCATENATED MODULE: ./src/helper/urlHelper.ts
-
 // CONCATENATED MODULE: ./src/components/accordion-view/accordion-view.component.ts
+
+// CONCATENATED MODULE: ./src/helper/urlHelper.ts
 
 // CONCATENATED MODULE: ./src/components/tags-view/tags-view.component.ts
 

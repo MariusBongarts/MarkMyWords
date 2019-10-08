@@ -8,6 +8,8 @@ const componentCSS = require('./app.component.scss');
 @customElement('bronco-template')
 export class BroncoTemplate extends LitElement {
 
+
+
   static styles = css`${unsafeCSS(componentCSS)}`;
 
   swipeDetector = new SwipeDetector();
@@ -22,6 +24,15 @@ export class BroncoTemplate extends LitElement {
 
   @property()
   loggedUser!: JwtPayload;
+
+  @property()
+  filterValue = '';
+
+  @property()
+  selectedTag = '';
+
+  @property()
+  selectedUrl = '';
 
 
   /**
@@ -69,14 +80,30 @@ export class BroncoTemplate extends LitElement {
     )
   }
 
+
+  emitInput(e: CustomEvent) {
+    this.filterValue = e.detail;
+    this.dispatchEvent(
+      new CustomEvent('inputChange', {
+        detail: e.detail
+      }
+      )
+    )
+  }
+
+
   render() {
     return html`
     <div class="grid-container ${this.hideNav ? 'hideNav' : 'open'} ${this.hideNavForever ? 'hideForever' : ''}">
       <header>
-      <header-bar @logout=${() => this.emitLogout()}></header-bar>
+      <header-bar @logout=${() => this.emitLogout()} @inputChange=${(e: CustomEvent) => this.emitInput(e)}></header-bar>
       </header>
       <nav>
-        ${this.hideNav ? html`` : html`<mark-overview .loggedUser=${this.loggedUser} .show=${true}></mark-overview>`}
+        ${this.hideNav ? html`` : html`
+        <mark-overview
+        @selectedTag=${(e: CustomEvent) => this.dispatchEvent(new CustomEvent('selectedTag', { detail: e.detail }))}
+        @selectedUrl=${(e: CustomEvent) => this.dispatchEvent(new CustomEvent('selectedUrl', { detail: e.detail }))}
+        .searchValue=${this.filterValue} .loggedUser=${this.loggedUser} .show=${true}></mark-overview>`}
       </nav>
       <main>
         <slot name="main"></slot>
