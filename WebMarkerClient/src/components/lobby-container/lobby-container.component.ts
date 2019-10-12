@@ -35,19 +35,6 @@ class LobbyContainer extends LitElement {
 	passwordElement!: HTMLInputElement;
 
 
-	firstUpdated() {
-		this.emailElement.addEventListener('keyup', async (e: KeyboardEvent) => {
-			if (e.keyCode === 13) {
-				await this.submit();
-			}
-		});
-		this.passwordElement.addEventListener('keyup', async (e: KeyboardEvent) => {
-			if (e.keyCode === 13) {
-				await this.submit();
-			}
-		});
-	}
-
 	async submit(e?: MouseEvent) {
 		e ? e.preventDefault() : '';
 		let jwtToken = '';
@@ -56,7 +43,6 @@ class LobbyContainer extends LitElement {
 				email: this.emailElement.value,
 				password: this.passwordElement.value
 			};
-			console.log(signInData);
 			try {
 				this.loading = true;
 				jwtToken = await this.userService.login(signInData);

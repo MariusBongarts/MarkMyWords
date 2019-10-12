@@ -58,8 +58,8 @@ class MarkOverviewComponent extends LitElement {
       this.emitLogout();
     }
 
-    await this.initSocket();
-    this.handleSockets();
+    // await this.initSocket();
+    // this.handleSockets();
   }
 
   async initSocket() {

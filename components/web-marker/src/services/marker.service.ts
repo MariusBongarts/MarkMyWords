@@ -38,31 +38,34 @@ export class MarkerService {
   }
 
   async createMark(mark: Partial<Mark>): Promise<Mark | undefined> {
-    !this.socket ? await this.initSocket() : '';
-    this.socket.emit('createMark', mark);
-
+    await this.emitSocket('createMark');
     const response = await this.httpClient.post('/marks', mark);
     const createdMark: Mark = (await response.json() as Mark);
-    console.log(`Created mark with id ${createdMark.id}`);
     return createdMark;
   }
 
   async deleteMark(markId: string): Promise<void> {
-    !this.socket ? await this.initSocket() : '';
-    this.socket.emit('deleteMark', markId);
+    await this.emitSocket('deleteMark');
     await this.httpClient.delete('/marks/' + markId);
   }
 
   async updateMark(mark: Mark): Promise<void> {
-    !this.socket ? await this.initSocket() : '';
-    this.socket.emit('updateMark', mark);
+    await this.emitSocket('updateMark');
     await this.httpClient.put('/marks', mark);
   }
 
   async getMarkById(id: string): Promise<Mark> {
     const response = await this.httpClient.get('/marks/' + id);
-    console.log(response);
     const mark = (await response.json() as Mark);
     return mark;
+  }
+
+  async emitSocket(name: string, body?: any) {
+    try {
+      !this.socket ? await this.initSocket() : '';
+      body ? this.socket.emit(name, body) : this.socket.emit(name);
+    } catch (error) {
+      //
+    }
   }
 }

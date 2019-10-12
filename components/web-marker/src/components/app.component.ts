@@ -82,9 +82,7 @@ export class WebMarker extends LitElement {
   async highlightMarks() {
     this.scrollToMark();
     this.marks = await this.markerService.getMarksForUrl(location.href);
-    console.log(this.marks);
     this.marks.forEach(mark => highlightText(null, mark));
-    console.log(`${this.marks.length} mark found!`);
   }
 
 
@@ -95,19 +93,21 @@ export class WebMarker extends LitElement {
    */
   scrollToMark() {
     setTimeout(() => {
+      try {
       const params = location.href.split('?')[1].split('=');
       params.forEach((param, index) => {
         if (param === 'scrollY') {
-          console.log("sij")
           const scrollOptions: ScrollToOptions = {
             top: Number(params[index+1]),
             left: 0,
             behavior: 'smooth'
           }
           window.scrollTo(scrollOptions);
-          console.log(params);
         }
       });
+    } catch (error) {
+      //
+    }
     });
 
   }

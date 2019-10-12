@@ -70,8 +70,6 @@ export class MyMarkElement extends LitElement {
   createMark(): Mark {
     const selection = window.getSelection();
     const range = selection.getRangeAt(0);
-    console.log(selection);
-    console.log(selection);
     const mark: Mark = {
       id: uuidv4(),
       url: location.href,
@@ -90,7 +88,6 @@ export class MyMarkElement extends LitElement {
       endOffset: range.endOffset,
       scrollY: window.scrollY
     };
-    console.log(mark);
     return mark;
   }
 
@@ -115,7 +112,7 @@ export class MyMarkElement extends LitElement {
     try {
       await this.markerService.deleteMark(this.mark.id);
     } catch (error) {
-      console.log(error);
+      //
     }
 
   }

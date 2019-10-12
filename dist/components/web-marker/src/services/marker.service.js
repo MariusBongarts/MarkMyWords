@@ -43,34 +43,40 @@ export class MarkerService {
     }
     createMark(mark) {
         return __awaiter(this, void 0, void 0, function* () {
-            !this.socket ? yield this.initSocket() : '';
-            this.socket.emit('createMark', mark);
+            yield this.emitSocket('createMark');
             const response = yield this.httpClient.post('/marks', mark);
             const createdMark = yield response.json();
-            console.log(`Created mark with id ${createdMark.id}`);
             return createdMark;
         });
     }
     deleteMark(markId) {
         return __awaiter(this, void 0, void 0, function* () {
-            !this.socket ? yield this.initSocket() : '';
-            this.socket.emit('deleteMark', markId);
+            yield this.emitSocket('deleteMark');
             yield this.httpClient.delete('/marks/' + markId);
         });
     }
     updateMark(mark) {
         return __awaiter(this, void 0, void 0, function* () {
-            !this.socket ? yield this.initSocket() : '';
-            this.socket.emit('updateMark', mark);
+            yield this.emitSocket('updateMark');
             yield this.httpClient.put('/marks', mark);
         });
     }
     getMarkById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const response = yield this.httpClient.get('/marks/' + id);
-            console.log(response);
             const mark = yield response.json();
             return mark;
+        });
+    }
+    emitSocket(name, body) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                !this.socket ? yield this.initSocket() : '';
+                body ? this.socket.emit(name, body) : this.socket.emit(name);
+            }
+            catch (error) {
+                //
+            }
         });
     }
 }

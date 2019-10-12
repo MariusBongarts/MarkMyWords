@@ -71,52 +71,6 @@
 
 /* 1 */
 
-/**
- * Module dependencies.
- */
-
-/**
- * Module exports.
- */
-
-/**
- * Managers cache.
- */
-
-/**
- * Looks up an existing `Manager` for multiplexing.
- * If the user summons:
- *
- *   `io('http://localhost/a');`
- *   `io('http://localhost/b');`
- *
- * We reuse the existing instance based on same scheme/port/host,
- * and we initialize sockets for each namespace.
- *
- * @api public
- */
-
-/**
- * Protocol version.
- *
- * @api public
- */
-
-/**
- * `connect`.
- *
- * @param {String} uri
- * @api public
- */
-
-/**
- * Expose constructors for standalone build.
- *
- * @api public
- */
-
-/* 2 */
-
 // This works in non-strict mode
 
 // This works if eval is allowed (see CSP)
@@ -129,7 +83,7 @@
 
 // easier to handle this case. if(!global) { ...}
 
-/* 3 */
+/* 2 */
 
 /**
  * Initialize a new `Emitter`.
@@ -206,7 +160,11 @@
  * @api public
  */
 
-/* 4 */
+/* 3 */
+
+/**
+ * Module dependencies.
+ */
 
 /**
  * Check if we are running an android browser. That requires us to use
@@ -351,6 +309,48 @@
 // 310 = char length of Number.MAX_VALUE
 
 // iPhone Safari doesn't let you apply to typed arrays
+
+/* 4 */
+
+/**
+ * Module exports.
+ */
+
+/**
+ * Managers cache.
+ */
+
+/**
+ * Looks up an existing `Manager` for multiplexing.
+ * If the user summons:
+ *
+ *   `io('http://localhost/a');`
+ *   `io('http://localhost/b');`
+ *
+ * We reuse the existing instance based on same scheme/port/host,
+ * and we initialize sockets for each namespace.
+ *
+ * @api public
+ */
+
+/**
+ * Protocol version.
+ *
+ * @api public
+ */
+
+/**
+ * `connect`.
+ *
+ * @param {String} uri
+ * @api public
+ */
+
+/**
+ * Expose constructors for standalone build.
+ *
+ * @api public
+ */
 
 /* 5 */
 
@@ -1659,6 +1659,16 @@
 
 /* 36 */
 
+/* 37 */
+
+// Module
+
+/* 38 */
+
+/* 39 */
+
+/* 40 */
+
 /**
  * URL parser.
  *
@@ -1680,7 +1690,7 @@
 
 // define href
 
-/* 37 */
+/* 41 */
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -1775,7 +1785,7 @@
 	* Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
 	*/
 
-/* 38 */
+/* 42 */
 
 /**
  * Helpers.
@@ -1823,7 +1833,7 @@
  * @api private
  */
 
-/* 39 */
+/* 43 */
 
 /**
  * Enable namespaces listed in `localStorage.debug` initially.
@@ -1849,7 +1859,7 @@
 
 // double check webkit in userAgent just in case we are in a worker
 
-/* 40 */
+/* 44 */
 
 /**
  * Create a debugger with the given `namespace`.
@@ -1935,9 +1945,9 @@
  * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
  */
 
-/* 41 */
+/* 45 */
 
-/* 42 */
+/* 46 */
 
 /*global Blob,File*/
 
@@ -1992,7 +2002,7 @@
 
 // and object
 
-/* 43 */
+/* 47 */
 
 // base64 is 4/3 + up to two characters of the original data
 
@@ -2010,11 +2020,11 @@
 
 // See: https://github.com/beatgammit/base64-js/issues/42
 
-/* 44 */
+/* 48 */
 
-/* 45 */
+/* 49 */
 
-/* 46 */
+/* 50 */
 
 /**
  * Exports parser
@@ -2023,7 +2033,7 @@
  *
  */
 
-/* 47 */
+/* 51 */
 
 /**
  * Socket constructor.
@@ -2239,7 +2249,7 @@
  *
  */
 
-/* 48 */
+/* 52 */
 
 /**
  * Module exports.
@@ -2253,7 +2263,7 @@
 
 // when trying to create
 
-/* 49 */
+/* 53 */
 
 /* global attachEvent */
 
@@ -2376,7 +2386,7 @@
  * emitted.
  */
 
-/* 50 */
+/* 54 */
 
 /**
  * Gets the keys for an object.
@@ -2385,9 +2395,9 @@
  * @api private
  */
 
-/* 51 */
+/* 55 */
 
-/* 52 */
+/* 56 */
 
 /**
  * An abstraction for slicing an arraybuffer even when
@@ -2396,13 +2406,13 @@
  * @api public
  */
 
-/* 53 */
+/* 57 */
 
 // after first error, rest are passed to err_cb
 
 // future error callbacks will go to error handler
 
-/* 54 */
+/* 58 */
 
 /*! https://mths.be/utf8js v2.1.2 by @mathias */
 
@@ -2434,7 +2444,7 @@
 
 // 3-byte sequence (may include unpaired surrogates)
 
-/* 55 */
+/* 59 */
 
 /*
  * base64-arraybuffer
@@ -2446,7 +2456,7 @@
 
 // Use a lookup table to find the index.
 
-/* 56 */
+/* 60 */
 
 /**
  * Create a blob builder even when vendor prefixes exist
@@ -2466,11 +2476,11 @@
 
 // include the subarray region from the underlying buffer
 
-/* 57 */
+/* 61 */
 
-/* 58 */
+/* 62 */
 
-/* 59 */
+/* 63 */
 
 /**
  * Cached regular expressions.
@@ -2529,7 +2539,7 @@
 
 // double escaping is required for escaped new lines because unescaping of new lines can be done safely on server-side
 
-/* 60 */
+/* 64 */
 
 /**
  * Get either the `WebSocket` or `MozWebSocket` globals
@@ -2614,13 +2624,13 @@
  * @api public
  */
 
-/* 61 */
+/* 65 */
 
 /* (ignored) */
 
-/* 62 */
+/* 66 */
 
-/* 63 */
+/* 67 */
 
 /**
  * Initialize backoff timer with `opts`.
@@ -2668,16 +2678,6 @@
  *
  * @api public
  */
-
-/* 64 */
-
-/* 65 */
-
-// Module
-
-/* 66 */
-
-/* 67 */
 
 /* 68 */
 
@@ -2797,13 +2797,23 @@
      * @memberof JwtService
      */
 
-// EXTERNAL MODULE: ./node_modules/socket.io-client/lib/index.js
+// CONCATENATED MODULE: ./src/services/http-client.ts
 
 // tslint:disable-next-line: no-empty
 
 // CONCATENATED MODULE: ./src/environments/environment.dev.ts
 
 // CONCATENATED MODULE: ./src/services/marker.service.ts
+
+// if (environment.production) {
+
+//   this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
+
+// } else {
+
+//   this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt }, transports: ['websocket'] });
+
+// }
 
 // CONCATENATED MODULE: ./node_modules/lit-html/lib/directive.js
 
@@ -3971,13 +3981,17 @@
      * @memberof WebMarker
      */
 
-// CONCATENATED MODULE: ./src/components/my-marker/my-marker.component.ts
+// EXTERNAL MODULE: ./node_modules/socket.io-client/lib/index.js
 
 /**
          *  Necessary to abort hide animation when user enters mark again
          *
          * @memberof MyMarkerElement
          */
+
+//await this.initSocket();
+
+//this.handleSockets();
 
 /**
      *  Sets position of this component so that it is centralized above mark-element

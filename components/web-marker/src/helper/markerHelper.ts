@@ -9,7 +9,7 @@ export function highlightText(range?: Range, mark?: Mark) {
     createMyMarkerComponent(markElement, mark);
 
   } catch (error) {
-    console.log(error);
+    //
   }
 }
 
@@ -22,7 +22,6 @@ export function highlightText(range?: Range, mark?: Mark) {
  */
 function createMarkElement(range?: Range, mark?: Mark) {
   mark ? range = recreateRange(mark) : range = range;
-  console.log(range);
   const markElement = document.createElement('mark');
   markElement.appendChild(range.extractContents());
   range.insertNode(markElement);
@@ -43,7 +42,6 @@ function createMyMarkerComponent(markElement: HTMLElement, mark: Mark) {
   myMarkElement.addEventListener('deleted', (e: CustomEvent) => {
     myMarkElement.remove();
     deleteMarkFromDom(markElement);
-    console.log(`Succesfully deleted mark ${e.detail}`);
   });
 
 }
@@ -58,7 +56,6 @@ export function deleteMarkFromDom(markElement: HTMLElement) {
 }
 
 function recreateRange(mark) {
-  console.log(mark);
   const startContainer = findStartEndContainer(document.body, mark, true);
   const endContainer = findStartEndContainer(document.body, mark, false);
   const range = document.createRange();

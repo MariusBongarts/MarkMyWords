@@ -51,7 +51,7 @@ class SignInComponent extends LitElement {
       <form>
         <div class="input shadow-lg">
           <label for="email">E-Mail</label>
-          <input type="email" autofocus="autofocus" required id="email" name="email">
+          <input type="email" autofocus required id="email" name="email">
           <div class="invalid-feedback">Email is required</div>
         </div>
         <div class="input shadow-lg">
@@ -70,13 +70,11 @@ class SignInComponent extends LitElement {
         email: this.emailElement.value,
         password: this.passwordElement.value
       };
-      console.log(signInData);
       try {
         const jwtToken = await this.userService.login(signInData);
-        console.log(jwtToken);
         if (jwtToken) this.emitLogin(jwtToken);
       } catch (error) {
-        console.log(error);
+        //
       }
     } else {
       this.form.classList.add('was-validated');

@@ -45,7 +45,6 @@ let MyMarkerElement = class MyMarkerElement extends LitElement {
      * @memberof MyMarkerElement
      */
     setPosition() {
-        console.log(this.id);
         const rectLines = this.parentElement.getClientRects();
         // this.style.left = rectLines.length === 1 ? this.parentElement.offsetLeft + 'px' : this.parentElement.parentElement.offsetLeft + 'px';
         this.style.width = this.getWidth(rectLines) + 'px';

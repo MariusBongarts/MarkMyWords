@@ -45,8 +45,8 @@ export class MyMarkerElement extends LitElement {
       this.registerListener();
     }
 
-    await this.initSocket();
-    this.handleSockets();
+    //await this.initSocket();
+    //this.handleSockets();
   }
 
   async initSocket() {
@@ -74,9 +74,9 @@ export class MyMarkerElement extends LitElement {
       }
     });
 
-    this.socket.on('connect', (data: string) => {
-      console.log('yeah');
-    });
+    // this.socket.on('connect', (data: string) => {
+    //   console.log('yeah');
+    // });
   }
 
   /**
@@ -85,13 +85,11 @@ export class MyMarkerElement extends LitElement {
    * @memberof MyMarkerElement
    */
   setPosition() {
-    console.log(this.id);
     const rectLines = this.parentElement.getClientRects() as DOMRectList;
     // this.style.left = rectLines.length === 1 ? this.parentElement.offsetLeft + 'px' : this.parentElement.parentElement.offsetLeft + 'px';
     this.style.width = this.getWidth(rectLines) + 'px';
     const offsetTop = this.getOffsetTop(rectLines);
     const offsetLeft = this.getOffsetLeft(rectLines);
-    console.log(rectLines);
     this.style.transform = `translate(${offsetLeft}, ${-offsetTop}px)`;
     this.classList.add('slideIn');
   }
