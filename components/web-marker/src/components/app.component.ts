@@ -1,12 +1,15 @@
+import { connect } from 'pwa-helpers';
+import { store } from './../store/store';
 import { MarkerService } from './../services/marker.service';
 import { Mark } from './../models/mark';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { highlightText } from '../helper/markerHelper';
+import { initMarks } from '../store/actions';
 
 const componentCSS = require('./app.component.scss');
 
 @customElement('web-marker')
-export class WebMarker extends LitElement {
+export class WebMarker extends connect(store)(LitElement) {
   static styles = css`${unsafeCSS(componentCSS)}`;
 
   @property()
@@ -29,6 +32,12 @@ export class WebMarker extends LitElement {
   async firstUpdated() {
     this.listenToShowMarker();
     await this.highlightMarks();
+    await this.loadState();
+  }
+
+  async loadState() {
+    const marks = await this.markerService.getMarks();
+    initMarks(marks);
   }
 
   /**

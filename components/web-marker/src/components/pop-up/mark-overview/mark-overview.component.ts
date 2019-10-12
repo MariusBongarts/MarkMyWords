@@ -1,3 +1,4 @@
+import { store } from './../../../store/store';
 import { MarkerService } from './../../../services/marker.service';
 import { Mark } from './../../../models/mark';
 import { LoginUserDto } from './../../../models/loginUserDto';
@@ -8,6 +9,8 @@ import './../mark-element/mark-element.component';
 import openSocket from 'socket.io-client';
 import { environment } from '../../../environments/environment.dev';
 import { JwtService } from '../../../services/jwt.service';
+import { connect } from 'pwa-helpers';
+import { changeTest } from '../../../store/actions';
 
 const componentCSS = require('./mark-overview.component.scss');
 
@@ -22,7 +25,7 @@ const componentCSS = require('./mark-overview.component.scss');
  * @extends {LitElement}
  */
 @customElement('mark-overview')
-class MarkOverviewComponent extends LitElement {
+class MarkOverviewComponent extends connect(store)(LitElement) {
   static styles = css`${unsafeCSS(componentCSS)}`;
   socket: SocketIOClient.Socket;
 
@@ -52,19 +55,10 @@ class MarkOverviewComponent extends LitElement {
    *
    * @type {Mark[]}
    * @memberof MarkOverviewComponent
-   */x
+   */
   @property()
   marks!: Mark[];
 
-
-  /**
-   * All marks, which are passed to accordion
-   *
-   * @type {Mark[]}
-   * @memberof MarkOverviewComponent
-   */
-  @property()
-  allMarks: Mark[] = [];
 
   @property()
   show = environment.production ? false : true;
@@ -79,7 +73,16 @@ class MarkOverviewComponent extends LitElement {
 
     //await this.initSocket();
     //this.handleSockets();
-    this.allMarks = await this.markService.getMarks();
+
+  }
+
+  /**
+   * Function called by extended connect method from pwa-helper, when state changed
+   *
+   * @memberof MarkOverviewComponent
+   */
+  stateChanged(e) {
+    this.marks = store.getState().marks.filter(e => e.url === location.href);
   }
 
   async initSocket() {
@@ -94,30 +97,30 @@ class MarkOverviewComponent extends LitElement {
 
   }
 
-  handleSockets() {
-    this.socket.on('createMark', (createdMark: Mark) => {
-      this.allMarks = [...this.allMarks, createdMark];
-      if (location.href === createdMark.url) {
-        this.marks = [...this.marks, createdMark];
-      } else {
-        // TODO: Maybe a popup to show that on different page has been added a mark?
-      }
-    });
+  // handleSockets() {
+  //   this.socket.on('createMark', (createdMark: Mark) => {
+  //     this.allMarks = [...this.allMarks, createdMark];
+  //     if (location.href === createdMark.url) {
+  //       this.marks = [...this.marks, createdMark];
+  //     } else {
+  //       // TODO: Maybe a popup to show that on different page has been added a mark?
+  //     }
+  //   });
 
-    this.socket.on('deleteMark', (deletedMarkId: string) => {
-      this.marks = this.marks.filter(mark => mark.id !== deletedMarkId);
-      this.allMarks = this.allMarks.filter(mark => mark.id !== deletedMarkId);
-    });
+  //   this.socket.on('deleteMark', (deletedMarkId: string) => {
+  //     this.marks = this.marks.filter(mark => mark.id !== deletedMarkId);
+  //     this.allMarks = this.allMarks.filter(mark => mark.id !== deletedMarkId);
+  //   });
 
-    this.socket.on('updateMark', (updatedMark: Mark) => {
-      this.marks = this.marks.map(mark => mark.id === updatedMark.id ? updatedMark : mark);
-      this.allMarks = this.allMarks.map(mark => mark.id === updatedMark.id ? updatedMark : mark);
-    });
+  //   this.socket.on('updateMark', (updatedMark: Mark) => {
+  //     this.marks = this.marks.map(mark => mark.id === updatedMark.id ? updatedMark : mark);
+  //     this.allMarks = this.allMarks.map(mark => mark.id === updatedMark.id ? updatedMark : mark);
+  //   });
 
-    this.socket.on('connect', (data: string) => {
-      console.log('yeah');
-    });
-  }
+  //   this.socket.on('connect', (data: string) => {
+  //     console.log('yeah');
+  //   });
+  // }
 
   disconnectedCallback() {
     this.socket.disconnect();
@@ -155,18 +158,18 @@ class MarkOverviewComponent extends LitElement {
       <div class="main">
 
       ${this.searchValue ? html`
-      <search-view .marks=${this.allMarks} .searchValue=${this.searchValue}></search-view>
+      <search-view .searchValue=${this.searchValue}></search-view>
       ` :
 
           html`
       ${this.activeToggle === 0 ? html`
       <!-- Accordion view of marks for all pages -->
-      <accordion-view .marks=${this.allMarks}></accordion-view>
+      <accordion-view></accordion-view>
       ` : ''}
 
       ${this.activeToggle === 1 ? html`
       <!-- Accordion view of marks for all pages -->
-      <tags-view .marks=${this.allMarks}></tags-view>
+      <tags-view></tags-view>
       ` : ''}
 
       ${this.activeToggle === 2 ? html`

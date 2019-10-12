@@ -20,7 +20,6 @@ class MarkOverviewComponent extends LitElement {
   markService = new MarkerService();
   jwtService = new JwtService();
 
-
   @property()
   loggedUser!: JwtPayload;
 
@@ -36,7 +35,6 @@ class MarkOverviewComponent extends LitElement {
   @property()
   activeToggle = 1;
 
-
   /**
    * Only marks fur current url
    *
@@ -45,7 +43,6 @@ class MarkOverviewComponent extends LitElement {
    */
   @property()
   marks!: Mark[];
-
 
   @property()
   show = environment.production ? false : true;
@@ -66,12 +63,11 @@ class MarkOverviewComponent extends LitElement {
     const jwt = await this.jwtService.getJwt();
     const jwtPayload = await this.jwtService.getJwtPayload();
     if (environment.production) {
-      this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
+      this.socket = openSocket(environment.SOCKET_URL, { query: { jwt } });
     } else {
-      this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt }, transports: ['websocket', 'xhr-polling'] });
+      this.socket = openSocket(environment.SOCKET_URL, { query: { jwt }, transports: ['websocket', 'xhr-polling'] });
     }
     this.socket.emit('join', { id: jwtPayload._id, email: jwtPayload.email });
-
   }
 
   handleSockets() {
@@ -167,6 +163,6 @@ class MarkOverviewComponent extends LitElement {
 
 </div>
 ` : ''}
-  `
+  `;
   }
 }

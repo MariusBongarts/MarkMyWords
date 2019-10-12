@@ -1,3 +1,6 @@
+import { State } from './../../store/reducer';
+import { store } from './../../store/store';
+import { connect } from 'pwa-helpers';
 import { environment } from './../../environments/environment.dev';
 import { JwtService } from './../../services/jwt.service';
 import { MarkerService } from './../../services/marker.service';
@@ -8,7 +11,7 @@ import openSocket from 'socket.io-client';
 import { deleteMarkFromDom } from '../../helper/markerHelper';
 
 @customElement('my-marker')
-export class MyMarkerElement extends LitElement {
+export class MyMarkerElement extends connect(store)(LitElement) {
   static styles = css`${unsafeCSS(componentCSS)}`;
   markerService = new MarkerService();
   jwtService = new JwtService();
@@ -48,6 +51,19 @@ export class MyMarkerElement extends LitElement {
     //await this.initSocket();
     //this.handleSockets();
   }
+
+  // stateChanged() {
+  //   if (store.getState().lastAction === 'REMOVE_MARK') {
+  //     try {
+  //       store.getState().marks.find(e => e.id === this.mark.id);
+  //     } catch(error) {
+  //       deleteMarkFromDom(this.parentElement);
+  //     }
+
+  //   }
+  // }
+
+
 
   async initSocket() {
     const jwt = await this.jwtService.getJwt();

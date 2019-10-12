@@ -1,3 +1,4 @@
+import { store } from './../../../store/store';
 import { JwtPayload } from './../../../models/jwtPayload';
 import { LoginUserDto } from './../../../../../../NestJsServer/src/users/dto/login-user.dto';
 import { css, customElement, html, LitElement, query, property, unsafeCSS } from 'lit-element';
@@ -12,6 +13,15 @@ class LobbyContainer extends LitElement {
 
 	@property()
 	loggedUser: JwtPayload;
+
+	@property()
+	test = store.getState().test;
+
+	firstUpdated() {
+		store.subscribe(() => {
+      this.test = store.getState().test;
+    });
+	}
 
 	emitLogout() {
 		this.dispatchEvent(
@@ -29,6 +39,7 @@ class LobbyContainer extends LitElement {
 			<div class="main">
 				<p>${this.loggedUser.email}</p>
 				<hr class="divider">
+				<h1>${this.test}</h1>
 
 				<p><a class="goToPageBtn" href="https://marius96.uber.space/" target="_blank">See all marks</a></p>
 

@@ -1,3 +1,5 @@
+import { store } from './../../../store/store';
+import { connect } from 'pwa-helpers';
 import { MarkerService } from './../../../services/marker.service';
 import { Mark } from './../../../../../../WebMarkerClient/src/models/mark';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
@@ -7,7 +9,7 @@ import { urlToOrigin } from '../../../helper/urlHelper';
 const componentCSS = require('./tags-view.component.scss');
 
 @customElement('tags-view')
-export class TagsViewComponent extends LitElement {
+export class TagsViewComponent extends connect(store)(LitElement) {
   static styles = css`${unsafeCSS(componentCSS)}`;
 
   @property()
@@ -30,8 +32,14 @@ export class TagsViewComponent extends LitElement {
 
 
   async firstUpdated() {
+    this.marks = store.getState().marks;
     this.loadDistinctTags();
     this.loaded = true;
+  }
+
+  stateChanged() {
+    this.marks = store.getState().marks;
+    this.loadDistinctTags();
   }
 
   loadDistinctTags() {

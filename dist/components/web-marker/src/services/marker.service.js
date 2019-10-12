@@ -11,6 +11,7 @@ import { JwtService } from './jwt.service';
 import openSocket from 'socket.io-client';
 import { HttpClient } from './http-client';
 import { environment } from '../environments/environment.dev';
+import { addMark, removeMark, updateMark } from '../store/actions';
 export class MarkerService {
     constructor() {
         this.jwtService = new JwtService();
@@ -43,7 +44,8 @@ export class MarkerService {
     }
     createMark(mark) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.emitSocket('createMark');
+            addMark(mark);
+            yield this.emitSocket('createMark', mark);
             const response = yield this.httpClient.post('/marks', mark);
             const createdMark = yield response.json();
             return createdMark;
@@ -51,13 +53,15 @@ export class MarkerService {
     }
     deleteMark(markId) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.emitSocket('deleteMark');
+            removeMark(markId);
+            yield this.emitSocket('deleteMark', markId);
             yield this.httpClient.delete('/marks/' + markId);
         });
     }
     updateMark(mark) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.emitSocket('updateMark');
+            updateMark(mark);
+            yield this.emitSocket('updateMark', mark);
             yield this.httpClient.put('/marks', mark);
         });
     }

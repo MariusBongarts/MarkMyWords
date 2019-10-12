@@ -9,7 +9,6 @@ import { Controller, Get, Post, Body, UseGuards, Req, Delete, Param, Put, Query 
 import { AuthGuard } from '@nestjs/passport';
 import { Logger } from '@nestjs/common';
 
-
 @Controller('marks')
 export class MarksController {
   private logger = new Logger('MarksController');

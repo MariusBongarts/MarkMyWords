@@ -3,6 +3,7 @@ import openSocket from 'socket.io-client';
 import { Mark } from './../models/mark';
 import { HttpClient } from './http-client';
 import { environment } from '../environments/environment.dev';
+import { addMark, removeMark, updateMark } from '../store/actions';
 
 
 export class MarkerService {
@@ -37,20 +38,23 @@ export class MarkerService {
     return marks;
   }
 
-  async createMark(mark: Partial<Mark>): Promise<Mark | undefined> {
-    await this.emitSocket('createMark');
+  async createMark(mark: Mark): Promise<Mark | undefined> {
+    addMark(mark);
+    await this.emitSocket('createMark', mark);
     const response = await this.httpClient.post('/marks', mark);
     const createdMark: Mark = (await response.json() as Mark);
     return createdMark;
   }
 
   async deleteMark(markId: string): Promise<void> {
-    await this.emitSocket('deleteMark');
+    removeMark(markId)
+    await this.emitSocket('deleteMark', markId);
     await this.httpClient.delete('/marks/' + markId);
   }
 
   async updateMark(mark: Mark): Promise<void> {
-    await this.emitSocket('updateMark');
+    updateMark(mark);
+    await this.emitSocket('updateMark', mark);
     await this.httpClient.put('/marks', mark);
   }
 

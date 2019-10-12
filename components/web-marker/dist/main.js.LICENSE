@@ -71,6 +71,52 @@
 
 /* 1 */
 
+/**
+ * Module dependencies.
+ */
+
+/**
+ * Module exports.
+ */
+
+/**
+ * Managers cache.
+ */
+
+/**
+ * Looks up an existing `Manager` for multiplexing.
+ * If the user summons:
+ *
+ *   `io('http://localhost/a');`
+ *   `io('http://localhost/b');`
+ *
+ * We reuse the existing instance based on same scheme/port/host,
+ * and we initialize sockets for each namespace.
+ *
+ * @api public
+ */
+
+/**
+ * Protocol version.
+ *
+ * @api public
+ */
+
+/**
+ * `connect`.
+ *
+ * @param {String} uri
+ * @api public
+ */
+
+/**
+ * Expose constructors for standalone build.
+ *
+ * @api public
+ */
+
+/* 2 */
+
 // This works in non-strict mode
 
 // This works if eval is allowed (see CSP)
@@ -83,7 +129,7 @@
 
 // easier to handle this case. if(!global) { ...}
 
-/* 2 */
+/* 3 */
 
 /**
  * Initialize a new `Emitter`.
@@ -160,11 +206,7 @@
  * @api public
  */
 
-/* 3 */
-
-/**
- * Module dependencies.
- */
+/* 4 */
 
 /**
  * Check if we are running an android browser. That requires us to use
@@ -309,48 +351,6 @@
 // 310 = char length of Number.MAX_VALUE
 
 // iPhone Safari doesn't let you apply to typed arrays
-
-/* 4 */
-
-/**
- * Module exports.
- */
-
-/**
- * Managers cache.
- */
-
-/**
- * Looks up an existing `Manager` for multiplexing.
- * If the user summons:
- *
- *   `io('http://localhost/a');`
- *   `io('http://localhost/b');`
- *
- * We reuse the existing instance based on same scheme/port/host,
- * and we initialize sockets for each namespace.
- *
- * @api public
- */
-
-/**
- * Protocol version.
- *
- * @api public
- */
-
-/**
- * `connect`.
- *
- * @param {String} uri
- * @api public
- */
-
-/**
- * Expose constructors for standalone build.
- *
- * @api public
- */
 
 /* 5 */
 
@@ -1041,7 +1041,15 @@
 
 /* 14 */
 
+/* harmony import */
+
+/* global window */
+
+/* harmony default export */
+
 /* 15 */
+
+/* 16 */
 
 /**
  * Parses an URI
@@ -1050,9 +1058,9 @@
  * @api private
  */
 
-/* 16 */
-
 /* 17 */
+
+/* 18 */
 
 /**
  * Returns true if obj is a buffer or an arraybuffer.
@@ -1060,7 +1068,7 @@
  * @api private
  */
 
-/* 18 */
+/* 19 */
 
 /**
  * `Manager` constructor.
@@ -1273,7 +1281,7 @@
  * @api private
  */
 
-/* 19 */
+/* 20 */
 
 /**
  * Module dependencies
@@ -1292,7 +1300,7 @@
 
 // some user agents have empty `location.port`
 
-/* 20 */
+/* 21 */
 
 /**
  * Is XHR2 supported?
@@ -1381,7 +1389,7 @@
 
 // prepend ? to query
 
-/* 21 */
+/* 22 */
 
 /* global Blob File */
 
@@ -1400,7 +1408,7 @@
 
 // see: https://github.com/Automattic/has-binary/pull/4
 
-/* 22 */
+/* 23 */
 
 /**
  * Return a string representing the specified number.
@@ -1429,9 +1437,9 @@
 
 // Expose the `yeast`, `encode` and `decode` functions.
 
-/* 23 */
-
 /* 24 */
+
+/* 25 */
 
 /**
  * Internal events (blacklisted).
@@ -1590,7 +1598,7 @@
  * @api public
  */
 
-/* 25 */
+/* 26 */
 
 /**
  * Helper for subscriptions.
@@ -1601,7 +1609,7 @@
  * @api public
  */
 
-/* 26 */
+/* 27 */
 
 /**
  * Slice reference.
@@ -1616,15 +1624,15 @@
  * @api public
  */
 
-/* 27 */
+/* 28 */
+
+/* harmony export (binding) */
+
+/* 29 */
 
 // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
 
 // Copy bytes to buffer, if provided
-
-/* 28 */
-
-/* 29 */
 
 /* 30 */
 
@@ -1634,11 +1642,19 @@
 
 /* 33 */
 
-// extracted by mini-css-extract-plugin
-
 /* 34 */
 
 /* 35 */
+
+// extracted by mini-css-extract-plugin
+
+/* 36 */
+
+// module.parent = undefined by default
+
+/* 37 */
+
+/* 38 */
 
 /**
  * The code was extracted from:
@@ -1657,17 +1673,7 @@
 
 // try to find character in table (0-63, not found => -1)
 
-/* 36 */
-
-/* 37 */
-
-// Module
-
-/* 38 */
-
 /* 39 */
-
-/* 40 */
 
 /**
  * URL parser.
@@ -1690,7 +1696,7 @@
 
 // define href
 
-/* 41 */
+/* 40 */
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -1785,7 +1791,7 @@
 	* Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
 	*/
 
-/* 42 */
+/* 41 */
 
 /**
  * Helpers.
@@ -1833,7 +1839,7 @@
  * @api private
  */
 
-/* 43 */
+/* 42 */
 
 /**
  * Enable namespaces listed in `localStorage.debug` initially.
@@ -1859,7 +1865,7 @@
 
 // double check webkit in userAgent just in case we are in a worker
 
-/* 44 */
+/* 43 */
 
 /**
  * Create a debugger with the given `namespace`.
@@ -1945,9 +1951,9 @@
  * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
  */
 
-/* 45 */
+/* 44 */
 
-/* 46 */
+/* 45 */
 
 /*global Blob,File*/
 
@@ -2002,7 +2008,7 @@
 
 // and object
 
-/* 47 */
+/* 46 */
 
 // base64 is 4/3 + up to two characters of the original data
 
@@ -2020,11 +2026,11 @@
 
 // See: https://github.com/beatgammit/base64-js/issues/42
 
+/* 47 */
+
 /* 48 */
 
 /* 49 */
-
-/* 50 */
 
 /**
  * Exports parser
@@ -2033,7 +2039,7 @@
  *
  */
 
-/* 51 */
+/* 50 */
 
 /**
  * Socket constructor.
@@ -2249,7 +2255,7 @@
  *
  */
 
-/* 52 */
+/* 51 */
 
 /**
  * Module exports.
@@ -2263,7 +2269,7 @@
 
 // when trying to create
 
-/* 53 */
+/* 52 */
 
 /* global attachEvent */
 
@@ -2386,7 +2392,7 @@
  * emitted.
  */
 
-/* 54 */
+/* 53 */
 
 /**
  * Gets the keys for an object.
@@ -2395,9 +2401,9 @@
  * @api private
  */
 
-/* 55 */
+/* 54 */
 
-/* 56 */
+/* 55 */
 
 /**
  * An abstraction for slicing an arraybuffer even when
@@ -2406,13 +2412,13 @@
  * @api public
  */
 
-/* 57 */
+/* 56 */
 
 // after first error, rest are passed to err_cb
 
 // future error callbacks will go to error handler
 
-/* 58 */
+/* 57 */
 
 /*! https://mths.be/utf8js v2.1.2 by @mathias */
 
@@ -2444,7 +2450,7 @@
 
 // 3-byte sequence (may include unpaired surrogates)
 
-/* 59 */
+/* 58 */
 
 /*
  * base64-arraybuffer
@@ -2456,7 +2462,7 @@
 
 // Use a lookup table to find the index.
 
-/* 60 */
+/* 59 */
 
 /**
  * Create a blob builder even when vendor prefixes exist
@@ -2476,11 +2482,11 @@
 
 // include the subarray region from the underlying buffer
 
+/* 60 */
+
 /* 61 */
 
 /* 62 */
-
-/* 63 */
 
 /**
  * Cached regular expressions.
@@ -2539,7 +2545,7 @@
 
 // double escaping is required for escaped new lines because unescaping of new lines can be done safely on server-side
 
-/* 64 */
+/* 63 */
 
 /**
  * Get either the `WebSocket` or `MozWebSocket` globals
@@ -2624,13 +2630,13 @@
  * @api public
  */
 
-/* 65 */
+/* 64 */
 
 /* (ignored) */
 
-/* 66 */
+/* 65 */
 
-/* 67 */
+/* 66 */
 
 /**
  * Initialize backoff timer with `opts`.
@@ -2679,7 +2685,17 @@
  * @api public
  */
 
+/* 67 */
+
 /* 68 */
+
+// Module
+
+/* 69 */
+
+/* 70 */
+
+/* 71 */
 
 // Unique ID creation requires a high quality random # generator.  In the
 
@@ -2703,7 +2719,7 @@
 
 // quality.
 
-/* 69 */
+/* 72 */
 
 /**
  * Convert array of 16 byte values to UUID string format of the form:
@@ -2711,12 +2727,6 @@
  */
 
 // join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
-
-/* 70 */
-
-/* 71 */
-
-/* 72 */
 
 /* 73 */
 
@@ -2782,7 +2792,236 @@
 
 /* 104 */
 
+/* 105 */
+
+/* 106 */
+
+/* 107 */
+
 // EXTERNAL MODULE: ./src/index.scss
+
+// CONCATENATED MODULE: C:/Users/mariu/Projekte/chromeExtensions/webMarker/node_modules/pwa-helpers/connect-mixin.js
+
+/**
+@license
+Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+/**
+  This is a JavaScript mixin that you can use to connect a Custom Element base
+  class to a Redux store. The `stateChanged(state)` method will be called when
+  the state is updated.
+
+  Example:
+
+      import { connect } from 'pwa-helpers/connect-mixin.js';
+
+      class MyElement extends connect(store)(HTMLElement) {
+        stateChanged(state) {
+          this.textContent = state.data.count.toString();
+        }
+      }
+*/
+
+/**
+     * The `stateChanged(state)` method will be called when the state is updated.
+     */
+
+//# sourceMappingURL=connect-mixin.js.map
+
+// CONCATENATED MODULE: C:/Users/mariu/Projekte/chromeExtensions/webMarker/node_modules/pwa-helpers/lazy-reducer-enhancer.js
+
+/**
+  A Redux store enhancer that lets you lazy-install reducers after the store
+  has booted up. Use this if your application lazy-loads routes that are connected
+  to a Redux store.
+
+  Example:
+
+      import { combineReducers } from 'redux';
+      import { lazyReducerEnhancer } from 'pwa-helpers/lazy-reducer-enhancer.js';
+      import someReducer from './reducers/someReducer.js';
+
+      export const store = createStore(
+        (state, action) => state,
+        compose(lazyReducerEnhancer(combineReducers))
+      );
+
+  Then, in your page/element, you can lazy load a specific reducer with:
+
+      store.addReducers({
+        someReducer
+      });
+*/
+
+//# sourceMappingURL=router.js.map
+
+// CONCATENATED MODULE: C:/Users/mariu/Projekte/chromeExtensions/webMarker/node_modules/pwa-helpers/pwa-helpers.js
+
+//# sourceMappingURL=pwa-helpers.js.map
+
+// EXTERNAL MODULE: C:/Users/mariu/Projekte/chromeExtensions/webMarker/node_modules/symbol-observable/es/index.js
+
+// CONCATENATED MODULE: C:/Users/mariu/Projekte/chromeExtensions/webMarker/node_modules/redux/es/redux.js
+
+/**
+ * These are private action types reserved by Redux.
+ * For any unknown actions, you must return the current state.
+ * If the current state is undefined, you must return the initial state.
+ * Do not reference these action types directly in your code.
+ */
+
+/**
+ * @param {any} obj The object to inspect.
+ * @returns {boolean} True if the argument appears to be a plain object.
+ */
+
+/**
+ * Creates a Redux store that holds the state tree.
+ * The only way to change the data in the store is to call `dispatch()` on it.
+ *
+ * There should only be a single store in your app. To specify how different
+ * parts of the state tree respond to actions, you may combine several reducers
+ * into a single reducer function by using `combineReducers`.
+ *
+ * @param {Function} reducer A function that returns the next state tree, given
+ * the current state tree and the action to handle.
+ *
+ * @param {any} [preloadedState] The initial state. You may optionally specify it
+ * to hydrate the state from the server in universal apps, or to restore a
+ * previously serialized user session.
+ * If you use `combineReducers` to produce the root reducer function, this must be
+ * an object with the same shape as `combineReducers` keys.
+ *
+ * @param {Function} [enhancer] The store enhancer. You may optionally specify it
+ * to enhance the store with third-party capabilities such as middleware,
+ * time travel, persistence, etc. The only store enhancer that ships with Redux
+ * is `applyMiddleware()`.
+ *
+ * @returns {Store} A Redux store that lets you read the state, dispatch actions
+ * and subscribe to changes.
+ */
+
+// CONCATENATED MODULE: ./src/store/reducer.ts
+
+/**
+   * This makes a shallow copy of currentListeners so we can use
+   * nextListeners as a temporary list while dispatching.
+   *
+   * This prevents any bugs around consumers calling
+   * subscribe/unsubscribe in the middle of a dispatch.
+   */
+
+/**
+   * Reads the state tree managed by the store.
+   *
+   * @returns {any} The current state tree of your application.
+   */
+
+/**
+   * Adds a change listener. It will be called any time an action is dispatched,
+   * and some part of the state tree may potentially have changed. You may then
+   * call `getState()` to read the current state tree inside the callback.
+   *
+   * You may call `dispatch()` from a change listener, with the following
+   * caveats:
+   *
+   * 1. The subscriptions are snapshotted just before every `dispatch()` call.
+   * If you subscribe or unsubscribe while the listeners are being invoked, this
+   * will not have any effect on the `dispatch()` that is currently in progress.
+   * However, the next `dispatch()` call, whether nested or not, will use a more
+   * recent snapshot of the subscription list.
+   *
+   * 2. The listener should not expect to see all state changes, as the state
+   * might have been updated multiple times during a nested `dispatch()` before
+   * the listener is called. It is, however, guaranteed that all subscribers
+   * registered before the `dispatch()` started will be called with the latest
+   * state by the time it exits.
+   *
+   * @param {Function} listener A callback to be invoked on every dispatch.
+   * @returns {Function} A function to remove this change listener.
+   */
+
+/**
+   * Dispatches an action. It is the only way to trigger a state change.
+   *
+   * The `reducer` function, used to create the store, will be called with the
+   * current state tree and the given `action`. Its return value will
+   * be considered the **next** state of the tree, and the change listeners
+   * will be notified.
+   *
+   * The base implementation only supports plain object actions. If you want to
+   * dispatch a Promise, an Observable, a thunk, or something else, you need to
+   * wrap your store creating function into the corresponding middleware. For
+   * example, see the documentation for the `redux-thunk` package. Even the
+   * middleware will eventually dispatch plain object actions using this method.
+   *
+   * @param {Object} action A plain object representing “what changed”. It is
+   * a good idea to keep actions serializable so you can record and replay user
+   * sessions, or use the time travelling `redux-devtools`. An action must have
+   * a `type` property which may not be `undefined`. It is a good idea to use
+   * string constants for action types.
+   *
+   * @returns {Object} For convenience, the same action object you dispatched.
+   *
+   * Note that, if you use a custom middleware, it may wrap `dispatch()` to
+   * return something else (for example, a Promise you can await).
+   */
+
+/**
+   * Replaces the reducer currently used by the store to calculate the state.
+   *
+   * You might need this if your app implements code splitting and you want to
+   * load some of the reducers dynamically. You might also need this if you
+   * implement a hot reloading mechanism for Redux.
+   *
+   * @param {Function} nextReducer The reducer for the store to use instead.
+   * @returns {void}
+   */
+
+// When a store is created, an "INIT" action is dispatched so that every
+
+// reducer returns their initial state. This effectively populates
+
+// the initial state tree.
+
+// This action has a similiar effect to ActionTypes.INIT.
+
+// Any reducers that existed in both the new and old rootReducer
+
+// will receive the previous state. This effectively populates
+
+// the new state tree with any relevant data from the old one.
+
+/**
+   * Interoperability point for observable/reactive libraries.
+   * @returns {observable} A minimal observable of state changes.
+   * For more information, see the observable proposal:
+   * https://github.com/tc39/proposal-observable
+   */
+
+/**
+       * The minimal observable subscription method.
+       * @param {Object} observer Any object that can be used as an observer.
+       * The observer object should have a `next` method.
+       * @returns {subscription} An object with an `unsubscribe` method that can
+       * be used to unsubscribe the observable from the store, and prevent further
+       * emission of values from the observable.
+       */
+
+/**
+ * Prints a warning in the console if it exists.
+ *
+ * @param {String} message The warning message.
+ * @returns {void}
+ */
+
+// @ts-ignore
 
 // EXTERNAL MODULE: ./node_modules/jwt-decode/lib/index.js
 
@@ -2797,23 +3036,15 @@
      * @memberof JwtService
      */
 
-// CONCATENATED MODULE: ./src/services/http-client.ts
+// EXTERNAL MODULE: ./node_modules/socket.io-client/lib/index.js
 
 // tslint:disable-next-line: no-empty
 
 // CONCATENATED MODULE: ./src/environments/environment.dev.ts
 
+// CONCATENATED MODULE: ./src/store/actions.ts
+
 // CONCATENATED MODULE: ./src/services/marker.service.ts
-
-// if (environment.production) {
-
-//   this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
-
-// } else {
-
-//   this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt }, transports: ['websocket'] });
-
-// }
 
 // CONCATENATED MODULE: ./node_modules/lit-html/lib/directive.js
 
@@ -3981,7 +4212,7 @@
      * @memberof WebMarker
      */
 
-// EXTERNAL MODULE: ./node_modules/socket.io-client/lib/index.js
+// CONCATENATED MODULE: ./src/components/my-marker/my-marker.component.ts
 
 /**
          *  Necessary to abort hide animation when user enters mark again
@@ -3992,6 +4223,22 @@
 //await this.initSocket();
 
 //this.handleSockets();
+
+// stateChanged() {
+
+//   if (store.getState().lastAction === 'REMOVE_MARK') {
+
+//     try {
+
+//       store.getState().marks.find(e => e.id === this.mark.id);
+
+//     } catch(error) {
+
+//       deleteMarkFromDom(this.parentElement);
+
+//     }
+
+// }
 
 /**
      *  Sets position of this component so that it is centralized above mark-element
@@ -4287,11 +4534,42 @@
          */
 
 /**
-         * All marks, which are passed to accordion
-         *
-         * @type {Mark[]}
-         * @memberof MarkOverviewComponent
-         */
+     * Function called by extended connect method from pwa-helper, when state changed
+     *
+     * @memberof MarkOverviewComponent
+     */
+
+// handleSockets() {
+
+//   this.socket.on('createMark', (createdMark: Mark) => {
+
+//     this.allMarks = [...this.allMarks, createdMark];
+
+//     if (location.href === createdMark.url) {
+
+//       this.marks = [...this.marks, createdMark];
+
+//     } else {
+
+//       // TODO: Maybe a popup to show that on different page has been added a mark?
+
+//   });
+
+//   this.socket.on('deleteMark', (deletedMarkId: string) => {
+
+//     this.marks = this.marks.filter(mark => mark.id !== deletedMarkId);
+
+//     this.allMarks = this.allMarks.filter(mark => mark.id !== deletedMarkId);
+
+//   this.socket.on('updateMark', (updatedMark: Mark) => {
+
+//     this.marks = this.marks.map(mark => mark.id === updatedMark.id ? updatedMark : mark);
+
+//     this.allMarks = this.allMarks.map(mark => mark.id === updatedMark.id ? updatedMark : mark);
+
+//   this.socket.on('connect', (data: string) => {
+
+//     console.log('yeah');
 
 // CONCATENATED MODULE: ./src/components/pop-up/app.component.ts
 

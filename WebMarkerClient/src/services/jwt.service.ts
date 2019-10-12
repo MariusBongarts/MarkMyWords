@@ -5,7 +5,6 @@ import jwt_decode from 'jwt-decode';
 export class JwtService {
   httpClient!: HttpClient;
 
-  constructor() {}
 
   getJwt(): Promise<string> {
     return new Promise((res) => {

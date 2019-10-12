@@ -3,11 +3,13 @@ import { Mark } from './../../../../../../WebMarkerClient/src/models/mark';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { urlToOrigin } from '../../../helper/urlHelper';
+import { store } from './../../../store/store';
+import { connect } from 'pwa-helpers';
 
 const componentCSS = require('./search-view.component.scss');
 
 @customElement('search-view')
-export class SearchViewComponent extends LitElement {
+export class SearchViewComponent extends connect(store)(LitElement) {
   static styles = css`${unsafeCSS(componentCSS)}`;
 
   @property()
@@ -16,6 +18,13 @@ export class SearchViewComponent extends LitElement {
   @property()
   searchValue: string;
 
+  async firstUpdated() {
+    this.marks = store.getState().marks;
+  }
+
+  stateChanged() {
+    this.marks = store.getState().marks;
+  }
 
   render() {
     return html`

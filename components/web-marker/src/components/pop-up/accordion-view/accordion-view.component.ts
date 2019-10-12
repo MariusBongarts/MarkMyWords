@@ -5,11 +5,13 @@ import { Mark } from './../../../../../../WebMarkerClient/src/models/mark';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { urlToOrigin } from '../../../helper/urlHelper';
+import { store } from './../../../store/store';
+import { connect } from 'pwa-helpers';
 
 const componentCSS = require('./accordion-view.component.scss');
 
 @customElement('accordion-view')
-export class TreeViewComponent extends LitElement {
+export class TreeViewComponent extends connect(store)(LitElement) {
   static styles = css`${unsafeCSS(componentCSS)}`;
 
   @property()
@@ -31,8 +33,14 @@ export class TreeViewComponent extends LitElement {
 
 
   async firstUpdated() {
+    this.marks = store.getState().marks;
     this.getDistinctOrigins();
     this.loaded = true;
+  }
+
+  stateChanged() {
+    this.marks = store.getState().marks;
+    this.getDistinctOrigins();
   }
 
   getDistinctOrigins() {
