@@ -25,6 +25,7 @@ export class MarkGateway implements OnGatewayConnection, OnGatewayDisconnect {
     async onCreateMark(client: Socket, mark: Mark) {
         this.emitToOneClient(client, 'createMark', mark);
     }
+
     @SubscribeMessage('deleteMark')
     async onDeleteMark(client, markId: string) {
         this.emitToOneClient(client, 'deleteMark', markId);
@@ -37,6 +38,10 @@ export class MarkGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
     emitToOneClient(client: Socket,  eventName: string, data: any) {
         const userId = this.getJwtPayloadForClient(client)._id;
+        this.wss.in(userId).emit(eventName, data);
+    }
+
+    emitToClientByUserId(userId: string, eventName: string, data: any) {
         this.wss.in(userId).emit(eventName, data);
     }
 

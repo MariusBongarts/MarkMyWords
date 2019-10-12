@@ -15,7 +15,8 @@ export class MarksController {
 
   constructor(
     private marksService: MarksService,
-    private usersService: UsersService) {
+    private usersService: UsersService,
+    private markGateway: MarkGateway) {
     }
 
   /**
@@ -52,6 +53,7 @@ export class MarksController {
   @Post('')
   @UseGuards(AuthGuard())
   async createMark(@UserJwt() userJwt: JwtPayload, @Body() mark, @Req() req) {
+    this.markGateway.emitToClientByUserId(userJwt._id, 'createMark', mark);
     const createdMark = await this.marksService.createMark(userJwt, mark);
     this.logger.log(`${userJwt.email} created mark ${mark.id} from ${req.get('origin')}.`);
     return createdMark;
@@ -60,6 +62,7 @@ export class MarksController {
   @Delete(':id')
   @UseGuards(AuthGuard())
   async deleteMark(@UserJwt() userJwt: JwtPayload, @Param('id') markId, @Req() req) {
+    this.markGateway.emitToClientByUserId(userJwt._id, 'deleteMark', markId);
     const deletedMark = await this.marksService.deleteMark(userJwt, markId);
     this.logger.log(`${userJwt.email} deleted mark ${markId} from ${req.get('origin')}.`);
     return deletedMark;
@@ -68,6 +71,7 @@ export class MarksController {
   @Put('')
   @UseGuards(AuthGuard())
   async updateMark(@UserJwt() userJwt: JwtPayload, @Body() mark, @Req() req) {
+    this.markGateway.emitToClientByUserId(userJwt._id, 'updateMark', mark);
     this.logger.log(`${userJwt.email} updated mark ${mark.id} from ${req.get('origin')}.`);
     return await this.marksService.updateMark(userJwt, mark);
   }
