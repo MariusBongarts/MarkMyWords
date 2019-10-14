@@ -43,7 +43,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 
 
-  // Sends message to current contentScript when page changes
+// Sends message to current contentScript when page changes
 chrome.tabs.onUpdated.addListener(() => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     const marks = window.marks.filter(mark => mark.url === tabs[0].url);
@@ -54,16 +54,28 @@ chrome.tabs.onUpdated.addListener(() => {
   });
 });
 
-chrome.runtime.onInstalled.addListener(function() {
+chrome.runtime.onInstalled.addListener(function () {
 
   // chrome.storage.sync.set({jwt_key: 'mySecretKey'});
 
   chrome.contextMenus.create({
     id: "selection",
     title: "Save: ' %s '",
-    contexts: ["selection"],
+    contexts: ["selection"]
   });
+
+  // Listen for context menu to create mark
+  chrome.contextMenus.onClicked.addListener(async (e) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        id: 'contextMenu',
+        detail: e.selectionText
+      });
+    });
+  });
+
 });
+
 
 chrome.browserAction.onClicked.addListener(function (tab) {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -74,7 +86,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 })
 
 
-chrome.storage.onChanged.addListener(function(changes, namespace) {
+chrome.storage.onChanged.addListener(function (changes, namespace) {
   for (var key in changes) {
     var storageChange = changes[key];
   }

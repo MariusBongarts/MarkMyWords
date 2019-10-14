@@ -67,7 +67,7 @@ export class MyMarkElement extends LitElement {
    * @returns {Mark}
    * @memberof MyMarkElement
    */
-  createMark(): Mark {
+  public createMark(): Mark {
     const selection = window.getSelection();
     const range = selection.getRangeAt(0);
     const mark: Mark = {

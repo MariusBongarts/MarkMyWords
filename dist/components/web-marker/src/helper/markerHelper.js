@@ -5,7 +5,7 @@ export function highlightText(range, mark) {
         createMyMarkerComponent(markElement, mark);
     }
     catch (error) {
-        console.log(error);
+        //
     }
 }
 /**
@@ -17,7 +17,6 @@ export function highlightText(range, mark) {
  */
 function createMarkElement(range, mark) {
     mark ? range = recreateRange(mark) : range = range;
-    console.log(range);
     const markElement = document.createElement('mark');
     markElement.appendChild(range.extractContents());
     range.insertNode(markElement);
@@ -35,18 +34,19 @@ function createMyMarkerComponent(markElement, mark) {
     markElement.appendChild(myMarkElement);
     myMarkElement.addEventListener('deleted', (e) => {
         myMarkElement.remove();
-        // Unwraps the mark element
-        const parent = markElement.parentNode;
-        // move all children out of the element
-        while (markElement.firstChild)
-            parent.insertBefore(markElement.firstChild, markElement);
-        // remove the empty element
-        parent.removeChild(markElement);
-        console.log(`Succesfully deleted mark ${e.detail}`);
+        deleteMarkFromDom(markElement);
     });
 }
+export function deleteMarkFromDom(markElement) {
+    // Unwraps the mark element
+    const parent = markElement.parentNode;
+    // move all children out of the element
+    while (markElement.firstChild)
+        parent.insertBefore(markElement.firstChild, markElement);
+    // remove the empty element
+    parent.removeChild(markElement);
+}
 function recreateRange(mark) {
-    console.log(mark);
     const startContainer = findStartEndContainer(document.body, mark, true);
     const endContainer = findStartEndContainer(document.body, mark, false);
     const range = document.createRange();

@@ -1,3 +1,4 @@
+import uuidv4 from 'uuid/v4';
 import { connect } from 'pwa-helpers';
 import { store } from './../store/store';
 import { MarkerService } from './../services/marker.service';
@@ -17,6 +18,9 @@ export class WebMarker extends connect(store)(LitElement) {
 
   @property()
   show = false;
+
+  @property()
+  newContextMark!: string;
 
   /**
    * Set width of menu in px to calculate center.
@@ -38,6 +42,43 @@ export class WebMarker extends connect(store)(LitElement) {
   async loadState() {
     const marks = await this.markerService.getMarks();
     initMarks(marks);
+  }
+
+
+  async updated(changedValues: Map<string | number | symbol, unknown>) {
+    if (this.newContextMark) {
+      await this.createContextMark(this.newContextMark);
+      this.newContextMark = undefined;
+    }
+  }
+
+  async createContextMark(text: string) {
+    const selection = window.getSelection();
+    let range = undefined;
+    try {
+      range = selection.getRangeAt(0);
+    } catch (error) {
+    }
+    const mark: Mark = {
+      id: uuidv4(),
+      url: location.href,
+      origin: location.href,
+      tags: [],
+      text: text,
+      title: document.title,
+      anchorOffset: selection.anchorOffset,
+      createdAt: new Date().getTime(),
+      nodeData: range ? range.startContainer.nodeValue : text,
+      completeText: range ? range.startContainer.parentElement.innerText : text,
+      nodeTagName: range ? range.startContainer.parentElement.tagName.toLowerCase() : text,
+      startContainerText: range ? range.startContainer.textContent : text,
+      endContainerText: range ? range.endContainer.textContent : text,
+      startOffset: range ? range.startOffset : 0,
+      endOffset: range ? range.endOffset: 0,
+      scrollY: window.scrollY
+    };
+    range ? highlightText(range, mark) : '';
+    await this.markerService.createMark(mark);
   }
 
   /**
@@ -103,20 +144,20 @@ export class WebMarker extends connect(store)(LitElement) {
   scrollToMark() {
     setTimeout(() => {
       try {
-      const params = location.href.split('?')[1].split('=');
-      params.forEach((param, index) => {
-        if (param === 'scrollY') {
-          const scrollOptions: ScrollToOptions = {
-            top: Number(params[index+1]),
-            left: 0,
-            behavior: 'smooth'
+        const params = location.href.split('?')[1].split('=');
+        params.forEach((param, index) => {
+          if (param === 'scrollY') {
+            const scrollOptions: ScrollToOptions = {
+              top: Number(params[index + 1]),
+              left: 0,
+              behavior: 'smooth'
+            }
+            window.scrollTo(scrollOptions);
           }
-          window.scrollTo(scrollOptions);
-        }
-      });
-    } catch (error) {
-      //
-    }
+        });
+      } catch (error) {
+        //
+      }
     });
 
   }

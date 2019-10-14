@@ -519,6 +519,12 @@
 
 /* 10 */
 
+// Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+
+// Copy bytes to buffer, if provided
+
+/* 11 */
+
 /**
  * A socket.io Encoder instance
  *
@@ -708,7 +714,7 @@
  * @api private
  */
 
-/* 11 */
+/* 12 */
 
 /*!
  * The buffer module from node.js, for the browser.
@@ -954,7 +960,7 @@
 
 // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
 
-/* 12 */
+/* 13 */
 
 // browser shim for xmlhttprequest module
 
@@ -970,7 +976,7 @@
 
 // https://github.com/yujiosaka/socke.io-ie8-loading-example
 
-/* 13 */
+/* 14 */
 
 /**
  * Transport abstract constructor.
@@ -1039,7 +1045,7 @@
  * @api private
  */
 
-/* 14 */
+/* 15 */
 
 /* harmony import */
 
@@ -1047,9 +1053,9 @@
 
 /* harmony default export */
 
-/* 15 */
-
 /* 16 */
+
+/* 17 */
 
 /**
  * Parses an URI
@@ -1058,9 +1064,9 @@
  * @api private
  */
 
-/* 17 */
-
 /* 18 */
+
+/* 19 */
 
 /**
  * Returns true if obj is a buffer or an arraybuffer.
@@ -1068,7 +1074,7 @@
  * @api private
  */
 
-/* 19 */
+/* 20 */
 
 /**
  * `Manager` constructor.
@@ -1281,7 +1287,7 @@
  * @api private
  */
 
-/* 20 */
+/* 21 */
 
 /**
  * Module dependencies
@@ -1300,7 +1306,7 @@
 
 // some user agents have empty `location.port`
 
-/* 21 */
+/* 22 */
 
 /**
  * Is XHR2 supported?
@@ -1389,7 +1395,7 @@
 
 // prepend ? to query
 
-/* 22 */
+/* 23 */
 
 /* global Blob File */
 
@@ -1408,7 +1414,7 @@
 
 // see: https://github.com/Automattic/has-binary/pull/4
 
-/* 23 */
+/* 24 */
 
 /**
  * Return a string representing the specified number.
@@ -1437,9 +1443,9 @@
 
 // Expose the `yeast`, `encode` and `decode` functions.
 
-/* 24 */
-
 /* 25 */
+
+/* 26 */
 
 /**
  * Internal events (blacklisted).
@@ -1598,7 +1604,7 @@
  * @api public
  */
 
-/* 26 */
+/* 27 */
 
 /**
  * Helper for subscriptions.
@@ -1609,7 +1615,7 @@
  * @api public
  */
 
-/* 27 */
+/* 28 */
 
 /**
  * Slice reference.
@@ -1624,15 +1630,9 @@
  * @api public
  */
 
-/* 28 */
-
-/* harmony export (binding) */
-
 /* 29 */
 
-// Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
-
-// Copy bytes to buffer, if provided
+/* harmony export (binding) */
 
 /* 30 */
 
@@ -1650,11 +1650,44 @@
 
 /* 36 */
 
-// module.parent = undefined by default
+// Unique ID creation requires a high quality random # generator.  In the
+
+// browser this is a little complicated due to unknown quality of Math.random()
+
+// and inconsistent support for the `crypto` API.  We do the best we can via
+
+// feature-detection
+
+// getRandomValues needs to be invoked in a context where "this" is a Crypto
+
+// implementation. Also, find the complete implementation of crypto on IE11.
+
+// WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
+
+// eslint-disable-line no-undef
+
+// Math.random()-based (RNG)
+
+// If all else fails, use Math.random().  It's fast, but is of unspecified
+
+// quality.
 
 /* 37 */
 
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+
+// join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
+
 /* 38 */
+
+// module.parent = undefined by default
+
+/* 39 */
+
+/* 40 */
 
 /**
  * The code was extracted from:
@@ -1673,17 +1706,17 @@
 
 // try to find character in table (0-63, not found => -1)
 
-/* 39 */
-
-/* 40 */
-
-// Module
-
 /* 41 */
 
 /* 42 */
 
+// Module
+
 /* 43 */
+
+/* 44 */
+
+/* 45 */
 
 /**
  * URL parser.
@@ -1706,7 +1739,7 @@
 
 // define href
 
-/* 44 */
+/* 46 */
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -1801,7 +1834,7 @@
 	* Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
 	*/
 
-/* 45 */
+/* 47 */
 
 /**
  * Helpers.
@@ -1849,7 +1882,7 @@
  * @api private
  */
 
-/* 46 */
+/* 48 */
 
 /**
  * Enable namespaces listed in `localStorage.debug` initially.
@@ -1875,7 +1908,7 @@
 
 // double check webkit in userAgent just in case we are in a worker
 
-/* 47 */
+/* 49 */
 
 /**
  * Create a debugger with the given `namespace`.
@@ -1961,9 +1994,9 @@
  * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
  */
 
-/* 48 */
+/* 50 */
 
-/* 49 */
+/* 51 */
 
 /*global Blob,File*/
 
@@ -2018,7 +2051,7 @@
 
 // and object
 
-/* 50 */
+/* 52 */
 
 // base64 is 4/3 + up to two characters of the original data
 
@@ -2036,11 +2069,11 @@
 
 // See: https://github.com/beatgammit/base64-js/issues/42
 
-/* 51 */
-
-/* 52 */
-
 /* 53 */
+
+/* 54 */
+
+/* 55 */
 
 /**
  * Exports parser
@@ -2049,7 +2082,7 @@
  *
  */
 
-/* 54 */
+/* 56 */
 
 /**
  * Socket constructor.
@@ -2265,7 +2298,7 @@
  *
  */
 
-/* 55 */
+/* 57 */
 
 /**
  * Module exports.
@@ -2279,7 +2312,7 @@
 
 // when trying to create
 
-/* 56 */
+/* 58 */
 
 /* global attachEvent */
 
@@ -2402,7 +2435,7 @@
  * emitted.
  */
 
-/* 57 */
+/* 59 */
 
 /**
  * Gets the keys for an object.
@@ -2411,9 +2444,9 @@
  * @api private
  */
 
-/* 58 */
+/* 60 */
 
-/* 59 */
+/* 61 */
 
 /**
  * An abstraction for slicing an arraybuffer even when
@@ -2422,13 +2455,13 @@
  * @api public
  */
 
-/* 60 */
+/* 62 */
 
 // after first error, rest are passed to err_cb
 
 // future error callbacks will go to error handler
 
-/* 61 */
+/* 63 */
 
 /*! https://mths.be/utf8js v2.1.2 by @mathias */
 
@@ -2460,7 +2493,7 @@
 
 // 3-byte sequence (may include unpaired surrogates)
 
-/* 62 */
+/* 64 */
 
 /*
  * base64-arraybuffer
@@ -2472,7 +2505,7 @@
 
 // Use a lookup table to find the index.
 
-/* 63 */
+/* 65 */
 
 /**
  * Create a blob builder even when vendor prefixes exist
@@ -2492,11 +2525,11 @@
 
 // include the subarray region from the underlying buffer
 
-/* 64 */
-
-/* 65 */
-
 /* 66 */
+
+/* 67 */
+
+/* 68 */
 
 /**
  * Cached regular expressions.
@@ -2555,7 +2588,7 @@
 
 // double escaping is required for escaped new lines because unescaping of new lines can be done safely on server-side
 
-/* 67 */
+/* 69 */
 
 /**
  * Get either the `WebSocket` or `MozWebSocket` globals
@@ -2640,13 +2673,13 @@
  * @api public
  */
 
-/* 68 */
+/* 70 */
 
 /* (ignored) */
 
-/* 69 */
+/* 71 */
 
-/* 70 */
+/* 72 */
 
 /**
  * Initialize backoff timer with `opts`.
@@ -2694,39 +2727,6 @@
  *
  * @api public
  */
-
-/* 71 */
-
-// Unique ID creation requires a high quality random # generator.  In the
-
-// browser this is a little complicated due to unknown quality of Math.random()
-
-// and inconsistent support for the `crypto` API.  We do the best we can via
-
-// feature-detection
-
-// getRandomValues needs to be invoked in a context where "this" is a Crypto
-
-// implementation. Also, find the complete implementation of crypto on IE11.
-
-// WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
-
-// eslint-disable-line no-undef
-
-// Math.random()-based (RNG)
-
-// If all else fails, use Math.random().  It's fast, but is of unspecified
-
-// quality.
-
-/* 72 */
-
-/**
- * Convert array of 16 byte values to UUID string format of the form:
- * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
- */
-
-// join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
 
 /* 73 */
 
@@ -2799,6 +2799,10 @@
 /* 107 */
 
 // EXTERNAL MODULE: ./src/index.scss
+
+// EXTERNAL MODULE: ./node_modules/uuid/v4.js
+
+/*#__PURE__*/
 
 // CONCATENATED MODULE: C:/Users/mariu/Projekte/chromeExtensions/webMarker/node_modules/pwa-helpers/connect-mixin.js
 
@@ -3024,8 +3028,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 // @ts-ignore
 
 // EXTERNAL MODULE: ./node_modules/jwt-decode/lib/index.js
-
-/*#__PURE__*/
 
 // CONCATENATED MODULE: ./src/services/jwt.service.ts
 
@@ -4277,8 +4279,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      *
      * @memberof MyMarkerElement
      */
-
-// EXTERNAL MODULE: ./node_modules/uuid/v4.js
 
 // CONCATENATED MODULE: ./src/helper/router.ts
 

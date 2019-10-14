@@ -13,11 +13,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import uuidv4 from 'uuid/v4';
+import { connect } from 'pwa-helpers';
+import { store } from './../store/store';
 import { MarkerService } from './../services/marker.service';
 import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
 import { highlightText } from '../helper/markerHelper';
+import { initMarks } from '../store/actions';
 const componentCSS = require('./app.component.scss');
-let WebMarker = class WebMarker extends LitElement {
+let WebMarker = class WebMarker extends connect(store)(LitElement) {
     constructor() {
         super(...arguments);
         this.show = false;
@@ -32,13 +36,54 @@ let WebMarker = class WebMarker extends LitElement {
     }
     firstUpdated() {
         return __awaiter(this, void 0, void 0, function* () {
-            // TODO: Login and save JWT in storage
-            chrome.storage.sync.set({ jwt_key: 'MyFuckingSecretKey' });
-            chrome.storage.sync.get((items) => {
-                console.log(`Current JWT: ${items['jwt_key']}`);
-            });
             this.listenToShowMarker();
-            yield this.loadMarks();
+            yield this.highlightMarks();
+            yield this.loadState();
+        });
+    }
+    loadState() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const marks = yield this.markerService.getMarks();
+            initMarks(marks);
+        });
+    }
+    updated(changedValues) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.newContextMark) {
+                yield this.createContextMark(this.newContextMark);
+                this.newContextMark = undefined;
+            }
+        });
+    }
+    createContextMark(text) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const selection = window.getSelection();
+            let range = undefined;
+            try {
+                range = selection.getRangeAt(0);
+            }
+            catch (error) {
+            }
+            const mark = {
+                id: uuidv4(),
+                url: location.href,
+                origin: location.href,
+                tags: [],
+                text: text,
+                title: document.title,
+                anchorOffset: selection.anchorOffset,
+                createdAt: new Date().getTime(),
+                nodeData: range ? range.startContainer.nodeValue : text,
+                completeText: range ? range.startContainer.parentElement.innerText : text,
+                nodeTagName: range ? range.startContainer.parentElement.tagName.toLowerCase() : text,
+                startContainerText: range ? range.startContainer.textContent : text,
+                endContainerText: range ? range.endContainer.textContent : text,
+                startOffset: range ? range.startOffset : 0,
+                endOffset: range ? range.endOffset : 0,
+                scrollY: window.scrollY
+            };
+            range ? highlightText(range, mark) : '';
+            yield this.markerService.createMark(mark);
         });
     }
     /**
@@ -74,30 +119,52 @@ let WebMarker = class WebMarker extends LitElement {
     setPositionOfMarkerForClick(e) {
         const rangeBounds = window.getSelection().getRangeAt(0).getBoundingClientRect();
         this.style.position = 'fixed';
-        this.style.left = rangeBounds.left + (rangeBounds.width / 2) - (this.menuWidth / 2) + 'px';
+        this.style.left = rangeBounds.left + (rangeBounds.width / 2) - (this.menuWidth / 2) - 35 + 'px';
         this.style.top = rangeBounds.top + 'px';
         this.show = true;
     }
     /**
-     *  This method loads all marks from server, filters them for current
-     *  url, and highlights all marks for current page
+     *  This method loads all marks for current url from server
      *
      * @todo Load only marks with current url from server
      *
      * @memberof WebMarker
      */
-    loadMarks() {
+    highlightMarks() {
         return __awaiter(this, void 0, void 0, function* () {
-            this.marks = yield this.markerService.getMarks();
-            console.log(this.marks);
-            const filteredMarks = this.marks.filter(e => e.url === location.href);
-            filteredMarks.forEach(mark => highlightText(null, mark));
-            console.log(`${filteredMarks.length} marks found!`);
+            this.scrollToMark();
+            this.marks = yield this.markerService.getMarksForUrl(location.href);
+            this.marks.forEach(mark => highlightText(null, mark));
+        });
+    }
+    /**
+     *  Scroll to mark if there is a scrollY param in query url.
+     *  SetTimeout to put at the end of event Loop
+     * @memberof WebMarker
+     */
+    scrollToMark() {
+        setTimeout(() => {
+            try {
+                const params = location.href.split('?')[1].split('=');
+                params.forEach((param, index) => {
+                    if (param === 'scrollY') {
+                        const scrollOptions = {
+                            top: Number(params[index + 1]),
+                            left: 0,
+                            behavior: 'smooth'
+                        };
+                        window.scrollTo(scrollOptions);
+                    }
+                });
+            }
+            catch (error) {
+                //
+            }
         });
     }
     render() {
         return html `
-  <my-marker .marks=${this.marks ? this.marks : []} .show=${this.show} .menuWidth=${this.menuWidth}></my-marker>
+  <my-marker .show=${this.show} .menuWidth=${this.menuWidth}></my-marker>
   `;
     }
 };
@@ -108,6 +175,9 @@ __decorate([
 __decorate([
     property()
 ], WebMarker.prototype, "show", void 0);
+__decorate([
+    property()
+], WebMarker.prototype, "newContextMark", void 0);
 __decorate([
     property()
 ], WebMarker.prototype, "menuWidth", void 0);
