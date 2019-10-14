@@ -2,13 +2,6 @@ import { Mark } from './../models/mark';
 import { ReduxAction } from './reducer';
 import { store } from './store';
 
-export function changeTest(newValue: string) {
-  const reduxAction: ReduxAction = {
-    type: 'CHANGE_TEST',
-    newTest: newValue
-  }
-  store.dispatch(reduxAction);
-}
 
 export function initMarks(marks: Mark[]) {
   const reduxAction: ReduxAction = {

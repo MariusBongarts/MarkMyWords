@@ -2,13 +2,11 @@ import { Mark } from './../models/mark';
 
 export interface State {
   marks: Mark[],
-  test: string,
   lastAction?: ReduxAction
 }
 
 const INITIAL_STATE: State = {
-  marks: [],
-  test: "Marius"
+  marks: []
 };
 
 export type ReduxActionType = 'ADD_MARK' | 'REMOVE_MARK' | 'CHANGE_TEST' | 'INIT_MARKS' | 'UPDATE_MARK';
@@ -17,19 +15,12 @@ export interface ReduxAction {
   type: ReduxActionType,
   marks?: Mark[],
   mark?: Mark,
-  newTest?: string,
   markId?: string,
 }
 
 
 export const reducer = (state = INITIAL_STATE, action: ReduxAction) => {
   switch (action.type) {
-    case 'CHANGE_TEST':
-      return {
-        ...state,
-        test: action.newTest,
-        lastAction: action.type
-      };
     case 'INIT_MARKS':
       return {
         ...state,

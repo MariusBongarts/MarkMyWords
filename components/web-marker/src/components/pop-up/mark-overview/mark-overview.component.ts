@@ -10,7 +10,6 @@ import openSocket from 'socket.io-client';
 import { environment } from '../../../environments/environment.dev';
 import { JwtService } from '../../../services/jwt.service';
 import { connect } from 'pwa-helpers';
-import { changeTest } from '../../../store/actions';
 
 const componentCSS = require('./mark-overview.component.scss');
 
