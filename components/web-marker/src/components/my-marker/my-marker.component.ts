@@ -53,6 +53,10 @@ export class MyMarkerElement extends connect(store)(LitElement) {
   }
 
   stateChanged(e) {
+    if (store.getState().lastAction === 'UPDATE_MARK') {
+      this.mark = e.marks.find(e => this.mark && e.id === this.mark.id);
+      this.requestUpdate();
+    }
     if (store.getState().lastAction === 'REMOVE_MARK') {
       try {
         const marks = e.marks as Mark[];
@@ -199,7 +203,6 @@ export class MyMarkerElement extends connect(store)(LitElement) {
     ${this.editTags ? html`
     <div class="chip-container">
       <bronco-chip-list
-      @tagsChanged=${(e: CustomEvent) => this.mark.tags = e.detail}
       @submitTriggered=${() => this.updateTags()}
       .focused=${this.editTags}
       .mark=${this.mark}

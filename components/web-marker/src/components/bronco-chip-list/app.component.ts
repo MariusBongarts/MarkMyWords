@@ -1,8 +1,12 @@
+import { connect } from 'pwa-helpers';
+import { store } from './../../store/store';
+import { State } from './../../store/reducer';
 import { Mark } from './../../models/mark';
 import { MarkerService } from './../../services/marker.service';
 import { css, customElement, html, LitElement, property, unsafeCSS, query } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import './../bronco-chip/app.component';
+import { updateMark } from '../../store/actions';
 
 const componentCSS = require('./app.component.scss');
 
@@ -19,7 +23,7 @@ const componentCSS = require('./app.component.scss');
  *
  */
 @customElement('bronco-chip-list')
-export class BroncoChipList extends LitElement {
+export class BroncoChipList  extends connect(store)(LitElement) {
   static styles = css`${unsafeCSS(componentCSS)}`;
   markerService = new MarkerService();
 
@@ -57,6 +61,9 @@ export class BroncoChipList extends LitElement {
   @property()
   markedToDelete = false;
 
+  @property()
+  hideOnOutsideClick = true;
+
   /**
    * Property to trigger submit after entering ENTER twice
    *
@@ -69,7 +76,14 @@ export class BroncoChipList extends LitElement {
     this.chips = this.mark.tags;
     document.addEventListener('click', () => this.markedToDelete = false);
     this.focused ? this.inputElement.focus() : '';
-    this.closeOnOutsideClick();
+    this.hideOnOutsideClick ?  this.closeOnOutsideClick() : '';
+  }
+
+  stateChanged(e: State) {
+    if (store.getState().lastAction === 'UPDATE_MARK') {
+      this.mark = e.marks.find(e => e.id === this.mark.id);
+      this.chips = this.mark.tags;
+    }
   }
 
   closeOnOutsideClick() {
@@ -84,11 +98,10 @@ export class BroncoChipList extends LitElement {
 
   async disconnectedCallback() {
     this.mark.tags = this.chips;
-    await this.markerService.updateMark(this.mark);
     this.submit();
   }
 
-  emit() {
+  async emit() {
     if (this.mark.tags.length !== this.chips.length) {
       this.dispatchEvent(
         new CustomEvent('tagsChanged', {
@@ -96,6 +109,9 @@ export class BroncoChipList extends LitElement {
           detail: this.chips
         })
       );
+      this.mark.tags = this.chips;
+      updateMark(this.mark);
+      await this.markerService.updateMark(this.mark);
     }
   }
 

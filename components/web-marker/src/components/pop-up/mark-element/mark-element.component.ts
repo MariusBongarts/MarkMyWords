@@ -7,6 +7,7 @@ import { css, customElement, html, LitElement, query, property, unsafeCSS } from
 import { timeSinceTimestamp } from '../../../helper/dateHelper';
 import { MarkerService } from '../../../services/marker.service';
 import { navigateExternal } from '../../../helper/router';
+import { updateMark } from '../../../store/actions';
 
 const componentCSS = require('./mark-element.component.scss');
 
@@ -31,6 +32,9 @@ class MarkElementComponent extends connect(store)(LitElement) {
 
   @property()
   isActive = false;
+
+  @property()
+  addingTags = false;
 
   @property()
   headerInfo: string;
@@ -77,12 +81,18 @@ class MarkElementComponent extends connect(store)(LitElement) {
             <div class="main"  @click=${() => this.scrollToMark()}>
               <blockquote>${ this.mark.text} </blockquote>
                 </div>
-                <div class="footer" >
+                <div class="footer">
+                  ${this.addingTags ? html`
+                  <bronco-chip-list
+                  .hideOnOutsideClick=${false}
+                  .mark=${this.mark}></bronco-chip-list>
+                  ` : ''}
                   ${
+      !this.addingTags ?
       this.mark.tags.map(tag => html`
       <bronco-chip
       @deleted=${async (e: MouseEvent) => await this.deleteTag(e, tag)}
-      >${tag}</bronco-chip>`)
+      >${tag}</bronco-chip>`) : ''
       }
         </div>
       </div>

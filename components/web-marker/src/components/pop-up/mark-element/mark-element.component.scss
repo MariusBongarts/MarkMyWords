@@ -67,6 +67,18 @@ bronco-chip {
   --width: auto;
 }
 
+bronco-chip-list {
+  --bg-color: rgba(0, 0, 0, 0);
+  --box-shadow: none;
+  --color: var(--white-dark);
+  --font-size-chip: 10px;
+  --font-weight: inherit;
+  --height-chip: 17px;
+  --margin: 2px 1px;
+  --width: auto;
+  --padding-input: 0px;
+}
+
 .timeSince {
   float: right;
 }

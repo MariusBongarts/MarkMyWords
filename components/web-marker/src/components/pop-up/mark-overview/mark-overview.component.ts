@@ -175,6 +175,7 @@ class MarkOverviewComponent extends connect(store)(LitElement) {
       <!-- Only marks for current page -->
       ${this.marks && this.marks.length ? this.marks.map(mark => html`
         <mark-element
+      .addingTags=${true}
       .headerInfo=${this.loggedUser.email}
       .mark=${mark}
       ></mark-element>`) : html`
