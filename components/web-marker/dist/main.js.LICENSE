@@ -312,48 +312,6 @@
 
 /* 4 */
 
-/**
- * Module exports.
- */
-
-/**
- * Managers cache.
- */
-
-/**
- * Looks up an existing `Manager` for multiplexing.
- * If the user summons:
- *
- *   `io('http://localhost/a');`
- *   `io('http://localhost/b');`
- *
- * We reuse the existing instance based on same scheme/port/host,
- * and we initialize sockets for each namespace.
- *
- * @api public
- */
-
-/**
- * Protocol version.
- *
- * @api public
- */
-
-/**
- * `connect`.
- *
- * @param {String} uri
- * @api public
- */
-
-/**
- * Expose constructors for standalone build.
- *
- * @api public
- */
-
-/* 5 */
-
 // shim for using process in browser
 
 // cached from whatever global is present so that test runners that stub it
@@ -386,7 +344,7 @@
 
 // empty string to avoid regexp issues
 
-/* 6 */
+/* 5 */
 
 /* WEBPACK VAR INJECTION */
 
@@ -496,7 +454,7 @@
  * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
  */
 
-/* 7 */
+/* 6 */
 
 /**
  * Compiles a querystring
@@ -513,20 +471,26 @@
  * @api private
  */
 
+/* 7 */
+
 /* 8 */
 
 /* 9 */
-
-/* 10 */
 
 // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
 
 // Copy bytes to buffer, if provided
 
-/* 11 */
+/* 10 */
 
 /**
  * A socket.io Encoder instance
+ *
+ * @api public
+ */
+
+/**
+ * Protocol version.
  *
  * @api public
  */
@@ -714,7 +678,7 @@
  * @api private
  */
 
-/* 12 */
+/* 11 */
 
 /*!
  * The buffer module from node.js, for the browser.
@@ -960,7 +924,7 @@
 
 // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
 
-/* 13 */
+/* 12 */
 
 // browser shim for xmlhttprequest module
 
@@ -976,7 +940,7 @@
 
 // https://github.com/yujiosaka/socke.io-ie8-loading-example
 
-/* 14 */
+/* 13 */
 
 /**
  * Transport abstract constructor.
@@ -993,6 +957,10 @@
 
 /**
  * Mix in `Emitter`.
+ */
+
+/**
+ * Module exports.
  */
 
 /**
@@ -1045,7 +1013,7 @@
  * @api private
  */
 
-/* 15 */
+/* 14 */
 
 /* harmony import */
 
@@ -1053,7 +1021,39 @@
 
 /* harmony default export */
 
+/* 15 */
+
 /* 16 */
+
+/**
+ * Managers cache.
+ */
+
+/**
+ * Looks up an existing `Manager` for multiplexing.
+ * If the user summons:
+ *
+ *   `io('http://localhost/a');`
+ *   `io('http://localhost/b');`
+ *
+ * We reuse the existing instance based on same scheme/port/host,
+ * and we initialize sockets for each namespace.
+ *
+ * @api public
+ */
+
+/**
+ * `connect`.
+ *
+ * @param {String} uri
+ * @api public
+ */
+
+/**
+ * Expose constructors for standalone build.
+ *
+ * @api public
+ */
 
 /* 17 */
 
@@ -1718,6 +1718,26 @@
 
 /* 45 */
 
+/* 46 */
+
+/* 47 */
+
+/* 48 */
+
+/* 49 */
+
+/* 50 */
+
+/* 51 */
+
+/* 52 */
+
+/* 53 */
+
+/* 54 */
+
+/* 55 */
+
 /**
  * URL parser.
  *
@@ -1739,7 +1759,7 @@
 
 // define href
 
-/* 46 */
+/* 56 */
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -1834,7 +1854,7 @@
 	* Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
 	*/
 
-/* 47 */
+/* 57 */
 
 /**
  * Helpers.
@@ -1882,7 +1902,7 @@
  * @api private
  */
 
-/* 48 */
+/* 58 */
 
 /**
  * Enable namespaces listed in `localStorage.debug` initially.
@@ -1908,7 +1928,7 @@
 
 // double check webkit in userAgent just in case we are in a worker
 
-/* 49 */
+/* 59 */
 
 /**
  * Create a debugger with the given `namespace`.
@@ -1994,9 +2014,9 @@
  * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
  */
 
-/* 50 */
+/* 60 */
 
-/* 51 */
+/* 61 */
 
 /*global Blob,File*/
 
@@ -2051,7 +2071,7 @@
 
 // and object
 
-/* 52 */
+/* 62 */
 
 // base64 is 4/3 + up to two characters of the original data
 
@@ -2069,11 +2089,11 @@
 
 // See: https://github.com/beatgammit/base64-js/issues/42
 
-/* 53 */
+/* 63 */
 
-/* 54 */
+/* 64 */
 
-/* 55 */
+/* 65 */
 
 /**
  * Exports parser
@@ -2082,7 +2102,7 @@
  *
  */
 
-/* 56 */
+/* 66 */
 
 /**
  * Socket constructor.
@@ -2298,7 +2318,7 @@
  *
  */
 
-/* 57 */
+/* 67 */
 
 /**
  * Module exports.
@@ -2312,7 +2332,7 @@
 
 // when trying to create
 
-/* 58 */
+/* 68 */
 
 /* global attachEvent */
 
@@ -2435,7 +2455,7 @@
  * emitted.
  */
 
-/* 59 */
+/* 69 */
 
 /**
  * Gets the keys for an object.
@@ -2444,9 +2464,9 @@
  * @api private
  */
 
-/* 60 */
+/* 70 */
 
-/* 61 */
+/* 71 */
 
 /**
  * An abstraction for slicing an arraybuffer even when
@@ -2455,13 +2475,13 @@
  * @api public
  */
 
-/* 62 */
+/* 72 */
 
 // after first error, rest are passed to err_cb
 
 // future error callbacks will go to error handler
 
-/* 63 */
+/* 73 */
 
 /*! https://mths.be/utf8js v2.1.2 by @mathias */
 
@@ -2493,7 +2513,7 @@
 
 // 3-byte sequence (may include unpaired surrogates)
 
-/* 64 */
+/* 74 */
 
 /*
  * base64-arraybuffer
@@ -2505,7 +2525,7 @@
 
 // Use a lookup table to find the index.
 
-/* 65 */
+/* 75 */
 
 /**
  * Create a blob builder even when vendor prefixes exist
@@ -2525,11 +2545,11 @@
 
 // include the subarray region from the underlying buffer
 
-/* 66 */
+/* 76 */
 
-/* 67 */
+/* 77 */
 
-/* 68 */
+/* 78 */
 
 /**
  * Cached regular expressions.
@@ -2588,7 +2608,7 @@
 
 // double escaping is required for escaped new lines because unescaping of new lines can be done safely on server-side
 
-/* 69 */
+/* 79 */
 
 /**
  * Get either the `WebSocket` or `MozWebSocket` globals
@@ -2673,13 +2693,13 @@
  * @api public
  */
 
-/* 70 */
+/* 80 */
 
 /* (ignored) */
 
-/* 71 */
+/* 81 */
 
-/* 72 */
+/* 82 */
 
 /**
  * Initialize backoff timer with `opts`.
@@ -2727,26 +2747,6 @@
  *
  * @api public
  */
-
-/* 73 */
-
-/* 74 */
-
-/* 75 */
-
-/* 76 */
-
-/* 77 */
-
-/* 78 */
-
-/* 79 */
-
-/* 80 */
-
-/* 81 */
-
-/* 82 */
 
 /* 83 */
 
@@ -4216,7 +4216,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      * @memberof WebMarker
      */
 
-// EXTERNAL MODULE: ./node_modules/socket.io-client/lib/index.js
+// CONCATENATED MODULE: ./src/components/my-marker/my-marker.component.ts
 
 /**
          *  Necessary to abort hide animation when user enters mark again
@@ -4228,21 +4228,49 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 //this.handleSockets();
 
-// stateChanged() {
+// async initSocket() {
 
-//   if (store.getState().lastAction === 'REMOVE_MARK') {
+//   const jwt = await this.jwtService.getJwt();
 
-//     try {
+//   const jwtPayload = await this.jwtService.getJwtPayload();
 
-//       store.getState().marks.find(e => e.id === this.mark.id);
+//   if (environment.production) {
 
-//     } catch(error) {
+//     this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
+
+//   } else {
+
+//     this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt }, transports: ['websocket', 'xhr-polling'] });
+
+//   this.socket.emit('join', { id: jwtPayload._id, email: jwtPayload.email });
+
+// }
+
+// handleSockets() {
+
+//   this.socket.on('deleteMark', (deletedMarkId: string) => {
+
+//     if (this.mark.id === deletedMarkId) {
 
 //       deleteMarkFromDom(this.parentElement);
 
+//       this.remove();
+
 //     }
 
-// }
+//   });
+
+//   this.socket.on('updateMark', (updatedMark: Mark) => {
+
+//     if (this.mark.id === updatedMark.id) {
+
+//       this.mark = updatedMark;
+
+//   // this.socket.on('connect', (data: string) => {
+
+//   //   console.log('yeah');
+
+//   // });
 
 /**
      *  Sets position of this component so that it is centralized above mark-element
@@ -4504,7 +4532,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 // CONCATENATED MODULE: ./src/helper/dateHelper.ts
 
-// CONCATENATED MODULE: ./src/components/pop-up/mark-overview/mark-overview.component.ts
+// EXTERNAL MODULE: ./node_modules/socket.io-client/lib/index.js
 
 /**
  *
@@ -4541,8 +4569,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      * @memberof MarkOverviewComponent
      */
 
-// handleSockets() {
-
 //   this.socket.on('createMark', (createdMark: Mark) => {
 
 //     this.allMarks = [...this.allMarks, createdMark];
@@ -4555,15 +4581,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 //       // TODO: Maybe a popup to show that on different page has been added a mark?
 
-//   });
-
-//   this.socket.on('deleteMark', (deletedMarkId: string) => {
-
 //     this.marks = this.marks.filter(mark => mark.id !== deletedMarkId);
 
 //     this.allMarks = this.allMarks.filter(mark => mark.id !== deletedMarkId);
-
-//   this.socket.on('updateMark', (updatedMark: Mark) => {
 
 //     this.marks = this.marks.map(mark => mark.id === updatedMark.id ? updatedMark : mark);
 

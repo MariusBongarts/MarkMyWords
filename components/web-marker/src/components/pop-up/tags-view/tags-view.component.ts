@@ -43,17 +43,26 @@ export class TagsViewComponent extends connect(store)(LitElement) {
   }
 
   loadDistinctTags() {
+    this.tags = [];
     this.marks.forEach(mark => {
       this.tags = [...this.tags, ...mark.tags];
     });
     this.tags = [...new Set(this.tags)];
-    this.tags.sort();
+    this.sortTags();
+  }
+
+  sortTags() {
+    this.tags.sort(function (a, b) {
+      return a.toLowerCase().localeCompare(b.toLowerCase());
+    });
   }
 
   getRelatedTags() {
     let relatedTags = [];
     this.marks.filter(mark => mark.tags.includes(this.selectedTag)).forEach(mark => relatedTags = [...relatedTags, ...mark.tags]);
-    return [...new Set(relatedTags)].filter(tag => tag !== this.selectedTag);
+    let tags = [...new Set(relatedTags)].filter(tag => tag !== this.selectedTag);
+    tags = tags.filter(tag => this.marks.filter(mark => mark.tags.includes(tag)).length > 0);
+    return tags;
   }
 
 

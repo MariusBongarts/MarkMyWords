@@ -38,13 +38,18 @@ function createMyMarkerComponent(markElement, mark) {
     });
 }
 export function deleteMarkFromDom(markElement) {
-    // Unwraps the mark element
-    const parent = markElement.parentNode;
-    // move all children out of the element
-    while (markElement.firstChild)
-        parent.insertBefore(markElement.firstChild, markElement);
-    // remove the empty element
-    parent.removeChild(markElement);
+    try {
+        // Unwraps the mark element
+        const parent = markElement.parentNode;
+        // move all children out of the element
+        while (markElement.firstChild)
+            parent.insertBefore(markElement.firstChild, markElement);
+        // remove the empty element
+        parent.removeChild(markElement);
+    }
+    catch (error) {
+        //
+    }
 }
 function recreateRange(mark) {
     const startContainer = findStartEndContainer(document.body, mark, true);

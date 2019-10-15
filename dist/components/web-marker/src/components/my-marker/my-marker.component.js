@@ -15,13 +15,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { store } from './../../store/store';
 import { connect } from 'pwa-helpers';
-import { environment } from './../../environments/environment.dev';
 import { JwtService } from './../../services/jwt.service';
 import { MarkerService } from './../../services/marker.service';
 import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
 const componentCSS = require('./my-marker.component.scss');
-import openSocket from 'socket.io-client';
-import { deleteMarkFromDom } from '../../helper/markerHelper';
 let MyMarkerElement = class MyMarkerElement extends connect(store)(LitElement) {
     constructor() {
         super(...arguments);
@@ -48,44 +45,45 @@ let MyMarkerElement = class MyMarkerElement extends connect(store)(LitElement) {
             //this.handleSockets();
         });
     }
-    // stateChanged() {
-    //   if (store.getState().lastAction === 'REMOVE_MARK') {
-    //     try {
-    //       store.getState().marks.find(e => e.id === this.mark.id);
-    //     } catch(error) {
-    //       deleteMarkFromDom(this.parentElement);
-    //     }
+    stateChanged(e) {
+        if (store.getState().lastAction === 'REMOVE_MARK') {
+            try {
+                const marks = e.marks;
+                if (!marks.includes(this.mark)) {
+                    this.emitDeleted();
+                }
+            }
+            catch (error) {
+                //
+            }
+        }
+    }
+    // async initSocket() {
+    //   const jwt = await this.jwtService.getJwt();
+    //   const jwtPayload = await this.jwtService.getJwtPayload();
+    //   if (environment.production) {
+    //     this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
+    //   } else {
+    //     this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt }, transports: ['websocket', 'xhr-polling'] });
     //   }
+    //   this.socket.emit('join', { id: jwtPayload._id, email: jwtPayload.email });
     // }
-    initSocket() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const jwt = yield this.jwtService.getJwt();
-            const jwtPayload = yield this.jwtService.getJwtPayload();
-            if (environment.production) {
-                this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
-            }
-            else {
-                this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt }, transports: ['websocket', 'xhr-polling'] });
-            }
-            this.socket.emit('join', { id: jwtPayload._id, email: jwtPayload.email });
-        });
-    }
-    handleSockets() {
-        this.socket.on('deleteMark', (deletedMarkId) => {
-            if (this.mark.id === deletedMarkId) {
-                deleteMarkFromDom(this.parentElement);
-                this.remove();
-            }
-        });
-        this.socket.on('updateMark', (updatedMark) => {
-            if (this.mark.id === updatedMark.id) {
-                this.mark = updatedMark;
-            }
-        });
-        // this.socket.on('connect', (data: string) => {
-        //   console.log('yeah');
-        // });
-    }
+    // handleSockets() {
+    //   this.socket.on('deleteMark', (deletedMarkId: string) => {
+    //     if (this.mark.id === deletedMarkId) {
+    //       deleteMarkFromDom(this.parentElement);
+    //       this.remove();
+    //     }
+    //   });
+    //   this.socket.on('updateMark', (updatedMark: Mark) => {
+    //     if (this.mark.id === updatedMark.id) {
+    //       this.mark = updatedMark;
+    //     }
+    //   });
+    //   // this.socket.on('connect', (data: string) => {
+    //   //   console.log('yeah');
+    //   // });
+    // }
     /**
      *  Sets position of this component so that it is centralized above mark-element
      *
