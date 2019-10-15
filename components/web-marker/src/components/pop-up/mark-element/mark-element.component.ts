@@ -1,3 +1,6 @@
+import { State } from './../../../store/reducer';
+import { connect } from 'pwa-helpers';
+import { store } from './../../../store/store';
 import { JwtPayload } from './../../../models/jwtPayload';
 import { Mark } from './../../../models/mark';
 import { css, customElement, html, LitElement, query, property, unsafeCSS } from 'lit-element';
@@ -19,7 +22,7 @@ const componentCSS = require('./mark-element.component.scss');
  */
 
 @customElement('mark-element')
-class MarkElementComponent extends LitElement {
+class MarkElementComponent extends connect(store)(LitElement) {
   static styles = css`${unsafeCSS(componentCSS)}`;
   markService = new MarkerService();
 
@@ -32,8 +35,11 @@ class MarkElementComponent extends LitElement {
   @property()
   headerInfo: string;
 
-  async firstUpdated() {
-
+  stateChanged(e: State) {
+    if (store.getState().lastAction === 'UPDATE_MARK') {
+      this.mark = e.marks.find(e => e.id === this.mark.id);
+      this.requestUpdate();
+    }
   }
 
   async deleteMark(e: MouseEvent) {
