@@ -1,11 +1,4 @@
 import { store } from './store';
-export function changeTest(newValue) {
-    const reduxAction = {
-        type: 'CHANGE_TEST',
-        newTest: newValue
-    };
-    store.dispatch(reduxAction);
-}
 export function initMarks(marks) {
     const reduxAction = {
         type: 'INIT_MARKS',

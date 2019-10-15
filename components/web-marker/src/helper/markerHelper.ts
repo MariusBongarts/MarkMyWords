@@ -47,12 +47,16 @@ function createMyMarkerComponent(markElement: HTMLElement, mark: Mark) {
 }
 
 export function deleteMarkFromDom(markElement: HTMLElement) {
-      // Unwraps the mark element
-      const parent = markElement.parentNode;
-      // move all children out of the element
-      while (markElement.firstChild) parent.insertBefore(markElement.firstChild, markElement);
-      // remove the empty element
-      parent.removeChild(markElement);
+  try {
+    // Unwraps the mark element
+    const parent = markElement.parentNode;
+    // move all children out of the element
+    while (markElement.firstChild) parent.insertBefore(markElement.firstChild, markElement);
+    // remove the empty element
+    parent.removeChild(markElement);
+  } catch (error) {
+    //
+  }
 }
 
 function recreateRange(mark) {

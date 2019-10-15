@@ -52,48 +52,51 @@ export class MyMarkerElement extends connect(store)(LitElement) {
     //this.handleSockets();
   }
 
-  // stateChanged() {
-  //   if (store.getState().lastAction === 'REMOVE_MARK') {
-  //     try {
-  //       store.getState().marks.find(e => e.id === this.mark.id);
-  //     } catch(error) {
-  //       deleteMarkFromDom(this.parentElement);
-  //     }
+  stateChanged(e) {
+    if (store.getState().lastAction === 'REMOVE_MARK') {
+      try {
+        const marks = e.marks as Mark[];
+        if (!marks.includes(this.mark)) {
+          this.emitDeleted();
+        }
+      } catch(error) {
+        //
+      }
 
+    }
+  }
+
+
+
+  // async initSocket() {
+  //   const jwt = await this.jwtService.getJwt();
+  //   const jwtPayload = await this.jwtService.getJwtPayload();
+  //   if (environment.production) {
+  //     this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
+  //   } else {
+  //     this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt }, transports: ['websocket', 'xhr-polling'] });
   //   }
+  //   this.socket.emit('join', { id: jwtPayload._id, email: jwtPayload.email });
   // }
 
+  // handleSockets() {
+  //   this.socket.on('deleteMark', (deletedMarkId: string) => {
+  //     if (this.mark.id === deletedMarkId) {
+  //       deleteMarkFromDom(this.parentElement);
+  //       this.remove();
+  //     }
+  //   });
 
+  //   this.socket.on('updateMark', (updatedMark: Mark) => {
+  //     if (this.mark.id === updatedMark.id) {
+  //       this.mark = updatedMark;
+  //     }
+  //   });
 
-  async initSocket() {
-    const jwt = await this.jwtService.getJwt();
-    const jwtPayload = await this.jwtService.getJwtPayload();
-    if (environment.production) {
-      this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt } });
-    } else {
-      this.socket = openSocket(environment.SOCKET_URL, { query: { jwt: jwt }, transports: ['websocket', 'xhr-polling'] });
-    }
-    this.socket.emit('join', { id: jwtPayload._id, email: jwtPayload.email });
-  }
-
-  handleSockets() {
-    this.socket.on('deleteMark', (deletedMarkId: string) => {
-      if (this.mark.id === deletedMarkId) {
-        deleteMarkFromDom(this.parentElement);
-        this.remove();
-      }
-    });
-
-    this.socket.on('updateMark', (updatedMark: Mark) => {
-      if (this.mark.id === updatedMark.id) {
-        this.mark = updatedMark;
-      }
-    });
-
-    // this.socket.on('connect', (data: string) => {
-    //   console.log('yeah');
-    // });
-  }
+  //   // this.socket.on('connect', (data: string) => {
+  //   //   console.log('yeah');
+  //   // });
+  // }
 
   /**
    *  Sets position of this component so that it is centralized above mark-element

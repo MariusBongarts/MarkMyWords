@@ -1,11 +1,8 @@
 const INITIAL_STATE = {
-    marks: [],
-    test: "Marius"
+    marks: []
 };
 export const reducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case 'CHANGE_TEST':
-            return Object.assign(Object.assign({}, state), { test: action.newTest, lastAction: action.type });
         case 'INIT_MARKS':
             return Object.assign(Object.assign({}, state), { marks: action.marks, lastAction: action.type });
         case 'ADD_MARK':
