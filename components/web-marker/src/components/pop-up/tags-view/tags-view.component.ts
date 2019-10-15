@@ -52,9 +52,7 @@ export class TagsViewComponent extends connect(store)(LitElement) {
   }
 
   sortTags() {
-    this.tags.sort(function (a, b) {
-      return a.toLowerCase().localeCompare(b.toLowerCase());
-    });
+    this.tags.sort((a, b) => a.localeCompare(b, undefined, {sensitivity: 'base'}))
   }
 
   getRelatedTags() {
