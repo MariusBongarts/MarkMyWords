@@ -50,6 +50,10 @@ export class TreeViewComponent extends connect(store)(LitElement) {
     this.origins = [...new Set(this.origins.map(origin => origin))];
   }
 
+  toggleList(origin: string) {
+    setTimeout(() => this.selectedOrigin === origin ? this.selectedOrigin = '' : this.selectedOrigin = origin , 1);
+  }
+
 
   render() {
     return html`
@@ -57,16 +61,18 @@ export class TreeViewComponent extends connect(store)(LitElement) {
     <div class="tabs">
           <!-- Close placeholder -->
           ${this.selectedOrigin ? html`
-          <div class="tab">
+          <div>
             <input type="radio" id="closeBtn" name="radioBtn">
           </div>
         ` : ''}
-      ${this.origins.filter(origin => origin.toLowerCase().includes(this.filter)).map((origin: string) => html`
-      <div class="tab">
+      ${this.origins.filter(origin => origin.toLowerCase().includes(
+        this.filter))
+        .map((origin: string) => html`
+      <div class="tab ${!this.selectedOrigin || this.selectedOrigin === origin ? '' : 'hide'}">
         <input type="radio" id="${origin}" name="radioBtn">
         <!-- setTimeout() is necessary to change selectedOrigin after radio input event -->
         <label class="tab-label" for="${this.selectedOrigin && this.selectedOrigin === origin ? 'closeBtn' : origin}"
-        @click=${(e) => setTimeout(() => this.selectedOrigin === origin ? this.selectedOrigin = '' : this.selectedOrigin = origin , 1) }
+        @click=${(e) => this.toggleList(origin) }
         >
         <span>${origin.substring(0, 30)}</span>
         <span class="badge">${this.marks.filter(mark => mark.origin.includes(origin)).length}</span>
