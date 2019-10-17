@@ -21,7 +21,7 @@
   height: 40px;
   background-color: rgba(255, 255, 255, 0.15);
   bottom: -180px;
-  animation: square 25s infinite;
+  animation: square 25s 99999999;
   transition-timing-function: linear;
 }
 .bg-bubbles li:nth-child(1) {
