@@ -1015,13 +1015,13 @@
 
 /* 14 */
 
+/* 15 */
+
 /* harmony import */
 
 /* global window */
 
 /* harmony default export */
-
-/* 15 */
 
 /* 16 */
 
@@ -1683,11 +1683,7 @@
 
 /* 38 */
 
-// module.parent = undefined by default
-
 /* 39 */
-
-/* 40 */
 
 /**
  * The code was extracted from:
@@ -1705,6 +1701,10 @@
 // convert the first 8 bits to one ascii character
 
 // try to find character in table (0-63, not found => -1)
+
+/* 40 */
+
+// module.parent = undefined by default
 
 /* 41 */
 
@@ -2911,6 +2911,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
  * and subscribe to changes.
  */
 
+// EXTERNAL MODULE: ./node_modules/jwt-decode/lib/index.js
+
+// tslint:disable-next-line: no-empty
+
+// CONCATENATED MODULE: ./src/environments/environment.dev.ts
+
+// CONCATENATED MODULE: ./src/services/marker.service.ts
+
+//await this.emitSocket('createMark', mark);
+
+// CONCATENATED MODULE: ./src/store/actions.ts
+
+// CONCATENATED MODULE: ./src/services/jwt.service.ts
+
+/**
+     * Tries to get the jwt-token either from the chrome storage or localstorage
+     *
+     * @returns {Promise<JwtPayload>}
+     * @memberof JwtService
+     */
+
 // CONCATENATED MODULE: ./src/store/reducer.ts
 
 /**
@@ -3027,72 +3048,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 // @ts-ignore
 
-// EXTERNAL MODULE: ./node_modules/jwt-decode/lib/index.js
-
-// CONCATENATED MODULE: ./src/services/jwt.service.ts
-
-/**
-     * Tries to get the jwt-token either from the chrome storage or localstorage
-     *
-     * @returns {Promise<JwtPayload>}
-     * @memberof JwtService
-     */
-
-// CONCATENATED MODULE: ./src/services/http-client.ts
-
-// tslint:disable-next-line: no-empty
-
-// CONCATENATED MODULE: ./src/environments/environment.dev.ts
-
-// CONCATENATED MODULE: ./src/store/actions.ts
-
-// CONCATENATED MODULE: ./src/services/marker.service.ts
-
-//await this.emitSocket('createMark', mark);
-
-// CONCATENATED MODULE: ./node_modules/lit-html/lib/directive.js
-
-/**
- * @license
- * Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at
- * http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at
- * http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at
- * http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at
- * http://polymer.github.io/PATENTS.txt
- */
-
 /**
  * An expression marker used text-positions, multi-binding attributes, and
  * attributes with markup-like text values.
  */
-
-/**
- * Brands a function as a directive so that lit-html will call the function
- * during template rendering, rather than passing as a value.
- *
- * @param f The directive factory function. Must be a function that returns a
- * function of the signature `(part: Part) => void`. The returned function will
- * be called with the part object
- *
- * @example
- *
- * ```
- * import {directive, html} from 'lit-html';
- *
- * const immutable = directive((v) => (part) => {
- *   if (part.value !== v) {
- *     part.setValue(v)
- *   }
- * });
- * ```
- */
-
-// tslint:disable-next-line:no-any
 
 /**
  * An updateable Template that tracks the location of dynamic parts.
@@ -3171,6 +3130,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //# sourceMappingURL=template.js.map
 
 // CONCATENATED MODULE: ./node_modules/lit-html/lib/template-instance.js
+
+/**
+ * @license
+ * Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at
+ * http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at
+ * http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at
+ * http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at
+ * http://polymer.github.io/PATENTS.txt
+ */
 
 /**
  * @module lit-html
@@ -3262,6 +3235,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 /**
      * Creates a single part. Override this to create a differnt type of part.
      */
+
+// tslint:disable-next-line:no-any
 
 // If the value is a not a directive, dirty the committer so that it'll
 

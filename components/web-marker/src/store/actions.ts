@@ -1,3 +1,5 @@
+import { MarkerService } from './../services/marker.service';
+import { JwtPayload } from './../models/jwtPayload';
 import { Mark } from './../models/mark';
 import { ReduxAction } from './reducer';
 import { store } from './store';
@@ -33,4 +35,27 @@ export function updateMark(mark: Mark) {
     mark: mark
   }
   store.dispatch(reduxAction);
+}
+
+export async function login(jwtPayload: JwtPayload) {
+  const reduxAction: ReduxAction = {
+    type: 'LOGIN',
+    jwtPayload: jwtPayload
+  }
+  store.dispatch(reduxAction);
+  const markService = new MarkerService();
+  try {
+    const marks = await markService.getMarks();
+    initMarks(marks);
+  } catch (error) {
+    logout()
+  }
+}
+
+export function logout() {
+  const reduxAction: ReduxAction = {
+    type: 'LOGOUT'
+  }
+  store.dispatch(reduxAction);
+  initMarks([]);
 }

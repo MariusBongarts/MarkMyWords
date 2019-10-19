@@ -2,6 +2,7 @@ import { JwtService } from './jwt.service';
 import { LoginUserDto } from './../models/loginUserDto';
 import { HttpClient } from './http-client';
 import { environment } from '../environments/environment.dev';
+import { login, logout } from '../store/actions';
 
 
 export class UserService {
@@ -22,11 +23,14 @@ export class UserService {
     const token = await this.httpClient.post('/auth', loginUserDto);
     const jwtToken = await token.json();
     this.jwtService.setJwt(jwtToken.token);
+    const jwtPayload = await this.jwtService.getJwtPayload();
+    login(jwtPayload);
     return jwtToken.token;
   }
 
   async logout() {
     this.jwtService.setJwt('');
+    logout();
   }
 
 }

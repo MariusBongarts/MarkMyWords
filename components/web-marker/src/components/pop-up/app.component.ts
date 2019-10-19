@@ -52,7 +52,10 @@ export class PopUpComponent extends LitElement {
   render() {
     return html`
     ${this.loaded ? html`
-    <mark-overview .loggedUser=${this.loggedUser}></mark-overview>
+    <mark-overview
+    @openLobby=${() => this.showAccountPopup = true}
+    .loggedUser=${this.loggedUser}
+    ></mark-overview>
       ${this.showAccountPopup && this.loggedUser && this.loggedUser.email ? html`
       <account-overview @logout=${() => this.logout()} .loggedUser=${this.loggedUser}></account-overview>
       ` : html`

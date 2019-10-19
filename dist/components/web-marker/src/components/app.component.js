@@ -19,7 +19,6 @@ import { store } from './../store/store';
 import { MarkerService } from './../services/marker.service';
 import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
 import { highlightText } from '../helper/markerHelper';
-import { initMarks } from '../store/actions';
 const componentCSS = require('./app.component.scss');
 let WebMarker = class WebMarker extends connect(store)(LitElement) {
     constructor() {
@@ -38,13 +37,11 @@ let WebMarker = class WebMarker extends connect(store)(LitElement) {
         return __awaiter(this, void 0, void 0, function* () {
             this.listenToShowMarker();
             yield this.highlightMarks();
-            yield this.loadState();
         });
     }
-    loadState() {
+    stateChanged() {
         return __awaiter(this, void 0, void 0, function* () {
-            const marks = yield this.markerService.getMarks();
-            initMarks(marks);
+            this.marks = store.getState().marks;
         });
     }
     updated(changedValues) {

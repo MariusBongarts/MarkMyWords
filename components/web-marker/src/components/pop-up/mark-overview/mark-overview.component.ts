@@ -58,6 +58,9 @@ class MarkOverviewComponent extends connect(store)(LitElement) {
   @property()
   marks!: Mark[];
 
+  @property()
+  loggedIn = false;
+
 
   @property()
   show = environment.production ? false : true;
@@ -81,7 +84,9 @@ class MarkOverviewComponent extends connect(store)(LitElement) {
    * @memberof MarkOverviewComponent
    */
   stateChanged(e) {
-    this.marks = store.getState().marks.filter(e => e.url === location.href);
+    if (store.getState().loggedIn) this.marks = store.getState().marks.filter(e => e.url === location.href);
+    else this.marks = [];
+    this.loggedIn = store.getState().loggedIn;
   }
 
   async initSocket() {
@@ -138,6 +143,14 @@ class MarkOverviewComponent extends connect(store)(LitElement) {
     this.activeToggle = tabNr;
   }
 
+  openLobbyContainer() {
+    this.dispatchEvent(
+      new CustomEvent('openLobby', {
+        bubbles: true
+      })
+    );
+  }
+
   render() {
     return html`
     <button class="hideShow ${this.show ? 'active' : ''}" @click=${() => this.show ? this.show = false : this.show = true}>${this.show ?
@@ -184,7 +197,7 @@ class MarkOverviewComponent extends connect(store)(LitElement) {
       `}
     </div>
 
-    ${this.marks && this.marks.length === 0 && this.activeToggle === 2 && !this.searchValue ? html`
+    ${this.marks && this.marks.length === 0 && this.activeToggle === 2 && !this.searchValue && this.loggedIn ? html`
     <div class="infoContainer">
     <div class="mainInfo">
     <span>No marks made on this page</span>
@@ -192,8 +205,22 @@ class MarkOverviewComponent extends connect(store)(LitElement) {
     <div class="subInfo">
       <span>Select text on this page to add new highlights.</span>
     </div>
+    ` : html`
+    ${this.loggedIn ? html`
+    ` : html`
+    <div class="infoContainer">
+    <div class="mainInfo">
+    <span>Login to save your marks</span>
     </div>
-    ` : ''}
+    <hr class="divider">
+    <div class="loginInfo">
+    <button @click=${() => this.openLobbyContainer()}>Login</button>
+    </div>
+    <div>
+    `}
+    `}
+
+
 
 </div>
 ` : ''}

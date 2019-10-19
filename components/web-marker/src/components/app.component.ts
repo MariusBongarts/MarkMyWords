@@ -36,14 +36,11 @@ export class WebMarker extends connect(store)(LitElement) {
   async firstUpdated() {
     this.listenToShowMarker();
     await this.highlightMarks();
-    await this.loadState();
   }
 
-  async loadState() {
-    const marks = await this.markerService.getMarks();
-    initMarks(marks);
+  async stateChanged() {
+    this.marks = store.getState().marks;
   }
-
 
   async updated(changedValues: Map<string | number | symbol, unknown>) {
     if (this.newContextMark) {

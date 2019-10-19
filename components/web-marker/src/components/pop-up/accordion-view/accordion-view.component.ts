@@ -51,7 +51,7 @@ export class TreeViewComponent extends connect(store)(LitElement) {
   }
 
   toggleList(origin: string) {
-    setTimeout(() => this.selectedOrigin === origin ? this.selectedOrigin = '' : this.selectedOrigin = origin , 1);
+    setTimeout(() => this.selectedOrigin === origin ? this.selectedOrigin = '' : this.selectedOrigin = origin, 1);
   }
 
 
@@ -66,20 +66,20 @@ export class TreeViewComponent extends connect(store)(LitElement) {
           </div>
         ` : ''}
       ${this.origins.filter(origin => origin.toLowerCase().includes(
-        this.filter))
-        .map((origin: string) => html`
+      this.filter))
+          .map((origin: string) => html`
       <div class="tab ${!this.selectedOrigin || this.selectedOrigin === origin ? '' : 'hide'}">
         <input type="radio" id="${origin}" name="radioBtn">
         <!-- setTimeout() is necessary to change selectedOrigin after radio input event -->
         <label class="tab-label" for="${this.selectedOrigin && this.selectedOrigin === origin ? 'closeBtn' : origin}"
-        @click=${(e) => this.toggleList(origin) }
+        @click=${(e) => this.toggleList(origin)}
         >
         <span>${origin.substring(0, 30)}</span>
         <span class="badge">${this.marks.filter(mark => mark.origin.includes(origin)).length}</span>
       </label>
       <div class="tab-content">
         ${this.marks.filter(mark => mark.origin.includes(origin)).map(mark => html`
-        <mark-element .mark=${mark} .headerInfo=${mark.origin.split(origin)[1].substring(0,20)}></mark-element>
+        <mark-element .mark=${mark} .headerInfo=${mark.origin.split(origin)[1].substring(0, 20)}></mark-element>
         `)}
       </div>
           `)}

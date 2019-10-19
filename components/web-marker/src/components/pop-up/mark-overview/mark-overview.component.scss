@@ -74,3 +74,16 @@ button {
   z-index: 9999;
   transition-duration: 0s;
 }
+
+.loginInfo {
+  button {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+  }
+}
+
+hr.divider {
+  width: 80%;
+  margin: 10px auto;
+  border: solid 0.3px var(--secondary-light);
+}

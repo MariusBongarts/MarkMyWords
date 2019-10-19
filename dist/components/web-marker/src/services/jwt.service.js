@@ -1,4 +1,5 @@
 import jwt_decode from 'jwt-decode';
+import { login, logout } from '../store/actions';
 export class JwtService {
     constructor() { }
     getJwt() {
@@ -31,6 +32,7 @@ export class JwtService {
                     catch (error) {
                         res({});
                     }
+                    login(payload);
                     res(payload);
                 });
             }
@@ -38,6 +40,7 @@ export class JwtService {
                 try {
                     const jwt = localStorage.jwt_webmarker;
                     const payload = jwt_decode(jwt);
+                    payload ? login(payload) : logout();
                     payload ? res(payload) : res({});
                 }
                 catch (error) {

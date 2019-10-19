@@ -1,6 +1,7 @@
 import { JwtPayload } from './../models/jwtPayload';
 import { HttpClient } from './http-client';
 import jwt_decode from 'jwt-decode';
+import { login, logout } from '../store/actions';
 
 export class JwtService {
   httpClient!: HttpClient;
@@ -36,13 +37,15 @@ export class JwtService {
           } catch (error) {
             res({} as JwtPayload);
           }
+          login(payload);
           res(payload);
         });
       } catch (error) {
         try {
           const jwt = localStorage.jwt_webmarker;
-          const payload = jwt_decode(jwt);
-          payload ? res(payload as JwtPayload) : res({} as JwtPayload);
+          const payload = jwt_decode(jwt) as JwtPayload;
+          payload ? login(payload) : logout();
+          payload ? res(payload) : res({} as JwtPayload);
         } catch (error) {
           res({} as JwtPayload);
         }

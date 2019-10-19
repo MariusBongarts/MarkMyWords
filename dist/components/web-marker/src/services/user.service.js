@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { JwtService } from './jwt.service';
 import { HttpClient } from './http-client';
 import { environment } from '../environments/environment.dev';
+import { login, logout } from '../store/actions';
 export class UserService {
     constructor() {
         this.jwtService = new JwtService();
@@ -26,12 +27,15 @@ export class UserService {
             const token = yield this.httpClient.post('/auth', loginUserDto);
             const jwtToken = yield token.json();
             this.jwtService.setJwt(jwtToken.token);
+            const jwtPayload = yield this.jwtService.getJwtPayload();
+            login(jwtPayload);
             return jwtToken.token;
         });
     }
     logout() {
         return __awaiter(this, void 0, void 0, function* () {
             this.jwtService.setJwt('');
+            logout();
         });
     }
 }
