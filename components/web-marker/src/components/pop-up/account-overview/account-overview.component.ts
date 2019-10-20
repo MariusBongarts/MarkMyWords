@@ -1,13 +1,13 @@
+import { connect } from 'pwa-helpers';
 import { store } from './../../../store/store';
 import { JwtPayload } from './../../../models/jwtPayload';
-import { LoginUserDto } from './../../../../../../NestJsServer/src/users/dto/login-user.dto';
 import { css, customElement, html, LitElement, query, property, unsafeCSS } from 'lit-element';
 import { UserService } from '../../../services/user.service';
 
 const componentCSS = require('./account-overview.component.scss');
 
 @customElement('account-overview')
-class LobbyContainer extends LitElement {
+class LobbyContainer extends LitElement{
 	static styles = css`${unsafeCSS(componentCSS)}`;
 	userService = new UserService();
 
@@ -21,6 +21,7 @@ class LobbyContainer extends LitElement {
 			})
 		);
 	}
+
 
 	render() {
 		return html`

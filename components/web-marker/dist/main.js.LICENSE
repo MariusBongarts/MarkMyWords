@@ -4574,6 +4574,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 //     console.log('yeah');
 
+/**
+     * Gets the tags for the bookmark and updates tags of marks for current page
+     *
+     * @param {CustomEvent} e
+     * @memberof MarkOverviewComponent
+     */
+
 // CONCATENATED MODULE: ./src/components/pop-up/app.component.ts
 
 // html`<sign-in @login=${async () => await this.loadUserData()}></sign-in>`}

@@ -1,3 +1,5 @@
+import { store } from './../../../store/store';
+import { connect } from 'pwa-helpers';
 import { LoginUserDto } from './../../../models/loginUserDto';
 import { css, customElement, html, LitElement, query, property, unsafeCSS } from 'lit-element';
 import { UserService } from '../../../services/user.service';
@@ -16,7 +18,7 @@ const componentCSS = require('./app.component.scss');
  */
 
 @customElement('lobby-container')
-class LobbyContainer extends LitElement {
+class LobbyContainer  extends connect(store)(LitElement) {
 	static styles = css`${unsafeCSS(componentCSS)}`;
 	userService = new UserService();
 

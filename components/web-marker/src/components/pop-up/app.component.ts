@@ -1,3 +1,5 @@
+import { connect } from 'pwa-helpers';
+import { store } from './../../store/store';
 import { environment } from './../../environments/environment.dev';
 import { JwtPayload } from './../../models/jwtPayload';
 import { LoginUserDto } from './../../models/loginUserDto';
@@ -12,7 +14,7 @@ import './mark-overview/mark-overview.component.ts';
 const componentCSS = require('./app.component.scss');
 
 @customElement('pop-up')
-export class PopUpComponent extends LitElement {
+export class PopUpComponent extends connect(store)(LitElement) {
   static styles = css`${unsafeCSS(componentCSS)}`;
   jwtService = new JwtService();
   markService = new MarkerService();
@@ -29,6 +31,11 @@ export class PopUpComponent extends LitElement {
 
   @property()
   loggedUser: JwtPayload;
+
+  stateChanged() {
+    if (!store.getState().loggedIn) this.loggedUser = undefined;
+    console.log("Hallo")
+	}
 
   async firstUpdated() {
     await this.loadUserData();
