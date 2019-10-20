@@ -134,7 +134,7 @@ let MyMarkerElement = class MyMarkerElement extends LitElement {
     ${this.editTags ? html `
     <div class="chip-container">
       <bronco-chip-list
-      @tagsChanged=${(e) => this.mark.tags = e.detail}
+      @tagsChanged=${(e) => this.mark.tags = e.detail.chips}
       @submitTriggered=${() => this.updateTags()}
       .focused=${this.editTags}
       .mark=${this.mark}

@@ -7,7 +7,6 @@ import { css, customElement, html, LitElement, query, property, unsafeCSS } from
 import { timeSinceTimestamp } from '../../../helper/dateHelper';
 import { MarkerService } from '../../../services/marker.service';
 import { navigateExternal } from '../../../helper/router';
-import { updateMark } from '../../../store/actions';
 
 const componentCSS = require('./mark-element.component.scss');
 

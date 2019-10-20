@@ -1738,6 +1738,10 @@
 
 /* 55 */
 
+/* 56 */
+
+/* 57 */
+
 /**
  * URL parser.
  *
@@ -1759,7 +1763,7 @@
 
 // define href
 
-/* 56 */
+/* 58 */
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -1854,7 +1858,7 @@
 	* Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
 	*/
 
-/* 57 */
+/* 59 */
 
 /**
  * Helpers.
@@ -1902,7 +1906,7 @@
  * @api private
  */
 
-/* 58 */
+/* 60 */
 
 /**
  * Enable namespaces listed in `localStorage.debug` initially.
@@ -1928,7 +1932,7 @@
 
 // double check webkit in userAgent just in case we are in a worker
 
-/* 59 */
+/* 61 */
 
 /**
  * Create a debugger with the given `namespace`.
@@ -2014,9 +2018,9 @@
  * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
  */
 
-/* 60 */
+/* 62 */
 
-/* 61 */
+/* 63 */
 
 /*global Blob,File*/
 
@@ -2071,7 +2075,7 @@
 
 // and object
 
-/* 62 */
+/* 64 */
 
 // base64 is 4/3 + up to two characters of the original data
 
@@ -2089,11 +2093,11 @@
 
 // See: https://github.com/beatgammit/base64-js/issues/42
 
-/* 63 */
-
-/* 64 */
-
 /* 65 */
+
+/* 66 */
+
+/* 67 */
 
 /**
  * Exports parser
@@ -2102,7 +2106,7 @@
  *
  */
 
-/* 66 */
+/* 68 */
 
 /**
  * Socket constructor.
@@ -2318,7 +2322,7 @@
  *
  */
 
-/* 67 */
+/* 69 */
 
 /**
  * Module exports.
@@ -2332,7 +2336,7 @@
 
 // when trying to create
 
-/* 68 */
+/* 70 */
 
 /* global attachEvent */
 
@@ -2455,7 +2459,7 @@
  * emitted.
  */
 
-/* 69 */
+/* 71 */
 
 /**
  * Gets the keys for an object.
@@ -2464,9 +2468,9 @@
  * @api private
  */
 
-/* 70 */
+/* 72 */
 
-/* 71 */
+/* 73 */
 
 /**
  * An abstraction for slicing an arraybuffer even when
@@ -2475,13 +2479,13 @@
  * @api public
  */
 
-/* 72 */
+/* 74 */
 
 // after first error, rest are passed to err_cb
 
 // future error callbacks will go to error handler
 
-/* 73 */
+/* 75 */
 
 /*! https://mths.be/utf8js v2.1.2 by @mathias */
 
@@ -2513,7 +2517,7 @@
 
 // 3-byte sequence (may include unpaired surrogates)
 
-/* 74 */
+/* 76 */
 
 /*
  * base64-arraybuffer
@@ -2525,7 +2529,7 @@
 
 // Use a lookup table to find the index.
 
-/* 75 */
+/* 77 */
 
 /**
  * Create a blob builder even when vendor prefixes exist
@@ -2545,11 +2549,11 @@
 
 // include the subarray region from the underlying buffer
 
-/* 76 */
-
-/* 77 */
-
 /* 78 */
+
+/* 79 */
+
+/* 80 */
 
 /**
  * Cached regular expressions.
@@ -2608,7 +2612,7 @@
 
 // double escaping is required for escaped new lines because unescaping of new lines can be done safely on server-side
 
-/* 79 */
+/* 81 */
 
 /**
  * Get either the `WebSocket` or `MozWebSocket` globals
@@ -2693,13 +2697,13 @@
  * @api public
  */
 
-/* 80 */
+/* 82 */
 
 /* (ignored) */
 
-/* 81 */
+/* 83 */
 
-/* 82 */
+/* 84 */
 
 /**
  * Initialize backoff timer with `opts`.
@@ -2748,10 +2752,6 @@
  * @api public
  */
 
-/* 83 */
-
-/* 84 */
-
 /* 85 */
 
 /* 86 */
@@ -2797,6 +2797,10 @@
 /* 106 */
 
 /* 107 */
+
+/* 108 */
+
+/* 109 */
 
 // EXTERNAL MODULE: ./src/index.scss
 
@@ -4506,6 +4510,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      */
 
 // CONCATENATED MODULE: ./src/helper/dateHelper.ts
+
+// CONCATENATED MODULE: ./src/components/pop-up/bookmark-element/bookmark-element.component.ts
 
 // EXTERNAL MODULE: ./node_modules/socket.io-client/lib/index.js
 

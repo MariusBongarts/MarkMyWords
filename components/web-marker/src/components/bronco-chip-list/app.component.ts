@@ -23,7 +23,7 @@ const componentCSS = require('./app.component.scss');
  *
  */
 @customElement('bronco-chip-list')
-export class BroncoChipList  extends connect(store)(LitElement) {
+export class BroncoChipList extends connect(store)(LitElement) {
   static styles = css`${unsafeCSS(componentCSS)}`;
   markerService = new MarkerService();
 
@@ -73,14 +73,14 @@ export class BroncoChipList  extends connect(store)(LitElement) {
   markedToSubmit = false;
 
   firstUpdated() {
-    this.chips = this.mark.tags;
+    this.mark ? this.chips = this.mark.tags : '';
     document.addEventListener('click', () => this.markedToDelete = false);
     this.focused ? this.inputElement.focus() : '';
-    this.hideOnOutsideClick ?  this.closeOnOutsideClick() : '';
+    this.hideOnOutsideClick ? this.closeOnOutsideClick() : '';
   }
 
   stateChanged(e: State) {
-    if (store.getState().lastAction === 'UPDATE_MARK') {
+    if (this.mark && store.getState().lastAction === 'UPDATE_MARK') {
       this.mark = e.marks.find(e => e.id === this.mark.id);
       this.chips = this.mark.tags;
     }
@@ -101,16 +101,16 @@ export class BroncoChipList  extends connect(store)(LitElement) {
     this.submit();
   }
 
-  async emit() {
-    if (this.mark.tags.length !== this.chips.length) {
-      this.dispatchEvent(
-        new CustomEvent('tagsChanged', {
-          bubbles: true,
-          detail: this.chips
-        })
-      );
+  async emit(deletedChip?: string) {
+    this.dispatchEvent(
+      new CustomEvent('tagsChanged', {
+        bubbles: true,
+        detail: { chips: this.chips, deletedChip: deletedChip ? deletedChip : undefined }
+      })
+    );
+
+    if (this.mark && this.mark.tags.length !== this.chips.length) {
       this.mark.tags = this.chips;
-      updateMark(this.mark);
       await this.markerService.updateMark(this.mark);
     }
   }
@@ -122,7 +122,7 @@ export class BroncoChipList  extends connect(store)(LitElement) {
    * @param {KeyboardEvent} e
    * @memberof BroncoChipList
    */
-  submitChip(e: KeyboardEvent) {
+  async submitChip(e: KeyboardEvent) {
     const target = e.target as HTMLInputElement;
 
     if (target.value) {
@@ -145,11 +145,12 @@ export class BroncoChipList  extends connect(store)(LitElement) {
     }
 
     if (e.key === 'Backspace' && this.chips.length && !target.value.length) {
-      this.deleteChip(target);
+      await this.deleteChip(target);
       this.markedToSubmit = false;
     }
 
-    this.emit();
+    e.key !== 'Backspace' ? this.emit() : '';
+
   }
 
   submit() {
@@ -179,9 +180,10 @@ export class BroncoChipList  extends connect(store)(LitElement) {
    * @param {HTMLInputElement} target
    * @memberof BroncoChipList
    */
-  deleteChip(target: HTMLInputElement) {
+  async deleteChip(target: HTMLInputElement) {
     if (this.markedToDelete && !target.value && this.chips.length) {
-      this.chips = this.chips.slice(0, this.chips.length - 1);
+      console.log(this.chips[this.chips.length-1]);
+      await this.filterChips(this.chips[this.chips.length-1]);
       this.markedToDelete = false;
     } else {
       this.markedToDelete = true;
@@ -189,8 +191,9 @@ export class BroncoChipList  extends connect(store)(LitElement) {
     }
   }
 
-  filterChips(chip: string) {
+  async filterChips(chip: string) {
     this.chips = this.chips.filter(e => e !== chip);
+    await this.emit(chip);
   }
 
   render() {
@@ -198,12 +201,14 @@ export class BroncoChipList  extends connect(store)(LitElement) {
 <div class="chip-list ${this.markedToSubmit ? 'marked-to-submit' : ''}">
 ${this.chips.map((chip, index) => html`
 <bronco-chip .deleteMode="${this.markedToDelete && index === this.chips.length - 1}"
-@deleted=${() => this.filterChips(chip)}
+@deleted=${async () => await this.filterChips(chip)}
 
 >${chip}</bronco-chip>
 `)}
 
-    <input placeholder=${this.markedToSubmit ? 'Save' : 'Add tag'} type="text" class="form-control ${this.chips.length ? 'not-empty' : ''}" name="tag"  id="tag"  @keyup=${(e: any) => this.submitChip(e)}>
+    <input
+    placeholder=${this.markedToSubmit ? 'Save' : '+'}
+    type="text" class="form-control ${this.chips.length ? 'not-empty' : ''}" name="tag"  id="tag"  @keyup=${async (e: any) => await this.submitChip(e)}>
 </div>
 `;
   }

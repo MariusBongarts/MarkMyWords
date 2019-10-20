@@ -6,6 +6,7 @@ import { UserService } from './../../../services/user.service';
 import { css, customElement, html, LitElement, query, property, unsafeCSS } from 'lit-element';
 import { JwtPayload } from '../../../models/jwtPayload';
 import './../mark-element/mark-element.component';
+import './../bookmark-element/bookmark-element.component';
 import openSocket from 'socket.io-client';
 import { environment } from '../../../environments/environment.dev';
 import { JwtService } from '../../../services/jwt.service';
@@ -151,6 +152,26 @@ class MarkOverviewComponent extends connect(store)(LitElement) {
     );
   }
 
+
+  /**
+   * Gets the tags for the bookmark and updates tags of marks for current page
+   *
+   * @param {CustomEvent} e
+   * @memberof MarkOverviewComponent
+   */
+  async updateMarks(e: CustomEvent) {
+    console.log(e.detail);
+    this.marks = this.marks.map(mark => {
+    return {
+        ...mark,
+        tags: e.detail.deletedChip ?
+                  mark.tags.filter(tag => tag !== e.detail.deletedChip) :
+                  [...mark.tags, e.detail.chips[e.detail.chips.length -1]]
+    }
+  });
+    this.marks.forEach(async (mark) => await this.markService.updateMark(mark));
+  }
+
   render() {
     return html`
     <button class="hideShow ${this.show ? 'active' : ''}" @click=${() => this.show ? this.show = false : this.show = true}>${this.show ?
@@ -165,8 +186,12 @@ class MarkOverviewComponent extends connect(store)(LitElement) {
       .active=${this.activeToggle}
       @toggleChanged=${(e: CustomEvent) => this.emitTabChange(e.detail)}></header-toggle>
       <search-bar></search-bar>
-
     </div>
+    ${this.activeToggle === 2 ? html`
+      <!-- Only marks for current page -->
+      <bookmark-element
+      @tagsChanged=${async (e: CustomEvent) => await this.updateMarks(e)}
+      ></bookmark-element>` : ''}
       <div class="main">
 
       ${this.searchValue ? html`

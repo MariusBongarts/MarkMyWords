@@ -3,6 +3,7 @@
 :host {
   --box-shadow: 2px 2px 4px 5px #c7c7c73b;
   --bg-color: var(--secondary-color);
+  --bg-color-chip: var(--primary-dark);
   --color: white;
   --min-height: 0;
   --font-size-chip: 10px;
@@ -15,7 +16,7 @@ bronco-chip {
   flex: 1 auto;
   padding: 0;
   margin: 0;
-  --background-color: var(--primary-dark);
+  --background-color: var(--bg-color-chip);
   --color: var(--white-dark);
   --font-size: var(--font-size-chip);
   // --font-weight: inherit;
@@ -50,12 +51,13 @@ input {
   color: var(--color);
   outline: none;
   font-size: var(--font-size) !important;
+  line-height: var(--font-size) !important;
   border: none;
   flex: 1 auto;
   width: 80px;
   overflow: hidden;
   background: none;
-  border-bottom: 1px solid #ffffffc9;
+  // border-bottom: 1px solid #ffffffc9;
   margin: 0px 5px;
   padding: var(--padding-input);
 }
@@ -67,5 +69,9 @@ input:focus .chip-list {
 
 input::placeholder {
   color: #ffffffc9;
+}
+
+input:focus input::placeholder {
+  color: #e0383800;
 }
 
